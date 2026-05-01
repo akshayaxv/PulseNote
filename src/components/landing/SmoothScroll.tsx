@@ -15,7 +15,7 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
   const smoothY = useSpring(scrollY, {
     stiffness: 45,
     damping: 18,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   const y = useTransform(smoothY, (value) => -value);

@@ -11,7 +11,5 @@ export const Logo = ({ light = false }: { light?: boolean }) => (
     <span className="font-display font-black text-xl tracking-tighter text-white">
       MeetMind <span className="text-gradient">AI</span>
     </span>
-
   </Link>
 );
-

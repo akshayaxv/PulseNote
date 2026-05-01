@@ -13,7 +13,6 @@ const items = [
   { label: "FAQ", href: "#faq" },
 ];
 
-
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -27,7 +26,9 @@ export const Navbar = () => {
     <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
       <nav
         className={`w-full max-w-6xl rounded-full transition-all duration-500 ${
-          scrolled ? "glass-dark shadow-glow" : "bg-black/20 backdrop-blur-md border border-white/10"
+          scrolled
+            ? "glass-dark shadow-glow"
+            : "bg-black/20 backdrop-blur-md border border-white/10"
         }`}
       >
         <div className="flex items-center justify-between px-5 py-2.5">
@@ -44,10 +45,19 @@ export const Navbar = () => {
             ))}
           </div>
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost" size="sm" asChild className="rounded-full text-white/80 hover:text-white hover:bg-white/10">
+            <Button
+              variant="ghost"
+              size="sm"
+              asChild
+              className="rounded-full text-white/80 hover:text-white hover:bg-white/10"
+            >
               <Link to="/login">Login</Link>
             </Button>
-            <Button size="sm" asChild className="rounded-full bg-gradient-brand hover:scale-105 transition-transform shadow-emerald border-0 font-bold text-xs uppercase tracking-tighter">
+            <Button
+              size="sm"
+              asChild
+              className="rounded-full bg-gradient-brand hover:scale-105 transition-transform shadow-emerald border-0 font-bold text-xs uppercase tracking-tighter"
+            >
               <Link to="/signup">Get Started</Link>
             </Button>
           </div>
@@ -56,30 +66,41 @@ export const Navbar = () => {
           </button>
         </div>
         {open && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="lg:hidden border-t border-white/10 p-6 flex flex-col gap-5 bg-black/90 backdrop-blur-3xl rounded-b-[2.5rem] shadow-glow"
           >
             {items.map((it) => (
-              <a 
-                key={it.label} 
-                href={it.href} 
-                className="px-4 py-3 text-sm font-bold text-white/60 uppercase tracking-widest hover:text-primary active:text-primary transition-all" 
+              <a
+                key={it.label}
+                href={it.href}
+                className="px-4 py-3 text-sm font-bold text-white/60 uppercase tracking-widest hover:text-primary active:text-primary transition-all"
                 onClick={() => setOpen(false)}
               >
                 {it.label}
               </a>
             ))}
             <div className="flex flex-col gap-3 pt-4 border-t border-white/5">
-              <Button variant="outline" size="lg" asChild className="w-full rounded-2xl border-white/10 text-white h-14 font-bold text-sm uppercase tracking-widest bg-white/5"><Link to="/login">Login</Link></Button>
-              <Button size="lg" asChild className="w-full rounded-2xl bg-gradient-brand border-0 h-14 font-bold text-sm uppercase tracking-widest"><Link to="/signup">Get Started</Link></Button>
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="w-full rounded-2xl border-white/10 text-white h-14 font-bold text-sm uppercase tracking-widest bg-white/5"
+              >
+                <Link to="/login">Login</Link>
+              </Button>
+              <Button
+                size="lg"
+                asChild
+                className="w-full rounded-2xl bg-gradient-brand border-0 h-14 font-bold text-sm uppercase tracking-widest"
+              >
+                <Link to="/signup">Get Started</Link>
+              </Button>
             </div>
           </motion.div>
         )}
-
       </nav>
-
     </header>
   );
 };

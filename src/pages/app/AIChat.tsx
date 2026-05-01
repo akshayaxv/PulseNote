@@ -1,7 +1,18 @@
 import { useState, useRef, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Send, Sparkles, Plus, Brain, FileText, Search, History, Database, Cpu, MessageSquare } from "lucide-react";
+import {
+  Send,
+  Sparkles,
+  Plus,
+  Brain,
+  FileText,
+  Search,
+  History,
+  Database,
+  Cpu,
+  MessageSquare,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Msg = { role: "user" | "ai"; content: string; source?: string };
@@ -22,25 +33,35 @@ const conversations = [
 
 const AIChat = () => {
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "ai", content: "Hi Sarah 👋 I've indexed all 247 of your meetings. Ask me anything — decisions, action items, who said what, or strategic patterns over time." },
+    {
+      role: "ai",
+      content:
+        "Hi Sarah 👋 I've indexed all 247 of your meetings. Ask me anything — decisions, action items, who said what, or strategic patterns over time.",
+    },
   ]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { ref.current?.scrollTo({ top: ref.current.scrollHeight, behavior: "smooth" }); }, [messages, typing]);
+  useEffect(() => {
+    ref.current?.scrollTo({ top: ref.current.scrollHeight, behavior: "smooth" });
+  }, [messages, typing]);
 
   const send = (q: string) => {
     if (!q.trim()) return;
-    setMessages(m => [...m, { role: "user", content: q }]);
-    setInput(""); setTyping(true);
+    setMessages((m) => [...m, { role: "user", content: q }]);
+    setInput("");
+    setTyping(true);
     setTimeout(() => {
       setTyping(false);
-      setMessages(m => [...m, {
-        role: "ai",
-        content: `Based on your meeting history: **Marcus** committed to the Onboarding v2 spec by **Fri, May 8**, and **Aisha** is preparing the support data report for **Wed, May 6**. Both items came from this week's Q4 Strategy Sync.`,
-        source: "Q4 Strategy Sync · May 1, 2024"
-      }]);
+      setMessages((m) => [
+        ...m,
+        {
+          role: "ai",
+          content: `Based on your meeting history: **Marcus** committed to the Onboarding v2 spec by **Fri, May 8**, and **Aisha** is preparing the support data report for **Wed, May 6**. Both items came from this week's Q4 Strategy Sync.`,
+          source: "Q4 Strategy Sync · May 1, 2024",
+        },
+      ]);
     }, 1400);
   };
 
@@ -51,15 +72,22 @@ const AIChat = () => {
         <Button className="rounded-2xl bg-gradient-brand border-0 h-11 mb-6 shadow-float hover:scale-[1.02] transition-transform">
           <Plus className="w-4 h-4 mr-2" /> New chat
         </Button>
-        
+
         <div className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4 px-2">
           <History className="w-3 h-3" /> Recent Queries
         </div>
-        
+
         <div className="flex-1 space-y-1 overflow-y-auto pr-1 scrollbar-hide">
-          {conversations.map(c => (
-            <button key={c.title} className={`w-full text-left p-3 rounded-2xl transition-all group ${c.active ? "bg-white shadow-soft ring-1 ring-border/40" : "hover:bg-white/50"}`}>
-              <div className={`text-sm font-bold truncate ${c.active ? "text-primary" : "text-foreground/80"}`}>{c.title}</div>
+          {conversations.map((c) => (
+            <button
+              key={c.title}
+              className={`w-full text-left p-3 rounded-2xl transition-all group ${c.active ? "bg-white shadow-soft ring-1 ring-border/40" : "hover:bg-white/50"}`}
+            >
+              <div
+                className={`text-sm font-bold truncate ${c.active ? "text-primary" : "text-foreground/80"}`}
+              >
+                {c.title}
+              </div>
               <div className="text-[10px] text-muted-foreground mt-1 flex items-center justify-between">
                 <span>{c.time}</span>
                 <MessageSquare className="w-3 h-3 opacity-0 group-hover:opacity-40" />
@@ -76,7 +104,9 @@ const AIChat = () => {
                 <Database className="w-4 h-4 text-emerald" />
               </div>
               <div>
-                <div className="text-[10px] font-bold text-white/50 uppercase tracking-tighter">Memory Indexed</div>
+                <div className="text-[10px] font-bold text-white/50 uppercase tracking-tighter">
+                  Memory Indexed
+                </div>
                 <div className="text-xs font-bold">247 Meetings</div>
               </div>
             </div>
@@ -96,28 +126,39 @@ const AIChat = () => {
             </div>
             <div>
               <div className="text-xs font-bold">MeetMind AI</div>
-              <div className="text-[10px] text-emerald font-bold tracking-tight uppercase">Always Connected</div>
+              <div className="text-[10px] text-emerald font-bold tracking-tight uppercase">
+                Always Connected
+              </div>
             </div>
           </div>
           <div className="flex gap-2">
-            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full bg-muted/60"><Search className="w-3.5 h-3.5" /></Button>
-            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full bg-muted/60"><Cpu className="w-3.5 h-3.5" /></Button>
+            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full bg-muted/60">
+              <Search className="w-3.5 h-3.5" />
+            </Button>
+            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full bg-muted/60">
+              <Cpu className="w-3.5 h-3.5" />
+            </Button>
           </div>
         </div>
 
         <div ref={ref} className="flex-1 overflow-y-auto p-6 pt-20 space-y-6 scrollbar-hide">
           {messages.map((m, i) => (
-            <motion.div 
-              key={i} 
-              initial={{ opacity: 0, y: 20, scale: 0.95 }} 
-              animate={{ opacity: 1, y: 0, scale: 1 }} 
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className={`flex gap-4 ${m.role === "user" ? "flex-row-reverse" : ""}`}
             >
               <div className={`relative group shrink-0`}>
-                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shadow-soft relative z-10 transition-transform group-hover:scale-110 ${m.role === "ai" ? "bg-gradient-brand text-white" : "bg-navy text-white"}`}>
+                <div
+                  className={`w-10 h-10 rounded-2xl flex items-center justify-center shadow-soft relative z-10 transition-transform group-hover:scale-110 ${m.role === "ai" ? "bg-gradient-brand text-white" : "bg-navy text-white"}`}
+                >
                   {m.role === "ai" ? (
-                    <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 4 }}>
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ repeat: Infinity, duration: 4 }}
+                    >
                       <Brain className="w-5 h-5" />
                     </motion.div>
                   ) : (
@@ -129,12 +170,22 @@ const AIChat = () => {
                 )}
               </div>
               <div className={`max-w-[75%] space-y-2`}>
-                <div className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-float backdrop-blur-md ${m.role === "ai" ? "bg-white/80 border border-white/60" : "bg-navy text-white"}`}>
-                  <div dangerouslySetInnerHTML={{ __html: m.content.replace(/\*\*(.+?)\*\*/g, "<b class='text-primary font-bold'>$1</b>") }} />
+                <div
+                  className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-float backdrop-blur-md ${m.role === "ai" ? "bg-white/80 border border-white/60" : "bg-navy text-white"}`}
+                >
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: m.content.replace(
+                        /\*\*(.+?)\*\*/g,
+                        "<b class='text-primary font-bold'>$1</b>"
+                      ),
+                    }}
+                  />
                 </div>
                 {m.source && (
-                  <motion.div 
-                    initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
                     className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald/5 border border-emerald/10 text-[10px] text-emerald font-black w-fit uppercase tracking-wider"
                   >
                     <Database className="w-3 h-3" /> Source: {m.source}
@@ -145,10 +196,10 @@ const AIChat = () => {
           ))}
           <AnimatePresence>
             {typing && (
-              <motion.div 
-                initial={{ opacity: 0, y: 10 }} 
-                animate={{ opacity: 1, y: 0 }} 
-                exit={{ opacity: 0, transition: { duration: 0.2 } }} 
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, transition: { duration: 0.2 } }}
                 className="flex gap-4"
               >
                 <div className="relative shrink-0">
@@ -162,15 +213,15 @@ const AIChat = () => {
                     <Sparkles className="w-3.5 h-3.5 animate-pulse" /> Retrieving context...
                   </div>
                   <div className="flex gap-1.5">
-                    {[0,1,2].map(i => (
-                      <motion.span 
-                        key={i} 
-                        className="w-2 h-2 rounded-full bg-primary/40" 
-                        animate={{ 
-                          scale: [1, 1.5, 1], 
-                          backgroundColor: ["#60A5FA", "#38BDF8", "#60A5FA"] 
-                        }} 
-                        transition={{ repeat: Infinity, duration: 0.8, delay: i * 0.15 }} 
+                    {[0, 1, 2].map((i) => (
+                      <motion.span
+                        key={i}
+                        className="w-2 h-2 rounded-full bg-primary/40"
+                        animate={{
+                          scale: [1, 1.5, 1],
+                          backgroundColor: ["#60A5FA", "#38BDF8", "#60A5FA"],
+                        }}
+                        transition={{ repeat: Infinity, duration: 0.8, delay: i * 0.15 }}
                       />
                     ))}
                   </div>
@@ -178,17 +229,17 @@ const AIChat = () => {
               </motion.div>
             )}
           </AnimatePresence>
-
         </div>
 
         <div className="p-6 bg-white/60 backdrop-blur-md border-t border-border/40">
           {messages.length <= 1 && (
             <div className="flex flex-wrap gap-2 mb-4">
-              {suggestions.map(s => (
-                <motion.button 
-                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                  key={s} 
-                  onClick={() => send(s)} 
+              {suggestions.map((s) => (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  key={s}
+                  onClick={() => send(s)}
                   className="text-[10px] font-bold px-3 py-1.5 rounded-xl bg-white border border-border/60 hover:border-primary hover:text-primary transition-all flex items-center gap-2 shadow-soft"
                 >
                   <Sparkles className="w-3 h-3" /> {s.toUpperCase()}
@@ -196,14 +247,24 @@ const AIChat = () => {
               ))}
             </div>
           )}
-          <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="relative group">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              send(input);
+            }}
+            className="relative group"
+          >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type your command or question…"
               className="w-full h-14 pl-5 pr-16 rounded-2xl bg-white border border-border/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-transparent text-sm transition-all shadow-soft group-hover:shadow-float"
             />
-            <Button type="submit" size="icon" className="absolute right-1.5 top-1.5 h-11 w-11 rounded-xl bg-gradient-brand border-0 shadow-float hover:scale-105 transition-transform">
+            <Button
+              type="submit"
+              size="icon"
+              className="absolute right-1.5 top-1.5 h-11 w-11 rounded-xl bg-gradient-brand border-0 shadow-float hover:scale-105 transition-transform"
+            >
               <Send className="w-4 h-4" />
             </Button>
           </form>

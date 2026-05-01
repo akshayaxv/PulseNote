@@ -1,6 +1,17 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { Features, Workflow, ProductDemo, TechStack, UseCases, Architecture, FAQ, CTA, Footer } from "@/components/landing/Sections";
+import {
+  Features,
+  Workflow,
+  ProductDemo,
+  TechStack,
+  UseCases,
+  Architecture,
+  FAQ,
+  CTA,
+  Footer,
+} from "@/components/landing/Sections";
+import { BrandReveal } from "@/components/landing/BrandReveal";
 import { SmoothScroll } from "@/components/landing/SmoothScroll";
 
 const Index = () => {
@@ -9,7 +20,6 @@ const Index = () => {
       <Navbar />
       <SmoothScroll>
         <main>
-
           <Hero />
           <Features />
           <Architecture />
@@ -21,11 +31,10 @@ const Index = () => {
           <CTA />
         </main>
         <Footer />
+        <BrandReveal />
       </SmoothScroll>
     </div>
   );
 };
-
-
 
 export default Index;

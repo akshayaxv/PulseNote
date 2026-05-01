@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+.git
+public
+*.md
+package.json
+package-lock.json

@@ -15,14 +15,20 @@ export const VoiceWave = () => {
   const startSound = () => {
     try {
       if (!audioContext.current) {
-        const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        const AudioContextClass =
+          window.AudioContext ||
+          (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
         audioContext.current = new AudioContextClass();
       }
-      if (audioContext.current.state === 'suspended') audioContext.current.resume();
+      if (audioContext.current.state === "suspended") audioContext.current.resume();
 
       // Create noise
       const bufferSize = audioContext.current.sampleRate * 2;
-      const buffer = audioContext.current.createBuffer(1, bufferSize, audioContext.current.sampleRate);
+      const buffer = audioContext.current.createBuffer(
+        1,
+        bufferSize,
+        audioContext.current.sampleRate
+      );
       const data = buffer.getChannelData(0);
       for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
 
@@ -31,8 +37,8 @@ export const VoiceWave = () => {
       source.current.loop = true;
 
       filter.current = audioContext.current.createBiquadFilter();
-      filter.current.type = 'lowpass';
-      
+      filter.current.type = "lowpass";
+
       gainRef.current = audioContext.current.createGain();
       gainRef.current.gain.setValueAtTime(0, audioContext.current.currentTime);
       gainRef.current.gain.linearRampToValueAtTime(0.25, audioContext.current.currentTime + 0.5);
@@ -42,7 +48,7 @@ export const VoiceWave = () => {
       gainRef.current.connect(audioContext.current.destination);
 
       source.current.start();
-      
+
       // Animate filter to match wave feel
       const animate = () => {
         if (!filter.current || !audioContext.current) return;
@@ -52,7 +58,9 @@ export const VoiceWave = () => {
         setTimeout(animate, 2000);
       };
       animate();
-    } catch (e) { console.log(e); }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const stopSound = () => {
@@ -69,19 +77,15 @@ export const VoiceWave = () => {
     }
   };
 
-
-
-
   useEffect(() => {
     const unlock = () => {
-      if (audioContext.current?.state === 'suspended') {
+      if (audioContext.current?.state === "suspended") {
         audioContext.current.resume();
       }
     };
-    window.addEventListener('click', unlock);
-    return () => window.removeEventListener('click', unlock);
+    window.addEventListener("click", unlock);
+    return () => window.removeEventListener("click", unlock);
   }, []);
-
 
   useEffect(() => {
     if (hovered) startSound();
@@ -90,8 +94,9 @@ export const VoiceWave = () => {
   }, [hovered]);
 
   useEffect(() => {
-
-    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { threshold: 0.2 });
+    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), {
+      threshold: 0.2,
+    });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
@@ -116,7 +121,6 @@ export const VoiceWave = () => {
       className="relative w-full h-48 md:h-56 rounded-3xl glass-dark border border-white/10 overflow-hidden cursor-pointer group"
       style={{ willChange: "transform" }}
     >
-
       {/* Glow */}
       <motion.div
         className="absolute inset-0 opacity-60 pointer-events-none"
@@ -211,7 +215,6 @@ export const VoiceWave = () => {
         </div>
         <span className="font-mono text-white/30">00:04:21</span>
       </div>
-
     </div>
   );
 };

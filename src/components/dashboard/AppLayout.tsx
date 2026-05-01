@@ -20,7 +20,7 @@ export const AppLayout = () => {
   const title =
     titleMap[pathname] ||
     (pathname.startsWith("/dashboard/meetings") ? "Meeting Details" : "Dashboard");
-    
+
   return (
     <div className="min-h-screen flex bg-background">
       <AppSidebar />
@@ -44,4 +44,3 @@ export const AppLayout = () => {
     </div>
   );
 };
-

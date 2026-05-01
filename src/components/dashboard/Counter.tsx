@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 
-export const Counter = ({ to, suffix = "", decimals = 0, duration = 1200 }: { to: number; suffix?: string; decimals?: number; duration?: number }) => {
+export const Counter = ({
+  to,
+  suffix = "",
+  decimals = 0,
+  duration = 1200,
+}: {
+  to: number;
+  suffix?: string;
+  decimals?: number;
+  duration?: number;
+}) => {
   const [val, setVal] = useState(0);
   useEffect(() => {
     let raf: number;
@@ -14,5 +24,10 @@ export const Counter = ({ to, suffix = "", decimals = 0, duration = 1200 }: { to
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [to, duration]);
-  return <span>{val.toFixed(decimals)}{suffix}</span>;
+  return (
+    <span>
+      {val.toFixed(decimals)}
+      {suffix}
+    </span>
+  );
 };

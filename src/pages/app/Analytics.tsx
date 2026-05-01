@@ -1,18 +1,71 @@
 import { Card } from "@/components/ui/card";
-import { LineChart, Line, AreaChart, Area, BarChart, Bar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, Legend } from "recharts";
+import {
+  LineChart,
+  Line,
+  AreaChart,
+  Area,
+  BarChart,
+  Bar,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  PieChart,
+  Pie,
+  Cell,
+  Legend,
+} from "recharts";
 import { Counter } from "@/components/dashboard/Counter";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { TrendingUp, Users, Clock, CheckCircle2, Sparkles, Brain, Target, MessageCircle } from "lucide-react";
+import {
+  TrendingUp,
+  Users,
+  Clock,
+  CheckCircle2,
+  Sparkles,
+  Brain,
+  Target,
+  MessageCircle,
+} from "lucide-react";
 
 const hours = [
-  { d: "Mon", h: 4.2 }, { d: "Tue", h: 6.5 }, { d: "Wed", h: 8.1 }, { d: "Thu", h: 5.3 }, { d: "Fri", h: 7.8 }, { d: "Sat", h: 1.2 }, { d: "Sun", h: 0.8 }
+  { d: "Mon", h: 4.2 },
+  { d: "Tue", h: 6.5 },
+  { d: "Wed", h: 8.1 },
+  { d: "Thu", h: 5.3 },
+  { d: "Fri", h: 7.8 },
+  { d: "Sat", h: 1.2 },
+  { d: "Sun", h: 0.8 },
 ];
-const participation = [{ name: "Sarah", v: 32 }, { name: "Marcus", v: 28 }, { name: "Aisha", v: 22 }, { name: "Jordan", v: 18 }, { name: "Priya", v: 15 }];
-const completion = [{ d: "W1", done: 12, pending: 3 }, { d: "W2", done: 18, pending: 5 }, { d: "W3", done: 22, pending: 4 }, { d: "W4", done: 26, pending: 6 }];
-const trend = [{ m: "Jan", v: 62 }, { m: "Feb", v: 68 }, { m: "Mar", v: 74 }, { m: "Apr", v: 82 }, { m: "May", v: 92 }];
-const COLORS = ["hsl(var(--primary))", "hsl(var(--cyan))", "hsl(var(--emerald))", "hsl(var(--sky))", "hsl(var(--muted-foreground))"];
-
+const participation = [
+  { name: "Sarah", v: 32 },
+  { name: "Marcus", v: 28 },
+  { name: "Aisha", v: 22 },
+  { name: "Jordan", v: 18 },
+  { name: "Priya", v: 15 },
+];
+const completion = [
+  { d: "W1", done: 12, pending: 3 },
+  { d: "W2", done: 18, pending: 5 },
+  { d: "W3", done: 22, pending: 4 },
+  { d: "W4", done: 26, pending: 6 },
+];
+const trend = [
+  { m: "Jan", v: 62 },
+  { m: "Feb", v: 68 },
+  { m: "Mar", v: 74 },
+  { m: "Apr", v: 82 },
+  { m: "May", v: 92 },
+];
+const COLORS = [
+  "hsl(var(--primary))",
+  "hsl(var(--cyan))",
+  "hsl(var(--emerald))",
+  "hsl(var(--sky))",
+  "hsl(var(--muted-foreground))",
+];
 
 interface TooltipProps {
   active?: boolean;
@@ -24,7 +77,6 @@ interface TooltipProps {
   }>;
   label?: string;
 }
-
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
   if (active && payload && payload.length) {
@@ -49,16 +101,17 @@ const Analytics = () => {
       <div className="flex justify-between items-center flex-wrap gap-4">
         <div>
           <h2 className="text-2xl font-display font-bold">Intelligence Analytics</h2>
-          <p className="text-sm text-muted-foreground">Detailed insights into your team's meeting performance</p>
+          <p className="text-sm text-muted-foreground">
+            Detailed insights into your team's meeting performance
+          </p>
         </div>
         <div className="flex gap-1 p-1 rounded-full bg-muted/60 backdrop-blur-sm">
-          {["Daily", "Weekly", "Monthly"].map(r => (
-            <button 
-              key={r} 
-              onClick={() => setRange(r)} 
+          {["Daily", "Weekly", "Monthly"].map((r) => (
+            <button
+              key={r}
+              onClick={() => setRange(r)}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${range === r ? "bg-primary text-white shadow-glow" : "text-white/40 hover:text-white"}`}
             >
-
               {r}
             </button>
           ))}
@@ -82,7 +135,9 @@ const Analytics = () => {
               <div className="absolute -right-2 -top-2 opacity-5 group-hover:opacity-10 transition-opacity">
                 <s.icon className="w-16 h-16" />
               </div>
-              <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">{s.l}</div>
+              <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
+                {s.l}
+              </div>
               <div className="text-3xl font-display font-bold flex items-baseline gap-1">
                 <Counter to={s.v} decimals={s.v % 1 ? 1 : 0} />
                 <span className="text-sm font-medium text-muted-foreground">{s.s}</span>
@@ -96,7 +151,11 @@ const Analytics = () => {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-5">
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2 }}
+        >
           <Card className="p-6 rounded-3xl bg-gradient-card border-border/60 shadow-soft">
             <h3 className="font-display font-bold mb-6 flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -112,16 +171,33 @@ const Analytics = () => {
                     <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="d" axisLine={false} tickLine={false} tick={{ fill: "#94A3B8", fontSize: 12 }} dy={10} />
+                <XAxis
+                  dataKey="d"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#94A3B8", fontSize: 12 }}
+                  dy={10}
+                />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#94A3B8", fontSize: 12 }} />
                 <Tooltip content={<CustomTooltip />} />
-                <Area type="monotone" dataKey="h" name="Hours" stroke="hsl(var(--primary))" strokeWidth={3} fill="url(#g1)" />
+                <Area
+                  type="monotone"
+                  dataKey="h"
+                  name="Hours"
+                  stroke="hsl(var(--primary))"
+                  strokeWidth={3}
+                  fill="url(#g1)"
+                />
               </AreaChart>
             </ResponsiveContainer>
           </Card>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+        >
           <Card className="p-6 rounded-3xl bg-gradient-card border-border/60 shadow-soft">
             <h3 className="font-display font-bold mb-6 flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-emerald/10 flex items-center justify-center">
@@ -132,26 +208,38 @@ const Analytics = () => {
             <div className="flex items-center">
               <ResponsiveContainer width="100%" height={260}>
                 <PieChart>
-                  <Pie 
-                    data={participation} 
-                    dataKey="v" 
-                    nameKey="name" 
-                    innerRadius={60} 
-                    outerRadius={90} 
+                  <Pie
+                    data={participation}
+                    dataKey="v"
+                    nameKey="name"
+                    innerRadius={60}
+                    outerRadius={90}
                     paddingAngle={8}
                     stroke="none"
                   >
-                    {participation.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+                    {participation.map((_, i) => (
+                      <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                    ))}
                   </Pie>
                   <Tooltip content={<CustomTooltip />} />
-                  <Legend verticalAlign="middle" align="right" layout="vertical" iconType="circle" wrapperStyle={{ fontSize: 12, fontWeight: 600 }} />
+                  <Legend
+                    verticalAlign="middle"
+                    align="right"
+                    layout="vertical"
+                    iconType="circle"
+                    wrapperStyle={{ fontSize: 12, fontWeight: 600 }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </div>
           </Card>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4 }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4 }}
+        >
           <Card className="p-6 rounded-3xl bg-gradient-card border-border/60 shadow-soft">
             <h3 className="font-display font-bold mb-6 flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-cyan/10 flex items-center justify-center">
@@ -161,17 +249,37 @@ const Analytics = () => {
             </h3>
             <ResponsiveContainer width="100%" height={260}>
               <BarChart data={completion} barGap={8}>
-                <XAxis dataKey="d" axisLine={false} tickLine={false} tick={{ fill: "#94A3B8", fontSize: 12 }} dy={10} />
+                <XAxis
+                  dataKey="d"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#94A3B8", fontSize: 12 }}
+                  dy={10}
+                />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#94A3B8", fontSize: 12 }} />
                 <Tooltip content={<CustomTooltip />} />
-                <Bar dataKey="done" name="Completed" fill="hsl(var(--emerald))" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="pending" name="In Progress" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                <Bar
+                  dataKey="done"
+                  name="Completed"
+                  fill="hsl(var(--emerald))"
+                  radius={[4, 4, 0, 0]}
+                />
+                <Bar
+                  dataKey="pending"
+                  name="In Progress"
+                  fill="hsl(var(--primary))"
+                  radius={[4, 4, 0, 0]}
+                />
               </BarChart>
             </ResponsiveContainer>
           </Card>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 }}>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+        >
           <Card className="p-6 rounded-3xl bg-gradient-card border-border/60 shadow-soft">
             <h3 className="font-display font-bold mb-6 flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-navy/10 flex items-center justify-center">
@@ -181,19 +289,33 @@ const Analytics = () => {
             </h3>
             <ResponsiveContainer width="100%" height={260}>
               <LineChart data={trend}>
-                <XAxis dataKey="m" axisLine={false} tickLine={false} tick={{ fill: "#94A3B8", fontSize: 12 }} dy={10} />
+                <XAxis
+                  dataKey="m"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#94A3B8", fontSize: 12 }}
+                  dy={10}
+                />
                 <YAxis axisLine={false} tickLine={false} tick={{ fill: "#94A3B8", fontSize: 12 }} />
                 <Tooltip content={<CustomTooltip />} />
-                <Line type="monotone" dataKey="v" name="Health Score" stroke="hsl(var(--emerald))" strokeWidth={4} dot={{ fill: "hsl(var(--emerald))", r: 6, strokeWidth: 0 }} activeDot={{ r: 8, strokeWidth: 0 }} />
+                <Line
+                  type="monotone"
+                  dataKey="v"
+                  name="Health Score"
+                  stroke="hsl(var(--emerald))"
+                  strokeWidth={4}
+                  dot={{ fill: "hsl(var(--emerald))", r: 6, strokeWidth: 0 }}
+                  activeDot={{ r: 8, strokeWidth: 0 }}
+                />
               </LineChart>
             </ResponsiveContainer>
           </Card>
         </motion.div>
       </div>
 
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }} 
-        animate={{ opacity: 1, y: 0 }} 
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
         className="grid md:grid-cols-3 gap-5"
       >
@@ -203,7 +325,8 @@ const Analytics = () => {
             <Sparkles className="w-6 h-6 text-emerald mb-3" />
             <h4 className="font-display font-bold mb-2 text-lg">AI Insight</h4>
             <p className="text-sm text-white/70 leading-relaxed">
-              Your team's <b>Decision Velocity</b> increased by 18% this month. Strategy meetings are becoming more concise, saving approx. 4.2 hours per week.
+              Your team's <b>Decision Velocity</b> increased by 18% this month. Strategy meetings
+              are becoming more concise, saving approx. 4.2 hours per week.
             </p>
           </div>
         </Card>
@@ -216,7 +339,7 @@ const Analytics = () => {
               { l: "Product Strategy", v: 64 },
               { l: "Technical Specs", v: 42 },
               { l: "Customer Success", v: 28 },
-            ].map(f => (
+            ].map((f) => (
               <div key={f.l}>
                 <div className="flex justify-between text-xs font-bold mb-1">
                   <span>{f.l}</span>
@@ -234,8 +357,19 @@ const Analytics = () => {
           <MessageCircle className="w-6 h-6 text-cyan mb-3" />
           <h4 className="font-display font-bold mb-2">Top Keywords</h4>
           <div className="flex flex-wrap gap-2">
-            {["Q4 Roadmap", "API Integration", "User Feedback", "Retention", "Scalability", "Onboarding", "Market Fit"].map(k => (
-              <span key={k} className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-primary/10 text-primary border border-primary/10">
+            {[
+              "Q4 Roadmap",
+              "API Integration",
+              "User Feedback",
+              "Retention",
+              "Scalability",
+              "Onboarding",
+              "Market Fit",
+            ].map((k) => (
+              <span
+                key={k}
+                className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-primary/10 text-primary border border-primary/10"
+              >
                 {k.toUpperCase()}
               </span>
             ))}
@@ -246,4 +380,3 @@ const Analytics = () => {
   );
 };
 export default Analytics;
-
