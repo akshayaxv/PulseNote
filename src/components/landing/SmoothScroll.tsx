@@ -45,7 +45,8 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
       <motion.div
         ref={contentRef}
         style={{ y }}
-        className="fixed top-0 left-0 w-full flex flex-col pointer-events-auto"
+        className="fixed top-0 left-0 w-screen flex flex-col pointer-events-auto"
+
       >
         {children}
       </motion.div>

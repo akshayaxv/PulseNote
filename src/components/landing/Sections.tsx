@@ -15,6 +15,9 @@ import {
   Zap,
   Users,
   FileText,
+  Twitter,
+  Github,
+  Linkedin,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -461,32 +464,108 @@ export const CTA = () => (
   </section>
 );
 
-export const Footer = () => (
-  <footer id="contact" className="border-t border-white/10 pt-16 pb-0 bg-black/40">
+export const Footer = () => {
+  const footerLinks = {
+    product: [
+      { name: "Features", href: "#features" },
+      { name: "Architecture", href: "#architecture" },
+      { name: "Workflow", href: "#workflow" },
+      { name: "Tech Stack", href: "#tech-stack" },
+    ],
+    company: [
+      { name: "About", href: "#" },
+      { name: "Careers", href: "#" },
+      { name: "Blog", href: "#" },
+      { name: "Privacy", href: "#" },
+    ],
+    social: [
+      { name: "Twitter", href: "#", icon: <Twitter className="w-4 h-4" /> },
+      { name: "GitHub", href: "#", icon: <Github className="w-4 h-4" /> },
+      { name: "LinkedIn", href: "#", icon: <Linkedin className="w-4 h-4" /> },
+    ],
+  };
 
-    <div className="container text-center">
-      <div className="flex justify-center mb-6">
-        <Logo />
-      </div>
+  return (
+    <footer id="contact" className="relative border-t border-white/5 pt-24 pb-12 bg-[#020617]/80 backdrop-blur-xl">
+      <div className="container px-6 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+          {/* Brand Column */}
+          <div className="space-y-6">
+            <Logo />
+            <p className="text-white/50 text-sm leading-relaxed max-w-xs">
+              Next-generation meeting intelligence. Transcribe, analyze, and automate your workflow with MeetMind AI.
+            </p>
+            <div className="flex gap-4">
+              {footerLinks.social.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+          </div>
 
-      <p className="text-muted-foreground max-w-sm mx-auto mb-8">
-        Built as a high-fidelity AI demonstration for a postgraduate portfolio. Focused on UX and
-        Intelligence.
-      </p>
-      <div className="flex justify-center gap-8 text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">
-        <a href="#features" className="hover:text-primary transition-colors">
-          Features
-        </a>
-        <a href="#architecture" className="hover:text-primary transition-colors">
-          Architecture
-        </a>
-        <a href="#tech-stack" className="hover:text-primary transition-colors">
-          Stack
-        </a>
+          {/* Links Columns */}
+          <div className="space-y-6">
+            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Product</h4>
+            <ul className="space-y-4">
+              {footerLinks.product.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-white/40 hover:text-white text-sm transition-colors duration-300">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-6">
+            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Company</h4>
+            <ul className="space-y-4">
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
+                  <a href={link.href} className="text-white/40 hover:text-white text-sm transition-colors duration-300">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter Column */}
+          <div className="space-y-6">
+            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Stay Updated</h4>
+            <div className="relative group">
+              <input
+                type="email"
+                placeholder="Enter email"
+                className="w-full h-12 bg-white/5 border border-white/10 rounded-xl px-4 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 transition-all group-hover:border-white/20"
+              />
+              <button className="absolute right-1.5 top-1.5 h-9 px-4 bg-primary text-black font-bold text-[10px] uppercase tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all">
+                Join
+              </button>
+            </div>
+            <p className="text-[10px] text-white/30 uppercase tracking-widest font-medium">
+              Join 1,000+ engineers worldwide.
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">
+            © 2026 MEETMIND AI · DESIGNED FOR EXCELLENCE
+          </p>
+          <div className="flex gap-8">
+            <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Terms</a>
+            <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Privacy</a>
+            <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Security</a>
+          </div>
+        </div>
       </div>
-      <div className="mt-12 pt-8 border-t border-border/20 text-[10px] text-muted-foreground font-medium uppercase tracking-tighter">
-        © 2026 MeetMind AI · Designed for Excellence
-      </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
