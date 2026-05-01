@@ -144,10 +144,10 @@ export const Features = () => (
 const steps = [
   { 
     icon: Upload, 
-    label: "Ingest", 
+    label: "Import", 
     color: "from-sky to-blue-600", 
-    desc: "Cloud-native upload with automatic file sanitization.",
-    details: ["MP3 / WAV / MP4", "Local Encryption", "Fast Caching"]
+    desc: "Seamless upload with automatic audio optimization.",
+    details: ["Multi-Format", "Secure Processing", "Quick Loading"]
   },
   { 
     icon: Mic, 
@@ -167,8 +167,8 @@ const steps = [
     icon: ListChecks, 
     label: "Automate", 
     color: "from-emerald to-teal-600", 
-    desc: "Instant task extraction and workflow triggers.",
-    details: ["Action Items", "Auto-Assign", "Export Logic"]
+    desc: "Instant task detection and automated smart actions.",
+    details: ["Action Items", "Smart Assignment", "Easy Export"]
   },
 ];
 
@@ -258,8 +258,8 @@ export const ProductDemo = () => (
         <div className="absolute -inset-2 sm:-inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-[3rem]" />
         <Card className="relative p-2 rounded-3xl bg-white/5 border border-white/10 shadow-float backdrop-blur-sm overflow-hidden">
           <div className="aspect-video bg-navy rounded-2xl flex items-center justify-center">
-            <div className="text-white/20 font-display font-black text-4xl">
-              DASHBOARD_PREVIEW.JSX
+            <div className="text-white/20 font-display font-black text-2xl md:text-4xl uppercase tracking-[0.2em]">
+              Instant Intelligence Preview
             </div>
           </div>
         </Card>
@@ -271,13 +271,13 @@ export const ProductDemo = () => (
 const techStack = [
   {
     name: "React 18",
-    desc: "Modern UI library for reactive components",
+    desc: "Modern foundation for fluid user interfaces",
     icon: LayoutGrid,
     color: "text-blue-400",
   },
   {
     name: "Bun / Vite",
-    desc: "Ultra-fast build tool and runtime",
+    desc: "Ultra-fast engine for real-time performance",
     icon: Zap,
     color: "text-amber-400",
   },
