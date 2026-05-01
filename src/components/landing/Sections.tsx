@@ -100,10 +100,10 @@ export const Features = () => (
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-6">
           <Sparkles className="w-3 h-3" /> Core Capabilities
         </div>
-        <h2 className="text-4xl md:text-6xl font-bold font-display mb-6 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold font-display mb-6 tracking-tight">
           Intelligent infrastructure for <span className="text-gradient">modern teams.</span>
         </h2>
-        <p className="text-muted-foreground text-lg md:text-xl font-medium">
+        <p className="text-muted-foreground text-base sm:text-lg md:text-xl font-medium">
           Built for teams that ship — from async standups to global all-hands.
         </p>
       </motion.div>
@@ -157,7 +157,7 @@ export const Workflow = () => (
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald/10 text-emerald text-[10px] font-black uppercase tracking-[0.2em] mb-6">
             Autonomous Pipeline
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold font-display mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-6 tracking-tight leading-tight">
             From audio to action in <span className="text-gradient">minutes</span>
           </h2>
         </motion.div>
@@ -203,12 +203,12 @@ export const ProductDemo = () => (
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
           SYSTEM PREVIEW
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
           A dashboard built for <span className="text-gradient">insights</span>
         </h2>
       </motion.div>
-      <motion.div {...fade} className="relative max-w-5xl mx-auto">
-        <div className="absolute -inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-[3rem]" />
+      <motion.div {...fade} className="relative max-w-5xl mx-auto px-4 sm:px-0">
+        <div className="absolute -inset-2 sm:-inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-[3rem]" />
         <Card className="relative p-2 rounded-3xl bg-white/5 border border-white/10 shadow-float backdrop-blur-sm overflow-hidden">
           <div className="aspect-video bg-navy rounded-2xl flex items-center justify-center">
             <div className="text-white/20 font-display font-black text-4xl">
@@ -267,10 +267,10 @@ export const TechStack = () => (
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
           ENGINEERING
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
           Built with a <span className="text-gradient">modern stack</span>
         </h2>
-        <p className="text-muted-foreground text-lg">
+        <p className="text-muted-foreground text-base sm:text-lg">
           Leveraging cutting-edge tools for speed, intelligence, and a premium UX.
         </p>
       </motion.div>
@@ -315,12 +315,12 @@ export const UseCases = () => (
     <div className="absolute inset-0 bg-gradient-brand opacity-10" />
     <div className="container relative z-10">
       <motion.div {...fade} className="text-center max-w-2xl mx-auto mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
           Perfect for <span className="text-emerald">any workflow</span>
         </h2>
-        <p className="text-white/60 text-lg">Whether you're a student, researcher, or developer.</p>
+        <p className="text-white/60 text-base sm:text-lg">Whether you're a student, researcher, or developer.</p>
       </motion.div>
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {useCases.map((u, i) => (
           <motion.div key={u.title} {...fade} transition={{ delay: i * 0.1 }}>
             <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
@@ -343,10 +343,10 @@ export const Architecture = () => (
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald/10 text-emerald text-xs font-semibold mb-4">
             ARCHITECTURE
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold font-display mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-6">
             How the <span className="text-gradient">intelligence</span> flows
           </h2>
-          <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+          <p className="text-muted-foreground text-base sm:text-lg mb-8 leading-relaxed">
             MeetMind AI uses a sophisticated multi-stage pipeline to transform raw audio into
             actionable intelligence. From local file processing to cloud-based neural transcription.
           </p>
@@ -408,7 +408,7 @@ export const FAQ = () => (
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
           FAQ
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold font-display mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
           Frequently asked <span className="text-gradient">questions</span>
         </h2>
       </motion.div>
@@ -443,7 +443,7 @@ export const CTA = () => (
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-emerald/30 blur-3xl" />
         <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-3xl" />
         <div className="relative">
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">
             Ready to build the future?
           </h2>
           <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto">

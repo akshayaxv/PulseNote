@@ -22,9 +22,10 @@ export const BrandReveal = () => {
   return (
     <div
       ref={containerRef}
-      className="relative h-[550px] w-screen left-1/2 -translate-x-1/2 flex items-center justify-center overflow-hidden bg-[#020617] border-y border-emerald/20 shadow-glow-emerald !max-w-none !rounded-none pb-20"
+      className="relative h-[400px] md:h-[550px] w-screen left-1/2 -translate-x-1/2 flex items-center justify-center overflow-hidden bg-[#020617] border-y border-emerald/20 shadow-glow-emerald !max-w-none !rounded-none pb-12 md:pb-20"
       style={{ width: '100vw', maxWidth: '100vw', margin: 0 }}
     >
+
 
 
 
@@ -61,7 +62,7 @@ export const BrandReveal = () => {
         style={{ opacity, scale, letterSpacing }}
         className="relative z-10 text-center flex flex-col items-center gap-8"
       >
-        <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-display font-black leading-none tracking-tighter">
+        <h2 className="text-3xl sm:text-5xl md:text-8xl lg:text-[10rem] font-display font-black leading-none tracking-tighter">
           MeetMind <span className="text-gradient block md:inline">AI</span>
         </h2>
 
