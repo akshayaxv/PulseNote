@@ -41,30 +41,30 @@ const fade = {
 const faqs = [
   {
     q: "How does the AI handle privacy?",
-    a: "MeetMind AI processes all data with enterprise-grade encryption. As a portfolio project, no data is permanently stored or sold.",
+    a: "MeetMind AI processes all data with enterprise-grade encryption. No meeting data is ever stored permanently or shared with third parties.",
   },
   {
-    q: "What is the RAG pipeline?",
-    a: "Retrieval-Augmented Generation (RAG) allows the AI to search through your specific meeting history to provide contextually accurate answers.",
+    q: "How does the Smart Search work?",
+    a: "Our Smart Search system allows the AI to look through your entire meeting history to provide accurate answers based on the actual context of your conversations.",
   },
   {
     q: "Can it handle long lectures?",
-    a: "Yes, the pipeline is optimized for audio files up to 2 hours long, with automatic chapter generation.",
+    a: "Yes, our system is optimized for audio files up to 2 hours long, automatically organizing them into easy-to-read chapters.",
   },
 ];
 
 const features = [
   {
     icon: Mic,
-    title: "Audio Transcription",
-    desc: "Industry-leading accuracy with 50+ languages and speaker diarization.",
+    title: "Transcription",
+    desc: "Industry-leading accuracy with 50+ languages and automatic speaker labeling.",
     span: "col-span-1 md:col-span-2",
     img: "bg-gradient-to-br from-sky/20 to-transparent",
   },
   {
     icon: Sparkles,
     title: "Smart Summaries",
-    desc: "GPT-powered TL;DRs that capture context, not just keywords.",
+    desc: "AI-powered summaries that capture context, not just keywords.",
     span: "col-span-1",
     img: "bg-gradient-to-br from-emerald/20 to-transparent",
   },
@@ -77,15 +77,15 @@ const features = [
   },
   {
     icon: Search,
-    title: "RAG Search",
-    desc: "Ask anything across your entire meeting history with semantic AI.",
+    title: "Instant Retrieval",
+    desc: "Ask questions about your entire meeting history and get instant, context-aware answers.",
     span: "col-span-1 md:col-span-2",
     img: "bg-gradient-to-br from-cyan/20 to-transparent",
   },
   {
     icon: BarChart3,
     title: "Team Analytics",
-    desc: "Visualize speaking patterns, sentiment, and productivity velocity.",
+    desc: "Visualize speaking patterns, sentiment, and productivity trends.",
     span: "col-span-1 md:col-span-3",
     img: "bg-gradient-to-br from-navy/10 to-transparent",
   },
@@ -153,15 +153,15 @@ const steps = [
     icon: Mic, 
     label: "Transcribe", 
     color: "from-cyan to-emerald", 
-    desc: "Neural diarization with Whisper-v3 precision.",
+    desc: "Precise speech detection with high-fidelity output.",
     details: ["Speaker ID", "50+ Languages", "Timestamp Sync"]
   },
   { 
     icon: Brain, 
     label: "Analyze", 
     color: "from-primary to-purple-600", 
-    desc: "Contextual reasoning via advanced RAG pipelines.",
-    details: ["Semantic Search", "Insight Map", "Risk Detection"]
+    desc: "Extracting deep insights using context-aware AI reasoning.",
+    details: ["Smart Search", "Insight Mapping", "Actionable Data"]
   },
   { 
     icon: ListChecks, 
@@ -186,7 +186,7 @@ export const Workflow = () => (
           How the <span className="text-gradient">intelligence</span> evolves.
         </h2>
         <p className="text-muted-foreground text-lg font-medium">
-          A multi-stage neural pipeline designed for speed and contextual accuracy.
+          An advanced multi-stage system designed for speed and contextual accuracy.
         </p>
       </motion.div>
 
@@ -282,20 +282,20 @@ const techStack = [
     color: "text-amber-400",
   },
   {
-    name: "OpenAI Whisper",
-    desc: "State-of-the-art speech-to-text",
+    name: "OpenAI Transcription",
+    desc: "Crystal-clear speech-to-text conversion",
     icon: Mic,
     color: "text-emerald-400",
   },
   {
-    name: "GPT-4o",
-    desc: "Advanced reasoning for summarization",
+    name: "Smart Reasoning",
+    desc: "Advanced logic for professional summarization",
     icon: Brain,
     color: "text-primary",
   },
   {
-    name: "RAG Pipeline",
-    desc: "Semantic search across meeting history",
+    name: "Intelligent Search",
+    desc: "Instant answers from your meeting history",
     icon: Search,
     color: "text-cyan-400",
   },
@@ -340,28 +340,28 @@ const useCases = [
   {
     title: "Global Team Syncs",
     label: "Product Teams",
-    desc: "Convert messy, multi-timezone standups into structured action items. AI detects blockers and automatically notifies relevant stakeholders.",
+    desc: "Convert messy, multi-timezone standups into structured action items. AI automatically identifies key blockers and notifies the right people.",
     icon: Users,
     glow: "shadow-emerald/20",
-    metric: "90% Faster Synthesis",
+    metric: "90% Faster Summaries",
     image: "bg-gradient-to-br from-emerald/10 via-transparent to-transparent"
   },
   {
-    title: "Academic Research",
+    title: "Academic Excellence",
     label: "Education",
-    desc: "Transcribe 2-hour long lectures and instantly query them with RAG. Extract citations, key concepts, and generated flashcards.",
+    desc: "Transcribe long lectures and instantly search for specific facts. Automatically identify key concepts and citations for easy studying.",
     icon: FileText,
     glow: "shadow-primary/20",
-    metric: "Instant Indexing",
+    metric: "Instant Fact-Finding",
     image: "bg-gradient-to-br from-primary/10 via-transparent to-transparent"
   },
   {
     title: "Executive Strategy",
     label: "Leadership",
-    desc: "Distill high-stakes board meetings into risk assessments and strategic milestones. Private, secure, and locally-processed intelligence.",
+    desc: "Distill high-stakes board meetings into clear strategic milestones. Built with private and secure data processing for total peace of mind.",
     icon: ShieldCheck,
     glow: "shadow-cyan/20",
-    metric: "Zero-Leak Architecture",
+    metric: "Total Privacy & Security",
     image: "bg-gradient-to-br from-cyan/10 via-transparent to-transparent"
   },
 ];
@@ -382,7 +382,7 @@ export const UseCases = () => (
           Intelligence for <br className="hidden md:block" /> <span className="text-gradient">every high-stakes environment.</span>
         </h2>
         <p className="text-muted-foreground text-lg font-medium leading-relaxed">
-          From the classroom to the boardroom, MeetMind AI adapts to your specific neural workflow.
+          From the classroom to the boardroom, MeetMind AI adapts to your professional workflow.
         </p>
       </motion.div>
 
@@ -398,13 +398,13 @@ export const UseCases = () => (
           >
             <div className={`absolute -inset-0.5 rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm ${u.glow}`} />
             
-            <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-[#020617] border border-white/5 overflow-hidden flex flex-col justify-between hover:border-white/10 transition-all duration-500">
+            <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-[#020617]/80 backdrop-blur-xl border border-white/5 overflow-hidden flex flex-col justify-between hover:border-primary/20 transition-all duration-500 group-hover:-translate-y-2">
               {/* Background Glow */}
-              <div className={`absolute top-0 right-0 w-40 h-40 ${u.image} blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
+              <div className={`absolute top-0 right-0 w-40 h-40 ${u.image} blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-500`} />
               
               <div>
                 <div className="flex items-center justify-between mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
                     <u.icon className="w-6 h-6" />
                   </div>
                   <div className="px-3 py-1 rounded-full border border-white/5 bg-white/5 text-[9px] font-black uppercase tracking-widest text-white/40">
@@ -423,9 +423,9 @@ export const UseCases = () => (
               <div className="flex items-center justify-between pt-6 border-t border-white/5">
                 <div className="flex flex-col">
                   <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">Impact Metric</span>
-                  <span className="text-xs font-bold text-emerald">{u.metric}</span>
+                  <span className="text-xs font-bold text-emerald group-hover:text-primary transition-colors">{u.metric}</span>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-all duration-300">
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-all duration-300">
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -450,14 +450,14 @@ export const Architecture = () => (
             How the <span className="text-gradient">intelligence</span> flows
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg mb-8 leading-relaxed">
-            MeetMind AI uses a sophisticated multi-stage pipeline to transform raw audio into
-            actionable intelligence. From local file processing to cloud-based neural transcription.
+            MeetMind AI uses a sophisticated multi-stage system to transform raw audio into
+            actionable intelligence. From local file processing to intelligent transcription.
           </p>
           <div className="space-y-4">
             {[
-              { t: "Speech Processing", d: "Whisper-v3 diarization for speaker identification." },
-              { t: "Vector Indexing", d: "Content is embedded for semantic search via RAG." },
-              { t: "Action Extraction", d: "GPT-4o reasons over context to find tasks and risks." },
+              { t: "Voice Intelligence", d: "Automatically detects and labels individual speakers." },
+              { t: "Smart Organization", d: "Content is organized logically for easy information retrieval." },
+              { t: "Action Extraction", d: "AI identifies key tasks, decisions, and future milestones." },
             ].map((f) => (
               <div key={f.t} className="flex gap-4">
                 <div className="w-6 h-6 rounded-full bg-emerald/10 flex items-center justify-center shrink-0 mt-1">
@@ -476,10 +476,10 @@ export const Architecture = () => (
           <Card className="relative p-8 rounded-[2.5rem] bg-gradient-card border-border/60 shadow-float">
             <div className="space-y-6">
               {[
-                { l: "Input", v: "Audio / Video File", color: "bg-blue-500" },
-                { l: "Stage 1", v: "AI Transcription (Whisper)", color: "bg-emerald-500" },
-                { l: "Stage 2", v: "Semantic Embedding (RAG)", color: "bg-cyan-500" },
-                { l: "Output", v: "Tasks & Insights (GPT-4)", color: "bg-primary" },
+                { l: "Input", v: "Audio / Video Content", color: "bg-blue-500" },
+                { l: "Stage 1", v: "High-Accuracy Transcription", color: "bg-emerald-500" },
+                { l: "Stage 2", v: "Intelligent Organization", color: "bg-cyan-500" },
+                { l: "Output", v: "Ready-to-Use Insights", color: "bg-primary" },
               ].map((s, i) => (
                 <div key={s.l} className="relative">
                   <div className="flex items-center gap-4">

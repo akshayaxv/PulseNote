@@ -43,7 +43,7 @@ export const Hero = () => {
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed font-medium">
               A high-fidelity AI meeting hub designed for speed. Transcribe, summarize, and query
-              your meeting history with custom RAG pipelines.
+              your meeting history with intelligent AI memory.
             </p>
             <div className="flex flex-wrap items-center gap-4 mb-12">
               <Button
@@ -64,7 +64,7 @@ export const Hero = () => {
               </Button>
             </div>
             <div className="flex flex-wrap gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">
-              {["Built with GPT-4o", "Whisper-v3 Diarization", "Next-Gen RAG"].map((t) => (
+              {["Smart AI Reasoning", "Speaker Identification", "Intelligent Search"].map((t) => (
                 <div key={t} className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald" /> {t}
                 </div>
