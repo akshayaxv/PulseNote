@@ -99,24 +99,28 @@ const AIChat = () => {
 
       {/* Main Chat Area */}
       <Card className="rounded-3xl md:rounded-[2rem] border-white/5 bg-[#020617]/40 backdrop-blur-xl flex flex-col overflow-hidden shadow-glow relative">
-        <div className="absolute top-0 inset-x-0 h-16 md:h-20 bg-[#020617]/60 backdrop-blur-2xl z-10 px-4 md:px-8 flex items-center justify-between border-b border-white/5">
-          <div className="flex items-center gap-3 md:gap-4">
+        <div className="absolute top-0 inset-x-0 h-16 md:h-20 bg-[#020617]/40 backdrop-blur-xl z-20 px-5 md:px-10 flex items-center justify-between border-b border-white/5">
+          <div className="flex items-center gap-4 md:gap-6">
             <div className="relative">
-              <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-brand flex items-center justify-center shadow-emerald border border-white/10">
-                <Brain className="w-5 h-5 text-white" />
+              <div className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center shadow-emerald border border-white/10 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 md:w-6 md:h-6 relative z-10 drop-shadow-emerald">
+                  <path d="M4 19V5L12 13L20 5V19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white" />
+                  <circle cx="12" cy="12" r="3" fill="currentColor" className="text-primary opacity-40 shadow-glow" />
+                </svg>
               </div>
-              <div className="absolute -right-0.5 -bottom-0.5 w-2.5 h-2.5 rounded-full bg-emerald border-2 border-[#020617]" />
+              <div className="absolute -right-0.5 -bottom-0.5 w-2.5 h-2.5 rounded-full bg-emerald border-2 border-[#020617] shadow-glow" />
             </div>
-            <div>
-              <div className="text-xs md:text-sm font-bold font-display tracking-tight uppercase text-white/90">MEETMIND AI ASSISTANT</div>
-              <div className="text-[9px] md:text-[10px] text-emerald font-black tracking-[0.2em] uppercase flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-emerald animate-pulse" />
-                AI READY
+            <div className="min-w-0">
+              <div className="text-[10px] md:text-xs font-black font-display tracking-tight uppercase text-white/90 truncate">MeetMind AI Assistant</div>
+              <div className="text-[8px] md:text-[9px] text-emerald font-black tracking-[0.2em] uppercase flex items-center gap-2 mt-0.5">
+                <span className="w-1 h-1 rounded-full bg-emerald animate-pulse shadow-glow" />
+                AI Ready
               </div>
             </div>
           </div>
           <div className="flex gap-2">
-            <Button variant="ghost" size="icon" className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
+            <Button variant="ghost" size="icon" className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all active:scale-95">
               <History className="w-4 h-4 text-white/40 lg:hidden" />
               <Search className="w-4 h-4 text-white/40 hidden lg:block" />
             </Button>
