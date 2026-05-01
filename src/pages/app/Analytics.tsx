@@ -15,9 +15,15 @@ const COLORS = ["hsl(var(--primary))", "hsl(var(--cyan))", "hsl(var(--emerald))"
 
 interface TooltipProps {
   active?: boolean;
-  payload?: any[];
+  payload?: Array<{
+    name: string;
+    value: number | string;
+    color?: string;
+    payload?: unknown;
+  }>;
   label?: string;
 }
+
 
 const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
   if (active && payload && payload.length) {
