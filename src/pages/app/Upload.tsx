@@ -34,46 +34,122 @@ const Upload = () => {
         onDrop={(e) => { e.preventDefault(); setDrag(false); Array.from(e.dataTransfer.files).forEach(f => addFile(f.name)); }}
         className={`rounded-3xl border-2 border-dashed transition-all ${drag ? "border-emerald bg-emerald/5 scale-[1.01]" : "border-primary/40 bg-gradient-card"} p-16 text-center`}
       >
-        <motion.div animate={{ y: drag ? -6 : 0 }} className="w-20 h-20 rounded-3xl bg-gradient-brand mx-auto flex items-center justify-center mb-5 shadow-float">
-          <UploadIcon className="w-9 h-9 text-white" />
+        <motion.div 
+          animate={{ 
+            y: drag ? -10 : 0,
+            scale: drag ? 1.05 : 1
+          }} 
+          className="w-24 h-24 rounded-3xl bg-gradient-brand mx-auto flex items-center justify-center mb-6 shadow-float relative overflow-hidden"
+        >
+          <motion.div
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.5, 0.8, 0.5]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute inset-0 bg-white/20 blur-xl"
+          />
+          <UploadIcon className="w-10 h-10 text-white relative z-10" />
         </motion.div>
-        <h2 className="text-2xl font-display font-bold mb-2">Drop your meeting file here</h2>
-        <p className="text-muted-foreground mb-6">Supports MP3, WAV, MP4 · up to 2GB · auto language detect</p>
-        <Button onClick={() => addFile(`meeting-${Date.now()}.mp3`)} className="rounded-full bg-gradient-brand border-0 h-11 px-6">Choose file</Button>
-        <div className="flex justify-center gap-6 mt-8 text-xs text-muted-foreground">
-          {[".mp3", ".wav", ".mp4"].map(t => <span key={t} className="px-3 py-1 rounded-full bg-muted/60 font-mono font-semibold">{t}</span>)}
+        <h2 className="text-3xl font-display font-bold mb-3">Drop your meeting file here</h2>
+        <p className="text-muted-foreground mb-8 max-w-sm mx-auto">Upload your MP3, WAV, or MP4 recordings and let MeetMind AI handle the rest.</p>
+        <Button onClick={() => addFile(`meeting-${Date.now()}.mp3`)} className="rounded-full bg-gradient-brand border-0 h-12 px-8 text-base shadow-float hover:scale-105 transition-transform">
+          Choose file
+        </Button>
+        <div className="flex justify-center gap-6 mt-10 text-xs text-muted-foreground">
+          {["Whisper v3", "GPT-4o", "RAG Enabled"].map(t => (
+            <div key={t} className="flex items-center gap-1.5 font-medium">
+              <Sparkles className="w-3 h-3 text-primary" /> {t}
+            </div>
+          ))}
         </div>
       </motion.div>
 
       {files.length > 0 && (
-        <Card className="rounded-3xl border-border/60 bg-gradient-card p-6">
-          <h3 className="font-display font-bold mb-4">Uploads</h3>
-          <div className="space-y-3">
+        <Card className="rounded-3xl border-border/60 bg-gradient-card p-6 shadow-soft">
+          <h3 className="font-display font-bold mb-5 flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+              <FileAudio className="w-4 h-4 text-primary" />
+            </div>
+            Active Processing
+          </h3>
+          <div className="space-y-4">
             {files.map(f => (
-              <div key={f.name} className="flex items-center gap-4 p-4 rounded-2xl bg-white border border-border/60">
-                <div className="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                  <FileAudio className="w-5 h-5" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex justify-between mb-1.5">
-                    <span className="font-semibold text-sm truncate">{f.name}</span>
-                    <span className="text-xs text-muted-foreground">{f.size}</span>
+              <div key={f.name} className="p-5 rounded-2xl bg-white border border-border/60 hover:shadow-soft transition-all">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-brand text-white flex items-center justify-center shrink-0 shadow-soft">
+                    <FileAudio className="w-6 h-6" />
                   </div>
-                  <Progress value={f.progress} className="h-1.5" />
-                  <div className="flex items-center gap-1 mt-1.5 text-xs text-muted-foreground">
-                    {f.done ? (
-                      <><Sparkles className="w-3 h-3 text-emerald" /> AI processing · transcribing audio</>
-                    ) : (
-                      <>Uploading · {Math.round(f.progress)}%</>
-                    )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-end mb-1">
+                      <span className="font-bold text-sm truncate">{f.name}</span>
+                      <span className="text-[10px] font-mono text-muted-foreground">{f.size}</span>
+                    </div>
+                    <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold flex items-center gap-2">
+                      {f.done ? (
+                        <motion.span 
+                          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                          className="text-emerald flex items-center gap-1"
+                        >
+                          <Sparkles className="w-3 h-3" /> AI ANALYSIS IN PROGRESS
+                        </motion.span>
+                      ) : (
+                        `UPLOADING ${Math.round(f.progress)}%`
+                      )}
+                    </div>
                   </div>
+                  {f.done ? (
+                    <motion.div 
+                      animate={{ rotate: 360 }} 
+                      transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                    >
+                      <Sparkles className="w-5 h-5 text-primary" />
+                    </motion.div>
+                  ) : (
+                    <button className="text-muted-foreground hover:text-red-500 transition-colors p-2"><X className="w-5 h-5" /></button>
+                  )}
                 </div>
-                {f.done ? <CheckCircle2 className="w-5 h-5 text-emerald" /> : <button className="text-muted-foreground hover:text-foreground"><X className="w-4 h-4" /></button>}
+                
+                <div className="relative h-2 bg-muted rounded-full overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    animate={{ width: `${f.progress}%` }}
+                    className={`absolute inset-y-0 left-0 rounded-full ${f.done ? "bg-gradient-brand" : "bg-primary"}`}
+                  />
+                  {f.done && (
+                    <motion.div 
+                      animate={{ x: ["-100%", "200%"] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-y-0 w-20 bg-gradient-to-r from-transparent via-white/50 to-transparent"
+                    />
+                  )}
+                </div>
+
+                {f.done && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    className="mt-4 pt-4 border-t border-border/40 grid grid-cols-2 gap-3"
+                  >
+                    {[
+                      "Transcribing Audio",
+                      "Diarizing Speakers",
+                      "Summarizing Context",
+                      "Extracting Action Items"
+                    ].map((step, i) => (
+                      <div key={step} className="flex items-center gap-2 text-[10px] font-bold text-muted-foreground">
+                        <div className={`w-1.5 h-1.5 rounded-full ${i < 2 ? "bg-emerald" : "bg-muted animate-pulse"}`} />
+                        {step.toUpperCase()}
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
               </div>
             ))}
           </div>
         </Card>
       )}
+
     </div>
   );
 };
