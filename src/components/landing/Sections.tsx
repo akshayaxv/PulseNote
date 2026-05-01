@@ -92,9 +92,9 @@ const features = [
 ];
 
 export const Features = () => (
-  <section id="features" className="py-28 relative overflow-hidden">
-    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] -z-10 rounded-full" />
-    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald/5 blur-[120px] -z-10 rounded-full" />
+    <section id="features" className="py-28 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 md:w-[500px] md:h-[500px] bg-primary/5 blur-[60px] md:blur-[120px] -z-10 rounded-full" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 md:w-[500px] md:h-[500px] bg-emerald/5 blur-[60px] md:blur-[120px] -z-10 rounded-full" />
 
     <div className="container">
       <motion.div {...fade} className="text-center max-w-3xl mx-auto mb-20">

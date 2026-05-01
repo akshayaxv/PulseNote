@@ -8,10 +8,10 @@ interface SmoothScrollProps {
 export const SmoothScroll = ({ children }: SmoothScrollProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   const { scrollY } = useScroll();
 
-  // The "Rope" feel: stiffness and damping control the elasticity
   const smoothY = useSpring(scrollY, {
     stiffness: 45,
     damping: 18,
@@ -21,6 +21,14 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
   const y = useTransform(smoothY, (value) => -value);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     const handleResize = () => {
       if (contentRef.current) {
         setContentHeight(contentRef.current.scrollHeight);
@@ -29,15 +37,17 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
 
     handleResize();
     window.addEventListener("resize", handleResize);
-
-    // Initial check
     const timer = setTimeout(handleResize, 500);
 
     return () => {
       window.removeEventListener("resize", handleResize);
       clearTimeout(timer);
     };
-  }, [children]);
+  }, [children, isMobile]);
+
+  if (isMobile) {
+    return <div className="w-full flex flex-col">{children}</div>;
+  }
 
   return (
     <>
@@ -45,8 +55,7 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
       <motion.div
         ref={contentRef}
         style={{ y }}
-        className="fixed top-0 left-0 w-screen flex flex-col pointer-events-auto"
-
+        className="fixed top-0 left-0 w-screen flex flex-col pointer-events-auto will-change-transform"
       >
         {children}
       </motion.div>
