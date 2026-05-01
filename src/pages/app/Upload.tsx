@@ -32,7 +32,7 @@ const Upload = () => {
         );
         if (p >= 100) {
           clearInterval(intv);
-          toast({ title: "Upload complete", description: `${name} is being processed by AI.` });
+          toast({ title: "Intelligence Ready", description: `${name} has been processed.` });
         }
       }, 220);
     },
@@ -54,14 +54,16 @@ const Upload = () => {
           setDrag(false);
           Array.from(e.dataTransfer.files).forEach((f) => addFile(f.name));
         }}
-        className={`rounded-3xl border-2 border-dashed transition-all ${drag ? "border-emerald bg-emerald/5 scale-[1.01]" : "border-primary/40 bg-gradient-card"} p-16 text-center`}
+        className={`rounded-[2rem] md:rounded-[2.5rem] border-2 border-dashed transition-all duration-500 ${drag ? "border-emerald bg-emerald/5 scale-[1.01]" : "border-white/10 bg-[#020617]/40 backdrop-blur-xl"} p-8 md:p-16 text-center relative overflow-hidden`}
       >
+        <div className="absolute inset-0 bg-gradient-brand opacity-5 pointer-events-none" />
+        
         <motion.div
           animate={{
             y: drag ? -10 : 0,
             scale: drag ? 1.05 : 1,
           }}
-          className="w-24 h-24 rounded-3xl bg-gradient-brand mx-auto flex items-center justify-center mb-6 shadow-float relative overflow-hidden"
+          className="w-20 h-20 md:w-24 md:h-24 rounded-3xl bg-gradient-brand mx-auto flex items-center justify-center mb-6 shadow-float relative overflow-hidden"
         >
           <motion.div
             animate={{
@@ -71,34 +73,34 @@ const Upload = () => {
             transition={{ duration: 2, repeat: Infinity }}
             className="absolute inset-0 bg-white/20 blur-xl"
           />
-          <UploadIcon className="w-10 h-10 text-white relative z-10" />
+          <UploadIcon className="w-8 h-8 md:w-10 md:h-10 text-white relative z-10" />
         </motion.div>
-        <h2 className="text-3xl font-display font-bold mb-3">Drop your meeting file here</h2>
-        <p className="text-muted-foreground mb-8 max-w-sm mx-auto">
-          Upload your MP3, WAV, or MP4 recordings and let MeetMind AI handle the rest.
+        <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-white/90">Import recordings</h2>
+        <p className="text-white/40 text-sm mb-8 max-w-sm mx-auto font-medium leading-relaxed">
+          Upload your audio or video recordings and let our AI transform them into intelligence.
         </p>
         <Button
-          onClick={() => addFile(`meeting-${Date.now()}.mp3`)}
-          className="rounded-full bg-gradient-brand border-0 h-12 px-8 text-base shadow-float hover:scale-105 transition-transform"
+          onClick={() => addFile(`meeting-${Date.now().toString().slice(-4)}.mp3`)}
+          className="rounded-xl md:rounded-full bg-gradient-brand border-0 h-11 md:h-12 px-8 text-sm md:text-base shadow-float hover:scale-105 transition-all"
         >
-          Choose file
+          CHOOSE FILES
         </Button>
-        <div className="flex justify-center gap-6 mt-10 text-xs text-muted-foreground">
-          {["Whisper v3", "GPT-4o", "RAG Enabled"].map((t) => (
-            <div key={t} className="flex items-center gap-1.5 font-medium">
-              <Sparkles className="w-3 h-3 text-primary" /> {t}
+        <div className="flex flex-wrap justify-center gap-6 md:gap-10 mt-12 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
+          {["High-Accuracy AI", "Intelligent Context", "Secure Processing"].map((t) => (
+            <div key={t} className="flex items-center gap-2">
+              <Sparkles className="w-3.5 h-3.5 text-primary/60" /> {t}
             </div>
           ))}
         </div>
       </motion.div>
 
       {files.length > 0 && (
-        <Card className="rounded-3xl border-border/60 bg-gradient-card p-6 shadow-soft">
-          <h3 className="font-display font-bold mb-5 flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+        <Card className="rounded-[2rem] border-white/5 bg-[#020617]/40 backdrop-blur-xl p-6 md:p-8 shadow-glow-sm">
+          <h3 className="font-display font-bold text-lg md:text-xl uppercase tracking-tight text-white/90 mb-6 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
               <FileAudio className="w-4 h-4 text-primary" />
             </div>
-            Active Processing
+            Active Intelligence Flow
           </h3>
           <div className="space-y-4">
             {files.map((f) => (
@@ -165,8 +167,8 @@ const Upload = () => {
                     className="mt-4 pt-4 border-t border-border/40 grid grid-cols-2 gap-3"
                   >
                     {[
-                      "Transcribing Audio",
-                      "Diarizing Speakers",
+                      "Generating Transcription",
+                      "Identifying Speakers",
                       "Summarizing Context",
                       "Extracting Action Items",
                     ].map((step, i) => (

@@ -7,196 +7,247 @@ import { Switch } from "@/components/ui/switch";
 import { Copy, Eye, Plus } from "lucide-react";
 
 const Settings = () => (
-  <div className="max-w-4xl">
-    <Tabs defaultValue="profile" className="space-y-6">
-      <TabsList className="bg-muted rounded-full p-1 h-11">
-        {["profile", "workspace", "billing", "notifications", "api"].map((t) => (
-          <TabsTrigger
-            key={t}
-            value={t}
-            className="rounded-full px-4 capitalize data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-glow"
-          >
-            {t === "api" ? "API Keys" : t}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+  <div className="max-w-4xl pb-20">
+    <Tabs defaultValue="profile" className="space-y-6 md:space-y-8">
+      <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+        <TabsList className="bg-white/5 border border-white/5 rounded-2xl p-1 h-12 md:h-14 w-max md:w-auto">
+          {["profile", "workspace", "billing", "notifications", "api"].map((t) => (
+            <TabsTrigger
+              key={t}
+              value={t}
+              className="rounded-xl px-4 md:px-6 py-2 md:py-3 text-[10px] md:text-xs font-black uppercase tracking-widest transition-all data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-glow"
+            >
+              {t === "api" ? "API Integration" : t}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
 
-      <TabsContent value="profile">
-        <Card className="p-7 rounded-3xl bg-gradient-card border-border/60">
-          <h3 className="font-display font-bold mb-1">Profile</h3>
-          <p className="text-sm text-muted-foreground mb-6">Manage your personal information.</p>
-          <div className="flex items-center gap-5 mb-6">
-            <div className="w-20 h-20 rounded-3xl bg-gradient-brand text-white text-3xl font-bold flex items-center justify-center">
+      <TabsContent value="profile" className="focus-visible:outline-none">
+        <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
+          <h3 className="text-xl font-display font-bold mb-1 text-white/90 uppercase tracking-tight">
+            Personal Core
+          </h3>
+          <p className="text-xs text-white/30 font-medium mb-8">
+            Manage your identity and regional synchronization.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center gap-6 mb-10">
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2rem] bg-gradient-brand text-white text-3xl font-black flex items-center justify-center shadow-float border-2 border-white/10">
               SC
             </div>
-            <div className="space-y-2">
-              <Button variant="outline" className="rounded-full">
-                Upload photo
+            <div className="flex flex-col items-center sm:items-start gap-3">
+              <Button
+                variant="outline"
+                className="rounded-xl border-white/10 bg-white/5 hover:bg-white/10 transition-all text-[10px] font-black uppercase tracking-widest px-6"
+              >
+                Change Signature
               </Button>
-              <p className="text-xs text-muted-foreground">JPG or PNG · 1MB max</p>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <Label className="text-xs font-semibold">Full name</Label>
-              <Input
-                defaultValue="Sarah Chen"
-                className="mt-1.5 rounded-xl bg-white/5 border-white/10"
-              />
-            </div>
-            <div>
-              <Label className="text-xs font-semibold">Email</Label>
-              <Input
-                defaultValue="sarah@northwind.io"
-                className="mt-1.5 rounded-xl bg-white/5 border-white/10"
-              />
-            </div>
-            <div>
-              <Label className="text-xs font-semibold">Role</Label>
-              <Input
-                defaultValue="VP Product"
-                className="mt-1.5 rounded-xl bg-white/5 border-white/10"
-              />
-            </div>
-            <div>
-              <Label className="text-xs font-semibold">Timezone</Label>
-              <Input
-                defaultValue="GMT-7 (PST)"
-                className="mt-1.5 rounded-xl bg-white/5 border-white/10"
-              />
-            </div>
-          </div>
-          <div className="flex gap-2 mt-6">
-            <Button className="rounded-full bg-gradient-brand border-0">Save changes</Button>
-            <Button variant="ghost" className="rounded-full">
-              Cancel
-            </Button>
-          </div>
-        </Card>
-      </TabsContent>
-
-      <TabsContent value="workspace">
-        <Card className="p-7 rounded-3xl bg-gradient-card border-border/60">
-          <h3 className="font-display font-bold mb-6">Workspace</h3>
-          <div className="space-y-4">
-            <div>
-              <Label className="text-xs font-semibold">Workspace name</Label>
-              <Input
-                defaultValue="Northwind"
-                className="mt-1.5 rounded-xl bg-white/5 border-white/10"
-              />
-            </div>
-            <div>
-              <Label className="text-xs font-semibold">Default language</Label>
-              <Input
-                defaultValue="English (US)"
-                className="mt-1.5 rounded-xl bg-white/5 border-white/10"
-              />
-            </div>
-            <div>
-              <Label className="text-xs font-semibold">Data retention</Label>
-              <Input
-                defaultValue="12 months"
-                className="mt-1.5 rounded-xl bg-white/5 border-white/10"
-              />
-            </div>
-          </div>
-        </Card>
-      </TabsContent>
-
-      <TabsContent value="billing">
-        <Card className="p-7 rounded-3xl bg-gradient-card border-border/60">
-          <h3 className="font-display font-bold mb-1">Billing</h3>
-          <p className="text-sm text-muted-foreground mb-6">
-            You're on the <span className="font-semibold text-emerald">Pro</span> plan.
-          </p>
-          <div className="rounded-2xl bg-navy text-white p-6 mb-6">
-            <div className="flex justify-between items-end mb-4">
-              <div>
-                <div className="text-xs text-white/60 mb-1">Next invoice</div>
-                <div className="text-3xl font-display font-black">$29.00</div>
-              </div>
-              <div className="text-xs text-white/60">May 28, 2026</div>
-            </div>
-            <Button className="rounded-full bg-emerald hover:bg-emerald/90 border-0">
-              Upgrade to Enterprise
-            </Button>
-          </div>
-          <h4 className="font-semibold mb-3">Payment method</h4>
-          <div className="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-7 rounded bg-gradient-brand" />
-              <div>
-                <div className="text-sm font-semibold">Visa ending in 4242</div>
-                <div className="text-xs text-muted-foreground">Expires 12/27</div>
-              </div>
-            </div>
-            <Button variant="outline" size="sm" className="rounded-full">
-              Change
-            </Button>
-          </div>
-        </Card>
-      </TabsContent>
-
-      <TabsContent value="notifications">
-        <Card className="p-7 rounded-3xl bg-gradient-card border-border/60">
-          <h3 className="font-display font-bold mb-6">Notifications</h3>
-          {[
-            ["Meeting summaries ready", "Get notified when AI finishes processing"],
-            ["New action items assigned", "When tasks are created from a meeting you joined"],
-            ["Weekly digest", "Summary of your week every Monday morning"],
-            ["Product updates", "New features, releases, and tips"],
-          ].map(([t, d], i) => (
-            <div
-              key={t}
-              className="flex items-center justify-between py-4 border-b border-border/40 last:border-0"
-            >
-              <div>
-                <div className="font-semibold text-sm">{t}</div>
-                <div className="text-xs text-muted-foreground">{d}</div>
-              </div>
-              <Switch defaultChecked={i < 3} />
-            </div>
-          ))}
-        </Card>
-      </TabsContent>
-
-      <TabsContent value="api">
-        <Card className="p-7 rounded-3xl bg-gradient-card border-border/60">
-          <div className="flex justify-between items-center mb-6">
-            <div>
-              <h3 className="font-display font-bold">API Keys</h3>
-              <p className="text-sm text-muted-foreground">
-                Use these keys to integrate MeetMind into your apps.
+              <p className="text-[10px] text-white/20 font-bold uppercase tracking-tighter">
+                Vector or Raster · 2MB Max Load
               </p>
             </div>
-            <Button className="rounded-full bg-gradient-brand border-0">
-              <Plus className="w-4 h-4 mr-1.5" /> Create key
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { l: "Full Identifier", d: "Sarah Chen" },
+              { l: "Neural Email", d: "sarah@northwind.io" },
+              { l: "Functional Role", d: "VP Product" },
+              { l: "Temporal Zone", d: "GMT-7 (PST)" },
+            ].map((f) => (
+              <div key={f.l} className="space-y-2">
+                <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
+                  {f.l}
+                </Label>
+                <Input
+                  defaultValue={f.d}
+                  className="h-12 rounded-xl bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-primary/20 text-sm font-medium text-white/80 transition-all"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 mt-10">
+            <Button className="rounded-xl md:rounded-2xl h-12 px-8 bg-gradient-brand border-0 shadow-emerald hover:scale-[1.02] transition-transform text-xs font-black uppercase tracking-widest">
+              COMMIT CHANGES
+            </Button>
+            <Button
+              variant="ghost"
+              className="rounded-xl md:rounded-2xl h-12 px-8 text-white/30 hover:text-white/60 text-xs font-black uppercase tracking-widest"
+            >
+              CANCEL
             </Button>
           </div>
-          {[
-            { name: "Production", key: "mm_prod_••••••••••••3a8f", created: "Apr 12, 2026" },
-            { name: "Development", key: "mm_dev_••••••••••••8b2c", created: "Mar 03, 2026" },
-          ].map((k) => (
-            <div
-              key={k.name}
-              className="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10 mb-3"
-            >
-              <div>
-                <div className="font-semibold text-sm">{k.name}</div>
-                <div className="text-xs font-mono text-muted-foreground mt-1">{k.key}</div>
-                <div className="text-xs text-muted-foreground mt-1">Created {k.created}</div>
+        </Card>
+      </TabsContent>
+
+      <TabsContent value="workspace" className="focus-visible:outline-none">
+        <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
+          <h3 className="text-xl font-display font-bold mb-6 text-white/90 uppercase tracking-tight">
+            Workspace Vector
+          </h3>
+          <div className="space-y-6">
+            {[
+              { l: "Entity Name", d: "Northwind" },
+              { l: "Linguistic Default", d: "English (US)" },
+              { l: "Temporal Retention", d: "12 Months" },
+            ].map((f) => (
+              <div key={f.l} className="space-y-2">
+                <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
+                  {f.l}
+                </Label>
+                <Input
+                  defaultValue={f.d}
+                  className="h-12 rounded-xl bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-primary/20 text-sm font-medium text-white/80"
+                />
               </div>
-              <div className="flex gap-2">
-                <Button size="icon" variant="ghost" className="rounded-full">
-                  <Eye className="w-4 h-4" />
-                </Button>
-                <Button size="icon" variant="ghost" className="rounded-full">
-                  <Copy className="w-4 h-4" />
+            ))}
+          </div>
+        </Card>
+      </TabsContent>
+
+      <TabsContent value="billing" className="focus-visible:outline-none">
+        <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
+          <h3 className="text-xl font-display font-bold mb-1 text-white/90 uppercase tracking-tight">
+            Credit Ledger
+          </h3>
+          <p className="text-xs text-white/30 font-medium mb-8">
+            Current Tier:{" "}
+            <span className="font-black text-emerald uppercase tracking-widest">PRO STATUS</span>
+          </p>
+
+          <div className="rounded-2xl bg-gradient-brand p-6 md:p-8 mb-10 shadow-float relative overflow-hidden group">
+            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
+            <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
+              <div>
+                <div className="text-[10px] text-white/60 font-black uppercase tracking-[0.2em] mb-2">
+                  Next Ledger Cycle
+                </div>
+                <div className="text-4xl md:text-5xl font-display font-black text-white">
+                  $29.00
+                </div>
+              </div>
+              <div className="text-right">
+                <div className="text-[10px] text-white/60 font-black uppercase tracking-[0.2em] mb-3">
+                  DUE MAY 28, 2026
+                </div>
+                <Button className="rounded-xl bg-white text-primary hover:bg-white/90 border-0 text-[10px] font-black uppercase tracking-widest shadow-soft">
+                  SCALE TO ENTERPRISE
                 </Button>
               </div>
             </div>
-          ))}
+          </div>
+
+          <h4 className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-4 ml-1">
+            Active Payment Method
+          </h4>
+          <div className="flex flex-col sm:flex-row items-center justify-between p-5 rounded-2xl bg-white/[0.02] border border-white/10 gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 border border-white/10 shadow-soft" />
+              <div>
+                <div className="text-sm font-bold text-white/80">VISA •••• 4242</div>
+                <div className="text-[10px] font-bold text-white/20 uppercase">EXP 12/27</div>
+              </div>
+            </div>
+            <Button
+              variant="outline"
+              className="w-full sm:w-auto rounded-xl border-white/10 text-[10px] font-black uppercase tracking-widest px-6"
+            >
+              UPDATE
+            </Button>
+          </div>
+        </Card>
+      </TabsContent>
+
+      <TabsContent value="notifications" className="focus-visible:outline-none">
+        <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
+          <h3 className="text-xl font-display font-bold mb-8 text-white/90 uppercase tracking-tight">
+            Signal Matrix
+          </h3>
+          <div className="space-y-2">
+            {[
+              ["Synthesis Alerts", "Triggered when AI completes processing"],
+              ["Neural Action Items", "Notifications for assigned tasks"],
+              ["Weekly Intelligence", "Summary of weekly team knowledge"],
+              ["System Updates", "Core OS updates and new features"],
+            ].map(([t, d], i) => (
+              <div
+                key={t}
+                className="flex items-center justify-between py-5 border-b border-white/5 last:border-0"
+              >
+                <div className="max-w-[70%]">
+                  <div className="font-bold text-sm text-white/80 uppercase tracking-tight">
+                    {t}
+                  </div>
+                  <div className="text-[10px] md:text-xs text-white/30 font-medium leading-relaxed mt-1">
+                    {d}
+                  </div>
+                </div>
+                <Switch defaultChecked={i < 3} className="data-[state=checked]:bg-emerald" />
+              </div>
+            ))}
+          </div>
+        </Card>
+      </TabsContent>
+
+      <TabsContent value="api" className="focus-visible:outline-none">
+        <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-10">
+            <div>
+              <h3 className="text-xl font-display font-bold text-white/90 uppercase tracking-tight">
+                Access Tokens
+              </h3>
+              <p className="text-xs text-white/30 font-medium mt-1">
+                Integrate Neural Intelligence into your ecosystem.
+              </p>
+            </div>
+            <Button className="w-full sm:w-auto rounded-xl md:rounded-2xl h-11 md:h-12 px-6 bg-gradient-brand border-0 shadow-emerald text-xs font-black uppercase tracking-widest">
+              <Plus className="w-4 h-4 mr-2" /> GENERATE KEY
+            </Button>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { name: "PRODUCTION_ENV", key: "mm_prod_••••••••••••3a8f", date: "APR 12, 2026" },
+              { name: "DEVELOPMENT_ENV", key: "mm_dev_••••••••••••8b2c", date: "MAR 03, 2026" },
+            ].map((k) => (
+              <div
+                key={k.name}
+                className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all group"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                  <div>
+                    <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-2">
+                      {k.name}
+                    </div>
+                    <div className="text-sm font-mono font-bold text-white/60 group-hover:text-white transition-colors">
+                      {k.key}
+                    </div>
+                    <div className="text-[9px] text-white/20 font-black uppercase tracking-widest mt-2">
+                      ACTIVE SINCE {k.date}
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-10 w-10 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10"
+                    >
+                      <Eye className="w-4 h-4 text-white/40" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-10 w-10 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10"
+                    >
+                      <Copy className="w-4 h-4 text-white/40" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </Card>
       </TabsContent>
     </Tabs>
