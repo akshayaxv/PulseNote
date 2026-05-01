@@ -17,6 +17,7 @@ import AIChat from "./pages/app/AIChat.tsx";
 import Analytics from "./pages/app/Analytics.tsx";
 import Integrations from "./pages/app/Integrations.tsx";
 import Settings from "./pages/app/Settings.tsx";
+import ScrollToTopOnRoute from "./components/ScrollToTopOnRoute.tsx";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTopOnRoute />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/docs" element={<Docs />} />
