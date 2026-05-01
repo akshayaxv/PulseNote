@@ -1,0 +1,133 @@
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
+const BAR_COUNT = 48;
+
+export const VoiceWave = () => {
+  const [hovered, setHovered] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { threshold: 0.2 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  // pre-compute pseudo-random heights so SSR stays stable
+  const bars = Array.from({ length: BAR_COUNT }, (_, i) => {
+    const seed = Math.sin(i * 1.7) * 0.5 + 0.5;
+    return {
+      base: 30 + seed * 70,
+      delay: (i * 0.04) % 1.2,
+      duration: 1.2 + (i % 5) * 0.18,
+    };
+  });
+
+  const particles = Array.from({ length: 14 }, (_, i) => i);
+
+  return (
+    <div
+      ref={ref}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative w-full h-48 md:h-56 rounded-3xl glass overflow-hidden cursor-pointer group"
+      style={{ willChange: "transform" }}
+    >
+      {/* Glow */}
+      <motion.div
+        className="absolute inset-0 opacity-60 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, hsl(199 89% 60% / 0.35), transparent 60%)",
+        }}
+        animate={{ opacity: hovered ? 0.95 : 0.55, scale: hovered ? 1.1 : 1 }}
+        transition={{ duration: 0.6 }}
+      />
+
+      {/* Floating particles */}
+      {particles.map((p) => {
+        const colors = ["#60A5FA", "#38BDF8", "#10B981"];
+        return (
+          <motion.div
+            key={p}
+            className="absolute rounded-full blur-[1px]"
+            style={{
+              width: 4 + (p % 3) * 2,
+              height: 4 + (p % 3) * 2,
+              left: `${(p * 7.3) % 100}%`,
+              bottom: 0,
+              background: colors[p % 3],
+              boxShadow: `0 0 12px ${colors[p % 3]}`,
+            }}
+            animate={{
+              y: [0, -180 - (p % 4) * 20],
+              x: [0, (p % 2 ? 1 : -1) * 20],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 4 + (p % 3),
+              repeat: Infinity,
+              delay: p * 0.4,
+              ease: "easeOut",
+            }}
+          />
+        );
+      })}
+
+      {/* Wave bars */}
+      <div className="absolute inset-0 flex items-center justify-center gap-[3px] md:gap-1.5 px-6">
+        {visible &&
+          bars.map((bar, i) => (
+            <motion.div
+              key={i}
+              className="w-1 md:w-1.5 rounded-full origin-center"
+              style={{
+                background: `linear-gradient(180deg, hsl(217 91% 68%), hsl(199 89% 60%) 50%, hsl(160 84% 45%))`,
+                boxShadow: hovered
+                  ? "0 0 10px hsl(199 89% 60% / 0.7)"
+                  : "0 0 6px hsl(199 89% 60% / 0.4)",
+              }}
+              animate={{
+                height: [
+                  `${bar.base * 0.3}%`,
+                  `${bar.base * (hovered ? 1.15 : 1)}%`,
+                  `${bar.base * 0.5}%`,
+                  `${bar.base * (hovered ? 1.05 : 0.9)}%`,
+                  `${bar.base * 0.3}%`,
+                ],
+              }}
+              transition={{
+                duration: bar.duration,
+                repeat: Infinity,
+                delay: bar.delay,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+      </div>
+
+      {/* Ripple on hover */}
+      {hovered && (
+        <motion.div
+          className="absolute left-1/2 top-1/2 rounded-full border border-primary/40 pointer-events-none"
+          initial={{ width: 40, height: 40, opacity: 0.8, x: "-50%", y: "-50%" }}
+          animate={{ width: 400, height: 400, opacity: 0 }}
+          transition={{ duration: 1.4, repeat: Infinity }}
+        />
+      )}
+
+      {/* Label */}
+      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs">
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald" />
+          </span>
+          <span className="font-medium">Listening · AI Processing</span>
+        </div>
+        <span className="font-mono text-muted-foreground/70">00:04:21</span>
+      </div>
+    </div>
+  );
+};
