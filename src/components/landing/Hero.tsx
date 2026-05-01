@@ -23,9 +23,9 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-8 text-xs font-black uppercase tracking-[0.2em] border-white/40">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark mb-8 text-xs font-black uppercase tracking-[0.2em] border-white/10 text-white">
               <Sparkles className="w-3.5 h-3.5 text-primary" />
-              <span className="text-foreground/60">Postgraduate Portfolio Project</span>
+              <span className="text-white/60">Postgraduate Portfolio Project</span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-black font-display leading-[0.95] mb-8 tracking-tighter">
               Conversations <br />
@@ -39,7 +39,7 @@ export const Hero = () => {
               <Button size="lg" className="rounded-2xl bg-gradient-brand border-0 shadow-soft hover:scale-[1.03] transition-all h-14 px-8 text-base font-bold" asChild>
                 <Link to="/dashboard">Explore Dashboard <ArrowRight className="ml-2 w-4 h-4" /></Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-2xl h-14 px-8 text-base font-bold bg-white/60 backdrop-blur-md border-border/60 hover:bg-white hover:border-primary/40 transition-all">
+              <Button size="lg" variant="outline" className="rounded-2xl h-14 px-8 text-base font-bold bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 hover:border-primary/40 transition-all text-white">
                 <Play className="mr-2 w-4 h-4" /> System Architecture
               </Button>
             </div>
@@ -65,7 +65,7 @@ export const Hero = () => {
             <FloatingCard icon={<BarChart3 className="w-4 h-4" />} title="Analytics" sub="+24% productivity" className="absolute bottom-10 -right-2 z-20" delay={1.2} />
 
             {/* Mock dashboard */}
-            <div className="relative rounded-3xl overflow-hidden shadow-float bg-gradient-card border border-white/60 p-6 backdrop-blur-xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-glow bg-gradient-card border border-white/10 p-6 backdrop-blur-xl">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-3 h-3 rounded-full bg-red-400" />
                 <div className="w-3 h-3 rounded-full bg-yellow-400" />
@@ -83,9 +83,9 @@ export const Hero = () => {
                   { label: "Words", value: "8.2k" },
                   { label: "Actions", value: "12" },
                 ].map(s => (
-                  <div key={s.label} className="rounded-2xl bg-muted/40 p-3 text-center">
+                  <div key={s.label} className="rounded-2xl bg-white/5 border border-white/5 p-3 text-center">
                     <div className="text-xl font-bold font-display">{s.value}</div>
-                    <div className="text-[10px] text-muted-foreground uppercase tracking-wider">{s.label}</div>
+                    <div className="text-[10px] text-white/40 uppercase tracking-wider">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -111,7 +111,7 @@ const FloatingCard = ({ icon, title, sub, className, delay = 0, accent = false }
     initial={{ opacity: 0, y: 20, scale: 0.9 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
     transition={{ duration: 0.6, delay }}
-    className={`glass rounded-2xl p-3 pr-4 shadow-float flex items-center gap-3 ${className}`}
+    className={`glass-dark rounded-2xl p-3 pr-4 shadow-glow flex items-center gap-3 border-white/10 ${className}`}
     style={{ animation: `float-slow ${5 + delay}s ease-in-out infinite`, animationDelay: `${delay}s` }}
   >
     <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${accent ? "bg-emerald text-white" : "bg-gradient-brand text-white"}`}>

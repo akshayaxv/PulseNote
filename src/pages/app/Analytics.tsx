@@ -11,7 +11,8 @@ const hours = [
 const participation = [{ name: "Sarah", v: 32 }, { name: "Marcus", v: 28 }, { name: "Aisha", v: 22 }, { name: "Jordan", v: 18 }, { name: "Priya", v: 15 }];
 const completion = [{ d: "W1", done: 12, pending: 3 }, { d: "W2", done: 18, pending: 5 }, { d: "W3", done: 22, pending: 4 }, { d: "W4", done: 26, pending: 6 }];
 const trend = [{ m: "Jan", v: 62 }, { m: "Feb", v: 68 }, { m: "Mar", v: 74 }, { m: "Apr", v: 82 }, { m: "May", v: 92 }];
-const COLORS = ["hsl(var(--primary))", "hsl(var(--cyan))", "hsl(var(--emerald))", "hsl(var(--navy))", "hsl(var(--muted-foreground))"];
+const COLORS = ["hsl(var(--primary))", "hsl(var(--cyan))", "hsl(var(--emerald))", "hsl(var(--sky))", "hsl(var(--muted-foreground))"];
+
 
 interface TooltipProps {
   active?: boolean;
@@ -55,8 +56,9 @@ const Analytics = () => {
             <button 
               key={r} 
               onClick={() => setRange(r)} 
-              className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${range === r ? "bg-white shadow-soft text-primary" : "text-muted-foreground hover:text-foreground"}`}
+              className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${range === r ? "bg-primary text-white shadow-glow" : "text-white/40 hover:text-white"}`}
             >
+
               {r}
             </button>
           ))}

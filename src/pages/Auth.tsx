@@ -20,7 +20,7 @@ const Card = ({ mode }: { mode: "login" | "signup" }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       onSubmit={(e) => { e.preventDefault(); navigate("/dashboard"); }}
-      className="w-full max-w-md glass rounded-3xl p-8 shadow-float"
+      className="w-full max-w-md glass-dark rounded-3xl p-8 shadow-glow border-white/10"
     >
       <div className="mb-6">
         <h1 className="text-3xl font-display font-bold mb-2">{isLogin ? "Welcome back" : "Create your account"}</h1>
@@ -28,10 +28,10 @@ const Card = ({ mode }: { mode: "login" | "signup" }) => {
       </div>
 
       <div className="grid grid-cols-2 gap-3 mb-5">
-        <Button type="button" variant="outline" className="rounded-xl bg-white border-border h-11">
+        <Button type="button" variant="outline" className="rounded-xl bg-white/5 border-white/10 text-white h-11 hover:bg-white/10 transition-colors">
           <GoogleIcon /> <span className="ml-2 text-sm font-medium">Google</span>
         </Button>
-        <Button type="button" variant="outline" className="rounded-xl bg-white border-border h-11">
+        <Button type="button" variant="outline" className="rounded-xl bg-white/5 border-white/10 text-white h-11 hover:bg-white/10 transition-colors">
           <Github className="w-4 h-4" /> <span className="ml-2 text-sm font-medium">GitHub</span>
         </Button>
       </div>
@@ -46,16 +46,16 @@ const Card = ({ mode }: { mode: "login" | "signup" }) => {
         {!isLogin && (
           <div>
             <Label className="text-xs font-semibold">Full name</Label>
-            <Input className="mt-1.5 h-11 rounded-xl bg-white" placeholder="Sarah Chen" />
+            <Input className="mt-1.5 h-11 rounded-xl bg-white/5 border-white/10 text-white" placeholder="Sarah Chen" />
           </div>
         )}
         <div>
           <Label className="text-xs font-semibold">Email</Label>
-          <Input type="email" className="mt-1.5 h-11 rounded-xl bg-white" placeholder="you@company.com" />
+          <Input type="email" className="mt-1.5 h-11 rounded-xl bg-white/5 border-white/10 text-white" placeholder="you@company.com" />
         </div>
         <div>
           <Label className="text-xs font-semibold">Password</Label>
-          <Input type="password" className="mt-1.5 h-11 rounded-xl bg-white" placeholder="••••••••" />
+          <Input type="password" className="mt-1.5 h-11 rounded-xl bg-white/5 border-white/10 text-white" placeholder="••••••••" />
         </div>
       </div>
 
@@ -98,13 +98,13 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => (
           transition={{ duration: 0.8 }}
           className="max-w-lg"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-semibold mb-5">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-dark text-xs font-semibold mb-5 border-white/10 text-white">
             <Sparkles className="w-3 h-3 text-primary" /> AI-powered meeting intelligence
           </div>
           <h2 className="text-4xl font-display font-bold mb-4 leading-tight">Every meeting, <span className="text-gradient">distilled into action</span>.</h2>
           <p className="text-muted-foreground mb-8">Join 12,000+ teams shipping faster with MeetMind AI.</p>
-          <div className="rounded-3xl glass p-6 shadow-float">
-            <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
+          <div className="rounded-3xl glass-dark p-6 shadow-glow border-white/10">
+            <div className="flex items-center justify-between text-xs text-white/40 mb-3">
               <span className="font-semibold">Live transcription</span>
               <span className="font-mono">00:12:48</span>
             </div>

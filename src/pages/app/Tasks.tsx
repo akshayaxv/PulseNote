@@ -21,7 +21,7 @@ const initial: Record<string, Task[]> = {
   ],
 };
 
-const priColor = { High: "bg-rose-100 text-rose-700", Medium: "bg-amber-100 text-amber-700", Low: "bg-sky-100 text-sky-700" };
+const priColor = { High: "bg-rose-500/10 text-rose-400", Medium: "bg-amber-500/10 text-amber-400", Low: "bg-sky-500/10 text-sky-400" };
 
 const Tasks = () => {
   const [board, setBoard] = useState(initial);
@@ -46,7 +46,7 @@ const Tasks = () => {
               {items.map(t => (
                 <Reorder.Item key={t.id} value={t}>
                   <motion.div whileHover={{ y: -3 }}>
-                    <Card className="p-4 rounded-2xl border-border/60 bg-white cursor-grab active:cursor-grabbing shadow-soft hover:shadow-float transition-shadow">
+                    <Card className="p-4 rounded-2xl border-white/10 bg-white/5 cursor-grab active:cursor-grabbing shadow-soft hover:shadow-glow transition-all">
                       <div className="flex justify-between items-start gap-2 mb-2">
                         <div className="font-semibold text-sm">{t.title}</div>
                         <Flag className={`w-3.5 h-3.5 shrink-0 ${t.priority === "High" ? "text-rose-500" : t.priority === "Medium" ? "text-amber-500" : "text-sky-500"}`} />

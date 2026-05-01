@@ -75,7 +75,8 @@ const Upload = () => {
           </h3>
           <div className="space-y-4">
             {files.map(f => (
-              <div key={f.name} className="p-5 rounded-2xl bg-white border border-border/60 hover:shadow-soft transition-all">
+              <div key={f.name} className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:shadow-glow transition-all">
+
                 <div className="flex items-center gap-4 mb-3">
                   <div className="w-12 h-12 rounded-xl bg-gradient-brand text-white flex items-center justify-center shrink-0 shadow-soft">
                     <FileAudio className="w-6 h-6" />

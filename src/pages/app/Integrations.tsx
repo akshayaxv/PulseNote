@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 
 const apps = [
-  { name: "Notion", desc: "Sync summaries to Notion pages", color: "bg-foreground text-white", letter: "N", connected: true },
+  { name: "Notion", desc: "Sync summaries to Notion pages", color: "bg-white/10 text-white", letter: "N", connected: true },
+
   { name: "Jira", desc: "Push action items as Jira issues", color: "bg-blue-600 text-white", letter: "J", connected: true },
   { name: "Slack", desc: "Send recaps to your channels", color: "bg-purple-600 text-white", letter: "S", connected: false },
   { name: "Zoom", desc: "Auto-import Zoom recordings", color: "bg-sky-500 text-white", letter: "Z", connected: true },

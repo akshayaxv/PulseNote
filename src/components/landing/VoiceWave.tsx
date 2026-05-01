@@ -113,9 +113,10 @@ export const VoiceWave = () => {
       ref={ref}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative w-full h-48 md:h-56 rounded-3xl glass overflow-hidden cursor-pointer group"
+      className="relative w-full h-48 md:h-56 rounded-3xl glass-dark border border-white/10 overflow-hidden cursor-pointer group"
       style={{ willChange: "transform" }}
     >
+
       {/* Glow */}
       <motion.div
         className="absolute inset-0 opacity-60 pointer-events-none"
@@ -200,16 +201,17 @@ export const VoiceWave = () => {
       )}
 
       {/* Label */}
-      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs">
-        <div className="flex items-center gap-2 text-muted-foreground">
+      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-[10px] font-bold uppercase tracking-widest">
+        <div className="flex items-center gap-2 text-white/50">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald" />
           </span>
-          <span className="font-medium">Listening · AI Processing</span>
+          <span>Listening · AI Processing</span>
         </div>
-        <span className="font-mono text-muted-foreground/70">00:04:21</span>
+        <span className="font-mono text-white/30">00:04:21</span>
       </div>
+
     </div>
   );
 };
