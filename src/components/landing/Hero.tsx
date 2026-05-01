@@ -111,7 +111,7 @@ export const Hero = () => {
             />
 
             {/* Mock dashboard */}
-            <div className="relative rounded-3xl overflow-hidden shadow-glow bg-gradient-card border border-white/10 p-6 backdrop-blur-xl">
+            <div className="relative rounded-3xl overflow-hidden shadow-glow bg-[#020617]/90 md:bg-gradient-card border border-white/10 p-6 md:backdrop-blur-xl">
               <div className="flex items-center gap-2 mb-5">
                 <div className="w-3 h-3 rounded-full bg-red-400" />
                 <div className="w-3 h-3 rounded-full bg-yellow-400" />
@@ -121,7 +121,7 @@ export const Hero = () => {
                 </div>
               </div>
               <div className="mb-5">
-                <div className="text-xs font-semibold text-muted-foreground mb-1">
+                <div className="text-xs font-semibold text-muted-foreground mb-1 text-emerald">
                   LIVE TRANSCRIPTION
                 </div>
                 <h3 className="font-display font-bold text-lg">Q4 Product Strategy Sync</h3>
@@ -173,9 +173,9 @@ const FloatingCard = ({
     initial={{ opacity: 0, y: 20, scale: 0.9 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
     transition={{ duration: 0.6, delay }}
-    className={`glass-dark rounded-2xl p-3 pr-4 shadow-glow flex items-center gap-3 border-white/10 ${className}`}
+    className={`bg-[#020617]/95 md:glass-dark rounded-2xl p-3 pr-4 shadow-glow flex items-center gap-3 border-white/10 will-change-transform ${className}`}
     style={{
-      animation: `float-slow ${5 + delay}s ease-in-out infinite`,
+      animation: window.innerWidth > 768 ? `float-slow ${5 + delay}s ease-in-out infinite` : "none",
       animationDelay: `${delay}s`,
     }}
   >
