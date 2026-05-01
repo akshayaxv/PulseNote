@@ -590,10 +590,10 @@ export const Footer = () => {
 
   return (
     <footer id="contact" className="relative border-t border-white/5 pt-24 pb-12 bg-[#020617]/80 backdrop-blur-xl">
-      <div className="container px-6 mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mb-20">
           {/* Brand Column */}
-          <div className="space-y-6">
+          <div className="space-y-6 flex flex-col items-center sm:items-start text-center sm:text-left">
             <Logo />
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Next-generation meeting intelligence. Transcribe, analyze, and automate your workflow with MeetMind AI.
@@ -612,7 +612,7 @@ export const Footer = () => {
           </div>
 
           {/* Links Columns */}
-          <div className="space-y-6">
+          <div className="space-y-6 flex flex-col items-center sm:items-start text-center sm:text-left">
             <h4 className="text-white font-bold text-sm uppercase tracking-widest">Product</h4>
             <ul className="space-y-4">
               {footerLinks.product.map((link) => (
@@ -625,8 +625,8 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div className="space-y-6">
-            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Company</h4>
+          <div className="space-y-6 flex flex-col items-center sm:items-start text-center sm:text-left">
+            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Resources</h4>
             <ul className="space-y-4">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -637,32 +637,14 @@ export const Footer = () => {
               ))}
             </ul>
           </div>
-
-          {/* Newsletter Column */}
-          <div className="space-y-6">
-            <h4 className="text-white font-bold text-sm uppercase tracking-widest">Stay Updated</h4>
-            <div className="relative group">
-              <input
-                type="email"
-                placeholder="Enter email"
-                className="w-full h-12 bg-white/5 border border-white/10 rounded-xl px-4 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-primary/50 transition-all group-hover:border-white/20"
-              />
-              <button className="absolute right-1.5 top-1.5 h-9 px-4 bg-primary text-black font-bold text-[10px] uppercase tracking-widest rounded-lg hover:scale-105 active:scale-95 transition-all">
-                Join
-              </button>
-            </div>
-            <p className="text-[10px] text-white/30 uppercase tracking-widest font-medium">
-              Join 1,000+ engineers worldwide.
-            </p>
-          </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
             © 2026 MEETMIND AI · DESIGNED FOR EXCELLENCE
           </p>
-          <div className="flex gap-8">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Terms</a>
             <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Privacy</a>
             <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Security</a>
