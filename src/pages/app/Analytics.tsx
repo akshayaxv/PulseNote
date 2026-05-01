@@ -13,13 +13,19 @@ const completion = [{ d: "W1", done: 12, pending: 3 }, { d: "W2", done: 18, pend
 const trend = [{ m: "Jan", v: 62 }, { m: "Feb", v: 68 }, { m: "Mar", v: 74 }, { m: "Apr", v: 82 }, { m: "May", v: 92 }];
 const COLORS = ["hsl(var(--primary))", "hsl(var(--cyan))", "hsl(var(--emerald))", "hsl(var(--navy))", "hsl(var(--muted-foreground))"];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+interface TooltipProps {
+  active?: boolean;
+  payload?: any[];
+  label?: string;
+}
+
+const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <div className="glass p-3 rounded-2xl shadow-float border-white/60">
         <p className="text-xs font-bold mb-1">{label}</p>
-        {payload.map((p: any, i: number) => (
-          <p key={i} className="text-xs font-medium" style={{ color: p.color }}>
+        {payload.map((p, i) => (
+          <p key={i} className="text-xs font-medium" style={{ color: p.payload?.color || p.color }}>
             {p.name}: <span className="font-bold">{p.value}</span>
           </p>
         ))}
@@ -233,6 +239,3 @@ const Analytics = () => {
 };
 export default Analytics;
 
-  );
-};
-export default Analytics;

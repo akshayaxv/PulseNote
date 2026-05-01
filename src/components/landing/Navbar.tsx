@@ -6,12 +6,13 @@ import { Menu, X } from "lucide-react";
 
 const items = [
   { label: "Features", href: "#features" },
+  { label: "Architecture", href: "#architecture" },
   { label: "Workflow", href: "#workflow" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Stack", href: "#tech-stack" },
+  { label: "Use Cases", href: "#use-cases" },
   { label: "FAQ", href: "#faq" },
 ];
+
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);

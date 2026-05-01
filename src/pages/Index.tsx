@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { TrustedBy, Features, Workflow, ProductDemo, Testimonials, Pricing, FAQ, CTA, Footer } from "@/components/landing/Sections";
+import { Features, Workflow, ProductDemo, TechStack, UseCases, Architecture, FAQ, CTA, Footer } from "@/components/landing/Sections";
 
 const Index = () => {
   return (
@@ -8,12 +8,12 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <TrustedBy />
         <Features />
+        <Architecture />
         <Workflow />
         <ProductDemo />
-        <Testimonials />
-        <Pricing />
+        <TechStack />
+        <UseCases />
         <FAQ />
         <CTA />
       </main>
@@ -21,5 +21,6 @@ const Index = () => {
     </div>
   );
 };
+
 
 export default Index;

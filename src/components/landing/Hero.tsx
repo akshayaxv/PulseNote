@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { ArrowRight, Play, Sparkles, FileText, ListChecks, MessageSquare, BarChart3, CheckCircle2 } from "lucide-react";
 import { VoiceWave } from "./VoiceWave";
 
@@ -22,32 +23,33 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-6 text-xs font-semibold">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass mb-8 text-xs font-black uppercase tracking-[0.2em] border-white/40">
               <Sparkles className="w-3.5 h-3.5 text-primary" />
-              <span className="text-foreground/80">New · GPT-powered meeting intelligence</span>
+              <span className="text-foreground/60">Postgraduate Portfolio Project</span>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black font-display leading-[1.05] mb-6">
-              Turn Every <br />
-              Meeting Into <br />
-              <span className="text-gradient">Action.</span>
+            <h1 className="text-5xl md:text-6xl lg:text-8xl font-black font-display leading-[0.95] mb-8 tracking-tighter">
+              Conversations <br />
+              turned into <br />
+              <span className="text-gradient">Intelligence.</span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed">
-              Upload meetings. Generate summaries. Extract tasks. Search conversations with AI — all in one beautifully crafted workspace.
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed font-medium">
+              A high-fidelity AI meeting hub designed for speed. Transcribe, summarize, and query your meeting history with custom RAG pipelines.
             </p>
-            <div className="flex flex-wrap items-center gap-3 mb-10">
-              <Button size="lg" className="rounded-full bg-gradient-brand border-0 shadow-float hover:scale-[1.03] transition-transform h-12 px-7 text-base">
-                Start Free <ArrowRight className="ml-2 w-4 h-4" />
+            <div className="flex flex-wrap items-center gap-4 mb-12">
+              <Button size="lg" className="rounded-2xl bg-gradient-brand border-0 shadow-soft hover:scale-[1.03] transition-all h-14 px-8 text-base font-bold" asChild>
+                <Link to="/dashboard">Explore Dashboard <ArrowRight className="ml-2 w-4 h-4" /></Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full h-12 px-7 text-base bg-white/60 backdrop-blur-md border-white/60 hover:bg-white">
-                <Play className="mr-2 w-4 h-4" /> Watch Demo
+              <Button size="lg" variant="outline" className="rounded-2xl h-14 px-8 text-base font-bold bg-white/60 backdrop-blur-md border-border/60 hover:bg-white hover:border-primary/40 transition-all">
+                <Play className="mr-2 w-4 h-4" /> System Architecture
               </Button>
             </div>
-            <div className="flex flex-wrap gap-5 text-sm text-muted-foreground">
-              {["Free 14-day trial", "No credit card", "Cancel anytime"].map(t => (
+            <div className="flex flex-wrap gap-6 text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground/60">
+              {["Built with GPT-4o", "Whisper-v3 Diarization", "Next-Gen RAG"].map(t => (
                 <div key={t} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald" /> {t}</div>
               ))}
             </div>
           </motion.div>
+
 
           {/* Right — dashboard mockup with voice wave */}
           <motion.div
@@ -95,7 +97,16 @@ export const Hero = () => {
   );
 };
 
-const FloatingCard = ({ icon, title, sub, className, delay = 0, accent = false }: any) => (
+interface FloatingCardProps {
+  icon: React.ReactNode;
+  title: string;
+  sub: string;
+  className?: string;
+  delay?: number;
+  accent?: boolean;
+}
+
+const FloatingCard = ({ icon, title, sub, className, delay = 0, accent = false }: FloatingCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20, scale: 0.9 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
