@@ -6,10 +6,11 @@ import { VoiceWave } from "./VoiceWave";
 
 export const Hero = () => {
   return (
-    <section className="relative pt-36 pb-24 overflow-hidden">
+    <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-hero pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,hsl(217_91%_85%/0.4),transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,hsl(160_84%_45%/0.15),transparent_60%)] pointer-events-none" />
+
 
       {/* Floating clouds */}
       <div className="absolute top-32 left-10 w-72 h-72 rounded-full bg-primary/10 blur-3xl animate-float-slow" />
@@ -60,9 +61,10 @@ export const Hero = () => {
           >
             {/* Floating cards */}
             <FloatingCard icon={<FileText className="w-4 h-4" />} title="Meeting Summary" sub="3 key decisions" className="absolute -top-4 -left-4 z-20" delay={0.6} />
-            <FloatingCard icon={<ListChecks className="w-4 h-4" />} title="Action Items" sub="7 tasks extracted" className="absolute top-1/3 -right-4 z-20" delay={0.8} accent />
-            <FloatingCard icon={<MessageSquare className="w-4 h-4" />} title="AI Chat" sub='"What did Sarah commit?"' className="absolute -bottom-2 -left-6 z-20" delay={1} />
+            <FloatingCard icon={<ListChecks className="w-4 h-4" />} title="Action Items" sub="7 tasks extracted" className="absolute top-1/3 -right-4 z-20 hidden md:flex" delay={0.8} accent />
+            <FloatingCard icon={<MessageSquare className="w-4 h-4" />} title="AI Chat" sub='"What did Sarah commit?"' className="absolute -bottom-2 -left-6 z-20 hidden md:flex" delay={1} />
             <FloatingCard icon={<BarChart3 className="w-4 h-4" />} title="Analytics" sub="+24% productivity" className="absolute bottom-10 -right-2 z-20" delay={1.2} />
+
 
             {/* Mock dashboard */}
             <div className="relative rounded-3xl overflow-hidden shadow-glow bg-gradient-card border border-white/10 p-6 backdrop-blur-xl">

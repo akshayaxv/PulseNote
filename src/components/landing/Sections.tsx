@@ -125,7 +125,8 @@ export const Workflow = () => (
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 relative z-10">
+
           {steps.map((s, i) => (
             <motion.div
               key={s.label}

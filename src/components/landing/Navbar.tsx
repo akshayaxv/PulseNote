@@ -56,18 +56,28 @@ export const Navbar = () => {
           </button>
         </div>
         {open && (
-          <div className="lg:hidden border-t border-white/10 p-6 flex flex-col gap-4 animate-fade-in bg-black/80 backdrop-blur-xl rounded-b-[2rem]">
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="lg:hidden border-t border-white/10 p-6 flex flex-col gap-5 bg-black/90 backdrop-blur-3xl rounded-b-[2.5rem] shadow-glow"
+          >
             {items.map((it) => (
-              <a key={it.label} href={it.href} className="px-3 py-2 text-sm font-bold text-white/70 uppercase tracking-widest hover:text-primary" onClick={() => setOpen(false)}>
+              <a 
+                key={it.label} 
+                href={it.href} 
+                className="px-4 py-3 text-sm font-bold text-white/60 uppercase tracking-widest hover:text-primary active:text-primary transition-all" 
+                onClick={() => setOpen(false)}
+              >
                 {it.label}
               </a>
             ))}
-            <div className="flex gap-3 pt-4">
-              <Button variant="outline" size="sm" asChild className="flex-1 rounded-full border-white/20 text-white"><Link to="/login">Login</Link></Button>
-              <Button size="sm" asChild className="flex-1 rounded-full bg-gradient-brand border-0 font-bold"><Link to="/signup">Get Started</Link></Button>
+            <div className="flex flex-col gap-3 pt-4 border-t border-white/5">
+              <Button variant="outline" size="lg" asChild className="w-full rounded-2xl border-white/10 text-white h-14 font-bold text-sm uppercase tracking-widest bg-white/5"><Link to="/login">Login</Link></Button>
+              <Button size="lg" asChild className="w-full rounded-2xl bg-gradient-brand border-0 h-14 font-bold text-sm uppercase tracking-widest"><Link to="/signup">Get Started</Link></Button>
             </div>
-          </div>
+          </motion.div>
         )}
+
       </nav>
 
     </header>
