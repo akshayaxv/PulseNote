@@ -15,18 +15,18 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const stats = [
-  { label: "Knowledge Index", value: 247, icon: Video, color: "from-sky to-cyan" },
+  { label: "Meeting Library", value: 247, icon: Video, color: "from-sky to-cyan" },
   {
-    label: "Neural Hours",
+    label: "Processing Time",
     value: 1284,
     suffix: "h",
     icon: Clock,
     color: "from-cyan to-primary",
   },
-  { label: "Active Nodes", value: 38, icon: ListTodo, color: "from-primary to-cyan" },
-  { label: "Synthesis Done", value: 162, icon: CheckCircle2, color: "from-emerald to-primary" },
+  { label: "Pending Tasks", value: 38, icon: ListTodo, color: "from-primary to-cyan" },
+  { label: "Tasks Completed", value: 162, icon: CheckCircle2, color: "from-emerald to-primary" },
   {
-    label: "Intelligence Score",
+    label: "Efficiency Score",
     value: 92,
     suffix: "%",
     icon: TrendingUp,
@@ -73,7 +73,7 @@ const recent = [
 ];
 
 const Dashboard = () => (
-  <div className="space-y-6 pb-10">
+  <div className="space-y-6 md:space-y-10 pb-20">
     {/* Hero greeting */}
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -86,12 +86,12 @@ const Dashboard = () => (
         <div className="max-w-2xl">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald animate-pulse shadow-glow" />
-            <div className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-white/30 font-black">NEURAL SYSTEM ONLINE · NODE_01</div>
+            <div className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-white/30 font-black">SYSTEM READY · MAIN WORKSPACE</div>
           </div>
           <h2 className="text-3xl md:text-5xl font-display font-bold mb-3 text-white/90 tracking-tight">Good morning, Sarah 👋</h2>
           <p className="text-white/40 text-sm md:text-base leading-relaxed font-medium">
-            The engine has processed <span className="text-emerald font-black">3 NEW SESSIONS</span> since your last sync. 
-            <span className="hidden sm:inline"> You have <span className="text-primary font-black">12 ACTION NODES</span> waiting.</span>
+            AI has analyzed <span className="text-emerald font-black">3 NEW MEETINGS</span> since your last visit. 
+            <span className="hidden sm:inline"> You have <span className="text-primary font-black">12 ACTION ITEMS</span> requiring attention.</span>
           </p>
         </div>
         <div className="flex flex-wrap gap-3 w-full md:w-auto">
@@ -100,7 +100,7 @@ const Dashboard = () => (
             className="rounded-xl md:rounded-2xl bg-gradient-brand hover:scale-[1.03] border-0 text-white shadow-emerald px-6 h-12 md:h-14 transition-all flex-1 md:flex-none text-[11px] font-black uppercase tracking-widest"
           >
             <Link to="/dashboard/upload">
-              <Upload className="w-4 h-4 mr-2" /> UPLOAD SOURCE
+              <Upload className="w-4 h-4 mr-2" /> UPLOAD MEETING
             </Link>
           </Button>
           <Button
@@ -108,7 +108,7 @@ const Dashboard = () => (
             variant="outline"
             className="rounded-xl md:rounded-2xl bg-white/5 border-white/10 text-white/70 hover:bg-white/10 hover:text-white px-6 h-12 md:h-14 transition-all flex-1 md:flex-none text-[11px] font-black uppercase tracking-widest"
           >
-            <Link to="/dashboard/chat">NEURAL CHAT</Link>
+            <Link to="/dashboard/chat">AI ASSISTANT</Link>
           </Button>
         </div>
       </div>
@@ -147,13 +147,13 @@ const Dashboard = () => (
         <div className="flex items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-primary shadow-glow animate-pulse" />
-            <h3 className="font-display font-bold text-lg md:text-xl uppercase tracking-tight text-white/90">Recent Intelligence</h3>
+            <h3 className="font-display font-bold text-lg md:text-xl uppercase tracking-tight text-white/90">Recent Meetings</h3>
           </div>
           <Link
             to="/dashboard/meetings"
             className="text-[10px] text-primary font-black uppercase tracking-widest hover:text-primary/80 flex items-center gap-2 transition-all hover:gap-3"
           >
-            OPEN INDEX <ArrowUpRight className="w-4 h-4" />
+            VIEW ALL <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
         <div className="space-y-3">
@@ -170,7 +170,7 @@ const Dashboard = () => (
                 <div className="min-w-0">
                   <div className="font-bold text-sm md:text-base text-white/80 group-hover:text-primary transition-colors truncate uppercase tracking-tight">{m.title}</div>
                   <div className="text-[10px] text-white/20 font-black mt-1.5 uppercase tracking-widest">
-                    {m.date} · {m.duration} · {m.participants} PRTC
+                    {m.date} · {m.duration} · {m.participants} PARTICIPANTS
                   </div>
                 </div>
               </div>
@@ -186,9 +186,9 @@ const Dashboard = () => (
 
       {/* Quick upload */}
       <Card className="p-6 md:p-8 rounded-[2.5rem] md:rounded-[3rem] border-white/5 bg-[#020617]/40 backdrop-blur-xl shadow-glow flex flex-col">
-        <h3 className="font-display font-bold text-lg mb-2 text-white/90 uppercase tracking-tight">Neural Input</h3>
+        <h3 className="font-display font-bold text-lg mb-2 text-white/90 uppercase tracking-tight">Quick Upload</h3>
         <p className="text-[9px] md:text-[10px] text-white/20 font-black uppercase tracking-[0.2em] mb-8">
-          DROP SOURCE TO SYNC KNOWLEDGE
+          DROP FILE TO START AI ANALYSIS
         </p>
         <Link to="/dashboard/upload" className="block flex-1 group">
           <div className="h-full border-2 border-dashed border-white/5 rounded-3xl p-8 text-center group-hover:border-primary/40 group-hover:bg-primary/5 transition-all cursor-pointer flex flex-col justify-center relative overflow-hidden">
@@ -196,12 +196,12 @@ const Dashboard = () => (
             <div className="w-14 h-14 rounded-2xl bg-gradient-brand mx-auto flex items-center justify-center mb-5 shadow-emerald group-hover:scale-110 transition-transform relative z-10">
               <Upload className="w-6 h-6 text-white" />
             </div>
-            <div className="font-black text-sm text-white/70 mb-1 group-hover:text-white transition-colors uppercase tracking-tight relative z-10">Sync New Source</div>
+            <div className="font-black text-sm text-white/70 mb-1 group-hover:text-white transition-colors uppercase tracking-tight relative z-10">Upload New File</div>
             <div className="text-[9px] text-white/20 font-black uppercase tracking-tighter relative z-10">MP3, WAV, MP4 · UP TO 2GB</div>
           </div>
         </Link>
         <div className="mt-8 pt-8 border-t border-white/5">
-          <div className="text-[10px] font-black text-white/20 mb-5 uppercase tracking-[0.2em] ml-1">LATEST SYNC LOG</div>
+          <div className="text-[10px] font-black text-white/20 mb-5 uppercase tracking-[0.2em] ml-1">RECENT UPLOADS</div>
           <div className="space-y-4">
             {["product-sync.mp3", "discovery-acme.mp4"].map((f) => (
               <div key={f} className="flex items-center gap-4 py-1 text-xs group cursor-pointer">

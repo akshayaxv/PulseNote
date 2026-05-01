@@ -51,9 +51,9 @@ const Tasks = () => {
     <div className="space-y-8 md:space-y-12 pb-20">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white/90 uppercase">Action Registry</h2>
+          <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white/90 uppercase">Task Board</h2>
           <p className="text-[10px] md:text-xs text-white/30 font-black uppercase tracking-[0.2em] mt-1">
-            Drag to prioritize · Click to view source meeting
+            Drag to prioritize · Click to view original meeting
           </p>
         </div>
         <Button className="rounded-xl md:rounded-2xl h-10 md:h-12 px-6 bg-gradient-brand border-0 shadow-emerald hover:scale-105 transition-all text-xs font-bold uppercase tracking-widest self-start sm:self-auto">

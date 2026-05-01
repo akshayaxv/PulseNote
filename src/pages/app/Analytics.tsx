@@ -116,7 +116,7 @@ const Analytics = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white/90 uppercase">
-            Intelligence Analytics
+            Performance Analytics
           </h2>
           <p className="text-xs md:text-sm text-white/40 mt-1 font-medium leading-relaxed">
             Detailed insights into your team's meeting performance.
@@ -331,7 +331,7 @@ const Analytics = () => {
               <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
                 <Brain className="w-5 h-5 text-primary" />
               </div>
-              Health Trend
+              Engagement Trend
             </h3>
             <div className="h-[220px] md:h-[260px] w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -376,10 +376,10 @@ const Analytics = () => {
           <div className="relative">
             <Sparkles className="w-8 h-8 text-emerald mb-4 animate-pulse" />
             <h4 className="font-display font-bold mb-3 text-xl text-white/90 uppercase tracking-tight">
-              Neural Insight
+              Smart Insight
             </h4>
             <p className="text-sm text-white/40 leading-relaxed font-medium">
-              Your team's <b className="text-emerald">DECISION VELOCITY</b> increased by 18% this
+              Your team's <b className="text-emerald">DECISION SPEED</b> increased by 18% this
               month. Strategy sessions are becoming more concise, saving approx. 4.2 hours per week.
             </p>
           </div>
@@ -388,7 +388,7 @@ const Analytics = () => {
         <Card className="p-8 rounded-[2.5rem] bg-[#020617]/40 backdrop-blur-md border-white/5 shadow-glow-sm">
           <Target className="w-8 h-8 text-primary mb-4" />
           <h4 className="font-display font-bold mb-5 text-xl text-white/90 uppercase tracking-tight">
-            Focus Units
+            Key Focus Areas
           </h4>
           <div className="space-y-4">
             {[

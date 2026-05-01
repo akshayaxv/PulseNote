@@ -23,7 +23,7 @@ export const Topbar = ({ title, onMenuClick }: TopbarProps) => (
         </div>
         <ChevronRight className="w-3 h-3 opacity-20" />
         <span className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">
-          NODE_01
+          MAIN_WORKSPACE
         </span>
         <ChevronRight className="w-3 h-3 opacity-20" />
       </div>
@@ -38,7 +38,7 @@ export const Topbar = ({ title, onMenuClick }: TopbarProps) => (
       >
         <div className="w-1.5 h-1.5 rounded-full bg-emerald animate-pulse shadow-glow" />
         <span className="text-[9px] font-black text-emerald uppercase tracking-[0.2em]">
-          NEURAL INDEXING ACTIVE
+          AI ANALYSIS ACTIVE
         </span>
       </motion.div>
 
@@ -49,7 +49,7 @@ export const Topbar = ({ title, onMenuClick }: TopbarProps) => (
         className="rounded-xl bg-gradient-brand border-0 h-10 md:h-12 px-4 md:px-6 shadow-emerald hover:scale-105 transition-all group active:scale-95"
       >
         <Sparkles className="w-4 h-4 md:mr-2.5 group-hover:rotate-12 transition-transform" /> 
-        <span className="hidden sm:inline text-[10px] font-black uppercase tracking-widest">New Session</span>
+        <span className="hidden sm:inline text-[10px] font-black uppercase tracking-widest">New Meeting</span>
       </Button>
 
       <div className="flex items-center gap-2">

@@ -108,10 +108,10 @@ const AIChat = () => {
               <div className="absolute -right-0.5 -bottom-0.5 w-2.5 h-2.5 rounded-full bg-emerald border-2 border-[#020617]" />
             </div>
             <div>
-              <div className="text-xs md:text-sm font-bold font-display tracking-tight uppercase text-white/90">NEURAL AI v4.0</div>
+              <div className="text-xs md:text-sm font-bold font-display tracking-tight uppercase text-white/90">MEETMIND AI ASSISTANT</div>
               <div className="text-[9px] md:text-[10px] text-emerald font-black tracking-[0.2em] uppercase flex items-center gap-1.5">
                 <span className="w-1 h-1 rounded-full bg-emerald animate-pulse" />
-                SYSTEM ACTIVE
+                AI READY
               </div>
             </div>
           </div>
@@ -157,7 +157,7 @@ const AIChat = () => {
                     animate={{ opacity: 1 }}
                     className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 border border-primary/10 text-[9px] text-primary font-black w-fit uppercase tracking-widest"
                   >
-                    <Database className="w-3 h-3" /> SOURCE: {m.source}
+                    <Database className="w-3 h-3" /> MEETING: {m.source}
                   </motion.div>
                 )}
               </div>
@@ -169,7 +169,7 @@ const AIChat = () => {
                 <Cpu className="w-5 h-5 md:w-6 md:h-6 animate-pulse" />
               </div>
               <div className="bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl px-5 py-4 flex flex-col gap-2 shadow-glow-sm">
-                <div className="text-[9px] font-black text-primary uppercase tracking-widest animate-pulse">Scanning meetings...</div>
+                <div className="text-[9px] font-black text-primary uppercase tracking-widest animate-pulse">Analyzing meetings...</div>
                 <div className="flex gap-1.5">
                   {[0, 1, 2].map((i) => (
                     <div key={i} className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-bounce" style={{ animationDelay: `${i * 0.2}s` }} />

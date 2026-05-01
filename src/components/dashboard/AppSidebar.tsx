@@ -18,14 +18,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const items = [
-  { to: "/dashboard", label: "Core Dashboard", icon: LayoutDashboard },
-  { to: "/dashboard/meetings", label: "Knowledge Base", icon: Video },
-  { to: "/dashboard/upload", label: "Neural Synthesis", icon: Upload },
-  { to: "/dashboard/tasks", label: "Action Map", icon: ListTodo },
-  { to: "/dashboard/chat", label: "Neural Chat", icon: MessageSquare },
-  { to: "/dashboard/analytics", label: "Intelligence", icon: BarChart3 },
-  { to: "/dashboard/integrations", label: "Connectors", icon: Plug },
-  { to: "/dashboard/settings", label: "System Core", icon: Settings },
+  { to: "/dashboard", label: "Overview", icon: LayoutDashboard },
+  { to: "/dashboard/meetings", label: "Meeting Library", icon: Video },
+  { to: "/dashboard/upload", label: "Upload Meeting", icon: Upload },
+  { to: "/dashboard/tasks", label: "Task Board", icon: ListTodo },
+  { to: "/dashboard/chat", label: "AI Assistant", icon: MessageSquare },
+  { to: "/dashboard/analytics", label: "Insights", icon: BarChart3 },
+  { to: "/dashboard/integrations", label: "Integrations", icon: Plug },
+  { to: "/dashboard/settings", label: "Settings", icon: Settings },
 ];
 
 interface AppSidebarProps {
@@ -58,7 +58,7 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
             {(!collapsed || isOpen) && (
               <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
                 <span className="font-display font-black text-lg md:text-xl text-white tracking-tighter uppercase">
-                  MEETMIND <span className="text-primary">OS</span>
+                  MEETMIND <span className="text-primary">AI</span>
                 </span>
               </motion.div>
             )}
@@ -77,7 +77,7 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
             <div className="relative group">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20 group-focus-within:text-primary transition-colors" />
               <input
-                placeholder="Neural search..."
+                placeholder="Smart search..."
                 className="w-full h-11 bg-white/[0.03] border border-white/5 rounded-xl pl-10 pr-4 text-xs font-bold text-white/60 placeholder:text-white/20 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
               />
             </div>
@@ -136,9 +136,9 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
                 <Sparkles className="w-16 h-16 text-primary" />
               </div>
               <div className="text-[9px] font-black text-primary uppercase tracking-[0.3em] mb-2">
-                Neural Trial
+                Pro Trial
               </div>
-              <div className="text-xs font-bold text-white/80 mb-3">9 CYCLES REMAINING</div>
+              <div className="text-xs font-bold text-white/80 mb-3">9 DAYS REMAINING</div>
               <div className="h-1 bg-white/5 rounded-full overflow-hidden mb-4">
                 <motion.div
                   initial={{ width: 0 }}
@@ -147,7 +147,7 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
                 />
               </div>
               <button className="w-full h-9 rounded-xl bg-white/5 border border-white/10 text-[9px] font-black text-white/40 hover:text-white hover:bg-white/10 transition-all uppercase tracking-widest">
-                SCALE TO PRO
+                UPGRADE TO PRO
               </button>
             </div>
           )}
@@ -165,7 +165,7 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
               <div className="flex-1 min-w-0">
                 <div className="text-xs font-bold text-white/90 truncate uppercase tracking-tight">Sarah Chen</div>
                 <div className="text-[9px] text-primary font-black uppercase tracking-widest mt-0.5">
-                  Pro Status
+                  Pro Account
                 </div>
               </div>
             )}
