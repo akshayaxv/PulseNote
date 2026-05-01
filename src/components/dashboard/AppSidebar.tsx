@@ -125,10 +125,11 @@ export const AppSidebar = () => {
 
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute -right-3 top-20 w-6 h-6 rounded-full bg-white border border-border shadow-soft flex items-center justify-center text-foreground hover:scale-110 transition-transform z-10"
+        className="absolute -right-3 top-20 w-6 h-6 rounded-full bg-sidebar-accent border border-white/10 shadow-glow flex items-center justify-center text-white hover:scale-110 transition-transform z-10"
       >
-        <ChevronLeft className={`w-3 h-3 transition-transform ${collapsed ? "rotate-180" : ""}`} />
+        <ChevronLeft className={`w-3 h-3 transition-transform text-primary ${collapsed ? "rotate-180" : ""}`} />
       </button>
+
     </aside>
   );
 };

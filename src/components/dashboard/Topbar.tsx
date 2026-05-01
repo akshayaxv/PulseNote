@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export const Topbar = ({ title }: { title: string }) => (
-  <header className="h-16 border-b border-white/10 bg-white/40 backdrop-blur-xl px-6 flex items-center gap-4 sticky top-0 z-30">
+  <header className="h-16 border-b border-white/10 bg-black/20 backdrop-blur-xl px-6 flex items-center gap-4 sticky top-0 z-30">
     <div className="flex items-center gap-2 text-muted-foreground">
       <LayoutGrid className="w-4 h-4" />
       <ChevronRight className="w-3 h-3 opacity-40" />
@@ -28,11 +28,12 @@ export const Topbar = ({ title }: { title: string }) => (
       </Button>
 
       <div className="flex items-center gap-2">
-        <button className="relative w-10 h-10 rounded-xl bg-white border border-border/60 flex items-center justify-center hover:shadow-soft hover:border-primary/40 transition-all group">
-          <Bell className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-          <span className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary border-2 border-white" />
+        <button className="relative w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-primary/40 transition-all group">
+          <Bell className="w-4 h-4 text-white/40 group-hover:text-primary transition-colors" />
+          <span className="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary border-2 border-background" />
         </button>
       </div>
+
     </div>
   </header>
 );

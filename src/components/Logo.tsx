@@ -8,9 +8,10 @@ export const Logo = ({ light = false }: { light?: boolean }) => (
         <img src="/logo.png" alt="MeetMind AI Logo" className="w-full h-full object-contain" />
       </div>
     </div>
-    <span className={`font-display font-black text-xl tracking-tighter ${light ? "text-white" : "text-foreground"}`}>
+    <span className="font-display font-black text-xl tracking-tighter text-white">
       MeetMind <span className="text-gradient">AI</span>
     </span>
+
   </Link>
 );
 

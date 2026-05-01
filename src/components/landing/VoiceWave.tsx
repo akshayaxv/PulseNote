@@ -7,8 +7,90 @@ export const VoiceWave = () => {
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const audioContext = useRef<AudioContext | null>(null);
+  const source = useRef<AudioBufferSourceNode | null>(null);
+  const filter = useRef<BiquadFilterNode | null>(null);
+  const gainRef = useRef<GainNode | null>(null);
+
+  const startSound = () => {
+    try {
+      if (!audioContext.current) {
+        const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        audioContext.current = new AudioContextClass();
+      }
+      if (audioContext.current.state === 'suspended') audioContext.current.resume();
+
+      // Create noise
+      const bufferSize = audioContext.current.sampleRate * 2;
+      const buffer = audioContext.current.createBuffer(1, bufferSize, audioContext.current.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+      source.current = audioContext.current.createBufferSource();
+      source.current.buffer = buffer;
+      source.current.loop = true;
+
+      filter.current = audioContext.current.createBiquadFilter();
+      filter.current.type = 'lowpass';
+      
+      gainRef.current = audioContext.current.createGain();
+      gainRef.current.gain.setValueAtTime(0, audioContext.current.currentTime);
+      gainRef.current.gain.linearRampToValueAtTime(0.25, audioContext.current.currentTime + 0.5);
+
+      source.current.connect(filter.current);
+      filter.current.connect(gainRef.current);
+      gainRef.current.connect(audioContext.current.destination);
+
+      source.current.start();
+      
+      // Animate filter to match wave feel
+      const animate = () => {
+        if (!filter.current || !audioContext.current) return;
+        const now = audioContext.current.currentTime;
+        filter.current.frequency.exponentialRampToValueAtTime(1400, now + 1);
+        filter.current.frequency.exponentialRampToValueAtTime(300, now + 2);
+        setTimeout(animate, 2000);
+      };
+      animate();
+    } catch (e) { console.log(e); }
+  };
+
+  const stopSound = () => {
+    const gn = gainRef.current;
+    if (gn && audioContext.current) {
+      gn.gain.linearRampToValueAtTime(0, audioContext.current.currentTime + 0.3);
+      const src = source.current;
+      setTimeout(() => {
+        src?.stop();
+        src?.disconnect();
+      }, 300);
+      source.current = null;
+      gainRef.current = null;
+    }
+  };
+
+
+
 
   useEffect(() => {
+    const unlock = () => {
+      if (audioContext.current?.state === 'suspended') {
+        audioContext.current.resume();
+      }
+    };
+    window.addEventListener('click', unlock);
+    return () => window.removeEventListener('click', unlock);
+  }, []);
+
+
+  useEffect(() => {
+    if (hovered) startSound();
+    else stopSound();
+    return () => stopSound();
+  }, [hovered]);
+
+  useEffect(() => {
+
     const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { threshold: 0.2 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();

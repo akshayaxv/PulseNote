@@ -113,7 +113,7 @@ const steps = [
 export const Workflow = () => (
   <section id="workflow" className="py-28 relative">
     <div className="container">
-      <div className="glass p-12 md:p-20 rounded-[3rem] border-white/60 relative overflow-hidden">
+      <div className="glass-dark p-12 md:p-20 rounded-[3rem] border-white/10 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px]" />
         
         <motion.div {...fade} className="text-center max-w-2xl mx-auto mb-20 relative z-10">
@@ -135,9 +135,9 @@ export const Workflow = () => (
               transition={{ delay: i * 0.1, duration: 0.5 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className={`relative w-24 h-24 rounded-[2rem] ${s.color} flex items-center justify-center shadow-float mb-6 group-hover:scale-110 transition-transform duration-500`}>
+              <div className={`relative w-24 h-24 rounded-[2rem] ${s.color} flex items-center justify-center shadow-glow mb-6 group-hover:scale-110 transition-transform duration-500`}>
                 <s.icon className="w-10 h-10 text-white" />
-                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-white border-4 border-navy text-navy text-[10px] font-black flex items-center justify-center shadow-soft">
+                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-navy border-4 border-white/10 text-white text-[10px] font-black flex items-center justify-center shadow-soft">
                   0{i+1}
                 </div>
               </div>
@@ -164,7 +164,7 @@ export const ProductDemo = () => (
       </motion.div>
       <motion.div {...fade} className="relative max-w-5xl mx-auto">
         <div className="absolute -inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-[3rem]" />
-        <Card className="relative p-2 rounded-3xl bg-white/50 border border-white/60 shadow-float backdrop-blur-sm overflow-hidden">
+        <Card className="relative p-2 rounded-3xl bg-white/5 border border-white/10 shadow-float backdrop-blur-sm overflow-hidden">
           <div className="aspect-video bg-navy rounded-2xl flex items-center justify-center">
              <div className="text-white/20 font-display font-black text-4xl">DASHBOARD_PREVIEW.JSX</div>
           </div>
@@ -277,7 +277,7 @@ export const Architecture = () => (
                 <div key={s.l} className="relative">
                   <div className="flex items-center gap-4">
                     <div className={`w-3 h-3 rounded-full ${s.color} shadow-lg`} />
-                    <div className="flex-1 p-3 rounded-xl bg-white border border-border/40 shadow-soft">
+                    <div className="flex-1 p-3 rounded-xl bg-white/5 border border-white/10 shadow-soft">
                       <div className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{s.l}</div>
                       <div className="text-sm font-bold">{s.v}</div>
                     </div>
@@ -302,7 +302,7 @@ export const FAQ = () => (
       </motion.div>
       <Accordion type="single" collapsible className="space-y-3">
         {faqs.map((f, i) => (
-          <AccordionItem key={i} value={`item-${i}`} className="bg-white rounded-2xl border border-border/50 px-6 shadow-soft">
+          <AccordionItem key={i} value={`item-${i}`} className="bg-white/5 rounded-2xl border border-white/10 px-6 shadow-soft">
             <AccordionTrigger className="text-left font-semibold hover:no-underline">{f.q}</AccordionTrigger>
             <AccordionContent className="text-muted-foreground leading-relaxed">{f.a}</AccordionContent>
           </AccordionItem>
@@ -332,7 +332,7 @@ export const CTA = () => (
 );
 
 export const Footer = () => (
-  <footer id="contact" className="border-t border-border/40 py-16 bg-white/40">
+  <footer id="contact" className="border-t border-white/10 py-16 bg-black/40">
     <div className="container text-center">
       <div className="flex justify-center mb-6">
         <Logo />

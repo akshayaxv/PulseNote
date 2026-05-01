@@ -76,7 +76,7 @@ const Dashboard = () => (
                   <div className="text-xs text-muted-foreground">{m.date} · {m.duration} · {m.participants} people</div>
                 </div>
               </div>
-              <span className={`text-xs px-2.5 py-1 rounded-full font-semibold shrink-0 ${m.status === "Processed" ? "bg-emerald/10 text-emerald" : "bg-amber-100 text-amber-700"}`}>{m.status}</span>
+              <span className={`text-xs px-2.5 py-1 rounded-full font-semibold shrink-0 ${m.status === "Processed" ? "bg-emerald/10 text-emerald" : "bg-amber-500/10 text-amber-500"}`}>{m.status}</span>
             </Link>
           ))}
         </div>
