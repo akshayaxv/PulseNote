@@ -467,10 +467,10 @@ export const CTA = () => (
 export const Footer = () => {
   const footerLinks = {
     product: [
-      { name: "Features", href: "#features" },
-      { name: "Architecture", href: "#architecture" },
-      { name: "Workflow", href: "#workflow" },
-      { name: "Tech Stack", href: "#tech-stack" },
+      { name: "Features", href: "/docs#features" },
+      { name: "Architecture", href: "/docs#architecture" },
+      { name: "Workflow", href: "/#workflow" },
+      { name: "Tech Stack", href: "/docs#tech-stack" },
     ],
     company: [
       { name: "About", href: "#" },
