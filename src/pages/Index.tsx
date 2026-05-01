@@ -16,7 +16,8 @@ import { SmoothScroll } from "@/components/landing/SmoothScroll";
 
 const Index = () => {
   return (
-    <div className="bg-background">
+    <div className="bg-background overflow-x-hidden">
+
       <Navbar />
       <SmoothScroll>
         <main>
@@ -34,6 +35,8 @@ const Index = () => {
         <BrandReveal />
       </SmoothScroll>
     </div>
+
+
   );
 };
 
