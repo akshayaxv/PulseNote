@@ -52,7 +52,10 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
               className="w-10 h-10 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center shrink-0 shadow-emerald border border-white/10 relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-              <img src="/logo.png" alt="Logo" className="w-6 h-6 md:w-7 md:h-7 object-contain relative z-10" />
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-7 md:h-7 relative z-10 drop-shadow-emerald">
+                <path d="M4 19V5L12 13L20 5V19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white" />
+                <circle cx="12" cy="12" r="3" fill="currentColor" className="text-primary opacity-40 shadow-glow" />
+              </svg>
             </motion.div>
 
             {(!collapsed || isOpen) && (
