@@ -15,6 +15,7 @@ import {
   Zap,
   Users,
   FileText,
+  ShieldCheck,
   Twitter,
   Github,
   Linkedin,
@@ -141,60 +142,102 @@ export const Features = () => (
 );
 
 const steps = [
-  { icon: Upload, label: "Upload", color: "bg-sky", desc: "MP3, WAV, MP4" },
-  { icon: Mic, label: "Transcribe", color: "bg-cyan", desc: "50+ Languages" },
-  { icon: Brain, label: "Analyze", color: "bg-primary", desc: "Contextual RAG" },
-  { icon: ListChecks, label: "Extract", color: "bg-emerald", desc: "Action Items" },
+  { 
+    icon: Upload, 
+    label: "Ingest", 
+    color: "from-sky to-blue-600", 
+    desc: "Cloud-native upload with automatic file sanitization.",
+    details: ["MP3 / WAV / MP4", "Local Encryption", "Fast Caching"]
+  },
+  { 
+    icon: Mic, 
+    label: "Transcribe", 
+    color: "from-cyan to-emerald", 
+    desc: "Neural diarization with Whisper-v3 precision.",
+    details: ["Speaker ID", "50+ Languages", "Timestamp Sync"]
+  },
+  { 
+    icon: Brain, 
+    label: "Analyze", 
+    color: "from-primary to-purple-600", 
+    desc: "Contextual reasoning via advanced RAG pipelines.",
+    details: ["Semantic Search", "Insight Map", "Risk Detection"]
+  },
+  { 
+    icon: ListChecks, 
+    label: "Automate", 
+    color: "from-emerald to-teal-600", 
+    desc: "Instant task extraction and workflow triggers.",
+    details: ["Action Items", "Auto-Assign", "Export Logic"]
+  },
 ];
 
 export const Workflow = () => (
-  <section id="workflow" className="py-28 relative">
-    <div className="container">
-      <div className="glass-dark p-12 md:p-20 rounded-[3rem] border-white/10 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[80px]" />
+  <section id="workflow" className="py-32 relative overflow-hidden">
+    {/* Background Neural Trace */}
+    <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-y-1/2 hidden md:block" />
+    
+    <div className="container relative z-10">
+      <motion.div {...fade} className="text-center max-w-2xl mx-auto mb-24">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+          System Methodology
+        </div>
+        <h2 className="text-4xl md:text-6xl font-bold font-display mb-6 tracking-tighter leading-tight">
+          How the <span className="text-gradient">intelligence</span> evolves.
+        </h2>
+        <p className="text-muted-foreground text-lg font-medium">
+          A multi-stage neural pipeline designed for speed and contextual accuracy.
+        </p>
+      </motion.div>
 
-        <motion.div {...fade} className="text-center max-w-2xl mx-auto mb-20 relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald/10 text-emerald text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-            Autonomous Pipeline
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-6 tracking-tight leading-tight">
-            From audio to action in <span className="text-gradient">minutes</span>
-          </h2>
-        </motion.div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+        {steps.map((s, i) => (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.15, duration: 0.8, type: "spring" }}
+            className="group relative"
+          >
+            {/* Connecting Thread (Mobile) */}
+            {i < steps.length - 1 && (
+              <div className="absolute left-1/2 bottom-[-1.5rem] w-px h-6 bg-gradient-to-b from-white/10 to-transparent md:hidden" />
+            )}
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 relative z-10">
-          {steps.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center text-center group"
-            >
-              <div
-                className={`relative w-24 h-24 rounded-[2rem] ${s.color} flex items-center justify-center shadow-glow mb-6 group-hover:scale-110 transition-transform duration-500`}
-              >
-                <s.icon className="w-10 h-10 text-white" />
-                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-navy border-4 border-white/10 text-white text-[10px] font-black flex items-center justify-center shadow-soft">
+            <div className="relative h-full glass-dark p-8 rounded-[2.5rem] border-white/5 group-hover:border-white/10 transition-all duration-500 flex flex-col items-center text-center">
+              {/* Animated Progress Ring */}
+              <div className="absolute -inset-0.5 rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
+              
+              {/* Step Icon */}
+              <div className={`relative w-20 h-20 rounded-[1.8rem] bg-gradient-to-br ${s.color} flex items-center justify-center shadow-glow-emerald mb-8 group-hover:scale-110 transition-transform duration-500`}>
+                <s.icon className="w-9 h-9 text-white" />
+                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#020617] border-2 border-white/10 flex items-center justify-center text-[10px] font-black text-white shadow-soft">
                   0{i + 1}
                 </div>
               </div>
-              <div className="font-display font-bold text-xl mb-1 tracking-tight">{s.label}</div>
-              <div className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
-                {s.desc}
-              </div>
 
-              {i < steps.length - 1 && (
-                <div className="hidden md:block absolute top-12 left-[calc(100%/8+2rem+i*(100%/4))] w-[calc(100%/4-6rem)] h-px bg-gradient-to-r from-primary/30 to-transparent" />
-              )}
-            </motion.div>
-          ))}
-        </div>
+              <h3 className="text-xl font-display font-bold mb-3 tracking-tight">{s.label}</h3>
+              <p className="text-[11px] text-muted-foreground leading-relaxed font-medium mb-6 uppercase tracking-wider">
+                {s.desc}
+              </p>
+
+              {/* Sub-Intelligence Labels */}
+              <div className="flex flex-wrap justify-center gap-1.5 mt-auto">
+                {s.details.map(detail => (
+                  <span key={detail} className="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[8px] font-bold text-white/40 uppercase tracking-widest whitespace-nowrap">
+                    {detail}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   </section>
 );
+
 
 export const ProductDemo = () => (
   <section id="solutions" className="py-28">
@@ -291,42 +334,97 @@ export const TechStack = () => (
 
 const useCases = [
   {
-    title: "Academic Lectures",
-    desc: "Transcribe long lectures and extract key concepts and study notes automatically.",
-    icon: FileText,
-  },
-  {
-    title: "Team Syncs",
-    desc: "Convert messy standups into clear action items and assignees for the next sprint.",
+    title: "Global Team Syncs",
+    label: "Product Teams",
+    desc: "Convert messy, multi-timezone standups into structured action items. AI detects blockers and automatically notifies relevant stakeholders.",
     icon: Users,
+    glow: "shadow-emerald/20",
+    metric: "90% Faster Synthesis",
+    image: "bg-gradient-to-br from-emerald/10 via-transparent to-transparent"
   },
   {
-    title: "Research Interviews",
-    desc: "Analyze qualitative data from interviews with semantic search and sentiment analysis.",
-    icon: Search,
+    title: "Academic Research",
+    label: "Education",
+    desc: "Transcribe 2-hour long lectures and instantly query them with RAG. Extract citations, key concepts, and generated flashcards.",
+    icon: FileText,
+    glow: "shadow-primary/20",
+    metric: "Instant Indexing",
+    image: "bg-gradient-to-br from-primary/10 via-transparent to-transparent"
+  },
+  {
+    title: "Executive Strategy",
+    label: "Leadership",
+    desc: "Distill high-stakes board meetings into risk assessments and strategic milestones. Private, secure, and locally-processed intelligence.",
+    icon: ShieldCheck,
+    glow: "shadow-cyan/20",
+    metric: "Zero-Leak Architecture",
+    image: "bg-gradient-to-br from-cyan/10 via-transparent to-transparent"
   },
 ];
 
 export const UseCases = () => (
   <section
     id="use-cases"
-    className="py-28 bg-navy text-white relative overflow-hidden rounded-[4rem] my-10 mx-4"
+    className="py-32 relative overflow-hidden"
   >
-    <div className="absolute inset-0 bg-gradient-brand opacity-10" />
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.05)_0%,transparent_50%)]" />
+    
     <div className="container relative z-10">
-      <motion.div {...fade} className="text-center max-w-2xl mx-auto mb-16">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
-          Perfect for <span className="text-emerald">any workflow</span>
+      <motion.div {...fade} className="text-center max-w-3xl mx-auto mb-20">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald/10 text-emerald text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+          Real-World Impact
+        </div>
+        <h2 className="text-4xl md:text-6xl font-bold font-display mb-6 tracking-tighter">
+          Intelligence for <br className="hidden md:block" /> <span className="text-gradient">every high-stakes environment.</span>
         </h2>
-        <p className="text-white/60 text-base sm:text-lg">Whether you're a student, researcher, or developer.</p>
+        <p className="text-muted-foreground text-lg font-medium leading-relaxed">
+          From the classroom to the boardroom, MeetMind AI adapts to your specific neural workflow.
+        </p>
       </motion.div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {useCases.map((u, i) => (
-          <motion.div key={u.title} {...fade} transition={{ delay: i * 0.1 }}>
-            <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-              <u.icon className="w-10 h-10 text-emerald mb-6" />
-              <h4 className="text-xl font-display font-bold mb-3">{u.title}</h4>
-              <p className="text-sm text-white/50 leading-relaxed">{u.desc}</p>
+          <motion.div
+            key={u.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1, duration: 0.8 }}
+            className="group relative"
+          >
+            <div className={`absolute -inset-0.5 rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm ${u.glow}`} />
+            
+            <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-[#020617] border border-white/5 overflow-hidden flex flex-col justify-between hover:border-white/10 transition-all duration-500">
+              {/* Background Glow */}
+              <div className={`absolute top-0 right-0 w-40 h-40 ${u.image} blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
+              
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-500">
+                    <u.icon className="w-6 h-6" />
+                  </div>
+                  <div className="px-3 py-1 rounded-full border border-white/5 bg-white/5 text-[9px] font-black uppercase tracking-widest text-white/40">
+                    {u.label}
+                  </div>
+                </div>
+                
+                <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
+                  {u.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-8">
+                  {u.desc}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between pt-6 border-t border-white/5">
+                <div className="flex flex-col">
+                  <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">Impact Metric</span>
+                  <span className="text-xs font-bold text-emerald">{u.metric}</span>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-all duration-300">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
             </div>
           </motion.div>
         ))}
@@ -334,6 +432,7 @@ export const UseCases = () => (
     </div>
   </section>
 );
+
 
 export const Architecture = () => (
   <section id="architecture" className="py-28">

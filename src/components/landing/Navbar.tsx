@@ -59,8 +59,11 @@ export const Navbar = () => {
           {/* Links Dock with Scroll Masking */}
           <div className="relative flex items-center min-w-0">
             <div className="flex items-center bg-white/5 rounded-full px-1 py-1 sm:px-2 sm:py-1.5 border border-white/5 overflow-x-auto no-scrollbar mask-fade-edges">
-              {items.map((item) => (
-                item.href.startsWith("/docs") ? (
+              {items.map((item) => {
+                const isHash = item.href.includes("#");
+                const isExternal = item.href === "/docs";
+                
+                return isExternal ? (
                   <Link
                     key={item.label}
                     to={item.href}
@@ -76,8 +79,8 @@ export const Navbar = () => {
                   >
                     {item.label}
                   </a>
-                )
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
