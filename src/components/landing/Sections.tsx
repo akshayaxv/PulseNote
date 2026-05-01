@@ -192,14 +192,18 @@ export const Workflow = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
         {steps.map((s, i) => (
-          <motion.div
-            key={s.label}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.8, type: "spring" }}
-            className="group relative"
-          >
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                delay: i * 0.1, 
+                duration: 0.6, 
+                ease: [0.22, 1, 0.36, 1] 
+              }}
+              className="group relative"
+            >
             {/* Connecting Thread (Mobile) */}
             {i < steps.length - 1 && (
               <div className="absolute left-1/2 bottom-[-1.5rem] w-px h-6 bg-gradient-to-b from-white/10 to-transparent md:hidden" />

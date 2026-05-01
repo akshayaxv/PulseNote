@@ -6,13 +6,25 @@ const BAR_COUNT = 48;
 export const VoiceWave = () => {
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const audioContext = useRef<AudioContext | null>(null);
   const source = useRef<AudioBufferSourceNode | null>(null);
   const filter = useRef<BiquadFilterNode | null>(null);
   const gainRef = useRef<GainNode | null>(null);
 
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const barCount = isMobile ? 24 : BAR_COUNT;
+  const particleCount = isMobile ? 6 : 14;
+
   const startSound = () => {
+    if (isMobile) return; // Skip audio synthesis on mobile for performance
     try {
       if (!audioContext.current) {
         const AudioContextClass =
@@ -102,7 +114,7 @@ export const VoiceWave = () => {
   }, []);
 
   // pre-compute pseudo-random heights so SSR stays stable
-  const bars = Array.from({ length: BAR_COUNT }, (_, i) => {
+  const bars = Array.from({ length: barCount }, (_, i) => {
     const seed = Math.sin(i * 1.7) * 0.5 + 0.5;
     return {
       base: 30 + seed * 70,
@@ -111,7 +123,7 @@ export const VoiceWave = () => {
     };
   });
 
-  const particles = Array.from({ length: 14 }, (_, i) => i);
+  const particles = Array.from({ length: particleCount }, (_, i) => i);
 
   return (
     <div
@@ -140,12 +152,12 @@ export const VoiceWave = () => {
             key={p}
             className="absolute rounded-full blur-[1px]"
             style={{
-              width: 4 + (p % 3) * 2,
-              height: 4 + (p % 3) * 2,
-              left: `${(p * 7.3) % 100}%`,
+              width: isMobile ? 3 : 4 + (p % 3) * 2,
+              height: isMobile ? 3 : 4 + (p % 3) * 2,
+              left: `${(p * (isMobile ? 15 : 7.3)) % 100}%`,
               bottom: 0,
               background: colors[p % 3],
-              boxShadow: `0 0 12px ${colors[p % 3]}`,
+              boxShadow: isMobile ? "none" : `0 0 12px ${colors[p % 3]}`,
             }}
             animate={{
               y: [0, -180 - (p % 4) * 20],
@@ -153,7 +165,7 @@ export const VoiceWave = () => {
               opacity: [0, 1, 0],
             }}
             transition={{
-              duration: 4 + (p % 3),
+              duration: isMobile ? 6 : 4 + (p % 3),
               repeat: Infinity,
               delay: p * 0.4,
               ease: "easeOut",
@@ -161,6 +173,7 @@ export const VoiceWave = () => {
           />
         );
       })}
+
 
       {/* Wave bars */}
       <div className="absolute inset-0 flex items-center justify-center gap-[3px] md:gap-1.5 px-6">
