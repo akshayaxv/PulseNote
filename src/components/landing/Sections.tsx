@@ -536,31 +536,53 @@ export const FAQ = () => (
 );
 
 export const CTA = () => (
-  <section className="py-20">
+  <section className="py-32">
     <div className="container">
       <motion.div
         {...fade}
-        className="relative overflow-hidden rounded-[2.5rem] bg-navy text-white p-12 md:p-16 text-center"
+        className="relative overflow-hidden rounded-[3rem] sm:rounded-[4rem] bg-[#020617] border border-white/10 text-white p-10 md:p-24 text-center shadow-float"
       >
-        <div className="absolute inset-0 bg-gradient-brand opacity-30" />
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-emerald/30 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-primary/30 blur-3xl" />
-        <div className="relative">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold mb-4">
-            Ready to build the future?
-          </h2>
-          <p className="text-white/70 text-lg mb-8 max-w-xl mx-auto">
-            Explore the project and see how AI can transform productivity.
-          </p>
-          <Button
-            size="lg"
-            className="rounded-full bg-emerald hover:bg-emerald/90 text-white border-0 h-13 px-8 shadow-emerald"
-            asChild
+        {/* Abstract Background Effects */}
+        <div className="absolute inset-0 bg-gradient-brand opacity-[0.03]" />
+        <div className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] animate-pulse-glow" />
+        <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full bg-emerald/10 blur-[120px] animate-pulse-glow" />
+        
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-8"
           >
-            <Link to="/dashboard">
-              Explore Dashboard <ArrowRight className="ml-2 w-4 h-4" />
-            </Link>
-          </Button>
+            <Sparkles className="w-3.5 h-3.5" /> Final Frontier
+          </motion.div>
+          
+          <h2 className="text-4xl md:text-7xl font-display font-bold mb-8 tracking-tighter leading-[0.9]">
+            Ready to build the <span className="text-gradient">future?</span>
+          </h2>
+          
+          <p className="text-white/50 text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
+            Join the inner circle of engineers building next-generation meeting intelligence.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Button
+              size="lg"
+              className="group relative h-16 px-10 rounded-full bg-primary text-black font-black text-xs uppercase tracking-widest overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95 shadow-emerald"
+              asChild
+            >
+              <Link to="/dashboard">
+                <span className="relative z-10 flex items-center gap-3">
+                  Launch Dashboard <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
+              </Link>
+            </Button>
+            
+            <button className="text-white/40 hover:text-white text-[11px] font-black uppercase tracking-[0.2em] transition-colors flex items-center gap-2 group">
+              View Repository <Github className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+            </button>
+          </div>
         </div>
       </motion.div>
     </div>
