@@ -14,8 +14,9 @@ export default {
     container: { center: true, padding: "1.5rem", screens: { "2xl": "1400px" } },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "Inter", "sans-serif"],
+        sans: ["Space Grotesk", "system-ui", "sans-serif"],
+        display: ["Pixelify Sans", "system-ui", "sans-serif"],
+        mono: ["VT323", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",

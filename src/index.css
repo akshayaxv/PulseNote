@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=VT323&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -86,15 +86,18 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "Inter", system-ui, sans-serif;
-    font-feature-settings: "cv11", "ss01";
+    font-family: "Space Grotesk", system-ui, sans-serif;
   }
   h1,
   h2,
   h3,
   h4 {
-    font-family: "Space Grotesk", "Inter", sans-serif;
-    letter-spacing: -0.02em;
+    font-family: "Pixelify Sans", system-ui, sans-serif;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  code, pre, .font-mono {
+    font-family: "VT323", monospace;
   }
 }
 

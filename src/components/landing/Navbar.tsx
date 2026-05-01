@@ -8,7 +8,6 @@ import { Menu, X } from "lucide-react";
 
 const items = [
   { label: "Workflow", href: "/#workflow" },
-  { label: "Demo", href: "/#solutions" },
   { label: "Use Cases", href: "/#use-cases" },
   { label: "Documentation", href: "/docs" },
 ];
