@@ -243,30 +243,7 @@ export const Workflow = () => (
 );
 
 
-export const ProductDemo = () => (
-  <section id="solutions" className="py-28">
-    <div className="container text-center">
-      <motion.div {...fade} className="max-w-2xl mx-auto mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4">
-          SYSTEM PREVIEW
-        </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display mb-4">
-          A dashboard built for <span className="text-gradient">insights</span>
-        </h2>
-      </motion.div>
-      <motion.div {...fade} className="relative max-w-5xl mx-auto px-4 sm:px-0">
-        <div className="absolute -inset-2 sm:-inset-6 bg-gradient-brand opacity-20 blur-3xl rounded-[3rem]" />
-        <Card className="relative p-2 rounded-3xl bg-white/5 border border-white/10 shadow-float backdrop-blur-sm overflow-hidden">
-          <div className="aspect-video bg-navy rounded-2xl flex items-center justify-center">
-            <div className="text-white/20 font-display font-black text-2xl md:text-4xl uppercase tracking-[0.2em]">
-              Instant Intelligence Preview
-            </div>
-          </div>
-        </Card>
-      </motion.div>
-    </div>
-  </section>
-);
+
 
 const techStack = [
   {
@@ -662,10 +639,15 @@ export const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
-            © 2026 MEETMIND AI · DESIGNED FOR EXCELLENCE
+        <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-8">
+          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em] text-center lg:text-left">
+            © 2026 MEETMIND AI
           </p>
+          
+          <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] text-center">
+            Cooked and Served by <span className="text-primary">Vara</span>
+          </p>
+
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
             <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Terms</a>
             <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Privacy</a>
