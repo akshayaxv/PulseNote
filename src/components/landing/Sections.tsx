@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mic, Sparkles, ListChecks, Calendar, Search, BarChart3, Upload, Brain, FileSearch, Send, Download, ArrowRight, Check, Star } from "lucide-react";
+import { Mic, Sparkles, ListChecks, Calendar, Search, BarChart3, Upload, Brain, FileSearch, Download, ArrowRight, Check, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
