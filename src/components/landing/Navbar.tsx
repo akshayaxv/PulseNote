@@ -24,133 +24,86 @@ export const Navbar = () => {
   });
 
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
+  
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-
   return (
-    <header className="fixed top-0 inset-x-0 z-50">
-      {/* Scroll Progress Bar */}
+    <header className="fixed top-0 inset-x-0 z-[100] flex justify-center pointer-events-none">
+      {/* Neural Scroll Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-emerald origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-emerald origin-left z-[110]"
         style={{ scaleX }}
       />
       
-      <div className="flex justify-center px-4 pt-4">
-        <nav
-          className={`w-full max-w-6xl rounded-full transition-all duration-500 ${
-            scrolled
-              ? "glass-dark shadow-glow"
-              : "bg-black/20 backdrop-blur-md border border-white/10"
-          }`}
-        >
-          <div className="flex items-center justify-between px-5 py-2.5">
-            <Logo />
-            <div className="hidden lg:flex items-center gap-1">
-              {items.map((it) => (
+      {/* The Strawberry Floating Pill */}
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
+        className={`mt-4 sm:mt-6 pointer-events-auto flex items-center justify-between gap-2 sm:gap-4 px-2 sm:px-8 py-1.5 sm:py-3 rounded-full border transition-all duration-500 w-[95vw] sm:w-full max-w-7xl ${
+          scrolled 
+            ? "glass-dark shadow-glow-emerald border-emerald/20" 
+            : "bg-[#020617]/80 backdrop-blur-2xl border-white/10"
+        }`}
+      >
+        {/* Branding & Links Group */}
+        <div className="flex items-center gap-1.5 sm:gap-6 min-w-0 overflow-hidden">
+          <Link to="/" className="w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-gradient-brand flex items-center justify-center shadow-emerald hover:scale-110 transition-transform duration-300 shrink-0">
+            <LogoIcon className="w-4 h-4 sm:w-6 sm:h-6 text-black" />
+          </Link>
+
+          <div className="h-4 sm:h-6 w-px bg-white/10 mx-0.5 sm:mx-1 shrink-0 hidden xs:block" />
+
+          {/* Links Dock with Scroll Masking */}
+          <div className="relative flex items-center min-w-0">
+            <div className="flex items-center bg-white/5 rounded-full px-0.5 py-1 sm:px-2 sm:py-1.5 border border-white/5 overflow-x-auto no-scrollbar mask-fade-edges">
+              {items.map((item) => (
                 <a
-                  key={it.label}
-                  href={it.href}
-                  className="px-4 py-2 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-all duration-300"
+                  key={item.label}
+                  href={item.href}
+                  className="px-2.5 sm:px-5 py-2 sm:py-2 text-[8px] sm:text-[11px] font-black uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300 whitespace-nowrap"
                 >
-                  {it.label}
+                  {item.label}
                 </a>
               ))}
             </div>
-            <div className="hidden md:flex items-center gap-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                asChild
-                className="rounded-full text-white/80 hover:text-white hover:bg-white/10"
-              >
-                <Link to="/login">Login</Link>
-              </Button>
-              <Button
-                size="sm"
-                asChild
-                className="rounded-full bg-gradient-brand hover:scale-105 transition-transform shadow-emerald border-0 font-bold text-xs uppercase tracking-tighter"
-              >
-                <Link to="/signup">Get Started</Link>
-              </Button>
-            </div>
-            <button className="lg:hidden p-2 text-white" onClick={() => setOpen(!open)}>
-              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
-        </nav>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      <motion.div
-        initial={false}
-        animate={open ? "open" : "closed"}
-        variants={{
-          open: { 
-            clipPath: "circle(150% at 100% 0%)",
-            transition: { type: "spring", stiffness: 30, restDelta: 2 }
-          },
-          closed: { 
-            clipPath: "circle(0% at 100% 0%)",
-            transition: { delay: 0.1, type: "spring", stiffness: 400, damping: 40 }
-          }
-        }}
-        className={`fixed inset-0 z-[100] bg-[#020617]/98 backdrop-blur-3xl lg:hidden flex flex-col pt-32 px-10 overflow-hidden`}
-      >
-        <div className="absolute top-10 left-10 flex items-center justify-between w-[calc(100%-80px)]">
-          <Logo />
-          <button 
-            onClick={() => setOpen(false)} 
-            className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white bg-white/5 hover:bg-white/10 transition-colors"
-          >
-            <X className="w-6 h-6" />
-          </button>
         </div>
 
-        <nav className="flex flex-col gap-6 sm:gap-8">
-          {items.map((item, i) => (
-            <motion.a
-              key={item.label}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              variants={{
-                open: { opacity: 1, x: 0, transition: { delay: 0.1 * i + 0.3 } },
-                closed: { opacity: 0, x: -20 }
-              }}
-              className="text-4xl sm:text-5xl font-display font-black text-white hover:text-primary transition-colors tracking-tighter"
-            >
-              {item.label}
-            </motion.a>
-          ))}
-        </nav>
+        {/* Action Button Group */}
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+          <div className="h-6 w-px bg-white/10 hidden lg:block" />
+          <Button
+            size="lg"
+            asChild
+            className="rounded-full bg-white text-black hover:bg-emerald hover:text-black transition-all duration-300 px-4 sm:px-10 h-8 sm:h-12 font-bold text-[8px] sm:text-[11px] uppercase tracking-[0.1em] sm:tracking-widest border-0"
+          >
+            <Link to="/signup">
+              <span className="xs:hidden">Start</span>
+              <span className="hidden xs:inline">Start Free Trial</span>
+            </Link>
+          </Button>
+        </div>
+      </motion.nav>
 
-        <motion.div
-          variants={{
-            open: { opacity: 1, y: 0, transition: { delay: 0.8 } },
-            closed: { opacity: 0, y: 20 }
-          }}
-          className="mt-auto mb-16 space-y-6"
-        >
-          <div className="h-px w-full bg-white/10" />
-          <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.4em]">
-            Autonomous Intelligence
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="flex-1 h-16 rounded-2xl bg-white/5 border border-white/10 text-white font-black uppercase tracking-widest text-xs" asChild>
-              <Link to="/login" onClick={() => setOpen(false)}>Login</Link>
-            </Button>
-            <Button size="lg" className="flex-1 h-16 rounded-2xl bg-gradient-brand border-0 text-black font-black uppercase tracking-widest text-xs shadow-glow-emerald" asChild>
-              <Link to="/signup" onClick={() => setOpen(false)}>Get Started</Link>
-            </Button>
-          </div>
-        </motion.div>
-      </motion.div>
+
+
+
     </header>
   );
 };
+
+// Helper component for the minimal logo icon
+const LogoIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M4 19V5L12 13L20 5V19" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="12" cy="12" r="3" className="fill-current opacity-20" />
+  </svg>
+);
+
 
 

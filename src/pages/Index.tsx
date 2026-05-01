@@ -22,13 +22,9 @@ const Index = () => {
       <SmoothScroll>
         <main>
           <Hero />
-          <Features />
-          <Architecture />
           <Workflow />
           <ProductDemo />
-          <TechStack />
           <UseCases />
-          <FAQ />
           <CTA />
         </main>
         <Footer />

@@ -43,10 +43,8 @@ export const Logo = () => (
       <span className="font-display font-black text-2xl tracking-tighter text-white leading-none">
         MeetMind <span className="text-gradient">AI</span>
       </span>
-      <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-white/30 mt-1">
-        Neural Architecture
-      </span>
     </div>
+
   </Link>
 );
 

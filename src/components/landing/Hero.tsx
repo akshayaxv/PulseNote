@@ -35,11 +35,8 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-dark mb-8 text-xs font-black uppercase tracking-[0.2em] border-white/10 text-white">
-              <Sparkles className="w-3.5 h-3.5 text-primary" />
-              <span className="text-white/60">Postgraduate Portfolio Project</span>
-            </div>
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-black font-display leading-[0.95] mb-8 tracking-tighter">
+
               Conversations <br />
               turned into <br />
               <span className="text-gradient">Intelligence.</span>
