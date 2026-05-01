@@ -28,8 +28,9 @@ export const AppSidebar = () => {
           className="w-10 h-10 rounded-2xl bg-gradient-brand flex items-center justify-center shrink-0 shadow-float relative overflow-hidden group"
         >
           <div className="absolute inset-0 bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-          <Brain className="w-5 h-5 text-white relative z-10" />
+          <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain relative z-10" />
         </motion.div>
+
         {!collapsed && (
           <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
             <span className="font-display font-black text-lg text-white tracking-tight">MeetMind <span className="text-gradient">AI</span></span>

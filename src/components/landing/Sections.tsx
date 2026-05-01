@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Logo } from "@/components/Logo";
 
 const fade = {
   initial: { opacity: 0, y: 30 },
@@ -333,12 +334,10 @@ export const CTA = () => (
 export const Footer = () => (
   <footer id="contact" className="border-t border-border/40 py-16 bg-white/40">
     <div className="container text-center">
-      <div className="flex items-center justify-center gap-2 mb-6">
-        <div className="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center shadow-soft">
-          <Brain className="w-6 h-6 text-white" />
-        </div>
-        <span className="font-display font-black text-xl">MeetMind <span className="text-gradient">AI</span></span>
+      <div className="flex justify-center mb-6">
+        <Logo />
       </div>
+
       <p className="text-muted-foreground max-w-sm mx-auto mb-8">Built as a high-fidelity AI demonstration for a postgraduate portfolio. Focused on UX and Intelligence.</p>
       <div className="flex justify-center gap-8 text-xs font-bold text-muted-foreground uppercase tracking-[0.2em]">
         <a href="#features" className="hover:text-primary transition-colors">Features</a>
