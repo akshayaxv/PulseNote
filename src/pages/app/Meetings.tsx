@@ -96,23 +96,23 @@ const Meetings = () => (
       <div className="flex gap-3">
         <Button
           variant="outline"
-          className="rounded-2xl h-12 px-6 border-border/60 hover:bg-white shadow-soft"
+          className="rounded-2xl h-12 px-6 border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all text-white/70"
         >
           <Filter className="w-4 h-4 mr-2" /> Filters
         </Button>
-        <Button className="rounded-2xl h-12 px-6 bg-gradient-brand border-0 shadow-soft hover:scale-105 transition-transform">
+        <Button className="rounded-2xl h-12 px-6 bg-gradient-brand border-0 shadow-emerald hover:scale-105 transition-all">
           <Sparkles className="w-4 h-4 mr-2" /> Upload New
         </Button>
       </div>
     </div>
 
-    <div className="relative">
-      <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
-        <Search className="w-5 h-5 text-muted-foreground/60" />
+    <div className="relative group">
+      <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 pointer-events-none group-focus-within:text-primary transition-colors">
+        <Search className="w-5 h-5 text-muted-foreground/40" />
       </div>
       <Input
         placeholder="Search for decisions, topics, or speaker mentions..."
-        className="pl-14 h-16 rounded-3xl bg-white border-border/60 shadow-soft text-lg focus-visible:ring-primary/20 transition-all placeholder:text-muted-foreground/40"
+        className="pl-14 h-16 rounded-[2rem] bg-white/[0.02] backdrop-blur-xl border-white/10 shadow-glow-sm text-lg focus-visible:ring-primary/20 transition-all placeholder:text-muted-foreground/30"
       />
     </div>
 
@@ -125,7 +125,7 @@ const Meetings = () => (
           transition={{ delay: i * 0.1 }}
         >
           <Link to={`/dashboard/meetings/${m.id}`}>
-            <Card className="group h-full rounded-[2.5rem] bg-gradient-card border-border/60 p-6 hover-lift relative overflow-hidden transition-all duration-500 flex flex-col justify-between">
+            <Card className="group h-full rounded-[2.5rem] bg-[#020617]/40 backdrop-blur-md border-white/5 p-6 hover-lift relative overflow-hidden transition-all duration-500 flex flex-col justify-between">
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${m.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
               />
@@ -136,13 +136,13 @@ const Meetings = () => (
                     {m.tags.map((t) => (
                       <span
                         key={t}
-                        className="text-[10px] font-black uppercase tracking-[0.1em] px-3 py-1 rounded-full bg-white/60 border border-border/40 text-foreground/70"
+                        className="text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
-                  <div className="w-10 h-10 rounded-xl bg-white/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
                     <ArrowUpRight className="w-4 h-4 text-primary" />
                   </div>
                 </div>
@@ -165,18 +165,18 @@ const Meetings = () => (
                 </div>
               </div>
 
-              <div className="relative z-10 pt-4 border-t border-border/40 flex items-center justify-between">
+              <div className="relative z-10 pt-4 border-t border-white/5 flex items-center justify-between">
                 <div className="flex -space-x-2">
                   {Array.from({ length: Math.min(m.participants, 4) }).map((_, i) => (
                     <div
                       key={i}
-                      className="w-8 h-8 rounded-full border-2 border-white bg-gradient-brand flex items-center justify-center text-[10px] font-bold text-white shadow-soft"
+                      className="w-8 h-8 rounded-full border-2 border-white/20 bg-gradient-brand flex items-center justify-center text-[10px] font-bold text-white shadow-glow-sm"
                     >
                       {["S", "M", "A", "J"][i]}
                     </div>
                   ))}
                   {m.participants > 4 && (
-                    <div className="w-8 h-8 rounded-full border-2 border-white bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
+                    <div className="w-8 h-8 rounded-full border-2 border-white/10 bg-white/5 backdrop-blur-md flex items-center justify-center text-[10px] font-bold text-white/50">
                       +{m.participants - 4}
                     </div>
                   )}
