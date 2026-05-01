@@ -92,7 +92,14 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  html { 
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
@@ -103,6 +110,7 @@
     letter-spacing: -0.02em;
   }
 }
+
 
 @layer utilities {
   .text-gradient {
