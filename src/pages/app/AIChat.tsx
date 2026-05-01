@@ -109,29 +109,35 @@ const AIChat = () => {
           {messages.map((m, i) => (
             <motion.div 
               key={i} 
-              initial={{ opacity: 0, x: m.role === "ai" ? -20 : 20 }} 
-              animate={{ opacity: 1, x: 0 }} 
+              initial={{ opacity: 0, y: 20, scale: 0.95 }} 
+              animate={{ opacity: 1, y: 0, scale: 1 }} 
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className={`flex gap-4 ${m.role === "user" ? "flex-row-reverse" : ""}`}
             >
-              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-soft ${m.role === "ai" ? "bg-gradient-brand text-white" : "bg-navy text-white"}`}>
-                {m.role === "ai" ? (
-                  <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 4 }}>
-                    <Brain className="w-5 h-5" />
-                  </motion.div>
-                ) : (
-                  <span className="font-bold text-xs">S</span>
+              <div className={`relative group shrink-0`}>
+                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shadow-soft relative z-10 transition-transform group-hover:scale-110 ${m.role === "ai" ? "bg-gradient-brand text-white" : "bg-navy text-white"}`}>
+                  {m.role === "ai" ? (
+                    <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 4 }}>
+                      <Brain className="w-5 h-5" />
+                    </motion.div>
+                  ) : (
+                    <span className="font-bold text-xs">S</span>
+                  )}
+                </div>
+                {m.role === "ai" && (
+                  <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full animate-pulse" />
                 )}
               </div>
               <div className={`max-w-[75%] space-y-2`}>
-                <div className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-soft ${m.role === "ai" ? "bg-white border border-border/40" : "bg-navy text-white"}`}>
+                <div className={`rounded-2xl px-5 py-3.5 text-sm leading-relaxed shadow-float backdrop-blur-md ${m.role === "ai" ? "bg-white/80 border border-white/60" : "bg-navy text-white"}`}>
                   <div dangerouslySetInnerHTML={{ __html: m.content.replace(/\*\*(.+?)\*\*/g, "<b class='text-primary font-bold'>$1</b>") }} />
                 </div>
                 {m.source && (
                   <motion.div 
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-[10px] text-primary font-bold w-fit"
+                    initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald/5 border border-emerald/10 text-[10px] text-emerald font-black w-fit uppercase tracking-wider"
                   >
-                    <FileText className="w-3 h-3" /> {m.source.toUpperCase()}
+                    <Database className="w-3 h-3" /> Source: {m.source}
                   </motion.div>
                 )}
               </div>
@@ -139,14 +145,40 @@ const AIChat = () => {
           ))}
           <AnimatePresence>
             {typing && (
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} className="flex gap-4">
-                <div className="w-10 h-10 rounded-2xl bg-gradient-brand text-white flex items-center justify-center shadow-soft"><Brain className="w-5 h-5" /></div>
-                <div className="bg-white border border-border/40 rounded-2xl px-5 py-4 flex gap-1.5 shadow-soft">
-                  {[0,1,2].map(i => <motion.span key={i} className="w-2 h-2 rounded-full bg-primary" animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1, delay: i * 0.2 }} />)}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                exit={{ opacity: 0, transition: { duration: 0.2 } }} 
+                className="flex gap-4"
+              >
+                <div className="relative shrink-0">
+                  <div className="w-10 h-10 rounded-2xl bg-gradient-brand text-white flex items-center justify-center shadow-soft relative z-10">
+                    <Cpu className="w-5 h-5 animate-spin-slow" />
+                  </div>
+                  <div className="absolute inset-0 bg-primary/40 blur-xl rounded-full animate-pulse" />
+                </div>
+                <div className="bg-white/80 backdrop-blur-md border border-white/60 rounded-2xl px-5 py-4 flex flex-col gap-3 shadow-float min-w-[200px]">
+                  <div className="flex items-center gap-2 text-[10px] font-black text-primary uppercase tracking-widest">
+                    <Sparkles className="w-3.5 h-3.5 animate-pulse" /> Retrieving context...
+                  </div>
+                  <div className="flex gap-1.5">
+                    {[0,1,2].map(i => (
+                      <motion.span 
+                        key={i} 
+                        className="w-2 h-2 rounded-full bg-primary/40" 
+                        animate={{ 
+                          scale: [1, 1.5, 1], 
+                          backgroundColor: ["#60A5FA", "#38BDF8", "#60A5FA"] 
+                        }} 
+                        transition={{ repeat: Infinity, duration: 0.8, delay: i * 0.15 }} 
+                      />
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
+
         </div>
 
         <div className="p-6 bg-white/60 backdrop-blur-md border-t border-border/40">

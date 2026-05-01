@@ -88,20 +88,24 @@ const Meetings = () => (
               <div className="relative z-10 pt-4 border-t border-border/40 flex items-center justify-between">
                 <div className="flex -space-x-2">
                   {Array.from({ length: Math.min(m.participants, 4) }).map((_, i) => (
-                    <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-gradient-brand flex items-center justify-center text-[10px] font-bold text-white">
+                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gradient-brand flex items-center justify-center text-[10px] font-bold text-white shadow-soft">
                       {["S", "M", "A", "J"][i]}
                     </div>
                   ))}
                   {m.participants > 4 && (
-                    <div className="w-7 h-7 rounded-full border-2 border-white bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
+                    <div className="w-8 h-8 rounded-full border-2 border-white bg-muted flex items-center justify-center text-[10px] font-bold text-muted-foreground">
                       +{m.participants - 4}
                     </div>
                   )}
                 </div>
-                <span className="text-[10px] font-black text-emerald uppercase tracking-[0.15em] flex items-center gap-1.5 bg-emerald/5 px-2.5 py-1 rounded-lg">
-                  <MessageCircle className="w-3 h-3" /> {m.sentiment}
-                </span>
+                <div className="relative">
+                  <div className="absolute inset-0 bg-emerald/20 blur-md rounded-lg animate-pulse" />
+                  <span className="relative z-10 text-[10px] font-black text-emerald uppercase tracking-[0.15em] flex items-center gap-1.5 bg-emerald/10 px-2.5 py-1 rounded-lg border border-emerald/20">
+                    <Sparkles className="w-3 h-3 animate-pulse" /> {m.sentiment}
+                  </span>
+                </div>
               </div>
+
             </Card>
           </Link>
         </motion.div>

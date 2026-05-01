@@ -87,7 +87,9 @@ export default {
         "float-slow": "float-slow 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         "shimmer": "shimmer 2.5s linear infinite",
+        "spin-slow": "spin 4s linear infinite",
       },
+
     },
   },
   plugins: [animate],
