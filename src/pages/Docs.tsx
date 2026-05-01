@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { Features, Architecture, TechStack, FAQ, Footer } from "@/components/landing/Sections";
 import { Navbar } from "@/components/landing/Navbar";
+import { ScrollToTop } from "@/components/landing/ScrollToTop";
 import { Sparkles, BookOpen, Cpu, ShieldCheck } from "lucide-react";
 
 const Docs = () => {
   return (
     <div className="min-h-screen bg-[#020617] text-white selection:bg-primary/30">
       <Navbar />
+      <ScrollToTop />
       
       {/* Docs Header */}
       <section className="relative pt-40 pb-20 overflow-hidden">

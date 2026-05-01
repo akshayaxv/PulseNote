@@ -8,11 +8,13 @@ import {
   Footer,
 } from "@/components/landing/Sections";
 import { SmoothScroll } from "@/components/landing/SmoothScroll";
+import { ScrollToTop } from "@/components/landing/ScrollToTop";
 
 const Index = () => {
   return (
     <div className="bg-background overflow-x-hidden">
       <Navbar />
+      <ScrollToTop />
       <SmoothScroll>
         <main>
           <Hero />
