@@ -20,6 +20,9 @@ import {
   Github,
   Linkedin,
 } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -92,9 +95,9 @@ const features = [
 ];
 
 export const Features = () => (
-    <section id="features" className="py-28 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-64 h-64 md:w-[500px] md:h-[500px] bg-primary/5 blur-[60px] md:blur-[120px] -z-10 rounded-full" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 md:w-[500px] md:h-[500px] bg-emerald/5 blur-[60px] md:blur-[120px] -z-10 rounded-full" />
+  <section id="features" className="py-28 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-64 h-64 md:w-[500px] md:h-[500px] bg-primary/5 blur-[60px] md:blur-[80px] -z-10 rounded-full will-change-[filter]" />
+    <div className="absolute bottom-0 left-0 w-64 h-64 md:w-[500px] md:h-[500px] bg-emerald/5 blur-[60px] md:blur-[80px] -z-10 rounded-full will-change-[filter]" />
 
     <div className="container">
       <motion.div {...fade} className="text-center max-w-3xl mx-auto mb-20">
@@ -115,7 +118,7 @@ export const Features = () => (
             key={f.title}
             {...fade}
             transition={{ duration: 0.6, delay: i * 0.1 }}
-            className={f.span}
+            className={`${f.span} will-change-transform`}
           >
             <Card className="h-full p-8 rounded-[2.5rem] border-border/60 bg-gradient-card group relative overflow-hidden flex flex-col justify-between">
               <div
@@ -142,33 +145,33 @@ export const Features = () => (
 );
 
 const steps = [
-  { 
-    icon: Upload, 
-    label: "Import", 
-    color: "from-sky to-blue-600", 
+  {
+    icon: Upload,
+    label: "Import",
+    color: "from-sky to-blue-600",
     desc: "Seamless upload with automatic audio optimization.",
-    details: ["Multi-Format", "Secure Processing", "Quick Loading"]
+    details: ["Multi-Format", "Secure Processing", "Quick Loading"],
   },
-  { 
-    icon: Mic, 
-    label: "Transcribe", 
-    color: "from-cyan to-emerald", 
+  {
+    icon: Mic,
+    label: "Transcribe",
+    color: "from-cyan to-emerald",
     desc: "Precise speech detection with high-fidelity output.",
-    details: ["Speaker ID", "50+ Languages", "Timestamp Sync"]
+    details: ["Speaker ID", "50+ Languages", "Timestamp Sync"],
   },
-  { 
-    icon: Brain, 
-    label: "Analyze", 
-    color: "from-primary to-purple-600", 
+  {
+    icon: Brain,
+    label: "Analyze",
+    color: "from-primary to-purple-600",
     desc: "Extracting deep insights using context-aware AI reasoning.",
-    details: ["Smart Search", "Insight Mapping", "Actionable Data"]
+    details: ["Smart Search", "Insight Mapping", "Actionable Data"],
   },
-  { 
-    icon: ListChecks, 
-    label: "Automate", 
-    color: "from-emerald to-teal-600", 
+  {
+    icon: ListChecks,
+    label: "Automate",
+    color: "from-emerald to-teal-600",
     desc: "Instant task detection and automated smart actions.",
-    details: ["Action Items", "Smart Assignment", "Easy Export"]
+    details: ["Action Items", "Smart Assignment", "Easy Export"],
   },
 ];
 
@@ -176,7 +179,7 @@ export const Workflow = () => (
   <section id="workflow" className="py-32 relative overflow-hidden">
     {/* Background Neural Trace */}
     <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-y-1/2 hidden md:block" />
-    
+
     <div className="container relative z-10">
       <motion.div {...fade} className="text-center max-w-2xl mx-auto mb-24">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-6">
@@ -192,18 +195,18 @@ export const Workflow = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
         {steps.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                delay: i * 0.1, 
-                duration: 0.6, 
-                ease: [0.22, 1, 0.36, 1] 
-              }}
-              className="group relative"
-            >
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{
+              delay: i * 0.1,
+              duration: 0.6,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="group relative will-change-transform"
+          >
             {/* Connecting Thread (Mobile) */}
             {i < steps.length - 1 && (
               <div className="absolute left-1/2 bottom-[-1.5rem] w-px h-6 bg-gradient-to-b from-white/10 to-transparent md:hidden" />
@@ -212,9 +215,11 @@ export const Workflow = () => (
             <div className="relative h-full glass-dark p-8 rounded-[2.5rem] border-white/5 group-hover:border-white/10 transition-all duration-500 flex flex-col items-center text-center">
               {/* Animated Progress Ring */}
               <div className="absolute -inset-0.5 rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-              
+
               {/* Step Icon */}
-              <div className={`relative w-20 h-20 rounded-[1.8rem] bg-gradient-to-br ${s.color} flex items-center justify-center shadow-glow-emerald mb-8 group-hover:scale-110 transition-transform duration-500`}>
+              <div
+                className={`relative w-20 h-20 rounded-[1.8rem] bg-gradient-to-br ${s.color} flex items-center justify-center shadow-glow-emerald mb-8 group-hover:scale-110 transition-transform duration-500`}
+              >
                 <s.icon className="w-9 h-9 text-white" />
                 <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#020617] border-2 border-white/10 flex items-center justify-center text-[10px] font-black text-white shadow-soft">
                   0{i + 1}
@@ -228,8 +233,11 @@ export const Workflow = () => (
 
               {/* Sub-Intelligence Labels */}
               <div className="flex flex-wrap justify-center gap-1.5 mt-auto">
-                {s.details.map(detail => (
-                  <span key={detail} className="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[8px] font-bold text-white/40 uppercase tracking-widest whitespace-nowrap">
+                {s.details.map((detail) => (
+                  <span
+                    key={detail}
+                    className="px-2 py-0.5 rounded-md bg-white/5 border border-white/5 text-[8px] font-bold text-white/40 uppercase tracking-widest whitespace-nowrap"
+                  >
                     {detail}
                   </span>
                 ))}
@@ -241,9 +249,6 @@ export const Workflow = () => (
     </div>
   </section>
 );
-
-
-
 
 const techStack = [
   {
@@ -321,7 +326,7 @@ const useCases = [
     icon: Users,
     glow: "shadow-emerald/20",
     metric: "90% Faster Summaries",
-    image: "bg-gradient-to-br from-emerald/10 via-transparent to-transparent"
+    image: "bg-gradient-to-br from-emerald/10 via-transparent to-transparent",
   },
   {
     title: "Academic Excellence",
@@ -330,7 +335,7 @@ const useCases = [
     icon: FileText,
     glow: "shadow-primary/20",
     metric: "Instant Fact-Finding",
-    image: "bg-gradient-to-br from-primary/10 via-transparent to-transparent"
+    image: "bg-gradient-to-br from-primary/10 via-transparent to-transparent",
   },
   {
     title: "Executive Strategy",
@@ -339,31 +344,89 @@ const useCases = [
     icon: ShieldCheck,
     glow: "shadow-cyan/20",
     metric: "Total Privacy & Security",
-    image: "bg-gradient-to-br from-cyan/10 via-transparent to-transparent"
+    image: "bg-gradient-to-br from-cyan/10 via-transparent to-transparent",
   },
 ];
 
+const TextPathAnimation = () => {
+  const textPathRef = useRef<SVGTextPathElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    if (!textPathRef.current) return;
+
+    // Slow, continuous loop (increased duration to 60s for smoother feel)
+    const tl = gsap.to(textPathRef.current, {
+      attr: { startOffset: "0%" },
+      duration: 60,
+      repeat: -1,
+      ease: "none",
+    });
+
+    // Scroll acceleration effect
+    const trigger = ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top bottom",
+      end: "bottom top",
+      onUpdate: (self) => {
+        const velocity = Math.abs(self.getVelocity() / 400);
+        gsap.to(tl, { timeScale: 1 + velocity, duration: 0.6, ease: "power1.out" });
+      },
+    });
+
+    return () => {
+      tl.kill();
+      trigger.kill();
+    };
+  }, []);
+
+  const textPart =
+    "PRODUCT TEAMS ♧ GLOBAL SYNCS ♧ EDUCATION ♧ LEADERSHIP ♧ AI INSIGHTS ♧ SMART DECISIONS ";
+  // Repeated many times to ensure no gaps during the -100% to 0% offset transition
+  const fullText = Array(10).fill(textPart).join("");
+
+  return (
+    <div
+      ref={containerRef}
+      className="w-full overflow-hidden py-14 opacity-50 select-none pointer-events-none"
+    >
+      <svg viewBox="0 0 1000 180" className="w-[150%] md:w-full h-auto scale-110">
+        <defs>
+          <path
+            id="wavePath"
+            d="M-500,90 C-300,160 -150,20 0,90 C150,160 300,20 500,90 C700,160 850,20 1000,90 C1150,160 1300,20 1500,90"
+          />
+        </defs>
+        <text className="fill-primary font-display font-black text-4xl md:text-5xl uppercase tracking-[0.15em]">
+          <textPath ref={textPathRef} href="#wavePath" startOffset="-100%" spacing="auto">
+            {fullText}
+          </textPath>
+        </text>
+      </svg>
+    </div>
+  );
+};
+
 export const UseCases = () => (
-  <section
-    id="use-cases"
-    className="py-32 relative overflow-hidden"
-  >
+  <section id="use-cases" className="py-32 relative overflow-hidden">
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(16,185,129,0.05)_0%,transparent_50%)]" />
-    
+
     <div className="container relative z-10">
-      <motion.div {...fade} className="text-center max-w-3xl mx-auto mb-20">
+      <motion.div {...fade} className="text-center max-w-3xl mx-auto mb-10">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald/10 text-emerald text-[10px] font-black uppercase tracking-[0.3em] mb-6">
           Real-World Impact
         </div>
         <h2 className="text-4xl md:text-6xl font-bold font-display mb-6 tracking-tighter">
-          Intelligence for <br className="hidden md:block" /> <span className="text-gradient">every high-stakes environment.</span>
+          Built for teams that turn <br className="hidden md:block" />{" "}
+          <span className="text-gradient">conversations into action.</span>
         </h2>
-        <p className="text-muted-foreground text-lg font-medium leading-relaxed">
-          From the classroom to the boardroom, MeetMind AI adapts to your professional workflow.
-        </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {/* Animated Path Divider */}
+      <TextPathAnimation />
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
         {useCases.map((u, i) => (
           <motion.div
             key={u.title}
@@ -371,14 +434,18 @@ export const UseCases = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.8 }}
-            className="group relative"
+            className="group relative will-change-transform"
           >
-            <div className={`absolute -inset-0.5 rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm ${u.glow}`} />
-            
-            <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-[#020617]/80 backdrop-blur-xl border border-white/5 overflow-hidden flex flex-col justify-between hover:border-primary/20 transition-all duration-500 group-hover:-translate-y-2">
+            <div
+              className={`absolute -inset-0.5 rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm ${u.glow}`}
+            />
+
+            <div className="relative h-full p-8 md:p-10 rounded-[2.5rem] bg-[#020617]/80 backdrop-blur-lg border border-white/5 overflow-hidden flex flex-col justify-between hover:border-primary/20 transition-all duration-500 group-hover:-translate-y-2">
               {/* Background Glow */}
-              <div className={`absolute top-0 right-0 w-40 h-40 ${u.image} blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-500`} />
-              
+              <div
+                className={`absolute top-0 right-0 w-40 h-40 ${u.image} blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-500`}
+              />
+
               <div>
                 <div className="flex items-center justify-between mb-8">
                   <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
@@ -388,19 +455,21 @@ export const UseCases = () => (
                     {u.label}
                   </div>
                 </div>
-                
+
                 <h3 className="text-2xl md:text-3xl font-display font-bold mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
                   {u.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-8">
-                  {u.desc}
-                </p>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-8">{u.desc}</p>
               </div>
 
               <div className="flex items-center justify-between pt-6 border-t border-white/5">
                 <div className="flex flex-col">
-                  <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">Impact Metric</span>
-                  <span className="text-xs font-bold text-emerald group-hover:text-primary transition-colors">{u.metric}</span>
+                  <span className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em] mb-1">
+                    Impact Metric
+                  </span>
+                  <span className="text-xs font-bold text-emerald group-hover:text-primary transition-colors">
+                    {u.metric}
+                  </span>
                 </div>
                 <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:text-black transition-all duration-300">
                   <ArrowRight className="w-4 h-4" />
@@ -413,7 +482,6 @@ export const UseCases = () => (
     </div>
   </section>
 );
-
 
 export const Architecture = () => (
   <section id="architecture" className="py-28">
@@ -432,9 +500,18 @@ export const Architecture = () => (
           </p>
           <div className="space-y-4">
             {[
-              { t: "Voice Intelligence", d: "Automatically detects and labels individual speakers." },
-              { t: "Smart Organization", d: "Content is organized logically for easy information retrieval." },
-              { t: "Action Extraction", d: "AI identifies key tasks, decisions, and future milestones." },
+              {
+                t: "Voice Intelligence",
+                d: "Automatically detects and labels individual speakers.",
+              },
+              {
+                t: "Smart Organization",
+                d: "Content is organized logically for easy information retrieval.",
+              },
+              {
+                t: "Action Extraction",
+                d: "AI identifies key tasks, decisions, and future milestones.",
+              },
             ].map((f) => (
               <div key={f.t} className="flex gap-4">
                 <div className="w-6 h-6 rounded-full bg-emerald/10 flex items-center justify-center shrink-0 mt-1">
@@ -521,11 +598,11 @@ export const CTA = () => (
       >
         {/* Abstract Background Effects */}
         <div className="absolute inset-0 bg-gradient-brand opacity-[0.03]" />
-        <div className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px] animate-pulse-glow" />
-        <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full bg-emerald/10 blur-[120px] animate-pulse-glow" />
-        
+        <div className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[80px] animate-pulse-glow will-change-[filter,transform]" />
+        <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full bg-emerald/10 blur-[80px] animate-pulse-glow will-change-[filter,transform]" />
+
         <div className="relative z-10 max-w-3xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -533,15 +610,15 @@ export const CTA = () => (
           >
             <Sparkles className="w-3.5 h-3.5" /> Final Frontier
           </motion.div>
-          
+
           <h2 className="text-4xl md:text-7xl font-display font-bold mb-8 tracking-tighter leading-[0.9]">
             Ready to build the <span className="text-gradient">future?</span>
           </h2>
-          
+
           <p className="text-white/50 text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
             Join the inner circle of engineers building next-generation meeting intelligence.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button
               size="lg"
@@ -550,14 +627,16 @@ export const CTA = () => (
             >
               <Link to="/dashboard">
                 <span className="relative z-10 flex items-center gap-3">
-                  Launch Dashboard <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  Launch Dashboard{" "}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
               </Link>
             </Button>
-            
+
             <button className="text-white/40 hover:text-white text-[11px] font-black uppercase tracking-[0.2em] transition-colors flex items-center gap-2 group">
-              View Repository <Github className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              View Repository{" "}
+              <Github className="w-4 h-4 group-hover:rotate-12 transition-transform" />
             </button>
           </div>
         </div>
@@ -588,14 +667,18 @@ export const Footer = () => {
   };
 
   return (
-    <footer id="contact" className="relative border-t border-white/5 pt-24 pb-12 bg-[#020617]/80 backdrop-blur-xl">
+    <footer
+      id="contact"
+      className="relative border-t border-white/5 pt-24 pb-12 bg-[#020617]/80 backdrop-blur-lg"
+    >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mb-20">
           {/* Brand Column */}
           <div className="space-y-6 flex flex-col items-center sm:items-start text-center sm:text-left">
             <Logo />
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              Next-generation meeting intelligence. Transcribe, analyze, and automate your workflow with MeetMind AI.
+              Next-generation meeting intelligence. Transcribe, analyze, and automate your workflow
+              with MeetMind AI.
             </p>
             <div className="flex gap-4">
               {footerLinks.social.map((item) => (
@@ -616,7 +699,10 @@ export const Footer = () => {
             <ul className="space-y-4">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-white/40 hover:text-white text-sm transition-colors duration-300">
+                  <a
+                    href={link.href}
+                    className="text-white/40 hover:text-white text-sm transition-colors duration-300"
+                  >
                     {link.name}
                   </a>
                 </li>
@@ -629,7 +715,10 @@ export const Footer = () => {
             <ul className="space-y-4">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-white/40 hover:text-white text-sm transition-colors duration-300">
+                  <a
+                    href={link.href}
+                    className="text-white/40 hover:text-white text-sm transition-colors duration-300"
+                  >
                     {link.name}
                   </a>
                 </li>
@@ -643,15 +732,30 @@ export const Footer = () => {
           <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em] text-center lg:text-left">
             © 2026 MEETMIND AI
           </p>
-          
+
           <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.4em] text-center">
             Cooked and Served by <span className="text-primary">Vara</span>
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-            <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Terms</a>
-            <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Privacy</a>
-            <a href="#" className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors">Security</a>
+            <a
+              href="#"
+              className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors"
+            >
+              Terms
+            </a>
+            <a
+              href="#"
+              className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors"
+            >
+              Privacy
+            </a>
+            <a
+              href="#"
+              className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors"
+            >
+              Security
+            </a>
           </div>
         </div>
       </div>

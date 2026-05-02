@@ -43,16 +43,10 @@ export const AppLayout = () => {
         )}
       </AnimatePresence>
 
-      <AppSidebar 
-        isOpen={isMobileMenuOpen} 
-        onClose={() => setIsMobileMenuOpen(false)} 
-      />
-      
+      <AppSidebar isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+
       <div className="flex-1 flex flex-col min-w-0 h-screen">
-        <Topbar 
-          title={title} 
-          onMenuClick={() => setIsMobileMenuOpen(true)} 
-        />
+        <Topbar title={title} onMenuClick={() => setIsMobileMenuOpen(true)} />
         <main className="flex-1 p-4 md:p-6 lg:p-8 overflow-y-auto scrollbar-hide relative bg-[#020617]">
           <div className="max-w-[1600px] mx-auto">
             <AnimatePresence mode="wait">

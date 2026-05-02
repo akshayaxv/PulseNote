@@ -88,7 +88,9 @@ const Meetings = () => (
   <div className="space-y-6 md:space-y-10 pb-20">
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div className="max-w-xl">
-        <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white/90 uppercase">Intelligence Library</h2>
+        <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white/90 uppercase">
+          Intelligence Library
+        </h2>
         <p className="text-xs md:text-sm text-white/40 mt-1 font-medium leading-relaxed">
           Access collective team knowledge across all recorded sessions.
         </p>

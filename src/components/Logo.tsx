@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Logo = () => (
   <Link to="/" className="flex items-center gap-3 group">
-    <motion.div 
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="relative"
-    >
+    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
       <div className="absolute inset-0 bg-primary/20 blur-xl group-hover:bg-primary/40 transition-colors rounded-full" />
       <div className="relative w-11 h-11 rounded-2xl bg-[#020617] border border-white/10 flex items-center justify-center p-2.5 overflow-hidden shadow-2xl">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald/10 to-transparent" />
@@ -44,7 +40,5 @@ export const Logo = () => (
         MeetMind <span className="text-gradient">AI</span>
       </span>
     </div>
-
   </Link>
 );
-

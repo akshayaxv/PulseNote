@@ -9,7 +9,7 @@ interface TopbarProps {
 
 export const Topbar = ({ title, onMenuClick }: TopbarProps) => (
   <header className="h-16 md:h-20 border-b border-white/5 bg-[#020617]/60 backdrop-blur-xl px-4 md:px-8 flex items-center gap-4 sticky top-0 z-50">
-    <button 
+    <button
       onClick={onMenuClick}
       className="lg:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-white transition-all active:scale-95"
     >
@@ -27,7 +27,9 @@ export const Topbar = ({ title, onMenuClick }: TopbarProps) => (
         </span>
         <ChevronRight className="w-3 h-3 opacity-20" />
       </div>
-      <h1 className="font-display font-black text-xs md:text-sm text-white/90 uppercase tracking-tight truncate">{title}</h1>
+      <h1 className="font-display font-black text-xs md:text-sm text-white/90 uppercase tracking-tight truncate">
+        {title}
+      </h1>
     </div>
 
     <div className="ml-auto flex items-center gap-3 md:gap-5">
@@ -48,8 +50,10 @@ export const Topbar = ({ title, onMenuClick }: TopbarProps) => (
         size="sm"
         className="rounded-xl bg-gradient-brand border-0 h-10 md:h-12 px-4 md:px-6 shadow-emerald hover:scale-105 transition-all group active:scale-95"
       >
-        <Sparkles className="w-4 h-4 md:mr-2.5 group-hover:rotate-12 transition-transform" /> 
-        <span className="hidden sm:inline text-[10px] font-black uppercase tracking-widest">New Meeting</span>
+        <Sparkles className="w-4 h-4 md:mr-2.5 group-hover:rotate-12 transition-transform" />
+        <span className="hidden sm:inline text-[10px] font-black uppercase tracking-widest">
+          New Meeting
+        </span>
       </Button>
 
       <div className="flex items-center gap-2">

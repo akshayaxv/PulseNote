@@ -51,7 +51,9 @@ const Tasks = () => {
     <div className="space-y-8 md:space-y-12 pb-20">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white/90 uppercase">Task Board</h2>
+          <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white/90 uppercase">
+            Task Board
+          </h2>
           <p className="text-[10px] md:text-xs text-white/30 font-black uppercase tracking-[0.2em] mt-1">
             Drag to prioritize · Click to view original meeting
           </p>
@@ -69,7 +71,9 @@ const Tasks = () => {
                 <div
                   className={`w-2 h-2 rounded-full ${col === "To Do" ? "bg-cyan shadow-[0_0_8px_rgba(6,182,212,0.4)]" : col === "In Progress" ? "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.4)]" : "bg-emerald shadow-[0_0_8px_rgba(16,185,129,0.4)]"}`}
                 />
-                <h3 className="font-display font-bold text-sm uppercase tracking-widest text-white/80">{col}</h3>
+                <h3 className="font-display font-bold text-sm uppercase tracking-widest text-white/80">
+                  {col}
+                </h3>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/30 font-black">
                   {items.length}
                 </span>
@@ -89,20 +93,24 @@ const Tasks = () => {
                   <motion.div whileHover={{ y: -2 }} className="px-0.5">
                     <Card className="p-4 rounded-2xl border-white/5 bg-[#020617]/40 backdrop-blur-md cursor-grab active:cursor-grabbing shadow-glow-sm hover:border-white/10 transition-all group">
                       <div className="flex justify-between items-start gap-3 mb-4">
-                        <div className="font-bold text-sm text-white/80 leading-snug group-hover:text-primary transition-colors">{t.title}</div>
+                        <div className="font-bold text-sm text-white/80 leading-snug group-hover:text-primary transition-colors">
+                          {t.title}
+                        </div>
                         <Flag
                           className={`w-3.5 h-3.5 shrink-0 ${t.priority === "High" ? "text-rose-500" : t.priority === "Medium" ? "text-amber-500" : "text-cyan"}`}
                         />
                       </div>
-                      
+
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6 rounded-lg bg-gradient-brand text-white text-[10px] font-black flex items-center justify-center shadow-soft">
                             {t.owner[0]}
                           </div>
-                          <span className="text-[10px] font-bold text-white/40 uppercase tracking-tight">{t.owner}</span>
+                          <span className="text-[10px] font-bold text-white/40 uppercase tracking-tight">
+                            {t.owner}
+                          </span>
                         </div>
-                        
+
                         <div className="flex items-center gap-3">
                           <span
                             className={`text-[9px] px-2 py-0.5 rounded-lg font-black uppercase tracking-tighter border ${t.priority === "High" ? "bg-rose-500/10 border-rose-500/20 text-rose-500" : t.priority === "Medium" ? "bg-amber-500/10 border-amber-500/20 text-amber-500" : "bg-cyan/10 border-cyan/20 text-cyan"}`}

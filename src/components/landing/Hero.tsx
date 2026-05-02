@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
@@ -14,6 +14,14 @@ import {
 import { VoiceWave } from "./VoiceWave";
 
 export const Hero = () => {
+  const { scrollY } = useScroll();
+
+  // Parallax offsets for floating cards
+  const p1 = useTransform(scrollY, [0, 1000], [0, -150]);
+  const p2 = useTransform(scrollY, [0, 1000], [0, -250]);
+  const p3 = useTransform(scrollY, [0, 1000], [0, -80]);
+  const p4 = useTransform(scrollY, [0, 1000], [0, -320]);
+
   return (
     <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
       {/* Background */}
@@ -21,9 +29,9 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,hsl(160_84%_45%/0.15),transparent_60%)] pointer-events-none" />
 
       {/* Floating clouds - Optimized for Mobile */}
-      <div className="absolute top-32 left-10 w-40 h-40 md:w-72 md:h-72 rounded-full bg-primary/10 blur-2xl md:blur-3xl animate-float-slow" />
+      <div className="absolute top-32 left-10 w-40 h-40 md:w-72 md:h-72 rounded-full bg-primary/10 blur-2xl md:blur-3xl animate-float-slow will-change-[filter,transform]" />
       <div
-        className="absolute top-80 right-10 w-48 h-48 md:w-96 md:h-96 rounded-full bg-emerald/10 blur-2xl md:blur-3xl animate-float-slow"
+        className="absolute top-80 right-10 w-48 h-48 md:w-96 md:h-96 rounded-full bg-emerald/10 blur-2xl md:blur-3xl animate-float-slow will-change-[filter,transform]"
         style={{ animationDelay: "2s" }}
       />
 
@@ -34,9 +42,9 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="will-change-transform"
           >
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-black font-display leading-[0.95] mb-8 tracking-tighter">
-
               Conversations <br />
               turned into <br />
               <span className="text-gradient">Intelligence.</span>
@@ -77,15 +85,16 @@ export const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="relative"
+            className="relative will-change-transform"
           >
-            {/* Floating cards */}
+            {/* Floating cards with Parallax */}
             <FloatingCard
               icon={<FileText className="w-4 h-4" />}
               title="Meeting Summary"
               sub="3 key decisions"
               className="absolute -top-4 -left-4 z-20"
               delay={0.6}
+              parallaxY={p1}
             />
             <FloatingCard
               icon={<ListChecks className="w-4 h-4" />}
@@ -94,6 +103,7 @@ export const Hero = () => {
               className="absolute top-1/3 -right-4 z-20 hidden md:flex"
               delay={0.8}
               accent
+              parallaxY={p2}
             />
             <FloatingCard
               icon={<MessageSquare className="w-4 h-4" />}
@@ -101,6 +111,7 @@ export const Hero = () => {
               sub='"What did Sarah commit?"'
               className="absolute -bottom-2 -left-6 z-20 hidden md:flex"
               delay={1}
+              parallaxY={p3}
             />
             <FloatingCard
               icon={<BarChart3 className="w-4 h-4" />}
@@ -108,6 +119,7 @@ export const Hero = () => {
               sub="+24% productivity"
               className="absolute bottom-10 -right-2 z-20"
               delay={1.2}
+              parallaxY={p4}
             />
 
             {/* Mock dashboard */}
@@ -159,6 +171,7 @@ interface FloatingCardProps {
   className?: string;
   delay?: number;
   accent?: boolean;
+  parallaxY?: MotionValue<number>;
 }
 
 const FloatingCard = ({
@@ -168,6 +181,7 @@ const FloatingCard = ({
   className,
   delay = 0,
   accent = false,
+  parallaxY,
 }: FloatingCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -175,6 +189,7 @@ const FloatingCard = ({
     transition={{ duration: 0.6, delay }}
     className={`bg-[#020617]/95 md:glass-dark rounded-2xl p-3 pr-4 shadow-glow flex items-center gap-3 border-white/10 will-change-transform ${className}`}
     style={{
+      y: parallaxY,
       animation: window.innerWidth > 768 ? `float-slow ${5 + delay}s ease-in-out infinite` : "none",
       animationDelay: `${delay}s`,
     }}

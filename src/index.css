@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=VT323&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=VT323&family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -77,26 +77,35 @@
     @apply border-border;
   }
   html {
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scroll-behavior: auto !important;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary) / 0.3) transparent;
   }
-  html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, and Opera */
-  }
+
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "Space Grotesk", system-ui, sans-serif;
+    font-family: "Outfit", system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
   }
   h1,
   h2,
   h3,
   h4 {
     font-family: "Pixelify Sans", system-ui, sans-serif;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.02em;
     text-transform: uppercase;
+    font-weight: 700;
   }
-  code, pre, .font-mono {
+  code,
+  pre,
+  .font-mono {
     font-family: "VT323", monospace;
   }
 }
@@ -137,13 +146,13 @@
   }
   .glass {
     background: hsl(0 0% 100% / 0.7);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
     border: 1px solid hsl(0 0% 100% / 0.5);
   }
   .glass-dark {
     background: hsl(222 47% 11% / 0.6);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(12px);
     border: 1px solid hsl(0 0% 100% / 0.08);
   }
   .hover-lift {
@@ -212,4 +221,3 @@
 .mask-fade-edges {
   mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
-

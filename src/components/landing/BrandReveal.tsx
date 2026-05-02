@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-
 export const BrandReveal = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -23,24 +22,8 @@ export const BrandReveal = () => {
     <div
       ref={containerRef}
       className="relative h-[400px] md:h-[550px] w-screen left-1/2 -translate-x-1/2 flex items-center justify-center overflow-hidden bg-[#020617] border-y border-emerald/20 shadow-glow-emerald !max-w-none !rounded-none pb-12 md:pb-20"
-      style={{ width: '100vw', maxWidth: '100vw', margin: 0 }}
+      style={{ width: "100vw", maxWidth: "100vw", margin: 0 }}
     >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       {/* The Reveal Shutter */}
       <div className="absolute inset-0 z-20 pointer-events-none flex">
         <motion.div
@@ -53,10 +36,6 @@ export const BrandReveal = () => {
         />
       </div>
 
-
-
-
-
       {/* Content behind shutter */}
       <motion.div
         style={{ opacity, scale, letterSpacing }}
@@ -68,7 +47,7 @@ export const BrandReveal = () => {
 
         {/* Back to Top / Dynamic Scroll Element */}
         <motion.button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           whileHover={{ scale: 1.1, y: -5 }}
@@ -84,7 +63,6 @@ export const BrandReveal = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle,hsl(160_84%_45%/0.15),transparent_70%)] -z-10" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[radial-gradient(circle,hsl(199_89%_60%/0.1),transparent_70%)] -z-10" />
       </motion.div>
-
     </div>
   );
 };

@@ -9,7 +9,7 @@ const Docs = () => {
     <div className="min-h-screen bg-[#020617] text-white selection:bg-primary/30">
       <Navbar />
       <ScrollToTop />
-      
+
       {/* Docs Header */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero pointer-events-none" />
@@ -23,10 +23,12 @@ const Docs = () => {
               <BookOpen className="w-3.5 h-3.5" /> Documentation Hub
             </div>
             <h1 className="text-4xl md:text-7xl font-black font-display mb-6 tracking-tighter">
-              The <span className="text-gradient">Intelligence</span> <br className="hidden md:block" /> Methodology
+              The <span className="text-gradient">Intelligence</span>{" "}
+              <br className="hidden md:block" /> Methodology
             </h1>
             <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
-              Deep dive into the neural pipelines, semantic architectures, and advanced RAG systems powering MeetMind AI.
+              Deep dive into the neural pipelines, semantic architectures, and advanced RAG systems
+              powering MeetMind AI.
             </p>
           </motion.div>
         </div>
@@ -40,9 +42,9 @@ const Docs = () => {
               { label: "Core Capabilities", icon: Sparkles, href: "#features" },
               { label: "Neural Architecture", icon: Cpu, href: "#architecture" },
               { label: "Tech Stack", icon: Cpu, href: "#tech-stack" },
-              { label: "Security & Privacy", icon: ShieldCheck, href: "#faq" }
+              { label: "Security & Privacy", icon: ShieldCheck, href: "#faq" },
             ].map((nav) => (
-              <a 
+              <a
                 key={nav.label}
                 href={nav.href}
                 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-white/40 hover:text-primary transition-colors"

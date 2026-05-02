@@ -52,9 +52,27 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
               className="w-10 h-10 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center shrink-0 shadow-emerald border border-white/10 relative overflow-hidden group"
             >
               <div className="absolute inset-0 bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 md:w-7 md:h-7 relative z-10 drop-shadow-emerald">
-                <path d="M4 19V5L12 13L20 5V19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white" />
-                <circle cx="12" cy="12" r="3" fill="currentColor" className="text-primary opacity-40 shadow-glow" />
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-6 h-6 md:w-7 md:h-7 relative z-10 drop-shadow-emerald"
+              >
+                <path
+                  d="M4 19V5L12 13L20 5V19"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-white"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="3"
+                  fill="currentColor"
+                  className="text-primary opacity-40 shadow-glow"
+                />
               </svg>
             </motion.div>
 
@@ -102,9 +120,7 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
                   to={it.to}
                   end={it.to === "/dashboard"}
                   className={`flex items-center gap-4 px-4 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-[0.1em] transition-all relative group ${
-                    active
-                      ? "text-white"
-                      : "text-white/40 hover:bg-white/5 hover:text-white/60"
+                    active ? "text-white" : "text-white/40 hover:bg-white/5 hover:text-white/60"
                   }`}
                 >
                   {active && (
@@ -166,7 +182,9 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
             </div>
             {(!collapsed || isOpen) && (
               <div className="flex-1 min-w-0">
-                <div className="text-xs font-bold text-white/90 truncate uppercase tracking-tight">Sarah Chen</div>
+                <div className="text-xs font-bold text-white/90 truncate uppercase tracking-tight">
+                  Sarah Chen
+                </div>
                 <div className="text-[9px] text-primary font-black uppercase tracking-widest mt-0.5">
                   Pro Account
                 </div>

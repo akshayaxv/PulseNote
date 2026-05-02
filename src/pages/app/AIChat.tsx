@@ -104,15 +104,35 @@ const AIChat = () => {
             <div className="relative">
               <div className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center shadow-emerald border border-white/10 relative overflow-hidden group">
                 <div className="absolute inset-0 bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 md:w-6 md:h-6 relative z-10 drop-shadow-emerald">
-                  <path d="M4 19V5L12 13L20 5V19" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white" />
-                  <circle cx="12" cy="12" r="3" fill="currentColor" className="text-primary opacity-40 shadow-glow" />
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5 md:w-6 md:h-6 relative z-10 drop-shadow-emerald"
+                >
+                  <path
+                    d="M4 19V5L12 13L20 5V19"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="3"
+                    fill="currentColor"
+                    className="text-primary opacity-40 shadow-glow"
+                  />
                 </svg>
               </div>
               <div className="absolute -right-0.5 -bottom-0.5 w-2.5 h-2.5 rounded-full bg-emerald border-2 border-[#020617] shadow-glow" />
             </div>
             <div className="min-w-0">
-              <div className="text-[10px] md:text-xs font-black font-display tracking-tight uppercase text-white/90 truncate">MeetMind AI Assistant</div>
+              <div className="text-[10px] md:text-xs font-black font-display tracking-tight uppercase text-white/90 truncate">
+                MeetMind AI Assistant
+              </div>
               <div className="text-[8px] md:text-[9px] text-emerald font-black tracking-[0.2em] uppercase flex items-center gap-2 mt-0.5">
                 <span className="w-1 h-1 rounded-full bg-emerald animate-pulse shadow-glow" />
                 AI Ready
@@ -120,14 +140,21 @@ const AIChat = () => {
             </div>
           </div>
           <div className="flex gap-2">
-            <Button variant="ghost" size="icon" className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all active:scale-95">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all active:scale-95"
+            >
               <History className="w-4 h-4 text-white/40 lg:hidden" />
               <Search className="w-4 h-4 text-white/40 hidden lg:block" />
             </Button>
           </div>
         </div>
 
-        <div ref={ref} className="flex-1 overflow-y-auto p-4 md:p-8 pt-20 md:pt-24 space-y-6 md:space-y-8 scrollbar-hide">
+        <div
+          ref={ref}
+          className="flex-1 overflow-y-auto p-4 md:p-8 pt-20 md:pt-24 space-y-6 md:space-y-8 scrollbar-hide"
+        >
           {messages.map((m, i) => (
             <motion.div
               key={i}
@@ -139,7 +166,11 @@ const AIChat = () => {
                 <div
                   className={`w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl flex items-center justify-center shadow-glow-sm relative z-10 border border-white/10 ${m.role === "ai" ? "bg-gradient-brand text-white" : "bg-white/5 text-white/40"}`}
                 >
-                  {m.role === "ai" ? <Brain className="w-5 h-5 md:w-6 md:h-6" /> : <span className="font-black text-[10px]">US</span>}
+                  {m.role === "ai" ? (
+                    <Brain className="w-5 h-5 md:w-6 md:h-6" />
+                  ) : (
+                    <span className="font-black text-[10px]">US</span>
+                  )}
                 </div>
               </div>
               <div className={`max-w-[85%] md:max-w-[80%] space-y-2`}>
@@ -168,15 +199,25 @@ const AIChat = () => {
             </motion.div>
           ))}
           {typing && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-3 md:gap-5">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex gap-3 md:gap-5"
+            >
               <div className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center border border-white/10">
                 <Cpu className="w-5 h-5 md:w-6 md:h-6 animate-pulse" />
               </div>
               <div className="bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl px-5 py-4 flex flex-col gap-2 shadow-glow-sm">
-                <div className="text-[9px] font-black text-primary uppercase tracking-widest animate-pulse">Analyzing meetings...</div>
+                <div className="text-[9px] font-black text-primary uppercase tracking-widest animate-pulse">
+                  Analyzing meetings...
+                </div>
                 <div className="flex gap-1.5">
                   {[0, 1, 2].map((i) => (
-                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-bounce" style={{ animationDelay: `${i * 0.2}s` }} />
+                    <div
+                      key={i}
+                      className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-bounce"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    />
                   ))}
                 </div>
               </div>

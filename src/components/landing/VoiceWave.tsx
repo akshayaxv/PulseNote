@@ -106,9 +106,7 @@ export const VoiceWave = () => {
   }, [hovered]);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), {
-      threshold: 0.2,
-    });
+    const obs = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.1 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
@@ -174,28 +172,25 @@ export const VoiceWave = () => {
         );
       })}
 
-
       {/* Wave bars */}
-      <div className="absolute inset-0 flex items-center justify-center gap-[3px] md:gap-1.5 px-6">
+      <div
+        className="absolute inset-0 flex items-center justify-center gap-[3px] md:gap-1.5 px-6"
+        style={{ willChange: "transform" }}
+      >
         {visible &&
           bars.map((bar, i) => (
             <motion.div
               key={i}
-              className="w-1 md:w-1.5 rounded-full origin-center"
+              className="w-1 md:w-1.5 rounded-full origin-center will-change-transform"
               style={{
                 background: `linear-gradient(180deg, hsl(217 91% 68%), hsl(199 89% 60%) 50%, hsl(160 84% 45%))`,
+                height: `${bar.base}%`,
                 boxShadow: hovered
                   ? "0 0 10px hsl(199 89% 60% / 0.7)"
                   : "0 0 6px hsl(199 89% 60% / 0.4)",
               }}
               animate={{
-                height: [
-                  `${bar.base * 0.3}%`,
-                  `${bar.base * (hovered ? 1.15 : 1)}%`,
-                  `${bar.base * 0.5}%`,
-                  `${bar.base * (hovered ? 1.05 : 0.9)}%`,
-                  `${bar.base * 0.3}%`,
-                ],
+                scaleY: [0.3, hovered ? 1.15 : 1, 0.5, hovered ? 1.05 : 0.9, 0.3],
               }}
               transition={{
                 duration: bar.duration,

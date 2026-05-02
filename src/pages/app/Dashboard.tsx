@@ -86,12 +86,21 @@ const Dashboard = () => (
         <div className="max-w-2xl">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald animate-pulse shadow-glow" />
-            <div className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-white/30 font-black">SYSTEM READY · MAIN WORKSPACE</div>
+            <div className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-white/30 font-black">
+              SYSTEM READY · MAIN WORKSPACE
+            </div>
           </div>
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-3 text-white/90 tracking-tight">Good morning, Sarah 👋</h2>
+          <h2 className="text-3xl md:text-5xl font-display font-bold mb-3 text-white/90 tracking-tight">
+            Good morning, Sarah 👋
+          </h2>
           <p className="text-white/40 text-sm md:text-base leading-relaxed font-medium">
-            AI has analyzed <span className="text-emerald font-black">3 NEW MEETINGS</span> since your last visit. 
-            <span className="hidden sm:inline"> You have <span className="text-primary font-black">12 ACTION ITEMS</span> requiring attention.</span>
+            AI has analyzed <span className="text-emerald font-black">3 NEW MEETINGS</span> since
+            your last visit.
+            <span className="hidden sm:inline">
+              {" "}
+              You have <span className="text-primary font-black">12 ACTION ITEMS</span> requiring
+              attention.
+            </span>
           </p>
         </div>
         <div className="flex flex-wrap gap-3 w-full md:w-auto">
@@ -135,7 +144,9 @@ const Dashboard = () => (
             <div className="text-2xl md:text-3xl font-display font-bold text-white/90 mb-1 relative z-10">
               <Counter to={s.value} suffix={s.suffix || ""} />
             </div>
-            <div className="text-[9px] md:text-[10px] text-white/20 uppercase tracking-[0.2em] font-black relative z-10">{s.label}</div>
+            <div className="text-[9px] md:text-[10px] text-white/20 uppercase tracking-[0.2em] font-black relative z-10">
+              {s.label}
+            </div>
           </Card>
         </motion.div>
       ))}
@@ -147,7 +158,9 @@ const Dashboard = () => (
         <div className="flex items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-primary shadow-glow animate-pulse" />
-            <h3 className="font-display font-bold text-lg md:text-xl uppercase tracking-tight text-white/90">Recent Meetings</h3>
+            <h3 className="font-display font-bold text-lg md:text-xl uppercase tracking-tight text-white/90">
+              Recent Meetings
+            </h3>
           </div>
           <Link
             to="/dashboard/meetings"
@@ -168,7 +181,9 @@ const Dashboard = () => (
                   <FileText className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div className="min-w-0">
-                  <div className="font-bold text-sm md:text-base text-white/80 group-hover:text-primary transition-colors truncate uppercase tracking-tight">{m.title}</div>
+                  <div className="font-bold text-sm md:text-base text-white/80 group-hover:text-primary transition-colors truncate uppercase tracking-tight">
+                    {m.title}
+                  </div>
                   <div className="text-[10px] text-white/20 font-black mt-1.5 uppercase tracking-widest">
                     {m.date} · {m.duration} · {m.participants} PARTICIPANTS
                   </div>
@@ -186,7 +201,9 @@ const Dashboard = () => (
 
       {/* Quick upload */}
       <Card className="p-6 md:p-8 rounded-[2.5rem] md:rounded-[3rem] border-white/5 bg-[#020617]/40 backdrop-blur-xl shadow-glow flex flex-col">
-        <h3 className="font-display font-bold text-lg mb-2 text-white/90 uppercase tracking-tight">Quick Upload</h3>
+        <h3 className="font-display font-bold text-lg mb-2 text-white/90 uppercase tracking-tight">
+          Quick Upload
+        </h3>
         <p className="text-[9px] md:text-[10px] text-white/20 font-black uppercase tracking-[0.2em] mb-8">
           DROP FILE TO START AI ANALYSIS
         </p>
@@ -196,19 +213,27 @@ const Dashboard = () => (
             <div className="w-14 h-14 rounded-2xl bg-gradient-brand mx-auto flex items-center justify-center mb-5 shadow-emerald group-hover:scale-110 transition-transform relative z-10">
               <Upload className="w-6 h-6 text-white" />
             </div>
-            <div className="font-black text-sm text-white/70 mb-1 group-hover:text-white transition-colors uppercase tracking-tight relative z-10">Upload New File</div>
-            <div className="text-[9px] text-white/20 font-black uppercase tracking-tighter relative z-10">MP3, WAV, MP4 · UP TO 2GB</div>
+            <div className="font-black text-sm text-white/70 mb-1 group-hover:text-white transition-colors uppercase tracking-tight relative z-10">
+              Upload New File
+            </div>
+            <div className="text-[9px] text-white/20 font-black uppercase tracking-tighter relative z-10">
+              MP3, WAV, MP4 · UP TO 2GB
+            </div>
           </div>
         </Link>
         <div className="mt-8 pt-8 border-t border-white/5">
-          <div className="text-[10px] font-black text-white/20 mb-5 uppercase tracking-[0.2em] ml-1">RECENT UPLOADS</div>
+          <div className="text-[10px] font-black text-white/20 mb-5 uppercase tracking-[0.2em] ml-1">
+            RECENT UPLOADS
+          </div>
           <div className="space-y-4">
             {["product-sync.mp3", "discovery-acme.mp4"].map((f) => (
               <div key={f} className="flex items-center gap-4 py-1 text-xs group cursor-pointer">
                 <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 group-hover:border-primary/20 transition-all">
                   <FileText className="w-3.5 h-3.5 text-white/20 group-hover:text-primary transition-colors" />
                 </div>
-                <span className="truncate text-white/50 font-bold uppercase tracking-tight text-[10px]">{f}</span>
+                <span className="truncate text-white/50 font-bold uppercase tracking-tight text-[10px]">
+                  {f}
+                </span>
                 <CheckCircle2 className="w-4 h-4 text-emerald ml-auto shrink-0 shadow-glow" />
               </div>
             ))}

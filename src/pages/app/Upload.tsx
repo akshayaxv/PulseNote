@@ -57,7 +57,7 @@ const Upload = () => {
         className={`rounded-[2rem] md:rounded-[2.5rem] border-2 border-dashed transition-all duration-500 ${drag ? "border-emerald bg-emerald/5 scale-[1.01]" : "border-white/10 bg-[#020617]/40 backdrop-blur-xl"} p-8 md:p-16 text-center relative overflow-hidden`}
       >
         <div className="absolute inset-0 bg-gradient-brand opacity-5 pointer-events-none" />
-        
+
         <motion.div
           animate={{
             y: drag ? -10 : 0,
@@ -75,7 +75,9 @@ const Upload = () => {
           />
           <UploadIcon className="w-8 h-8 md:w-10 md:h-10 text-white relative z-10" />
         </motion.div>
-        <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-white/90">Import recordings</h2>
+        <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-white/90">
+          Import recordings
+        </h2>
         <p className="text-white/40 text-sm mb-8 max-w-sm mx-auto font-medium leading-relaxed">
           Upload your audio or video recordings and let our AI transform them into intelligence.
         </p>
