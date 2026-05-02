@@ -29,9 +29,9 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,hsl(160_84%_45%/0.15),transparent_60%)] pointer-events-none" />
 
       {/* Floating clouds - Optimized for Mobile */}
-      <div className="absolute top-32 left-10 w-40 h-40 md:w-72 md:h-72 rounded-full bg-primary/10 blur-2xl md:blur-3xl animate-float-slow will-change-[filter,transform]" />
+      <div className="absolute top-32 left-10 w-40 h-40 md:w-72 md:h-72 rounded-full bg-primary/5 blur-xl md:blur-3xl animate-float-slow will-change-transform" />
       <div
-        className="absolute top-80 right-10 w-48 h-48 md:w-96 md:h-96 rounded-full bg-emerald/10 blur-2xl md:blur-3xl animate-float-slow will-change-[filter,transform]"
+        className="absolute top-80 right-10 w-48 h-48 md:w-96 md:h-96 rounded-full bg-emerald/5 blur-xl md:blur-3xl animate-float-slow will-change-transform"
         style={{ animationDelay: "2s" }}
       />
 

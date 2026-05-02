@@ -212,7 +212,7 @@ export const Workflow = () => (
               <div className="absolute left-1/2 bottom-[-1.5rem] w-px h-6 bg-gradient-to-b from-white/10 to-transparent md:hidden" />
             )}
 
-            <div className="relative h-full glass-dark p-8 rounded-[2.5rem] border-white/5 group-hover:border-white/10 transition-all duration-500 flex flex-col items-center text-center">
+            <div className="relative h-full bg-[#030816] md:glass-dark p-8 rounded-[2.5rem] border border-white/5 group-hover:border-white/10 transition-all duration-500 flex flex-col items-center text-center">
               {/* Animated Progress Ring */}
               <div className="absolute -inset-0.5 rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
 

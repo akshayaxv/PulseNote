@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const BAR_COUNT = 48;
 
@@ -21,9 +21,9 @@ export const VoiceWave = () => {
   }, []);
 
   const barCount = isMobile ? 24 : BAR_COUNT;
-  const particleCount = isMobile ? 6 : 14;
+  const particleCount = isMobile ? 3 : 14;
 
-  const startSound = () => {
+  const startSound = useCallback(() => {
     if (isMobile) return; // Skip audio synthesis on mobile for performance
     try {
       if (!audioContext.current) {
@@ -73,9 +73,9 @@ export const VoiceWave = () => {
     } catch (e) {
       console.log(e);
     }
-  };
+  }, [isMobile]);
 
-  const stopSound = () => {
+  const stopSound = useCallback(() => {
     const gn = gainRef.current;
     if (gn && audioContext.current) {
       gn.gain.linearRampToValueAtTime(0, audioContext.current.currentTime + 0.3);
@@ -87,7 +87,7 @@ export const VoiceWave = () => {
       source.current = null;
       gainRef.current = null;
     }
-  };
+  }, []);
 
   useEffect(() => {
     const unlock = () => {
@@ -103,7 +103,7 @@ export const VoiceWave = () => {
     if (hovered) startSound();
     else stopSound();
     return () => stopSound();
-  }, [hovered]);
+  }, [hovered, startSound, stopSound]);
 
   useEffect(() => {
     const obs = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.1 });
@@ -128,7 +128,7 @@ export const VoiceWave = () => {
       ref={ref}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="relative w-full h-48 md:h-56 rounded-3xl glass-dark border border-white/10 overflow-hidden cursor-pointer group"
+      className="relative w-full h-48 md:h-56 rounded-3xl bg-[#030816] md:glass-dark border border-white/10 overflow-hidden cursor-pointer group"
       style={{ willChange: "transform" }}
     >
       {/* Glow */}
@@ -185,9 +185,11 @@ export const VoiceWave = () => {
               style={{
                 background: `linear-gradient(180deg, hsl(217 91% 68%), hsl(199 89% 60%) 50%, hsl(160 84% 45%))`,
                 height: `${bar.base}%`,
-                boxShadow: hovered
+                boxShadow: hovered && !isMobile
                   ? "0 0 10px hsl(199 89% 60% / 0.7)"
-                  : "0 0 6px hsl(199 89% 60% / 0.4)",
+                  : hovered
+                    ? "0 0 6px hsl(199 89% 60% / 0.4)"
+                    : "none",
               }}
               animate={{
                 scaleY: [0.3, hovered ? 1.15 : 1, 0.5, hovered ? 1.05 : 0.9, 0.3],
