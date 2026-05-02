@@ -149,27 +149,6 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
         </nav>
 
         <div className="p-5 md:p-6 space-y-5">
-          {(!collapsed || isOpen) && (
-            <div className="rounded-[1.5rem] bg-white/[0.02] border border-white/5 p-5 relative overflow-hidden group">
-              <div className="absolute -right-2 -top-2 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Sparkles className="w-16 h-16 text-primary" />
-              </div>
-              <div className="text-[9px] font-black text-primary uppercase tracking-[0.3em] mb-2">
-                Pro Trial
-              </div>
-              <div className="text-xs font-bold text-white/80 mb-3">9 DAYS REMAINING</div>
-              <div className="h-1 bg-white/5 rounded-full overflow-hidden mb-4">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: "64%" }}
-                  className="h-full bg-gradient-brand rounded-full shadow-emerald"
-                />
-              </div>
-              <button className="w-full h-9 rounded-xl bg-white/5 border border-white/10 text-[9px] font-black text-white/40 hover:text-white hover:bg-white/10 transition-all uppercase tracking-widest">
-                UPGRADE TO PRO
-              </button>
-            </div>
-          )}
 
           <div
             className={`flex items-center gap-3 p-2.5 rounded-2xl ${collapsed && !isOpen ? "justify-center" : "bg-white/[0.03] border border-white/5 hover:bg-white/10 transition-all cursor-pointer group"}`}
