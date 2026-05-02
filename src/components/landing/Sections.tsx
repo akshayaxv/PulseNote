@@ -23,6 +23,13 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+ScrollTrigger.config({
+  ignoreMobileResize: true, // Prevents 100vh jumping and refresh errors on mobile
+});
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -353,32 +360,30 @@ const TextPathAnimation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
     if (!textPathRef.current) return;
 
-    // Slow, continuous loop (increased duration to 60s for smoother feel)
-    const tl = gsap.to(textPathRef.current, {
-      attr: { startOffset: "0%" },
-      duration: 60,
-      repeat: -1,
-      ease: "none",
-    });
+    const ctx = gsap.context(() => {
+      // Continuous loop
+      const tl = gsap.to(textPathRef.current, {
+        attr: { startOffset: "0%" },
+        duration: 60,
+        repeat: -1,
+        ease: "none",
+      });
 
-    // Scroll acceleration effect
-    const trigger = ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top bottom",
-      end: "bottom top",
-      onUpdate: (self) => {
-        const velocity = Math.abs(self.getVelocity() / 400);
-        gsap.to(tl, { timeScale: 1 + velocity, duration: 0.6, ease: "power1.out" });
-      },
-    });
+      // Scroll acceleration effect
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        onUpdate: (self) => {
+          const velocity = Math.abs(self.getVelocity() / 400);
+          gsap.to(tl, { timeScale: 1 + velocity, duration: 0.6, ease: "power1.out" });
+        },
+      });
+    }, containerRef);
 
-    return () => {
-      tl.kill();
-      trigger.kill();
-    };
+    return () => ctx.revert(); // Clean up everything inside the context
   }, []);
 
   const textPart =
