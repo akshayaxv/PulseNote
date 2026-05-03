@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { Workflow, ProductDemo, UseCases, CTA, Footer } from "@/components/landing/Sections";
+import { Workflow, UseCases, CTA, Footer } from "@/components/landing/Sections";
 import { ScrollToTop } from "@/components/landing/ScrollToTop";
 import { SmoothScroll } from "@/components/SmoothScroll";
 
