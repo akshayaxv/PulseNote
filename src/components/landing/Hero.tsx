@@ -82,7 +82,7 @@ export const Hero = () => {
         >
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display leading-[1.1] md:leading-[0.95] mb-6 md:mb-8 tracking-tighter text-white">
             MeetMind AI: <br />
-            <span className="text-gradient">Meetings, Mastered.</span>
+            <span className="text-gradient">Turn Talks into Action.</span>
           </h1>
           <p className="text-base md:text-xl text-white/50 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-medium px-2">
             Automate transcripts, summaries, and action items effortlessly with our premium AI
