@@ -17,8 +17,9 @@ import {
   Legend,
 } from "recharts";
 import { Counter } from "@/components/dashboard/Counter";
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { AnalyticsSkeleton } from "@/components/dashboard/Skeletons";
 import {
   TrendingUp,
   Users,
@@ -111,6 +112,31 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
 
 const Analytics = () => {
   const [range, setRange] = useState("Weekly");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="space-y-6 md:space-y-10 pb-20">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-display font-bold tracking-tight text-white/90 uppercase">
+              Performance Analytics
+            </h2>
+            <p className="text-xs md:text-sm text-white/40 mt-1 font-medium leading-relaxed">
+              Detailed insights into your team's meeting performance.
+            </p>
+          </div>
+        </div>
+        <AnalyticsSkeleton />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 md:space-y-10 pb-20">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">

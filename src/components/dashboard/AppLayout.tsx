@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { AppSidebar } from "./AppSidebar";
 import { Topbar } from "./Topbar";
+import { CommandMenu } from "./CommandMenu";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -44,6 +45,7 @@ export const AppLayout = () => {
       </AnimatePresence>
 
       <AppSidebar isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+      <CommandMenu />
 
       <div className="flex-1 flex flex-col min-w-0 h-screen">
         <Topbar title={title} onMenuClick={() => setIsMobileMenuOpen(true)} />
