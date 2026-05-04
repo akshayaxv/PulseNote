@@ -29,6 +29,40 @@ export const Hero = () => {
     <section className="relative pt-24 pb-16 lg:pt-48 lg:pb-32 overflow-hidden bg-[#020617]">
       {/* Background Creative Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Glowing Triangle Lines from Corners */}
+        <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
+          <motion.path
+            d="M0 0L720 450"
+            stroke="url(#line-grad-left)"
+            strokeWidth="2"
+            strokeDasharray="10 10"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.path
+            d="M1440 0L720 450"
+            stroke="url(#line-grad-right)"
+            strokeWidth="2"
+            strokeDasharray="10 10"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          />
+          <defs>
+            <linearGradient id="line-grad-left" x1="0" y1="0" x2="720" y2="450" gradientUnits="userSpaceOnUse">
+              <stop stopColor="transparent" />
+              <stop offset="0.5" stopColor="hsl(var(--primary))" />
+              <stop offset="1" stopColor="transparent" />
+            </linearGradient>
+            <linearGradient id="line-grad-right" x1="1440" y1="0" x2="720" y2="450" gradientUnits="userSpaceOnUse">
+              <stop stopColor="transparent" />
+              <stop offset="0.5" stopColor="hsl(var(--primary))" />
+              <stop offset="1" stopColor="transparent" />
+            </linearGradient>
+          </defs>
+        </svg>
+
         <div className="absolute top-[10%] left-[-5%] w-[80%] md:w-[50%] h-[50%] rounded-full bg-emerald/10 blur-[80px] md:blur-[140px] animate-pulse" />
         <div
           className="absolute bottom-[-10%] right-[-5%] w-[80%] md:w-[50%] h-[50%] rounded-full bg-primary/10 blur-[80px] md:blur-[140px] animate-pulse"
