@@ -51,7 +51,7 @@ export const Navbar = () => {
                   <Link
                     key={item.label}
                     to={item.href}
-                    className="px-3 sm:px-5 py-2 sm:py-2 text-[8px] sm:text-[11px] font-black uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 whitespace-nowrap"
+                    className="px-3 sm:px-5 py-2 sm:py-2 text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 whitespace-nowrap"
                   >
                     {item.label}
                   </Link>
@@ -59,7 +59,7 @@ export const Navbar = () => {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="px-3 sm:px-5 py-2 sm:py-2 text-[8px] sm:text-[11px] font-black uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 whitespace-nowrap"
+                    className="px-3 sm:px-5 py-2 sm:py-2 text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 whitespace-nowrap"
                   >
                     {item.label}
                   </a>
@@ -75,7 +75,7 @@ export const Navbar = () => {
           <Button
             size="lg"
             asChild
-            className="rounded-xl bg-white text-black hover:bg-emerald hover:text-black transition-all duration-300 px-4 sm:px-10 h-8 sm:h-12 font-bold text-[8px] sm:text-[11px] uppercase tracking-[0.1em] sm:tracking-widest border-0"
+            className="rounded-xl bg-white text-black hover:bg-emerald hover:text-black transition-all duration-300 px-4 sm:px-10 h-8 sm:h-12 font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.1em] sm:tracking-widest border-0"
           >
             <Link to="/signup">
               <span className="xs:hidden">Start</span>

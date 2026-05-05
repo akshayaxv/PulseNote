@@ -83,6 +83,7 @@ const Card = ({ mode }: { mode: "login" | "signup" }) => {
             <Input
               className="mt-1.5 h-11 rounded-xl bg-white/5 border-white/10 text-white"
               placeholder="Sarah Chen"
+              required
             />
           </div>
         )}
@@ -92,6 +93,7 @@ const Card = ({ mode }: { mode: "login" | "signup" }) => {
             type="email"
             className="mt-1.5 h-11 rounded-xl bg-white/5 border-white/10 text-white"
             placeholder="you@company.com"
+            required
           />
         </div>
         <div>
@@ -100,6 +102,7 @@ const Card = ({ mode }: { mode: "login" | "signup" }) => {
             type="password"
             className="mt-1.5 h-11 rounded-xl bg-white/5 border-white/10 text-white"
             placeholder="••••••••"
+            required
           />
         </div>
       </div>

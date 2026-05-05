@@ -185,11 +185,12 @@ export const VoiceWave = () => {
               style={{
                 background: `linear-gradient(180deg, hsl(217 91% 68%), hsl(199 89% 60%) 50%, hsl(160 84% 45%))`,
                 height: `${bar.base}%`,
-                boxShadow: hovered && !isMobile
-                  ? "0 0 10px hsl(199 89% 60% / 0.7)"
-                  : hovered
-                    ? "0 0 6px hsl(199 89% 60% / 0.4)"
-                    : "none",
+                boxShadow:
+                  hovered && !isMobile
+                    ? "0 0 10px hsl(199 89% 60% / 0.7)"
+                    : hovered
+                      ? "0 0 6px hsl(199 89% 60% / 0.4)"
+                      : "none",
               }}
               animate={{
                 scaleY: [0.3, hovered ? 1.15 : 1, 0.5, hovered ? 1.05 : 0.9, 0.3],

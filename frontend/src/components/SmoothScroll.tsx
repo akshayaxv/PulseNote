@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
-import Lenis from 'lenis';
-import 'lenis/dist/lenis.css';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface SmoothScrollProps {
   children: React.ReactNode;
@@ -16,8 +16,8 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
     const lenis = new Lenis({
       duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
+      orientation: "vertical",
+      gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1.1,
       touchMultiplier: 2,
@@ -27,7 +27,7 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
     lenisRef.current = lenis;
 
     // Sync ScrollTrigger with Lenis
-    lenis.on('scroll', ScrollTrigger.update);
+    lenis.on("scroll", ScrollTrigger.update);
 
     const updateLenis = (time: number) => {
       lenis.raf(time * 1000);
@@ -39,8 +39,8 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
     // Handle anchor links
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const anchor = target.closest('a');
-      
+      const anchor = target.closest("a");
+
       if (anchor && anchor.hash && anchor.origin === window.location.origin) {
         e.preventDefault();
         const element = document.querySelector(anchor.hash) as HTMLElement;
@@ -54,13 +54,13 @@ export const SmoothScroll = ({ children }: SmoothScrollProps) => {
       }
     };
 
-    document.addEventListener('click', handleAnchorClick);
+    document.addEventListener("click", handleAnchorClick);
 
     return () => {
       lenis.destroy();
       gsap.ticker.remove(updateLenis);
-      lenis.off('scroll', ScrollTrigger.update);
-      document.removeEventListener('click', handleAnchorClick);
+      lenis.off("scroll", ScrollTrigger.update);
+      document.removeEventListener("click", handleAnchorClick);
     };
   }, []);
 

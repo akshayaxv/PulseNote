@@ -1,6 +1,7 @@
 import { Bell, ChevronRight, LayoutGrid, Menu, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 interface TopbarProps {
   title: string;
@@ -48,12 +49,15 @@ export const Topbar = ({ title, onMenuClick }: TopbarProps) => (
 
       <Button
         size="sm"
+        asChild
         className="rounded-xl bg-gradient-brand border-0 h-10 md:h-12 px-4 md:px-6 shadow-emerald hover:scale-105 transition-all group active:scale-95"
       >
-        <Sparkles className="w-4 h-4 md:mr-2.5 group-hover:rotate-12 transition-transform" />
-        <span className="hidden sm:inline text-[10px] font-black uppercase tracking-widest">
-          New Meeting
-        </span>
+        <Link to="/dashboard/chat">
+          <Sparkles className="w-4 h-4 md:mr-2.5 group-hover:rotate-12 transition-transform" />
+          <span className="hidden sm:inline text-[10px] font-black uppercase tracking-widest">
+            AI Assistant
+          </span>
+        </Link>
       </Button>
 
       <div className="flex items-center gap-2">

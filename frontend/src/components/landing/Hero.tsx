@@ -30,7 +30,12 @@ export const Hero = () => {
       {/* Background Creative Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Glowing Triangle Lines from Corners */}
-        <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
+        <svg
+          className="absolute inset-0 w-full h-full opacity-30"
+          viewBox="0 0 1440 800"
+          fill="none"
+          preserveAspectRatio="none"
+        >
           <motion.path
             d="M0 0L720 450"
             stroke="url(#line-grad-left)"
@@ -50,12 +55,26 @@ export const Hero = () => {
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
           />
           <defs>
-            <linearGradient id="line-grad-left" x1="0" y1="0" x2="720" y2="450" gradientUnits="userSpaceOnUse">
+            <linearGradient
+              id="line-grad-left"
+              x1="0"
+              y1="0"
+              x2="720"
+              y2="450"
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="transparent" />
               <stop offset="0.5" stopColor="hsl(var(--primary))" />
               <stop offset="1" stopColor="transparent" />
             </linearGradient>
-            <linearGradient id="line-grad-right" x1="1440" y1="0" x2="720" y2="450" gradientUnits="userSpaceOnUse">
+            <linearGradient
+              id="line-grad-right"
+              x1="1440"
+              y1="0"
+              x2="720"
+              y2="450"
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="transparent" />
               <stop offset="0.5" stopColor="hsl(var(--primary))" />
               <stop offset="1" stopColor="transparent" />
@@ -99,9 +118,10 @@ export const Hero = () => {
             <Button
               size="lg"
               variant="outline"
+              asChild
               className="w-full sm:w-auto rounded-full h-12 md:h-14 px-10 text-sm md:text-base font-bold bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 transition-all text-white border-2"
             >
-              Watch Demo
+              <a href="#workflow">Watch Demo</a>
             </Button>
           </div>
         </motion.div>

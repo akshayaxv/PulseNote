@@ -149,7 +149,6 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
         </nav>
 
         <div className="p-5 md:p-6 space-y-5">
-
           <div
             className={`flex items-center gap-3 p-2.5 rounded-2xl ${collapsed && !isOpen ? "justify-center" : "bg-white/[0.03] border border-white/5 hover:bg-white/10 transition-all cursor-pointer group"}`}
           >

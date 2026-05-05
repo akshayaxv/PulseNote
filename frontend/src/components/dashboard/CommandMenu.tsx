@@ -98,7 +98,9 @@ export function CommandMenu() {
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>
-          <CommandItem onSelect={() => runCommand(() => setTheme(theme === "dark" ? "light" : "dark"))}>
+          <CommandItem
+            onSelect={() => runCommand(() => setTheme(theme === "dark" ? "light" : "dark"))}
+          >
             {theme === "dark" ? (
               <Sun className="mr-2 h-4 w-4" />
             ) : (
