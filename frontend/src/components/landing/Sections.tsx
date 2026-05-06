@@ -767,27 +767,31 @@ export const Footer = () => {
       </div>
 
       {/* Brand Giant Text - Professional Parallax Pixel Design */}
-      <div 
+      <div
         ref={footerRef}
         className="mt-0 -mb-20 md:-mb-40 w-full overflow-hidden pointer-events-none select-none relative pb-10 flex justify-center items-center h-[30vh] md:h-[60vh]"
       >
         <div className="relative flex justify-center items-center w-full px-4">
           {"MEETMIND AI".split("").map((char, index) => {
             const direction = index % 2 === 0 ? 1 : -1;
-            
+
             return (
               <motion.span
                 key={index}
-                initial={{ 
-                  opacity: 0, 
-                  y: direction * 80, 
-                  filter: "blur(8px) brightness(0)" 
+                initial={{
+                  opacity: 0,
+                  y: direction * 80,
+                  filter: "blur(8px) brightness(0)",
                 }}
-                whileInView={{ 
-                  opacity: 0.8, 
-                  y: [direction * 5, -direction * 5], 
-                  x: [0, -1, 1, 0], 
-                  filter: ["blur(0px) brightness(1)", "blur(1px) brightness(1.1)", "blur(0px) brightness(1)"] 
+                whileInView={{
+                  opacity: 0.8,
+                  y: [direction * 5, -direction * 5],
+                  x: [0, -1, 1, 0],
+                  filter: [
+                    "blur(0px) brightness(1)",
+                    "blur(1px) brightness(1.1)",
+                    "blur(0px) brightness(1)",
+                  ],
                 }}
                 viewport={{ once: false, margin: "-50px" }}
                 transition={{
@@ -796,7 +800,7 @@ export const Footer = () => {
                     repeat: Infinity,
                     repeatType: "reverse",
                     ease: "easeInOut",
-                    delay: index * 0.05
+                    delay: index * 0.05,
                   },
                   x: {
                     duration: 0.2,
@@ -813,16 +817,17 @@ export const Footer = () => {
                 style={{
                   WebkitTextStroke: "1px rgba(255,255,255,1)",
                   color: "transparent",
+                  translateX: (index - 5) * 4,
                 }}
-                className="text-[10vw] sm:text-[12vw] md:text-[14vw] font-black leading-none tracking-tight md:tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4] md:scale-y-[8] origin-bottom inline-block will-change-[transform,opacity,filter]"
+                className="text-[12vw] md:text-[14vw] font-black leading-none tracking-tight md:tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4] md:scale-y-[8] origin-bottom inline-block will-change-[transform,opacity,filter]"
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             );
           })}
-          
+
           <div className="absolute inset-0 hidden md:flex justify-center items-center opacity-30 blur-[2px] pointer-events-none translate-y-4">
-             {"MEETMIND AI".split("").map((char, index) => (
+            {"MEETMIND AI".split("").map((char, index) => (
               <motion.span
                 key={`ghost-${index}`}
                 initial={{ opacity: 0 }}
