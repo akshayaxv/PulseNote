@@ -813,9 +813,8 @@ export const Footer = () => {
                 style={{
                   WebkitTextStroke: "1px rgba(255,255,255,1)",
                   color: "transparent",
-                  translateX: (index - 5) * 4, 
                 }}
-                className="text-[12vw] md:text-[14vw] font-black leading-none tracking-tight md:tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4] md:scale-y-[8] origin-bottom inline-block will-change-[transform,opacity,filter]"
+                className="text-[10vw] sm:text-[12vw] md:text-[14vw] font-black leading-none tracking-tight md:tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4] md:scale-y-[8] origin-bottom inline-block will-change-[transform,opacity,filter]"
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
