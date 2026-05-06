@@ -651,6 +651,7 @@ export const CTA = () => (
 );
 
 export const Footer = () => {
+  const footerRef = useRef<HTMLDivElement>(null);
   const footerLinks = {
     product: [
       { name: "Features", href: "/docs#features" },
@@ -765,44 +766,76 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Brand Giant Text - Senior Level Design Addition */}
-      <div className="mt-32 -mb-28 w-full overflow-hidden pointer-events-none select-none relative pb-20 flex justify-center items-center">
-        <div className="flex justify-center items-center w-full">
-          {"MEETMIND AI".split("").map((char, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, y: 100, filter: "blur(8px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.04,
-                ease: [0.22, 1, 0.36, 1],
-                y: { type: "spring", stiffness: 100, damping: 15, delay: index * 0.04 }
-              }}
-              style={{
-                WebkitTextStroke: "1px rgba(255,255,255,0.25)",
-                color: "transparent",
-              }}
-              className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4.5] origin-bottom inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
+      {/* Brand Giant Text - Professional Parallax Pixel Design */}
+      <div 
+        ref={footerRef}
+        className="mt-32 -mb-32 w-full overflow-hidden pointer-events-none select-none relative pb-28 flex justify-center items-center h-[50vh]"
+      >
+        <div className="relative flex justify-center items-center w-full">
+          {"MEETMIND AI".split("").map((char, index) => {
+            // Create a scroll-driven parallax for each character
+            return (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, scale: 0.8, filter: "brightness(0) blur(10px)" }}
+                whileInView={{ 
+                  opacity: 0.25, 
+                  scale: 1, 
+                  filter: "brightness(1) blur(0px)",
+                }}
+                viewport={{ once: false, margin: "-100px" }}
+                transition={{
+                  duration: 1.2,
+                  delay: index * 0.05,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                style={{
+                  WebkitTextStroke: "1px rgba(255,255,255,1)",
+                  color: "transparent",
+                  translateX: (index - 5) * 10, // Subtle horizontal spread
+                }}
+                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4.5] origin-bottom inline-block transition-all hover:scale-y-[5] duration-700"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            );
+          })}
+          
+          {/* Parallax Ghost Layer (Slightly Offset) */}
+          <div className="absolute inset-0 flex justify-center items-center opacity-30 blur-[2px] pointer-events-none translate-y-4">
+             {"MEETMIND AI".split("").map((char, index) => (
+              <motion.span
+                key={`ghost-${index}`}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.1 }}
+                transition={{ delay: index * 0.06 + 0.2 }}
+                style={{
+                  WebkitTextStroke: "0.5px rgba(16,185,129,0.5)",
+                  color: "transparent",
+                }}
+                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4.5] origin-bottom inline-block"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </div>
         </div>
 
-        {/* Scanline / Glitch Overlay */}
+        {/* Dynamic Scanline Overlay */}
         <motion.div 
           animate={{ 
             backgroundPosition: ["0% 0%", "0% 100%"],
-            opacity: [0.05, 0.1, 0.05]
           }}
           transition={{ 
-            backgroundPosition: { duration: 10, repeat: Infinity, ease: "linear" },
-            opacity: { duration: 0.2, repeat: Infinity }
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "linear" 
           }}
-          className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] mix-blend-overlay"
+          className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(16,185,129,0.05)_50%)] bg-[length:100%_8px] mix-blend-screen opacity-40"
         />
+        
+        {/* Pixel Noise Overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
       </div>
     </footer>
   );
