@@ -773,28 +773,40 @@ export const Footer = () => {
       >
         <div className="relative flex justify-center items-center w-full">
           {"MEETMIND AI".split("").map((char, index) => {
-            // Create a scroll-driven parallax for each character
+            // Randomly decide if letter comes from top or bottom
+            const direction = index % 2 === 0 ? 1 : -1;
+            
             return (
               <motion.span
                 key={index}
-                initial={{ opacity: 0, scale: 0.8, filter: "brightness(0) blur(10px)" }}
+                initial={{ 
+                  opacity: 0, 
+                  y: direction * 150,
+                  filter: "blur(10px) brightness(0)" 
+                }}
                 whileInView={{ 
                   opacity: 0.25, 
-                  scale: 1, 
-                  filter: "brightness(1) blur(0px)",
+                  y: [direction * 10, -direction * 10], // Continuous float loop
+                  filter: "blur(0px) brightness(1)" 
                 }}
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{
-                  duration: 1.2,
-                  delay: index * 0.05,
-                  ease: [0.22, 1, 0.36, 1],
+                  y: {
+                    duration: 3 + (index % 3), // Staggered loop duration
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                    delay: index * 0.1
+                  },
+                  opacity: { duration: 1, delay: index * 0.04 },
+                  filter: { duration: 1, delay: index * 0.04 }
                 }}
                 style={{
                   WebkitTextStroke: "1px rgba(255,255,255,1)",
                   color: "transparent",
-                  translateX: (index - 5) * 10, // Subtle horizontal spread
+                  translateX: (index - 5) * 8,
                 }}
-                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4.5] origin-bottom inline-block transition-all hover:scale-y-[5] duration-700"
+                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4.5] origin-bottom inline-block hover:text-primary transition-colors duration-500"
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
