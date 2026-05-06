@@ -7,7 +7,11 @@ export const ScrollToTop = () => {
 
   // Show button when page is scrolled down
   const toggleVisibility = () => {
-    if (window.pageYOffset > 300) {
+    const scrollHeight = document.documentElement.scrollHeight;
+    const scrollPos = window.innerHeight + window.pageYOffset;
+    const isAtBottom = scrollHeight - scrollPos < 300; // Hide when within 300px of bottom
+
+    if (window.pageYOffset > 300 && !isAtBottom) {
       setIsVisible(true);
     } else {
       setIsVisible(false);

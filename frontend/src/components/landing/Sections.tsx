@@ -764,6 +764,23 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Brand Giant Text - Senior Level Design Addition */}
+      <div className="mt-28 -mb-24 w-full overflow-hidden pointer-events-none select-none relative pb-12">
+        <motion.h2
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          style={{
+            WebkitTextStroke: "1px rgba(255,255,255,0.25)",
+            color: "transparent",
+          }}
+          className="text-[14vw] font-black text-center leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase w-full scale-y-110"
+        >
+          MEETMIND AI
+        </motion.h2>
+      </div>
     </footer>
   );
 };
