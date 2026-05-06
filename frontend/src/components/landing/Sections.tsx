@@ -766,20 +766,43 @@ export const Footer = () => {
       </div>
 
       {/* Brand Giant Text - Senior Level Design Addition */}
-      <div className="mt-28 -mb-24 w-full overflow-hidden pointer-events-none select-none relative pb-12">
-        <motion.h2
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            WebkitTextStroke: "1px rgba(255,255,255,0.25)",
-            color: "transparent",
+      <div className="mt-32 -mb-28 w-full overflow-hidden pointer-events-none select-none relative pb-20 flex justify-center items-center">
+        <div className="flex justify-center items-center w-full">
+          {"MEETMIND AI".split("").map((char, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, y: 100, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.04,
+                ease: [0.22, 1, 0.36, 1],
+                y: { type: "spring", stiffness: 100, damping: 15, delay: index * 0.04 }
+              }}
+              style={{
+                WebkitTextStroke: "1px rgba(255,255,255,0.25)",
+                color: "transparent",
+              }}
+              className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4.5] origin-bottom inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
+        </div>
+
+        {/* Scanline / Glitch Overlay */}
+        <motion.div 
+          animate={{ 
+            backgroundPosition: ["0% 0%", "0% 100%"],
+            opacity: [0.05, 0.1, 0.05]
           }}
-          className="text-[14vw] font-black text-center leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase w-full scale-y-[4.5] origin-bottom"
-        >
-          MEETMIND AI
-        </motion.h2>
+          transition={{ 
+            backgroundPosition: { duration: 10, repeat: Infinity, ease: "linear" },
+            opacity: { duration: 0.2, repeat: Infinity }
+          }}
+          className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] mix-blend-overlay"
+        />
       </div>
     </footer>
   );
