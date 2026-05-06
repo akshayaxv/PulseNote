@@ -785,7 +785,7 @@ export const Footer = () => {
                   filter: "blur(10px) brightness(0)" 
                 }}
                 whileInView={{ 
-                  opacity: 0.4, 
+                  opacity: 0.8, 
                   y: [direction * 10, -direction * 10], // Continuous float loop
                   filter: "blur(0px) brightness(1)" 
                 }}
