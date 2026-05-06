@@ -767,78 +767,63 @@ export const Footer = () => {
       </div>
 
       {/* Brand Giant Text - Professional Parallax Pixel Design */}
-      <div
+      <div 
         ref={footerRef}
-        className="mt-0 -mb-40 w-full overflow-hidden pointer-events-none select-none relative pb-10 flex justify-center items-center h-[60vh]"
+        className="mt-0 -mb-20 md:-mb-40 w-full overflow-hidden pointer-events-none select-none relative pb-10 flex justify-center items-center h-[30vh] md:h-[60vh]"
       >
-        <div className="relative flex justify-center items-center w-full">
+        <div className="relative flex justify-center items-center w-full px-4">
           {"MEETMIND AI".split("").map((char, index) => {
-            // Randomly decide if letter comes from top or bottom
             const direction = index % 2 === 0 ? 1 : -1;
-
+            
             return (
               <motion.span
                 key={index}
-                initial={{
-                  opacity: 0,
-                  y: direction * 150,
-                  filter: "blur(10px) brightness(0)",
+                initial={{ 
+                  opacity: 0, 
+                  y: direction * 80, 
+                  filter: "blur(8px) brightness(0)" 
                 }}
-                whileInView={{
-                  opacity: 0.8,
-                  y: [direction * 10, -direction * 10], // Continuous float loop
-                  x: [0, -2, 2, -1, 0], // Glitch jitter
-                  skewX: [0, -5, 5, 0], // Glitch skew
-                  filter: [
-                    "blur(0px) brightness(1)",
-                    "blur(2px) brightness(1.2)",
-                    "blur(0px) brightness(1)",
-                  ],
+                whileInView={{ 
+                  opacity: 0.8, 
+                  y: [direction * 5, -direction * 5], 
+                  x: [0, -1, 1, 0], 
+                  filter: ["blur(0px) brightness(1)", "blur(1px) brightness(1.1)", "blur(0px) brightness(1)"] 
                 }}
-                viewport={{ once: false, margin: "-100px" }}
+                viewport={{ once: false, margin: "-50px" }}
                 transition={{
                   y: {
                     duration: 3 + (index % 3),
                     repeat: Infinity,
                     repeatType: "reverse",
                     ease: "easeInOut",
-                    delay: index * 0.1,
+                    delay: index * 0.05
                   },
                   x: {
                     duration: 0.2,
                     repeat: Infinity,
-                    repeatDelay: 2 + Math.random() * 3, // Randomly timed glitches
-                    ease: "easeInOut",
-                  },
-                  skewX: {
-                    duration: 0.1,
-                    repeat: Infinity,
-                    repeatDelay: 2 + Math.random() * 3,
-                    ease: "easeInOut",
+                    repeatDelay: 3 + Math.random() * 4,
                   },
                   filter: {
-                    duration: 0.3,
+                    duration: 0.4,
                     repeat: Infinity,
-                    repeatDelay: 4 + Math.random() * 2,
-                    ease: "easeInOut",
+                    repeatDelay: 5 + Math.random() * 5,
                   },
-                  opacity: { duration: 1, delay: index * 0.04 },
+                  opacity: { duration: 0.8, delay: index * 0.02 },
                 }}
                 style={{
                   WebkitTextStroke: "1px rgba(255,255,255,1)",
                   color: "transparent",
-                  translateX: (index - 5) * 8,
+                  translateX: (index - 5) * 4, 
                 }}
-                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[8] origin-bottom inline-block hover:text-primary transition-colors duration-500"
+                className="text-[12vw] md:text-[14vw] font-black leading-none tracking-tight md:tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4] md:scale-y-[8] origin-bottom inline-block will-change-[transform,opacity,filter]"
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             );
           })}
-
-          {/* Parallax Ghost Layer (Slightly Offset) */}
-          <div className="absolute inset-0 flex justify-center items-center opacity-30 blur-[2px] pointer-events-none translate-y-4">
-            {"MEETMIND AI".split("").map((char, index) => (
+          
+          <div className="absolute inset-0 hidden md:flex justify-center items-center opacity-30 blur-[2px] pointer-events-none translate-y-4">
+             {"MEETMIND AI".split("").map((char, index) => (
               <motion.span
                 key={`ghost-${index}`}
                 initial={{ opacity: 0 }}
@@ -847,8 +832,9 @@ export const Footer = () => {
                 style={{
                   WebkitTextStroke: "0.5px rgba(16,185,129,0.5)",
                   color: "transparent",
+                  translateX: (index - 5) * 4,
                 }}
-                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4.5] origin-bottom inline-block"
+                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[8] origin-bottom inline-block"
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
