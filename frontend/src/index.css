@@ -114,33 +114,16 @@
     -ms-overflow-style: none !important;
   }
 
+  /* COMPLETE SCROLLBAR HIDING (FOR BRUTALIST AESTHETIC) */
+  * {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
   *::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
     height: 0 !important;
-  }
-
-  /* RE-ENABLE ONLY FOR HTML ROOT */
-  html {
-    scrollbar-width: thin !important;
-    scrollbar-color: hsl(var(--primary) / 0.3) transparent !important;
-    overflow-y: auto !important;
-  }
-
-  html::-webkit-scrollbar {
-    display: block !important;
-    width: 10px !important;
-  }
-
-  html::-webkit-scrollbar-track {
-    background: transparent !important;
-  }
-
-  html::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.25) !important;
-    border-radius: 20px !important;
-    border: 3px solid transparent !important;
-    background-clip: content-box !important;
   }
 
   html::-webkit-scrollbar-thumb:hover {
