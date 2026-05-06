@@ -776,7 +776,7 @@ export const Footer = () => {
             WebkitTextStroke: "1px rgba(255,255,255,0.25)",
             color: "transparent",
           }}
-          className="text-[14vw] font-black text-center leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase w-full scale-y-110"
+          className="text-[14vw] font-black text-center leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase w-full scale-y-[2.5] origin-bottom"
         >
           MEETMIND AI
         </motion.h2>
