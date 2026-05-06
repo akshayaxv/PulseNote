@@ -769,7 +769,7 @@ export const Footer = () => {
       {/* Brand Giant Text - Professional Parallax Pixel Design */}
       <div 
         ref={footerRef}
-        className="mt-32 -mb-32 w-full overflow-hidden pointer-events-none select-none relative pb-28 flex justify-center items-center h-[50vh]"
+        className="mt-0 -mb-20 w-full overflow-hidden pointer-events-none select-none relative pb-10 flex justify-center items-center h-[40vh]"
       >
         <div className="relative flex justify-center items-center w-full">
           {"MEETMIND AI".split("").map((char, index) => {
