@@ -108,38 +108,54 @@
     overscroll-behavior: contain;
   }
 
-  .lenis.lenis-stopped {
-    overflow: hidden;
+  /* GLOBAL SCROLLBAR RESET - Force only one bar */
+  * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
   }
 
-  /* Force ONLY one scrollbar by hiding browser defaults and using our custom one */
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* RE-ENABLE ONLY FOR HTML ROOT */
   html {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--primary) / 0.3) transparent;
+    scrollbar-width: thin !important;
+    scrollbar-color: hsl(var(--primary) / 0.3) transparent !important;
+    overflow-y: auto !important;
   }
 
-  /* Chrome, Safari and Opera */
   html::-webkit-scrollbar {
-    width: 8px;
-  }
-  html::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  html::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.2);
-    border-radius: 10px;
-    border: 2px solid transparent;
-    background-clip: content-box;
-  }
-  html::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.5);
-    background-clip: content-box;
+    display: block !important;
+    width: 10px !important;
   }
 
-  /* Hide scrollbar on body entirely to prevent double bar */
-  body::-webkit-scrollbar {
-    display: none;
-    width: 0;
+  html::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.25) !important;
+    border-radius: 20px !important;
+    border: 3px solid transparent !important;
+    background-clip: content-box !important;
+  }
+
+  html::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.6) !important;
+    background-clip: content-box !important;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Outfit", system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    height: auto !important;
+    min-height: 100vh;
   }
 
   section {
