@@ -767,56 +767,60 @@ export const Footer = () => {
       </div>
 
       {/* Brand Giant Text - Professional Parallax Pixel Design */}
-      <div 
+      <div
         ref={footerRef}
-        className="mt-0 -mb-20 w-full overflow-hidden pointer-events-none select-none relative pb-10 flex justify-center items-center h-[40vh]"
+        className="mt-0 -mb-40 w-full overflow-hidden pointer-events-none select-none relative pb-10 flex justify-center items-center h-[60vh]"
       >
         <div className="relative flex justify-center items-center w-full">
           {"MEETMIND AI".split("").map((char, index) => {
             // Randomly decide if letter comes from top or bottom
             const direction = index % 2 === 0 ? 1 : -1;
-            
+
             return (
               <motion.span
                 key={index}
-                initial={{ 
-                  opacity: 0, 
+                initial={{
+                  opacity: 0,
                   y: direction * 150,
-                  filter: "blur(10px) brightness(0)" 
+                  filter: "blur(10px) brightness(0)",
                 }}
-                whileInView={{ 
-                  opacity: 0.8, 
+                whileInView={{
+                  opacity: 0.8,
                   y: [direction * 10, -direction * 10], // Continuous float loop
                   x: [0, -2, 2, -1, 0], // Glitch jitter
                   skewX: [0, -5, 5, 0], // Glitch skew
-                  filter: ["blur(0px) brightness(1)", "blur(2px) brightness(1.2)", "blur(0px) brightness(1)"] 
+                  filter: [
+                    "blur(0px) brightness(1)",
+                    "blur(2px) brightness(1.2)",
+                    "blur(0px) brightness(1)",
+                  ],
                 }}
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{
                   y: {
-                    duration: 3 + (index % 3), 
+                    duration: 3 + (index % 3),
                     repeat: Infinity,
                     repeatType: "reverse",
                     ease: "easeInOut",
-                    delay: index * 0.1
+                    delay: index * 0.1,
                   },
                   x: {
                     duration: 0.2,
                     repeat: Infinity,
                     repeatDelay: 2 + Math.random() * 3, // Randomly timed glitches
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   },
                   skewX: {
                     duration: 0.1,
                     repeat: Infinity,
                     repeatDelay: 2 + Math.random() * 3,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   },
                   filter: {
                     duration: 0.3,
                     repeat: Infinity,
                     repeatDelay: 4 + Math.random() * 2,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   },
                   opacity: { duration: 1, delay: index * 0.04 },
                 }}
@@ -825,16 +829,16 @@ export const Footer = () => {
                   color: "transparent",
                   translateX: (index - 5) * 8,
                 }}
-                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[4.5] origin-bottom inline-block hover:text-primary transition-colors duration-500"
+                className="text-[14vw] font-black leading-none tracking-[0.02em] whitespace-nowrap font-display uppercase scale-y-[8] origin-bottom inline-block hover:text-primary transition-colors duration-500"
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             );
           })}
-          
+
           {/* Parallax Ghost Layer (Slightly Offset) */}
           <div className="absolute inset-0 flex justify-center items-center opacity-30 blur-[2px] pointer-events-none translate-y-4">
-             {"MEETMIND AI".split("").map((char, index) => (
+            {"MEETMIND AI".split("").map((char, index) => (
               <motion.span
                 key={`ghost-${index}`}
                 initial={{ opacity: 0 }}
@@ -853,18 +857,18 @@ export const Footer = () => {
         </div>
 
         {/* Dynamic Scanline Overlay */}
-        <motion.div 
-          animate={{ 
+        <motion.div
+          animate={{
             backgroundPosition: ["0% 0%", "0% 100%"],
           }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity, 
-            ease: "linear" 
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
           }}
           className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(16,185,129,0.05)_50%)] bg-[length:100%_8px] mix-blend-screen opacity-40"
         />
-        
+
         {/* Pixel Noise Overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
       </div>
