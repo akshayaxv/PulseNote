@@ -787,19 +787,38 @@ export const Footer = () => {
                 whileInView={{ 
                   opacity: 0.8, 
                   y: [direction * 10, -direction * 10], // Continuous float loop
-                  filter: "blur(0px) brightness(1)" 
+                  x: [0, -2, 2, -1, 0], // Glitch jitter
+                  skewX: [0, -5, 5, 0], // Glitch skew
+                  filter: ["blur(0px) brightness(1)", "blur(2px) brightness(1.2)", "blur(0px) brightness(1)"] 
                 }}
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{
                   y: {
-                    duration: 3 + (index % 3), // Staggered loop duration
+                    duration: 3 + (index % 3), 
                     repeat: Infinity,
                     repeatType: "reverse",
                     ease: "easeInOut",
                     delay: index * 0.1
                   },
+                  x: {
+                    duration: 0.2,
+                    repeat: Infinity,
+                    repeatDelay: 2 + Math.random() * 3, // Randomly timed glitches
+                    ease: "easeInOut"
+                  },
+                  skewX: {
+                    duration: 0.1,
+                    repeat: Infinity,
+                    repeatDelay: 2 + Math.random() * 3,
+                    ease: "easeInOut"
+                  },
+                  filter: {
+                    duration: 0.3,
+                    repeat: Infinity,
+                    repeatDelay: 4 + Math.random() * 2,
+                    ease: "easeInOut"
+                  },
                   opacity: { duration: 1, delay: index * 0.04 },
-                  filter: { duration: 1, delay: index * 0.04 }
                 }}
                 style={{
                   WebkitTextStroke: "1px rgba(255,255,255,1)",
