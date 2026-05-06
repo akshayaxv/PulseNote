@@ -7,7 +7,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 const Index = () => {
   return (
     <SmoothScroll>
-      <div className="bg-background overflow-x-hidden">
+      <div className="bg-background min-h-screen">
         <Navbar />
         <ScrollToTop />
         <main>
