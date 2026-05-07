@@ -64,10 +64,9 @@ async def get_analytics(current_user: UserInDB = Depends(get_current_user)) -> D
             "completed": len(completed_meetings),
             "productivity": 85 if total_meetings > 0 else 0, # Mock %
         },
-        "velocity": {
-            "done": done_items,
-            "pending": pending_items,
-        },
+        "velocity": [
+            {"d": "Current", "done": done_items, "pending": pending_items}
+        ],
         "trend": trend_data,
         "participation": participation_data,
         "keywords": [

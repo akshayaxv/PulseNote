@@ -286,7 +286,7 @@ const Analytics = () => {
             </h3>
             <div className="h-[220px] md:h-[260px] w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={[data.velocity]} barGap={6}>
+                <BarChart data={data.velocity} barGap={6}>
                   <XAxis
                     dataKey="d"
                     axisLine={false}

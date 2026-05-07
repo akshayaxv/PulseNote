@@ -8,10 +8,11 @@ export interface AnalyticsData {
     completed: number;
     productivity: number;
   };
-  velocity: {
+  velocity: Array<{
+    d: string;
     done: number;
     pending: number;
-  };
+  }>;
   trend: Array<{ m: string; v: number }>;
   participation: Array<{ name: string; v: number }>;
   keywords: string[];
