@@ -6,7 +6,48 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Copy, Eye, Plus } from "lucide-react";
 
-const Settings = () => (
+import { useState, useEffect } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { Loader2 } from "lucide-react";
+
+const Settings = () => {
+  const { user, updateProfile } = useAuth();
+  
+  const [name, setName] = useState(user?.name || "");
+  const [email, setEmail] = useState(user?.email || "");
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+      setEmail(user.email);
+    }
+  }, [user]);
+
+  const getInitials = (name: string) => {
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .substring(0, 2);
+  };
+
+  const handleSave = async () => {
+    try {
+      setIsSaving(true);
+      await updateProfile(name, email);
+      setSaveSuccess(true);
+      setTimeout(() => setSaveSuccess(false), 3000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  return (
   <div className="max-w-4xl pb-20">
     <Tabs defaultValue="profile" className="space-y-6 md:space-y-8">
       <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
@@ -34,7 +75,7 @@ const Settings = () => (
 
           <div className="flex flex-col sm:flex-row items-center gap-6 mb-10">
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-[2rem] bg-gradient-brand text-white text-3xl font-black flex items-center justify-center shadow-float border-2 border-white/10">
-              SC
+              {user ? getInitials(user.name) : "??"}
             </div>
             <div className="flex flex-col items-center sm:items-start gap-3">
               <Button
@@ -50,30 +91,63 @@ const Settings = () => (
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { l: "Full Identifier", d: "Sarah Chen" },
-              { l: "Neural Email", d: "sarah@northwind.io" },
-              { l: "Functional Role", d: "VP Product" },
-              { l: "Temporal Zone", d: "GMT-7 (PST)" },
-            ].map((f) => (
-              <div key={f.l} className="space-y-2">
-                <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
-                  {f.l}
-                </Label>
-                <Input
-                  defaultValue={f.d}
-                  className="h-12 rounded-xl bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-primary/20 text-sm font-medium text-white/80 transition-all"
-                />
-              </div>
-            ))}
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
+                Full Identifier
+              </Label>
+              <Input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="h-12 rounded-xl bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-primary/20 text-sm font-medium text-white/80 transition-all"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
+                Neural Email
+              </Label>
+              <Input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-12 rounded-xl bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-primary/20 text-sm font-medium text-white/80 transition-all"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
+                Functional Role
+              </Label>
+              <Input
+                defaultValue="VP Product"
+                className="h-12 rounded-xl bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-primary/20 text-sm font-medium text-white/80 transition-all"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
+                Temporal Zone
+              </Label>
+              <Input
+                defaultValue="GMT-7 (PST)"
+                className="h-12 rounded-xl bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-primary/20 text-sm font-medium text-white/80 transition-all"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-10">
-            <Button className="rounded-xl md:rounded-2xl h-12 px-8 bg-gradient-brand border-0 shadow-emerald hover:scale-[1.02] transition-transform text-xs font-black uppercase tracking-widest">
-              COMMIT CHANGES
+            <Button 
+              onClick={handleSave}
+              disabled={isSaving}
+              className="rounded-xl md:rounded-2xl h-12 px-8 bg-gradient-brand border-0 shadow-emerald hover:scale-[1.02] transition-transform text-xs font-black uppercase tracking-widest"
+            >
+              {isSaving ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : null}
+              {saveSuccess ? "SAVED!" : "COMMIT CHANGES"}
             </Button>
             <Button
               variant="ghost"
+              onClick={() => {
+                if (user) {
+                  setName(user.name);
+                  setEmail(user.email);
+                }
+              }}
               className="rounded-xl md:rounded-2xl h-12 px-8 text-white/30 hover:text-white/60 text-xs font-black uppercase tracking-widest"
             >
               CANCEL
@@ -252,5 +326,6 @@ const Settings = () => (
       </TabsContent>
     </Tabs>
   </div>
-);
+  );
+};
 export default Settings;

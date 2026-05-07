@@ -55,5 +55,40 @@ export function useAuth() {
     window.location.href = "http://localhost:8000/api/v1/auth/google/login";
   }, []);
 
-  return { user, loading, error, login, signup, logout, loginWithGoogle };
+  const updateProfile = useCallback(async (name: string, email: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const token = localStorage.getItem("meetmind_token");
+      const res = await fetch("http://localhost:8000/api/v1/auth/me", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ name, email })
+      });
+      
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({ detail: "Unknown error" }));
+        throw new Error(errorData.detail || `HTTP ${res.status}`);
+      }
+      
+      const updatedUser = await res.json();
+      
+      // Update local storage and state
+      if (token) {
+        saveAuth(token, updatedUser);
+        setUser(updatedUser);
+      }
+      return updatedUser;
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Update failed");
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return { user, loading, error, login, signup, logout, loginWithGoogle, updateProfile };
 }

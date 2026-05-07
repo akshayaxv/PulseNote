@@ -8,7 +8,7 @@ from bson import ObjectId
 # pyrefly: ignore [missing-import]
 import httpx
 
-from app.models.user import UserRegister, UserLogin, UserResponse, TokenResponse
+from app.models.user import UserRegister, UserLogin, UserResponse, TokenResponse, UserUpdate
 from app.core.security import get_password_hash, verify_password, create_access_token
 from app.core.config import settings
 from app.services.mongodb import db
@@ -68,6 +68,27 @@ async def login(data: UserLogin):
 @router.get("/me", response_model=UserResponse)
 async def get_me(current_user: dict = Depends(get_current_user)):
     return format_user(current_user)
+
+
+@router.put("/me", response_model=UserResponse)
+async def update_me(data: UserUpdate, current_user: dict = Depends(get_current_user)):
+    update_data = {k: v for k, v in data.dict().items() if v is not None}
+    
+    if not update_data:
+        return format_user(current_user)
+
+    if "email" in update_data and update_data["email"] != current_user["email"]:
+        existing = await db.db["users"].find_one({"email": update_data["email"]})
+        if existing:
+            raise HTTPException(status_code=400, detail="Email already taken")
+
+    await db.db["users"].update_one(
+        {"_id": current_user["_id"]},
+        {"$set": update_data}
+    )
+    
+    updated_user = await db.db["users"].find_one({"_id": current_user["_id"]})
+    return format_user(updated_user)
 
 
 # ─── Google OAuth ─────────────────────────────────────────────────────────────
