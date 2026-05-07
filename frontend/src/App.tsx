@@ -18,6 +18,7 @@ import Analytics from "./pages/app/Analytics.tsx";
 import Integrations from "./pages/app/Integrations.tsx";
 import Settings from "./pages/app/Settings.tsx";
 import ScrollToTopOnRoute from "./components/ScrollToTopOnRoute.tsx";
+import OAuthCallback from "./pages/OAuthCallback.tsx";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/docs" element={<Docs />} />
+          <Route path="/auth/callback" element={<OAuthCallback />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

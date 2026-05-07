@@ -137,9 +137,15 @@ async def google_callback(code: str):
         user_doc["_id"] = result.inserted_id
         user = user_doc
 
-    # 4. Return JWT + redirect to frontend
+    # 4. Return JWT + redirect to frontend with user info
     jwt_token = create_access_token(data={"sub": str(user["_id"])})
 
-    # Redirect frontend with token in query param
-    frontend_url = f"{settings.SITE_URL}/auth/callback?token={jwt_token}"
+    import urllib.parse
+    frontend_url = (
+        f"{settings.SITE_URL}/auth/callback"
+        f"?token={jwt_token}"
+        f"&id={str(user['_id'])}"
+        f"&name={urllib.parse.quote(user.get('name', ''))}"
+        f"&email={urllib.parse.quote(user.get('email', ''))}"
+    )
     return RedirectResponse(url=frontend_url)

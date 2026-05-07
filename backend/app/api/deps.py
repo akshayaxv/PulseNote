@@ -1,4 +1,6 @@
+# pyrefly: ignore [missing-import]
 from fastapi import Depends, HTTPException, status
+# pyrefly: ignore [missing-import]
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from app.core.security import decode_access_token
 from app.services.mongodb import db
@@ -20,6 +22,7 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
     if not user_id:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
 
+    # pyrefly: ignore [missing-import]
     from bson import ObjectId
     user = await db.db["users"].find_one({"_id": ObjectId(user_id)})
     if not user:

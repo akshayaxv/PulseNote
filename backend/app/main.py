@@ -1,5 +1,8 @@
+# pyrefly: ignore [missing-import]
 from fastapi import FastAPI
+# pyrefly: ignore [missing-import]
 from fastapi.middleware.cors import CORSMiddleware
+# pyrefly: ignore [missing-import]
 import uvicorn
 from app.core.config import settings
 from app.api.auth import router as auth_router
