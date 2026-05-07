@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from app.core.config import settings
+from app.api.auth import router as auth_router
 from contextlib import asynccontextmanager
 from app.services.mongodb import connect_to_mongo, close_mongo_connection
 
@@ -28,6 +29,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(auth_router, prefix="/api/v1")
 
 @app.get("/")
 async def root():
