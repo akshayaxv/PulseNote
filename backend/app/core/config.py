@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     
     OPENROUTER_API_KEY: str = ""
     OPENROUTER_MODEL: str = "nvidia/nemotron-3-super-120b-a12b:free"
-    EMBEDDING_MODEL: str = "openai/text-embedding-3-small"
+    EMBEDDING_MODEL: str = "nvidia/llama-nemotron-embed-vl-1b-v2:free"
     SITE_URL: str = "http://localhost:8080"
     SITE_NAME: str = "MeetMindAI - AI Meeting Assistant"
 
