@@ -27,6 +27,12 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+# pyrefly: ignore [missing-import]
+from slowapi.errors import RateLimitExceeded
+# pyrefly: ignore [missing-import]
+from slowapi.middleware import SlowAPIMiddleware
+from app.core.rate_limit import limiter, _rate_limit_exceeded_handler
+
 # Set up CORS
 app.add_middleware(
     CORSMiddleware,
@@ -35,6 +41,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Set up Rate Limiting
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_middleware(SlowAPIMiddleware)
 
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(meetings_router, prefix="/api/v1")

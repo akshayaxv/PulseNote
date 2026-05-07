@@ -1,5 +1,5 @@
 # pyrefly: ignore [missing-import]
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter, HTTPException, status, Depends, Request
 # pyrefly: ignore [missing-import]
 from fastapi.responses import RedirectResponse
 from datetime import datetime
@@ -13,6 +13,7 @@ from app.core.security import get_password_hash, verify_password, create_access_
 from app.core.config import settings
 from app.services.mongodb import db
 from app.api.deps import get_current_user
+from app.core.rate_limit import limiter
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
@@ -33,7 +34,8 @@ def format_user(user: dict) -> UserResponse:
 # ─── Email/Password Auth ──────────────────────────────────────────────────────
 
 @router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
-async def register(data: UserRegister):
+@limiter.limit("5/minute")
+async def register(request: Request, data: UserRegister):
     existing = await db.db["users"].find_one({"email": data.email})
     if existing:
         raise HTTPException(status_code=400, detail="Email already registered")
@@ -54,7 +56,8 @@ async def register(data: UserRegister):
 
 
 @router.post("/login", response_model=TokenResponse)
-async def login(data: UserLogin):
+@limiter.limit("10/minute")
+async def login(request: Request, data: UserLogin):
     user = await db.db["users"].find_one({"email": data.email})
     if not user or not user.get("password"):
         raise HTTPException(status_code=401, detail="Invalid email or password")

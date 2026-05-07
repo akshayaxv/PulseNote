@@ -1,5 +1,5 @@
 # pyrefly: ignore [missing-import]
-from fastapi import APIRouter, HTTPException, status, Depends, BackgroundTasks
+from fastapi import APIRouter, HTTPException, status, Depends, BackgroundTasks, Request
 from datetime import datetime
 # pyrefly: ignore [missing-import]
 from bson import ObjectId
@@ -10,6 +10,7 @@ from app.services.mongodb import db
 from app.services.ai import ai_service
 from app.services.rag import store_meeting_chunks
 from app.api.deps import get_current_user
+from app.core.rate_limit import limiter
 
 router = APIRouter(prefix="/meetings", tags=["Meetings"])
 
@@ -102,7 +103,9 @@ Always respond in this exact JSON format:
 # ─── Routes ───────────────────────────────────────────────────────────────────
 
 @router.post("/upload", response_model=MeetingResponse, status_code=status.HTTP_201_CREATED)
+@limiter.limit("10/minute")
 async def upload_meeting(
+    request: Request,
     data: MeetingUpload,
     background_tasks: BackgroundTasks,
     current_user: dict = Depends(get_current_user)

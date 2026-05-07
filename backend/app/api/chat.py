@@ -1,14 +1,17 @@
 # pyrefly: ignore [missing-import]
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Request
 from app.models.chat import ChatRequest, ChatResponse
 from app.services.rag import retrieve_relevant_chunks, generate_rag_answer
 from app.api.deps import get_current_user
+from app.core.rate_limit import limiter
 
 router = APIRouter(prefix="/chat", tags=["RAG Chat"])
 
 @router.post("/", response_model=ChatResponse)
+@limiter.limit("20/minute")
 async def chat(
-    request: ChatRequest,
+    request: Request,
+    payload: ChatRequest,
     current_user: dict = Depends(get_current_user)
 ):
     """
@@ -19,30 +22,30 @@ async def chat(
     try:
         # Retrieve relevant chunks
         chunks = await retrieve_relevant_chunks(
-            question=request.question,
-            meeting_id=request.meeting_id,
+            question=payload.question,
+            meeting_id=payload.meeting_id,
             top_k=5
         )
 
         if not chunks:
             return ChatResponse(
                 answer="No relevant meeting content found. Please upload a meeting transcript first.",
-                question=request.question,
+                question=payload.question,
                 sources_count=0,
-                meeting_id=request.meeting_id
+                meeting_id=payload.meeting_id
             )
 
         # Generate grounded answer using LLM
         answer = await generate_rag_answer(
-            question=request.question,
+            question=payload.question,
             context_chunks=chunks
         )
 
         return ChatResponse(
             answer=answer,
-            question=request.question,
+            question=payload.question,
             sources_count=len(chunks),
-            meeting_id=request.meeting_id
+            meeting_id=payload.meeting_id
         )
 
     except Exception as e:
