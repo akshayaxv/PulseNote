@@ -1,4 +1,4 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   Video,
@@ -63,12 +63,12 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
           shrink-0`}
       >
         <div className="p-6 md:p-8 flex items-center justify-between lg:justify-start gap-4">
-          <div className="flex items-center gap-4">
+          <Link to="/" className="flex items-center gap-4 group/logo cursor-pointer">
             <motion.div
               whileHover={{ rotate: 10, scale: 1.05 }}
-              className="w-10 h-10 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center shrink-0 shadow-emerald border border-white/10 relative overflow-hidden group"
+              className="w-10 h-10 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center shrink-0 shadow-emerald border border-white/10 relative overflow-hidden"
             >
-              <div className="absolute inset-0 bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-white/20 blur-lg opacity-0 group-hover/logo:opacity-100 transition-opacity" />
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -95,12 +95,12 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
 
             {(!collapsed || isOpen) && (
               <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}>
-                <span className="font-display font-black text-lg md:text-xl text-white tracking-tighter uppercase">
+                <span className="font-display font-black text-lg md:text-xl text-white tracking-tighter uppercase group-hover/logo:text-white/80 transition-colors">
                   MEETMIND <span className="text-primary">AI</span>
                 </span>
               </motion.div>
             )}
-          </div>
+          </Link>
 
           <button
             onClick={onClose}
