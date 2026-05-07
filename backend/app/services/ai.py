@@ -24,16 +24,21 @@ class AIService:
         }
 
         async with httpx.AsyncClient() as client:
-            response = await client.post(
-                f"{self.base_url}/chat/completions",
-                headers=headers,
-                json=payload,
-                timeout=60.0
-            )
-            
+            try:
+                response = await client.post(
+                    f"{self.base_url}/chat/completions",
+                    headers=headers,
+                    json=payload,
+                    timeout=60.0
+                )
+            except httpx.TimeoutException:
+                return {"error": "AI request timed out. Please try again."}
+            except Exception as e:
+                return {"error": f"Network error: {str(e)}"}
+
             if response.status_code != 200:
-                return {"error": f"API Error: {response.text}"}
-            
+                return {"error": f"API Error {response.status_code}: {response.text[:200]}"}
+
             return response.json()
 
 ai_service = AIService()
