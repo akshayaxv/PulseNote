@@ -8,6 +8,7 @@ from app.core.config import settings
 from app.api.auth import router as auth_router
 from app.api.meetings import router as meetings_router
 from app.api.chat import router as chat_router
+from app.api.analytics import router as analytics_router
 from contextlib import asynccontextmanager
 from app.services.mongodb import connect_to_mongo, close_mongo_connection
 
@@ -38,6 +39,7 @@ app.add_middleware(
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(meetings_router, prefix="/api/v1")
 app.include_router(chat_router, prefix="/api/v1")
+app.include_router(analytics_router, prefix="/api/v1/analytics")
 
 @app.get("/")
 async def root():

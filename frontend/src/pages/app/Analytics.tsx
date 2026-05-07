@@ -20,6 +20,7 @@ import { Counter } from "@/components/dashboard/Counter";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { AnalyticsSkeleton } from "@/components/dashboard/Skeletons";
+import { useAnalytics } from "@/hooks/useAnalytics";
 import {
   TrendingUp,
   Users,
@@ -39,26 +40,6 @@ const hours = [
   { d: "Fri", h: 7.8 },
   { d: "Sat", h: 1.2 },
   { d: "Sun", h: 0.8 },
-];
-const participation = [
-  { name: "Sarah", v: 32 },
-  { name: "Marcus", v: 28 },
-  { name: "Aisha", v: 22 },
-  { name: "Jordan", v: 18 },
-  { name: "Priya", v: 15 },
-];
-const completion = [
-  { d: "W1", done: 12, pending: 3 },
-  { d: "W2", done: 18, pending: 5 },
-  { d: "W3", done: 22, pending: 4 },
-  { d: "W4", done: 26, pending: 6 },
-];
-const trend = [
-  { m: "Jan", v: 62 },
-  { m: "Feb", v: 68 },
-  { m: "Mar", v: 74 },
-  { m: "Apr", v: 82 },
-  { m: "May", v: 92 },
 ];
 const COLORS = [
   "hsl(var(--primary))",
@@ -112,14 +93,9 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
 
 const Analytics = () => {
   const [range, setRange] = useState("Weekly");
-  const [loading, setLoading] = useState(true);
+  const { data, isLoading: loading } = useAnalytics();
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
+  if (loading || !data) {
     return (
       <div className="space-y-6 md:space-y-10 pb-20">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -163,10 +139,10 @@ const Analytics = () => {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
         {[
-          { l: "Meeting hours", v: 33.9, s: "H", icon: Clock },
-          { l: "Participation", v: 4.6, s: "P", icon: Users },
-          { l: "Completed", v: 162, s: "✓", icon: CheckCircle2 },
-          { l: "Productivity", v: 92, s: "%", icon: TrendingUp },
+          { l: "Meeting hours", v: data.overview.total_hours, s: "H", icon: Clock },
+          { l: "Participation", v: data.overview.participation_score, s: "P", icon: Users },
+          { l: "Completed", v: data.overview.completed, s: "✓", icon: CheckCircle2 },
+          { l: "Productivity", v: data.overview.productivity, s: "%", icon: TrendingUp },
         ].map((s, i) => (
           <motion.div
             key={s.l}
@@ -264,7 +240,7 @@ const Analytics = () => {
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
-                    data={participation}
+                    data={data.participation}
                     dataKey="v"
                     nameKey="name"
                     innerRadius={50}
@@ -272,7 +248,7 @@ const Analytics = () => {
                     paddingAngle={8}
                     stroke="none"
                   >
-                    {participation.map((_, i) => (
+                    {data.participation.map((_, i) => (
                       <Cell key={i} fill={COLORS[i % COLORS.length]} />
                     ))}
                   </Pie>
@@ -310,7 +286,7 @@ const Analytics = () => {
             </h3>
             <div className="h-[220px] md:h-[260px] w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={completion} barGap={6}>
+                <BarChart data={[data.velocity]} barGap={6}>
                   <XAxis
                     dataKey="d"
                     axisLine={false}
@@ -361,7 +337,7 @@ const Analytics = () => {
             </h3>
             <div className="h-[220px] md:h-[260px] w-full">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={trend}>
+                <LineChart data={data.trend}>
                   <XAxis
                     dataKey="m"
                     axisLine={false}
@@ -441,15 +417,7 @@ const Analytics = () => {
             Top Keywords
           </h4>
           <div className="flex flex-wrap gap-2.5">
-            {[
-              "Q4 Roadmap",
-              "API Integration",
-              "User Feedback",
-              "Retention",
-              "Scalability",
-              "Onboarding",
-              "Market Fit",
-            ].map((k) => (
+            {data.keywords.map((k) => (
               <span
                 key={k}
                 className="text-[9px] font-black px-3 py-1.5 rounded-xl bg-white/5 text-white/40 border border-white/10 hover:border-primary/40 hover:text-primary transition-all uppercase tracking-widest"
