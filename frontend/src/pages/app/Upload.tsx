@@ -1,7 +1,7 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { Upload as UploadIcon, FileText, CheckCircle2, Loader2, Sparkles, Plus, X } from "lucide-react";
+import { Upload as UploadIcon, FileText, CheckCircle2, Loader2, Sparkles, Plus, X, MousePointer2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useUploadMeeting } from "@/hooks/useMeetings";
@@ -15,6 +15,8 @@ const Upload = () => {
   const [participants, setParticipants] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
+  
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -35,6 +37,37 @@ const Upload = () => {
       setTagInput("");
     }
   }, [tagInput, tags]);
+
+  const handleFile = (file: File) => {
+    const isText = file.type === "text/plain" || file.name.toLowerCase().endsWith(".txt");
+    
+    if (isText) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const content = ev.target?.result as string;
+        if (content.length < 10) {
+          toast({ 
+            title: "File Too Short", 
+            description: "Transcript must be at least 10 characters long.", 
+            variant: "destructive" 
+          });
+          return;
+        }
+        setTranscript(content);
+        if (!title || title.toLowerCase().includes("sync") || title.toLowerCase().includes("meeting")) {
+          setTitle(file.name.replace(/\.[^/.]+$/, ""));
+        }
+        toast({ title: "File Ready", description: `${file.name} loaded successfully.` });
+      };
+      reader.readAsText(file);
+    } else {
+      toast({ 
+        title: "Unsupported File", 
+        description: "Please upload a .txt transcript file.", 
+        variant: "destructive" 
+      });
+    }
+  };
 
   const handleSubmit = () => {
     if (!title.trim() || !transcript.trim()) {
@@ -57,6 +90,17 @@ const Upload = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
+      <input
+        type="file"
+        ref={fileInputRef}
+        className="hidden"
+        accept=".txt,text/plain"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) handleFile(file);
+        }}
+      />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -66,26 +110,35 @@ const Upload = () => {
           e.preventDefault();
           setDrag(false);
           const file = e.dataTransfer.files[0];
-          if (file && file.type === "text/plain") {
-            const reader = new FileReader();
-            reader.onload = (ev) => setTranscript(ev.target?.result as string);
-            reader.readAsText(file);
-            setTitle(file.name.replace(/\.[^/.]+$/, ""));
-          } else {
-            toast({ title: "Text Files Only", description: "Drop a .txt transcript file.", variant: "destructive" });
-          }
+          if (file) handleFile(file);
         }}
-        className={`rounded-[2rem] border-2 border-dashed transition-all duration-500 ${drag ? "border-emerald bg-emerald/5 scale-[1.01]" : "border-white/10 bg-[#020617]/40 backdrop-blur-xl"} p-8 md:p-12 text-center relative overflow-hidden`}
+        onClick={() => fileInputRef.current?.click()}
+        className={`rounded-[2rem] border-2 border-dashed transition-all duration-500 cursor-pointer group relative overflow-hidden ${
+          drag 
+            ? "border-emerald bg-emerald/5 scale-[1.01]" 
+            : "border-white/10 bg-[#020617]/40 backdrop-blur-xl hover:border-primary/40 hover:bg-primary/5"
+        } p-8 md:p-12 text-center`}
       >
         <div className="absolute inset-0 bg-gradient-brand opacity-5 pointer-events-none" />
-        <motion.div animate={{ y: drag ? -10 : 0, scale: drag ? 1.05 : 1 }}
-          className="w-20 h-20 rounded-3xl bg-gradient-brand mx-auto flex items-center justify-center mb-6 shadow-float">
+        
+        <motion.div 
+          animate={{ y: drag ? -10 : 0, scale: drag ? 1.05 : 1 }}
+          className="w-20 h-20 rounded-3xl bg-gradient-brand mx-auto flex items-center justify-center mb-6 shadow-float group-hover:shadow-glow-primary transition-shadow"
+        >
           <UploadIcon className="w-10 h-10 text-white" />
         </motion.div>
+
         <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-white/90">Import Meeting Transcript</h2>
-        <p className="text-white/40 text-sm mb-4 max-w-sm mx-auto font-medium leading-relaxed">
-          Drag & drop a .txt transcript file, or fill in the form below.
-        </p>
+        
+        <div className="flex flex-col items-center gap-2 mb-4">
+          <p className="text-white/40 text-sm max-w-sm mx-auto font-medium leading-relaxed">
+            Drag & drop a <span className="text-primary/60">.txt</span> transcript file, or click to browse.
+          </p>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-white/30 group-hover:text-primary/60 transition-colors">
+            <MousePointer2 className="w-3 h-3" /> Click anywhere to select
+          </div>
+        </div>
+
         <div className="flex flex-wrap justify-center gap-8 mt-6 text-[9px] font-black uppercase tracking-[0.2em] text-white/30">
           {["AI Summarization", "Action Items", "RAG Chat"].map((t) => (
             <div key={t} className="flex items-center gap-2">
@@ -191,4 +244,5 @@ const Upload = () => {
     </div>
   );
 };
+
 export default Upload;
