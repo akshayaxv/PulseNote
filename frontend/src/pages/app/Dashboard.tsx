@@ -52,14 +52,14 @@ const Dashboard = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[2rem] md:rounded-[3rem] bg-[#020617]/40 backdrop-blur-2xl border border-white/5 p-6 md:p-10 relative overflow-hidden shadow-glow"
+        className="rounded-[2rem] md:rounded-[3rem] bg-[#020617]/40 md:backdrop-blur-xl border border-white/5 p-6 md:p-10 relative overflow-hidden md:shadow-glow"
       >
         <div className="absolute inset-0 bg-gradient-brand opacity-5 md:opacity-10" />
-        <div className="absolute -right-20 -top-20 w-72 h-72 bg-emerald/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -right-20 -top-20 w-72 h-72 bg-emerald/10 rounded-full blur-2xl hidden md:block" />
         <div className="relative flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-1.5 h-1.5 rounded-full bg-emerald animate-pulse shadow-glow" />
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald" />
               <div className="text-[10px] md:text-[11px] uppercase tracking-[0.4em] text-white/30 font-black">
                 SYSTEM READY · MAIN WORKSPACE
               </div>
