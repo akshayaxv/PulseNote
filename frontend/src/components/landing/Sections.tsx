@@ -802,13 +802,16 @@ export const Footer = () => {
                   filter: "blur(8px) brightness(0)",
                 }}
                 whileInView={{
-                  opacity: 0.8,
+                  opacity: [0, 0.8, 0.4, 0.9, 0.7, 0.8],
                   y: [direction * 5, -direction * 5],
-                  x: [0, -1, 1, 0],
+                  x: [0, -4, 4, -2, 2, 0],
+                  skewX: [0, 10, -10, 5, -5, 0],
                   filter: [
-                    "blur(0px) brightness(1)",
-                    "blur(1px) brightness(1.1)",
-                    "blur(0px) brightness(1)",
+                    "blur(0px) brightness(1) contrast(1)",
+                    "blur(2px) brightness(1.5) contrast(2)",
+                    "blur(0px) brightness(0.8) contrast(1)",
+                    "blur(4px) brightness(1.2) contrast(1.5)",
+                    "blur(0px) brightness(1) contrast(1)",
                   ],
                 }}
                 viewport={{ once: false, margin: "-50px" }}
@@ -821,16 +824,25 @@ export const Footer = () => {
                     delay: index * 0.05,
                   },
                   x: {
-                    duration: 0.2,
+                    duration: 0.15,
                     repeat: Infinity,
-                    repeatDelay: 3 + Math.random() * 4,
+                    repeatDelay: 0.5 + Math.random() * 2,
+                  },
+                  skewX: {
+                    duration: 0.1,
+                    repeat: Infinity,
+                    repeatDelay: 1 + Math.random() * 3,
                   },
                   filter: {
-                    duration: 0.4,
+                    duration: 0.2,
                     repeat: Infinity,
-                    repeatDelay: 5 + Math.random() * 5,
+                    repeatDelay: 1.5 + Math.random() * 4,
                   },
-                  opacity: { duration: 0.8, delay: index * 0.02 },
+                  opacity: {
+                    duration: 0.1,
+                    repeat: Infinity,
+                    repeatDelay: 2 + Math.random() * 5,
+                  },
                 }}
                 style={{
                   WebkitTextStroke: "1px rgba(255,255,255,1)",
