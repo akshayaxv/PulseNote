@@ -594,61 +594,79 @@ export const FAQ = () => (
   </section>
 );
 
-export const CTA = () => (
-  <section className="py-32">
-    <div className="container">
-      <motion.div
-        {...fade}
-        className="relative overflow-hidden rounded-[3rem] sm:rounded-[4rem] bg-[#020617] border border-white/10 text-white p-10 md:p-24 text-center shadow-float"
-      >
-        {/* Abstract Background Effects */}
-        <div className="absolute inset-0 bg-gradient-brand opacity-[0.03]" />
-        <div className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[80px] animate-pulse-glow will-change-[filter,transform]" />
-        <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full bg-emerald/10 blur-[80px] animate-pulse-glow will-change-[filter,transform]" />
+import { useAuth } from "@/hooks/useAuth";
 
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-8"
-          >
-            <Sparkles className="w-3.5 h-3.5" /> Final Frontier
-          </motion.div>
+export const CTA = () => {
+  const { user } = useAuth();
 
-          <h2 className="text-4xl md:text-7xl font-display font-bold mb-8 tracking-tighter leading-[0.9]">
-            Ready to build the <span className="text-gradient">future?</span>
-          </h2>
+  return (
+    <section className="py-32">
+      <div className="container">
+        <motion.div
+          {...fade}
+          className="relative overflow-hidden rounded-[3rem] sm:rounded-[4rem] bg-[#020617] border border-white/10 text-white p-10 md:p-24 text-center shadow-float"
+        >
+          {/* Abstract Background Effects */}
+          <div className="absolute inset-0 bg-gradient-brand opacity-[0.03]" />
+          <div className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[80px] animate-pulse-glow will-change-[filter,transform]" />
+          <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] rounded-full bg-emerald/10 blur-[80px] animate-pulse-glow will-change-[filter,transform]" />
 
-          <p className="text-white/50 text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
-            Join the inner circle of engineers building next-generation meeting intelligence.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button
-              size="lg"
-              className="group relative h-16 px-10 rounded-full bg-primary text-black font-black text-xs uppercase tracking-widest overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95 shadow-emerald"
-              asChild
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-8"
             >
-              <Link to="/dashboard">
-                <span className="relative z-10 flex items-center gap-3">
-                  Launch Dashboard{" "}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
-              </Link>
-            </Button>
+              <Sparkles className="w-3.5 h-3.5" /> {user ? "Welcome Back" : "Final Frontier"}
+            </motion.div>
 
-            <button className="text-white/40 hover:text-white text-[11px] font-black uppercase tracking-[0.2em] transition-colors flex items-center gap-2 group">
-              View Repository{" "}
-              <Github className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-            </button>
+            <h2 className="text-4xl md:text-7xl font-display font-bold mb-8 tracking-tighter leading-[0.9]">
+              {user ? (
+                <>
+                  Your meetings, <span className="text-gradient">smarter.</span>
+                </>
+              ) : (
+                <>
+                  Ready to build the <span className="text-gradient">future?</span>
+                </>
+              )}
+            </h2>
+
+            <p className="text-white/50 text-lg md:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
+              {user
+                ? "Dive back into your workspace and let AI handle the heavy lifting for your next meeting."
+                : "Join the inner circle of engineers building next-generation meeting intelligence."}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Button
+                size="lg"
+                className="group relative h-16 px-10 rounded-full bg-primary text-black font-black text-xs uppercase tracking-widest overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95 shadow-emerald"
+                asChild
+              >
+                <Link to="/dashboard">
+                  <span className="relative z-10 flex items-center gap-3">
+                    {user ? "Go to Dashboard" : "Launch Dashboard"}{" "}
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
+                </Link>
+              </Button>
+
+              {!user && (
+                <button className="text-white/40 hover:text-white text-[11px] font-black uppercase tracking-[0.2em] transition-colors flex items-center gap-2 group">
+                  View Repository{" "}
+                  <Github className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+                </button>
+              )}
+            </div>
           </div>
-        </div>
-      </motion.div>
-    </div>
-  </section>
-);
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export const Footer = () => {
   const footerRef = useRef<HTMLDivElement>(null);

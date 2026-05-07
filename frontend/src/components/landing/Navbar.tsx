@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+import { LayoutDashboard, LogOut, User } from "lucide-react";
 
 const items = [
   { label: "Workflow", href: "/#workflow" },
@@ -11,6 +13,7 @@ const items = [
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -43,7 +46,7 @@ export const Navbar = () => {
 
           {/* Links Dock with Scroll Masking */}
           <div className="relative flex items-center min-w-0">
-            <div className="flex items-center bg-white/5 rounded-xl px-1 py-1 sm:px-2 sm:py-1.5 border border-white/5 overflow-x-auto no-scrollbar mask-fade-edges">
+            <div className="flex items-center bg-white/5 rounded-xl px-1 py-1 sm:px-2 sm:py-1.5 border border-white/5 overflow-x-auto no-scrollbar mask-fade-edges gap-1">
               {items.map((item) => {
                 const isExternal = item.href === "/docs";
 
@@ -65,6 +68,25 @@ export const Navbar = () => {
                   </a>
                 );
               })}
+
+              {user && (
+                <>
+                  <Link
+                    to="/dashboard"
+                    className="px-3 sm:px-5 py-2 sm:py-2 text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-emerald hover:text-emerald-400 hover:bg-emerald/10 rounded-xl transition-all duration-300 whitespace-nowrap flex items-center gap-2"
+                  >
+                    <LayoutDashboard className="w-3 h-3" />
+                    Dashboard
+                  </Link>
+                  <Link
+                    to="/dashboard/settings"
+                    className="px-3 sm:px-5 py-2 sm:py-2 text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-white/50 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 whitespace-nowrap flex items-center gap-2"
+                  >
+                    <User className="w-3 h-3" />
+                    Profile
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -72,16 +94,28 @@ export const Navbar = () => {
         {/* Action Button Group */}
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <div className="h-6 w-px bg-white/10 hidden lg:block" />
-          <Button
-            size="lg"
-            asChild
-            className="rounded-xl bg-white text-black hover:bg-emerald hover:text-black transition-all duration-300 px-4 sm:px-10 h-8 sm:h-12 font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.1em] sm:tracking-widest border-0"
-          >
-            <Link to="/signup">
-              <span className="xs:hidden">Start</span>
-              <span className="hidden xs:inline">Start Free Trial</span>
-            </Link>
-          </Button>
+          {user ? (
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={logout}
+              className="rounded-xl text-white/50 hover:text-red-400 hover:bg-red-400/10 transition-all duration-300 px-3 sm:px-4 h-8 sm:h-10 font-bold text-[10px] sm:text-[11px] uppercase tracking-widest border-0 flex items-center gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              <span className="hidden xs:inline">Logout</span>
+            </Button>
+          ) : (
+            <Button
+              size="lg"
+              asChild
+              className="rounded-xl bg-white text-black hover:bg-emerald hover:text-black transition-all duration-300 px-4 sm:px-10 h-8 sm:h-12 font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.1em] sm:tracking-widest border-0"
+            >
+              <Link to="/signup">
+                <span className="xs:hidden">Start</span>
+                <span className="hidden xs:inline">Start Free Trial</span>
+              </Link>
+            </Button>
+          )}
         </div>
       </motion.nav>
     </header>

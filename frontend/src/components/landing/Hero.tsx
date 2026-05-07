@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 import {
   ArrowRight,
   Play,
@@ -15,11 +16,13 @@ import {
   MessageSquare,
   Sparkles,
   Settings,
+  ArrowUpRight,
 } from "lucide-react";
 import { VoiceWave } from "./VoiceWave";
 
 export const Hero = () => {
   const { scrollY } = useScroll();
+  const { user } = useAuth();
 
   // Subtle parallax for floating elements - only for desktop
   const y1 = useTransform(scrollY, [0, 500], [0, -50]);
@@ -29,7 +32,7 @@ export const Hero = () => {
     <section className="relative pt-24 pb-16 lg:pt-48 lg:pb-32 overflow-hidden bg-[#020617]">
       {/* Background Creative Elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Glowing Triangle Lines from Corners */}
+        {/* ... existing svg and gradient code ... */}
         <svg
           className="absolute inset-0 w-full h-full opacity-30"
           viewBox="0 0 1440 800"
@@ -108,21 +111,35 @@ export const Hero = () => {
             tracker.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto rounded-full bg-emerald hover:bg-emerald/90 text-navy font-bold h-12 md:h-14 px-10 shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all"
-              asChild
-            >
-              <Link to="/dashboard">Get Started</Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="w-full sm:w-auto rounded-full h-12 md:h-14 px-10 text-sm md:text-base font-bold bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 transition-all text-white border-2"
-            >
-              <a href="#workflow">Watch Demo</a>
-            </Button>
+            {user ? (
+              <Button
+                size="lg"
+                className="w-full sm:w-auto rounded-full bg-emerald hover:bg-emerald/90 text-navy font-bold h-12 md:h-14 px-10 shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all flex items-center gap-2"
+                asChild
+              >
+                <Link to="/dashboard">
+                  Continue to Dashboard <ArrowUpRight className="w-5 h-5" />
+                </Link>
+              </Button>
+            ) : (
+              <>
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto rounded-full bg-emerald hover:bg-emerald/90 text-navy font-bold h-12 md:h-14 px-10 shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all"
+                  asChild
+                >
+                  <Link to="/signup">Get Started</Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="w-full sm:w-auto rounded-full h-12 md:h-14 px-10 text-sm md:text-base font-bold bg-white/5 backdrop-blur-md border-white/10 hover:bg-white/10 transition-all text-white border-2"
+                >
+                  <a href="#workflow">Watch Demo</a>
+                </Button>
+              </>
+            )}
           </div>
         </motion.div>
 
