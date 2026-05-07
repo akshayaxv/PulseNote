@@ -52,7 +52,7 @@ const Settings = () => {
     <Tabs defaultValue="profile" className="space-y-6 md:space-y-8">
       <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
         <TabsList className="bg-white/5 border border-white/5 rounded-2xl p-1 h-12 md:h-14 w-max md:w-auto">
-          {["profile", "workspace", "billing", "notifications", "api"].map((t) => (
+          {["profile", "notifications"].map((t) => (
             <TabsTrigger
               key={t}
               value={t}
@@ -156,83 +156,7 @@ const Settings = () => {
         </Card>
       </TabsContent>
 
-      <TabsContent value="workspace" className="focus-visible:outline-none">
-        <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
-          <h3 className="text-xl font-display font-bold mb-6 text-white/90 uppercase tracking-tight">
-            Workspace Details
-          </h3>
-          <div className="space-y-6">
-            {[
-              { l: "Company Name", d: "Northwind" },
-              { l: "Default Language", d: "English (US)" },
-              { l: "Data Retention", d: "12 Months" },
-            ].map((f) => (
-              <div key={f.l} className="space-y-2">
-                <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
-                  {f.l}
-                </Label>
-                <Input
-                  defaultValue={f.d}
-                  className="h-12 rounded-xl bg-white/[0.03] border-white/5 focus:border-primary/40 focus:ring-primary/20 text-sm font-medium text-white/80"
-                />
-              </div>
-            ))}
-          </div>
-        </Card>
-      </TabsContent>
 
-      <TabsContent value="billing" className="focus-visible:outline-none">
-        <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
-          <h3 className="text-xl font-display font-bold mb-1 text-white/90 uppercase tracking-tight">
-            Billing & Plans
-          </h3>
-          <p className="text-xs text-white/30 font-medium mb-8">
-            Current Plan:{" "}
-            <span className="font-black text-emerald uppercase tracking-widest">PRO PLAN</span>
-          </p>
-
-          <div className="rounded-2xl bg-gradient-brand p-6 md:p-8 mb-10 shadow-float relative overflow-hidden group">
-            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity" />
-            <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
-              <div>
-                <div className="text-[10px] text-white/60 font-black uppercase tracking-[0.2em] mb-2">
-                  Next Billing Date
-                </div>
-                <div className="text-4xl md:text-5xl font-display font-black text-white">
-                  $29.00
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-[10px] text-white/60 font-black uppercase tracking-[0.2em] mb-3">
-                  DUE MAY 28, 2026
-                </div>
-                <Button className="rounded-xl bg-white text-primary hover:bg-white/90 border-0 text-[10px] font-black uppercase tracking-widest shadow-soft">
-                  SCALE TO ENTERPRISE
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          <h4 className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-4 ml-1">
-            Active Payment Method
-          </h4>
-          <div className="flex flex-col sm:flex-row items-center justify-between p-5 rounded-2xl bg-white/[0.02] border border-white/10 gap-4">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 border border-white/10 shadow-soft" />
-              <div>
-                <div className="text-sm font-bold text-white/80">VISA •••• 4242</div>
-                <div className="text-[10px] font-bold text-white/20 uppercase">EXP 12/27</div>
-              </div>
-            </div>
-            <Button
-              variant="outline"
-              className="w-full sm:w-auto rounded-xl border-white/10 text-[10px] font-black uppercase tracking-widest px-6"
-            >
-              UPDATE
-            </Button>
-          </div>
-        </Card>
-      </TabsContent>
 
       <TabsContent value="notifications" className="focus-visible:outline-none">
         <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
@@ -265,65 +189,7 @@ const Settings = () => {
         </Card>
       </TabsContent>
 
-      <TabsContent value="api" className="focus-visible:outline-none">
-        <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-10">
-            <div>
-              <h3 className="text-xl font-display font-bold text-white/90 uppercase tracking-tight">
-                API Keys
-              </h3>
-              <p className="text-xs text-white/30 font-medium mt-1">
-                Integrate MeetMind AI with your other tools.
-              </p>
-            </div>
-            <Button className="w-full sm:w-auto rounded-xl md:rounded-2xl h-11 md:h-12 px-6 bg-gradient-brand border-0 shadow-emerald text-xs font-black uppercase tracking-widest">
-              <Plus className="w-4 h-4 mr-2" /> GENERATE KEY
-            </Button>
-          </div>
 
-          <div className="space-y-4">
-            {[
-              { name: "PRODUCTION_ENV", key: "mm_prod_••••••••••••3a8f", date: "APR 12, 2026" },
-              { name: "DEVELOPMENT_ENV", key: "mm_dev_••••••••••••8b2c", date: "MAR 03, 2026" },
-            ].map((k) => (
-              <div
-                key={k.name}
-                className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-all group"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                  <div>
-                    <div className="text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-2">
-                      {k.name}
-                    </div>
-                    <div className="text-sm font-mono font-bold text-white/60 group-hover:text-white transition-colors">
-                      {k.key}
-                    </div>
-                    <div className="text-[9px] text-white/20 font-black uppercase tracking-widest mt-2">
-                      ACTIVE SINCE {k.date}
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="h-10 w-10 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10"
-                    >
-                      <Eye className="w-4 h-4 text-white/40" />
-                    </Button>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="h-10 w-10 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10"
-                    >
-                      <Copy className="w-4 h-4 text-white/40" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Card>
-      </TabsContent>
     </Tabs>
   </div>
   );
