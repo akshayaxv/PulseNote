@@ -19,6 +19,7 @@ import Integrations from "./pages/app/Integrations.tsx";
 import Settings from "./pages/app/Settings.tsx";
 import ScrollToTopOnRoute from "./components/ScrollToTopOnRoute.tsx";
 import OAuthCallback from "./pages/OAuthCallback.tsx";
+import { ProtectedRoute } from "./components/auth/ProtectedRoute.tsx";
 
 const queryClient = new QueryClient();
 
@@ -36,17 +37,21 @@ const App = () => (
 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<AppLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="meetings" element={<Meetings />} />
-            <Route path="meetings/:id" element={<MeetingDetail />} />
-            <Route path="upload" element={<Upload />} />
-            <Route path="tasks" element={<Tasks />} />
-            <Route path="chat" element={<AIChat />} />
-            <Route path="analytics" element={<Analytics />} />
-            <Route path="integrations" element={<Integrations />} />
-            <Route path="settings" element={<Settings />} />
+          
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<AppLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="meetings" element={<Meetings />} />
+              <Route path="meetings/:id" element={<MeetingDetail />} />
+              <Route path="upload" element={<Upload />} />
+              <Route path="tasks" element={<Tasks />} />
+              <Route path="chat" element={<AIChat />} />
+              <Route path="analytics" element={<Analytics />} />
+              <Route path="integrations" element={<Integrations />} />
+              <Route path="settings" element={<Settings />} />
+            </Route>
           </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

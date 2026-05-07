@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   Video,
@@ -13,9 +13,11 @@ import {
   User,
   Search,
   Sparkles,
+  LogOut,
 } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { getStoredUser, clearAuth } from "@/lib/auth";
 
 const items = [
   { to: "/dashboard", label: "Overview", icon: LayoutDashboard },
@@ -36,6 +38,22 @@ interface AppSidebarProps {
 export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const user = getStoredUser();
+
+  const handleLogout = () => {
+    clearAuth();
+    navigate("/login");
+  };
+
+  const initials = user?.name
+    ? user.name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2)
+    : "??";
 
   return (
     <>
@@ -150,23 +168,32 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
 
         <div className="p-5 md:p-6 space-y-5">
           <div
-            className={`flex items-center gap-3 p-2.5 rounded-2xl ${collapsed && !isOpen ? "justify-center" : "bg-white/[0.03] border border-white/5 hover:bg-white/10 transition-all cursor-pointer group"}`}
+            className={`flex items-center gap-3 p-2.5 rounded-2xl ${collapsed && !isOpen ? "justify-center" : "bg-white/[0.03] border border-white/5 group relative overflow-hidden"}`}
           >
-            <div className="relative">
+            <div className="relative shrink-0">
               <div className="w-10 h-10 rounded-xl bg-gradient-brand flex items-center justify-center text-white font-black text-sm border border-white/10 shadow-glow-sm">
-                SC
+                {initials}
               </div>
               <div className="absolute -right-0.5 -bottom-0.5 w-3 h-3 rounded-full bg-emerald border-2 border-[#020617]" />
             </div>
             {(!collapsed || isOpen) && (
               <div className="flex-1 min-w-0">
                 <div className="text-xs font-bold text-white/90 truncate uppercase tracking-tight">
-                  Sarah Chen
+                  {user?.name || "Anonymous"}
                 </div>
                 <div className="text-[9px] text-primary font-black uppercase tracking-widest mt-0.5">
                   Pro Account
                 </div>
               </div>
+            )}
+            {(!collapsed || isOpen) && (
+              <button
+                onClick={handleLogout}
+                className="w-8 h-8 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-white/20 hover:text-red-400 hover:bg-red-400/10 hover:border-red-400/20 transition-all"
+                title="Logout"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
             )}
           </div>
         </div>

@@ -7,7 +7,9 @@ import { Label } from "@/components/ui/label";
 import { ArrowRight, Sparkles, Loader2, AlertCircle } from "lucide-react";
 import { VoiceWave } from "@/components/landing/VoiceWave";
 import { useAuth } from "@/hooks/useAuth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { isAuthenticated } from "@/lib/auth";
+import { useNavigate } from "react-router-dom";
 
 const GoogleIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -21,6 +23,13 @@ const GoogleIcon = () => (
 const AuthCard = ({ mode }: { mode: "login" | "signup" }) => {
   const isLogin = mode === "login";
   const { login, signup, loginWithGoogle, loading, error } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [navigate]);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
