@@ -67,10 +67,10 @@ const Settings = () => {
       <TabsContent value="profile" className="focus-visible:outline-none">
         <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
           <h3 className="text-xl font-display font-bold mb-1 text-white/90 uppercase tracking-tight">
-            Personal Core
+            Personal Information
           </h3>
           <p className="text-xs text-white/30 font-medium mb-8">
-            Manage your identity and regional synchronization.
+            Manage your personal details and account preferences.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-6 mb-10">
@@ -82,7 +82,7 @@ const Settings = () => {
                 variant="outline"
                 className="rounded-xl border-white/10 bg-white/5 hover:bg-white/10 transition-all text-[10px] font-black uppercase tracking-widest px-6"
               >
-                Change Signature
+                Change Avatar
               </Button>
               <p className="text-[10px] text-white/20 font-bold uppercase tracking-tighter">
                 Vector or Raster · 2MB Max Load
@@ -93,7 +93,7 @@ const Settings = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
-                Full Identifier
+                Full Name
               </Label>
               <Input
                 value={name}
@@ -103,7 +103,7 @@ const Settings = () => {
             </div>
             <div className="space-y-2">
               <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
-                Neural Email
+                Email Address
               </Label>
               <Input
                 value={email}
@@ -113,7 +113,7 @@ const Settings = () => {
             </div>
             <div className="space-y-2">
               <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
-                Functional Role
+                Job Title
               </Label>
               <Input
                 defaultValue="VP Product"
@@ -122,7 +122,7 @@ const Settings = () => {
             </div>
             <div className="space-y-2">
               <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
-                Temporal Zone
+                Time Zone
               </Label>
               <Input
                 defaultValue="GMT-7 (PST)"
@@ -159,13 +159,13 @@ const Settings = () => {
       <TabsContent value="workspace" className="focus-visible:outline-none">
         <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
           <h3 className="text-xl font-display font-bold mb-6 text-white/90 uppercase tracking-tight">
-            Workspace Vector
+            Workspace Details
           </h3>
           <div className="space-y-6">
             {[
-              { l: "Entity Name", d: "Northwind" },
-              { l: "Linguistic Default", d: "English (US)" },
-              { l: "Temporal Retention", d: "12 Months" },
+              { l: "Company Name", d: "Northwind" },
+              { l: "Default Language", d: "English (US)" },
+              { l: "Data Retention", d: "12 Months" },
             ].map((f) => (
               <div key={f.l} className="space-y-2">
                 <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 ml-1">
@@ -184,11 +184,11 @@ const Settings = () => {
       <TabsContent value="billing" className="focus-visible:outline-none">
         <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
           <h3 className="text-xl font-display font-bold mb-1 text-white/90 uppercase tracking-tight">
-            Credit Ledger
+            Billing & Plans
           </h3>
           <p className="text-xs text-white/30 font-medium mb-8">
-            Current Tier:{" "}
-            <span className="font-black text-emerald uppercase tracking-widest">PRO STATUS</span>
+            Current Plan:{" "}
+            <span className="font-black text-emerald uppercase tracking-widest">PRO PLAN</span>
           </p>
 
           <div className="rounded-2xl bg-gradient-brand p-6 md:p-8 mb-10 shadow-float relative overflow-hidden group">
@@ -196,7 +196,7 @@ const Settings = () => {
             <div className="relative flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
               <div>
                 <div className="text-[10px] text-white/60 font-black uppercase tracking-[0.2em] mb-2">
-                  Next Ledger Cycle
+                  Next Billing Date
                 </div>
                 <div className="text-4xl md:text-5xl font-display font-black text-white">
                   $29.00
@@ -237,14 +237,14 @@ const Settings = () => {
       <TabsContent value="notifications" className="focus-visible:outline-none">
         <Card className="p-6 md:p-8 rounded-[2rem] bg-[#020617]/40 backdrop-blur-xl border-white/5 shadow-glow-sm">
           <h3 className="text-xl font-display font-bold mb-8 text-white/90 uppercase tracking-tight">
-            Signal Matrix
+            Notifications
           </h3>
           <div className="space-y-2">
             {[
-              ["Synthesis Alerts", "Triggered when AI completes processing"],
-              ["Neural Action Items", "Notifications for assigned tasks"],
-              ["Weekly Intelligence", "Summary of weekly team knowledge"],
-              ["System Updates", "Core OS updates and new features"],
+              ["Meeting Summaries", "Get notified when meeting summaries are ready"],
+              ["Action Items", "Alerts when tasks are assigned to you"],
+              ["Weekly Digest", "Receive a summary of your weekly meetings"],
+              ["Product Updates", "Stay informed about new features"],
             ].map(([t, d], i) => (
               <div
                 key={t}
@@ -270,10 +270,10 @@ const Settings = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-10">
             <div>
               <h3 className="text-xl font-display font-bold text-white/90 uppercase tracking-tight">
-                Access Tokens
+                API Keys
               </h3>
               <p className="text-xs text-white/30 font-medium mt-1">
-                Integrate Neural Intelligence into your ecosystem.
+                Integrate MeetMind AI with your other tools.
               </p>
             </div>
             <Button className="w-full sm:w-auto rounded-xl md:rounded-2xl h-11 md:h-12 px-6 bg-gradient-brand border-0 shadow-emerald text-xs font-black uppercase tracking-widest">
