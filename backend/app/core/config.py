@@ -13,6 +13,10 @@ class Settings(BaseSettings):
     SITE_URL: str = "http://localhost:3000"
     SITE_NAME: str = "AI Meeting Tracker"
 
+    GOOGLE_CLIENT_ID: str = ""
+    GOOGLE_CLIENT_SECRET: str = ""
+    GOOGLE_REDIRECT_URI: str = "http://localhost:8000/api/v1/auth/google/callback"
+
     class Config:
         env_file = ".env"
 
