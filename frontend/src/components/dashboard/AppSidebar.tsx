@@ -26,7 +26,6 @@ const items = [
   { to: "/dashboard/tasks", label: "Task Board", icon: ListTodo },
   { to: "/dashboard/chat", label: "AI Assistant", icon: MessageSquare },
   { to: "/dashboard/analytics", label: "Insights", icon: BarChart3 },
-  { to: "/dashboard/integrations", label: "Integrations", icon: Plug },
   { to: "/dashboard/settings", label: "Settings", icon: Settings },
 ];
 
