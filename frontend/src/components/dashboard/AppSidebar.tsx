@@ -181,9 +181,6 @@ export const AppSidebar = ({ isOpen, onClose }: AppSidebarProps) => {
                 <div className="text-xs font-bold text-white/90 truncate uppercase tracking-tight">
                   {user?.name || "Anonymous"}
                 </div>
-                <div className="text-[9px] text-primary font-black uppercase tracking-widest mt-0.5">
-                  Pro Account
-                </div>
               </div>
             )}
             {(!collapsed || isOpen) && (
