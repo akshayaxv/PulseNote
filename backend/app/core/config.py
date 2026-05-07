@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 43200
     
     OPENROUTER_API_KEY: str = ""
-    OPENROUTER_MODEL: str = "anthropic/claude-3.5-sonnet:beta"
+    OPENROUTER_MODEL: str = "nvidia/nemotron-3-super-120b-a12b:free"
     SITE_URL: str = "http://localhost:3000"
     SITE_NAME: str = "AI Meeting Tracker"
 
