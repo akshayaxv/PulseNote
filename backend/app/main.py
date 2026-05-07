@@ -4,6 +4,7 @@ import uvicorn
 from app.core.config import settings
 from app.api.auth import router as auth_router
 from app.api.meetings import router as meetings_router
+from app.api.chat import router as chat_router
 from contextlib import asynccontextmanager
 from app.services.mongodb import connect_to_mongo, close_mongo_connection
 
@@ -16,8 +17,8 @@ async def lifespan(app: FastAPI):
     await close_mongo_connection()
 
 app = FastAPI(
-    title="AI Meeting Tracker API",
-    description="Backend for AI-powered meeting transcription and insights",
+    title="MeetMindAI API",
+    description="Backend API for MeetMindAI - AI Meeting Assistant powered by RAG",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -33,6 +34,7 @@ app.add_middleware(
 
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(meetings_router, prefix="/api/v1")
+app.include_router(chat_router, prefix="/api/v1")
 
 @app.get("/")
 async def root():

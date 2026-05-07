@@ -10,8 +10,9 @@ class Settings(BaseSettings):
     
     OPENROUTER_API_KEY: str = ""
     OPENROUTER_MODEL: str = "nvidia/nemotron-3-super-120b-a12b:free"
-    SITE_URL: str = "http://localhost:3000"
-    SITE_NAME: str = "AI Meeting Tracker"
+    EMBEDDING_MODEL: str = "openai/text-embedding-3-small"
+    SITE_URL: str = "http://localhost:8080"
+    SITE_NAME: str = "MeetMindAI - AI Meeting Assistant"
 
     GOOGLE_CLIENT_ID: str = ""
     GOOGLE_CLIENT_SECRET: str = ""

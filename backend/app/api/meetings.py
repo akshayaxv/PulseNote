@@ -6,6 +6,7 @@ from typing import List
 from app.models.meeting import MeetingUpload, MeetingResponse, MeetingListItem, MeetingStatus
 from app.services.mongodb import db
 from app.services.ai import ai_service
+from app.services.rag import store_meeting_chunks
 from app.api.deps import get_current_user
 
 router = APIRouter(prefix="/meetings", tags=["Meetings"])
@@ -85,6 +86,8 @@ Always respond in this exact JSON format:
                     "processed_at": datetime.utcnow()
                 }}
             )
+            # Store chunks for RAG
+            await store_meeting_chunks(meeting_id, transcript)
         else:
             raise ValueError("Could not parse AI response")
 
