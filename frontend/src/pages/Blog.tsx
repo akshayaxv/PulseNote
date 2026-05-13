@@ -20,7 +20,6 @@ const posts = [
     title: "How I Built a Real-Time Meeting Transcription Engine with Whisper",
     excerpt:
       "A deep dive into integrating OpenAI's Whisper model into a FastAPI backend, handling large audio files efficiently, and streaming results to the frontend.",
-    date: "May 2025",
     readTime: "8 min read",
     featured: true,
   },
@@ -31,7 +30,6 @@ const posts = [
     title: "Building Context-Aware RAG with Meeting Transcripts",
     excerpt:
       "Exploring Retrieval-Augmented Generation for semantic search over unstructured meeting data — and why naive keyword search fails miserably.",
-    date: "April 2025",
     readTime: "2 min read",
     featured: false,
   },
@@ -42,7 +40,6 @@ const posts = [
     title: "Framer Motion Patterns I Wish I Knew Earlier",
     excerpt:
       "Performance-optimized animation patterns for React — from scroll-driven reveals to glassmorphism transitions without killing your GPU.",
-    date: "March 2025",
     readTime: "2 min read",
     featured: false,
   },
@@ -53,7 +50,6 @@ const posts = [
     title: "FastAPI + SQLAlchemy: A Clean Architecture for Student Projects",
     excerpt:
       "How to structure a Python backend that scales beyond tutorial complexity — repository pattern, dependency injection, and async everything.",
-    date: "February 2025",
     readTime: "2 min read",
     featured: false,
   },
@@ -64,7 +60,6 @@ const posts = [
     title: "Dark Mode Design System from Scratch — No Tailwind Plugins",
     excerpt:
       "Building a cohesive dark-first design system with CSS variables, glassmorphism, and consistent spacing — without relying on third-party kits.",
-    date: "January 2025",
     readTime: "2 min read",
     featured: false,
   },
@@ -75,7 +70,6 @@ const posts = [
     title: "What Building a Full-Stack AI App Taught Me About Software Engineering",
     excerpt:
       "The honest lessons from shipping MeetMind AI — mistakes made, patterns discovered, and why shipping imperfect code is better than not shipping.",
-    date: "December 2024",
     readTime: "2 min read",
     featured: false,
   },
@@ -135,7 +129,6 @@ const Blog = () => {
                   <span className="flex items-center gap-1.5">
                     <Clock className="w-3 h-3" /> {featured.readTime}
                   </span>
-                  <span>{featured.date}</span>
                 </div>
                 <div className="flex items-center gap-1 text-primary text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
                   Read More <ArrowRight className="w-3.5 h-3.5" />
@@ -176,7 +169,6 @@ const Blog = () => {
                     <span className="flex items-center gap-1">
                       <Clock className="w-2.5 h-2.5" /> {post.readTime}
                     </span>
-                    <span>{post.date}</span>
                   </div>
                 </Link>
               </motion.div>

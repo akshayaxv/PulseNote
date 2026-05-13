@@ -14,7 +14,6 @@ const fade = {
 interface BlogPostContent {
   title: string;
   tag: string;
-  date: string;
   readTime: string;
   author: string;
   content: string;
@@ -24,7 +23,6 @@ const blogContent: Record<string, BlogPostContent> = {
   "meeting-transcription-whisper": {
     title: "How I Built a Real-Time Meeting Transcription Engine with Whisper",
     tag: "Engineering",
-    date: "May 12, 2025",
     readTime: "8 min read",
     author: "Student Developer",
     content: `
@@ -48,7 +46,6 @@ const blogContent: Record<string, BlogPostContent> = {
   "rag-meeting-transcripts": {
     title: "Building Context-Aware RAG with Meeting Transcripts",
     tag: "AI",
-    date: "April 28, 2025",
     readTime: "2 min read",
     author: "Student Developer",
     content: `
@@ -73,7 +70,6 @@ const blogContent: Record<string, BlogPostContent> = {
   "framer-motion-patterns": {
     title: "Framer Motion Patterns I Wish I Knew Earlier",
     tag: "Frontend",
-    date: "March 15, 2025",
     readTime: "2 min read",
     author: "Student Developer",
     content: `
@@ -92,7 +88,6 @@ const blogContent: Record<string, BlogPostContent> = {
   "fastapi-clean-architecture": {
     title: "FastAPI + SQLAlchemy: A Clean Architecture for Student Projects",
     tag: "Backend",
-    date: "February 10, 2025",
     readTime: "2 min read",
     author: "Student Developer",
     content: `
@@ -115,7 +110,6 @@ const blogContent: Record<string, BlogPostContent> = {
   "dark-mode-design-system": {
     title: "Dark Mode Design System from Scratch — No Tailwind Plugins",
     tag: "Design",
-    date: "January 15, 2025",
     readTime: "2 min read",
     author: "Student Developer",
     content: `
@@ -134,7 +128,6 @@ const blogContent: Record<string, BlogPostContent> = {
   "learnings-software-engineering": {
     title: "What Building a Full-Stack AI App Taught Me About Software Engineering",
     tag: "Learnings",
-    date: "December 20, 2024",
     readTime: "2 min read",
     author: "Student Developer",
     content: `
@@ -204,9 +197,6 @@ const BlogPost = () => {
               <div className="h-8 w-px bg-white/5 hidden sm:block" />
 
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-1.5 text-white/30 text-[10px] font-bold uppercase tracking-widest">
-                  <Calendar className="w-3.5 h-3.5" /> {post.date}
-                </div>
               </div>
 
               <div className="ml-auto flex items-center gap-2">
