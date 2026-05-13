@@ -11,6 +11,7 @@ import About from "./pages/About.tsx";
 import Blog from "./pages/Blog.tsx";
 import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
 import { AppLayout } from "./components/dashboard/AppLayout.tsx";
 import Dashboard from "./pages/app/Dashboard.tsx";
 import Meetings from "./pages/app/Meetings.tsx";
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/docs" element={<Docs />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/auth/callback" element={<OAuthCallback />} />

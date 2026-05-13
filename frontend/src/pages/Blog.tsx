@@ -14,7 +14,7 @@ const fade = {
 
 const posts = [
   {
-    slug: "#",
+    slug: "meeting-transcription-whisper",
     tag: "Engineering",
     tagColor: "text-primary bg-primary/10 border-primary/20",
     title: "How I Built a Real-Time Meeting Transcription Engine with Whisper",
@@ -25,7 +25,7 @@ const posts = [
     featured: true,
   },
   {
-    slug: "#",
+    slug: "rag-meeting-transcripts",
     tag: "AI",
     tagColor: "text-cyan-400 bg-cyan-500/10 border-cyan-500/20",
     title: "Building Context-Aware RAG with Meeting Transcripts",
@@ -36,7 +36,7 @@ const posts = [
     featured: false,
   },
   {
-    slug: "#",
+    slug: "framer-motion-patterns",
     tag: "Frontend",
     tagColor: "text-pink-400 bg-pink-500/10 border-pink-500/20",
     title: "Framer Motion Patterns I Wish I Knew Earlier",
@@ -47,7 +47,7 @@ const posts = [
     featured: false,
   },
   {
-    slug: "#",
+    slug: "fastapi-clean-architecture",
     tag: "Backend",
     tagColor: "text-yellow-400 bg-yellow-500/10 border-yellow-500/20",
     title: "FastAPI + SQLAlchemy: A Clean Architecture for Student Projects",
@@ -58,7 +58,7 @@ const posts = [
     featured: false,
   },
   {
-    slug: "#",
+    slug: "dark-mode-design-system",
     tag: "Design",
     tagColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
     title: "Dark Mode Design System from Scratch — No Tailwind Plugins",
@@ -69,7 +69,7 @@ const posts = [
     featured: false,
   },
   {
-    slug: "#",
+    slug: "learnings-software-engineering",
     tag: "Learnings",
     tagColor: "text-violet-400 bg-violet-500/10 border-violet-500/20",
     title: "What Building a Full-Stack AI App Taught Me About Software Engineering",
@@ -158,7 +158,7 @@ const Blog = () => {
                 transition={{ duration: 0.6, delay: i * 0.08 }}
               >
                 <Link
-                  to={post.slug}
+                  to={`/blog/${post.slug}`}
                   className="group flex flex-col h-full p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-primary/20 hover:-translate-y-1 transition-all duration-400"
                 >
                   <div

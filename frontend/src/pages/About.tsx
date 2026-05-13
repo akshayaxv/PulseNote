@@ -25,35 +25,65 @@ const fade = {
 };
 
 const skills = [
-  { name: "React & TypeScript", icon: Code2, color: "text-blue-400", bg: "bg-blue-500/10 border-blue-500/20" },
-  { name: "Python & FastAPI", icon: Zap, color: "text-yellow-400", bg: "bg-yellow-500/10 border-yellow-500/20" },
-  { name: "AI / LLM Integration", icon: Brain, color: "text-primary", bg: "bg-primary/10 border-primary/20" },
-  { name: "Full-Stack Systems", icon: Layers, color: "text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/20" },
-  { name: "UI/UX Design", icon: Sparkles, color: "text-pink-400", bg: "bg-pink-500/10 border-pink-500/20" },
-  { name: "Cloud & Deployment", icon: Rocket, color: "text-cyan-400", bg: "bg-cyan-500/10 border-cyan-500/20" },
+  {
+    name: "React & TypeScript",
+    icon: Code2,
+    color: "text-blue-400",
+    bg: "bg-blue-500/10 border-blue-500/20",
+  },
+  {
+    name: "Python & FastAPI",
+    icon: Zap,
+    color: "text-yellow-400",
+    bg: "bg-yellow-500/10 border-yellow-500/20",
+  },
+  {
+    name: "AI / LLM Integration",
+    icon: Brain,
+    color: "text-primary",
+    bg: "bg-primary/10 border-primary/20",
+  },
+  {
+    name: "Full-Stack Systems",
+    icon: Layers,
+    color: "text-emerald-400",
+    bg: "bg-emerald-500/10 border-emerald-500/20",
+  },
+  {
+    name: "UI/UX Design",
+    icon: Sparkles,
+    color: "text-pink-400",
+    bg: "bg-pink-500/10 border-pink-500/20",
+  },
+  {
+    name: "Cloud & Deployment",
+    icon: Rocket,
+    color: "text-cyan-400",
+    bg: "bg-cyan-500/10 border-cyan-500/20",
+  },
 ];
 
 const timeline = [
   {
-    year: "2024",
+    year: "DAY-1",
     title: "Started MeetMind AI",
     desc: "Identified the problem of information loss in meetings. Started building a solution as a personal project during university.",
     icon: Coffee,
   },
   {
-    year: "2024",
+    year: "DAY-2",
     title: "Core Transcription Engine",
     desc: "Integrated OpenAI Whisper for high-accuracy speech-to-text. Built the first working prototype with basic summarization.",
     icon: Brain,
   },
   {
-    year: "2025",
+    year: "DAY-3",
     title: "Full-Stack Launch",
     desc: "Rebuilt with React 18 + FastAPI backend. Added AI chat, action item extraction, and user authentication.",
     icon: Rocket,
   },
   {
-    year: "2025",
+    year: "DAY-4",
     title: "Production Ready",
     desc: "Optimized for performance, added mobile support, and polished the UI to a premium standard. Deployed to the web.",
     icon: Sparkles,
@@ -80,9 +110,9 @@ const About = () => {
               <br className="hidden md:block" /> Powered by curiosity.
             </h1>
             <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
-              MeetMind AI is a full-stack capstone project exploring the intersection of AI, real-time
-              speech processing, and modern web engineering — built from scratch as a learning exercise
-              and shipped as a real product.
+              MeetMind AI is a full-stack capstone project exploring the intersection of AI,
+              real-time speech processing, and modern web engineering — built from scratch as a
+              learning exercise and shipped as a real product.
             </p>
           </motion.div>
         </div>
@@ -112,13 +142,17 @@ const About = () => {
                 Hi, I'm <span className="text-gradient">Vara</span>
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-6">
-                A computer science student passionate about building things that solve real problems.
-                MeetMind AI started as a question: <em className="text-white/70">"Why do we always forget what was decided in that meeting?"</em> — and turned into a full production application.
+                A computer science student passionate about building things that solve real
+                problems. MeetMind AI started as a question:{" "}
+                <em className="text-white/70">
+                  "Why do we always forget what was decided in that meeting?"
+                </em>{" "}
+                — and turned into a full production application.
               </p>
               <p className="text-white/40 text-sm leading-relaxed mb-8">
-                I'm interested in AI-augmented productivity tools, developer experience, and crafting
-                interfaces that feel alive. When I'm not coding, I'm probably reading papers on LLMs
-                or watching F1 races.
+                I'm interested in AI-augmented productivity tools, developer experience, and
+                crafting interfaces that feel alive. When I'm not coding, I'm probably reading
+                papers on LLMs or watching F1 races.
               </p>
 
               {/* Social Links */}
