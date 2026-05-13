@@ -49,7 +49,7 @@ const blogContent: Record<string, BlogPostContent> = {
     title: "Building Context-Aware RAG with Meeting Transcripts",
     tag: "AI",
     date: "April 28, 2025",
-    readTime: "6 min read",
+    readTime: "2 min read",
     author: "Student Developer",
     content: `
       <p>Transcription is only the first step. The real value lies in being able to ask questions about your meetings. This is where Retrieval-Augmented Generation (RAG) comes in.</p>
@@ -74,7 +74,7 @@ const blogContent: Record<string, BlogPostContent> = {
     title: "Framer Motion Patterns I Wish I Knew Earlier",
     tag: "Frontend",
     date: "March 15, 2025",
-    readTime: "5 min read",
+    readTime: "2 min read",
     author: "Student Developer",
     content: `
       <p>Animations can make or break a modern web app. In MeetMind AI, I used Framer Motion to create a premium, "living" interface. Here are the three patterns that had the biggest impact.</p>
@@ -93,7 +93,7 @@ const blogContent: Record<string, BlogPostContent> = {
     title: "FastAPI + SQLAlchemy: A Clean Architecture for Student Projects",
     tag: "Backend",
     date: "February 10, 2025",
-    readTime: "7 min read",
+    readTime: "2 min read",
     author: "Student Developer",
     content: `
       <p>Many student projects start as a single <code>main.py</code> file. This article explains how I structured the MeetMind AI backend to remain maintainable as it grew to 20+ endpoints.</p>
@@ -116,7 +116,7 @@ const blogContent: Record<string, BlogPostContent> = {
     title: "Dark Mode Design System from Scratch — No Tailwind Plugins",
     tag: "Design",
     date: "January 15, 2025",
-    readTime: "4 min read",
+    readTime: "2 min read",
     author: "Student Developer",
     content: `
       <p>While many developers reach for Tailwind plugins or external component libraries, I wanted to understand the fundamentals of a truly dark-first design system for this portfolio project.</p>
@@ -135,7 +135,7 @@ const blogContent: Record<string, BlogPostContent> = {
     title: "What Building a Full-Stack AI App Taught Me About Software Engineering",
     tag: "Learnings",
     date: "December 20, 2024",
-    readTime: "10 min read",
+    readTime: "2 min read",
     author: "Student Developer",
     content: `
       <p>MeetMind AI started as a simple transcription script. Converting it into a full-stack SaaS-style application was a journey that taught me more than any classroom project ever could.</p>

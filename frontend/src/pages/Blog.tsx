@@ -32,7 +32,7 @@ const posts = [
     excerpt:
       "Exploring Retrieval-Augmented Generation for semantic search over unstructured meeting data — and why naive keyword search fails miserably.",
     date: "April 2025",
-    readTime: "6 min read",
+    readTime: "2 min read",
     featured: false,
   },
   {
@@ -43,7 +43,7 @@ const posts = [
     excerpt:
       "Performance-optimized animation patterns for React — from scroll-driven reveals to glassmorphism transitions without killing your GPU.",
     date: "March 2025",
-    readTime: "5 min read",
+    readTime: "2 min read",
     featured: false,
   },
   {
@@ -54,7 +54,7 @@ const posts = [
     excerpt:
       "How to structure a Python backend that scales beyond tutorial complexity — repository pattern, dependency injection, and async everything.",
     date: "February 2025",
-    readTime: "7 min read",
+    readTime: "2 min read",
     featured: false,
   },
   {
@@ -65,7 +65,7 @@ const posts = [
     excerpt:
       "Building a cohesive dark-first design system with CSS variables, glassmorphism, and consistent spacing — without relying on third-party kits.",
     date: "January 2025",
-    readTime: "4 min read",
+    readTime: "2 min read",
     featured: false,
   },
   {
@@ -76,7 +76,7 @@ const posts = [
     excerpt:
       "The honest lessons from shipping MeetMind AI — mistakes made, patterns discovered, and why shipping imperfect code is better than not shipping.",
     date: "December 2024",
-    readTime: "10 min read",
+    readTime: "2 min read",
     featured: false,
   },
 ];
