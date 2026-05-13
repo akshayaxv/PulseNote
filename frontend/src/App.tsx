@@ -7,6 +7,10 @@ import Index from "./pages/Index.tsx";
 import Docs from "./pages/Docs.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { Login, Signup } from "./pages/Auth.tsx";
+import About from "./pages/About.tsx";
+import Blog from "./pages/Blog.tsx";
+import Privacy from "./pages/Privacy.tsx";
+import Terms from "./pages/Terms.tsx";
 import { AppLayout } from "./components/dashboard/AppLayout.tsx";
 import Dashboard from "./pages/app/Dashboard.tsx";
 import Meetings from "./pages/app/Meetings.tsx";
@@ -33,6 +37,10 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/docs" element={<Docs />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/auth/callback" element={<OAuthCallback />} />
 
           <Route path="/login" element={<Login />} />

@@ -23,6 +23,7 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,7 +33,6 @@ ScrollTrigger.config({
 
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -678,15 +678,15 @@ export const Footer = () => {
       { name: "Tech Stack", href: "/docs#tech-stack" },
     ],
     company: [
-      { name: "About", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Privacy", href: "#" },
+      { name: "About", href: "/about" },
+      { name: "Blog", href: "/blog" },
+      { name: "Privacy", href: "/privacy" },
+      { name: "Terms", href: "/terms" },
     ],
     social: [
-      { name: "Twitter", href: "#", icon: <Twitter className="w-4 h-4" /> },
-      { name: "GitHub", href: "#", icon: <Github className="w-4 h-4" /> },
-      { name: "LinkedIn", href: "#", icon: <Linkedin className="w-4 h-4" /> },
+      { name: "Twitter", href: "https://twitter.com", icon: <Twitter className="w-4 h-4" /> },
+      { name: "GitHub", href: "https://github.com", icon: <Github className="w-4 h-4" /> },
+      { name: "LinkedIn", href: "https://linkedin.com", icon: <Linkedin className="w-4 h-4" /> },
     ],
   };
 
@@ -723,12 +723,12 @@ export const Footer = () => {
             <ul className="space-y-4">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/40 hover:text-white text-sm transition-colors duration-300"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -739,12 +739,12 @@ export const Footer = () => {
             <ul className="space-y-4">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-white/40 hover:text-white text-sm transition-colors duration-300"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -762,24 +762,24 @@ export const Footer = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-            <a
-              href="#"
+            <Link
+              to="/terms"
               className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors"
             >
               Terms
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/privacy"
               className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors"
             >
               Privacy
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/about"
               className="text-white/20 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors"
             >
-              Security
-            </a>
+              About
+            </Link>
           </div>
         </div>
       </div>
