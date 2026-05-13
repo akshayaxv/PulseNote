@@ -890,7 +890,7 @@ export const Footer = () => {
         />
 
         {/* Pixel Noise Overlay */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat" />
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[url('/noise.svg')] bg-repeat" />
       </div>
     </footer>
   );
