@@ -88,10 +88,12 @@ const Terms = () => {
             <div className="flex gap-4 p-5 rounded-2xl bg-primary/5 border border-primary/20">
               <AlertCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
               <div>
-                <p className="text-primary text-xs font-black uppercase tracking-widest mb-1">Student Portfolio Project</p>
+                <p className="text-primary text-xs font-black uppercase tracking-widest mb-1">
+                  Student Portfolio Project
+                </p>
                 <p className="text-white/40 text-sm leading-relaxed">
-                  This is a portfolio project built as part of a computer science program. It is
-                  not a commercial product. By using this application, you acknowledge that it is
+                  This is a portfolio project built as part of a computer science program. It is not
+                  a commercial product. By using this application, you acknowledge that it is
                   provided for educational and demonstration purposes only.
                 </p>
               </div>
@@ -105,7 +107,10 @@ const Terms = () => {
         <div className="container max-w-3xl">
           <div className="grid md:grid-cols-2 gap-6">
             {/* Allowed */}
-            <motion.div {...fade} className="p-8 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+            <motion.div
+              {...fade}
+              className="p-8 rounded-2xl bg-emerald-500/5 border border-emerald-500/20"
+            >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
                   <CheckCircle className="w-4.5 h-4.5 text-emerald-400" />
@@ -123,7 +128,11 @@ const Terms = () => {
             </motion.div>
 
             {/* Not Allowed */}
-            <motion.div {...fade} transition={{ duration: 0.7, delay: 0.1 }} className="p-8 rounded-2xl bg-red-500/5 border border-red-500/20">
+            <motion.div
+              {...fade}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="p-8 rounded-2xl bg-red-500/5 border border-red-500/20"
+            >
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center">
                   <XCircle className="w-4.5 h-4.5 text-red-400" />
@@ -147,7 +156,9 @@ const Terms = () => {
       <section className="py-10 border-t border-white/5">
         <div className="container max-w-3xl">
           <motion.div {...fade} className="mb-8">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">Full Terms</p>
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">
+              Full Terms
+            </p>
           </motion.div>
           <div className="space-y-5">
             {clauses.map((clause, i) => (

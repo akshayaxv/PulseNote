@@ -59,8 +59,7 @@ export function useMeeting(id: string) {
 export function useUploadMeeting() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (data: UploadMeetingPayload) =>
-      api.post<Meeting>("/meetings/upload", data),
+    mutationFn: (data: UploadMeetingPayload) => api.post<Meeting>("/meetings/upload", data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["meetings"] });
     },

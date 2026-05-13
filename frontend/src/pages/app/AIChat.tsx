@@ -2,8 +2,17 @@ import { useState, useRef, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
-  Send, Sparkles, Plus, Brain, Search, History,
-  Database, Cpu, MessageSquare, Loader2, AlertCircle,
+  Send,
+  Sparkles,
+  Plus,
+  Brain,
+  Search,
+  History,
+  Database,
+  Cpu,
+  MessageSquare,
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useChat } from "@/hooks/useChat";
@@ -63,7 +72,9 @@ const AIChat = () => {
               </button>
             ))}
           {messages.filter((m) => m.role === "user").length === 0 && (
-            <p className="text-[10px] text-white/20 px-2 font-medium">No queries yet this session.</p>
+            <p className="text-[10px] text-white/20 px-2 font-medium">
+              No queries yet this session.
+            </p>
           )}
         </div>
       </Card>
@@ -90,21 +101,32 @@ const AIChat = () => {
               </div>
             </div>
           </div>
-          <Button variant="ghost" size="icon"
-            className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all"
+          >
             <Search className="w-4 h-4 text-white/40" />
           </Button>
         </div>
 
         {/* Messages */}
-        <div ref={ref} className="flex-1 overflow-y-auto p-4 md:p-8 pt-20 md:pt-24 space-y-6 md:space-y-8 scrollbar-hide">
+        <div
+          ref={ref}
+          className="flex-1 overflow-y-auto p-4 md:p-8 pt-20 md:pt-24 space-y-6 md:space-y-8 scrollbar-hide"
+        >
           {messages.length === 0 && (
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex gap-3 md:gap-5">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex gap-3 md:gap-5"
+            >
               <div className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center border border-white/10 shrink-0">
                 <Brain className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </div>
               <div className="max-w-[80%] rounded-2xl md:rounded-3xl px-4 md:px-6 py-3 md:py-4 bg-white/[0.03] border border-white/10 text-white/70 font-medium text-sm leading-relaxed shadow-glow-sm">
-                Hi! 👋 I'm your MeetMind AI Assistant. Ask me anything about your uploaded meetings — decisions, action items, or strategic patterns.
+                Hi! 👋 I'm your MeetMind AI Assistant. Ask me anything about your uploaded meetings
+                — decisions, action items, or strategic patterns.
               </div>
             </motion.div>
           )}
@@ -116,16 +138,34 @@ const AIChat = () => {
               animate={{ opacity: 1, y: 0 }}
               className={`flex gap-3 md:gap-5 ${m.role === "user" ? "flex-row-reverse" : ""}`}
             >
-              <div className={`w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl flex items-center justify-center shadow-glow-sm border border-white/10 shrink-0 ${m.role === "assistant" ? "bg-gradient-brand text-white" : "bg-white/5 text-white/40"}`}>
-                {m.role === "assistant" ? <Brain className="w-5 h-5 md:w-6 md:h-6" /> : <span className="font-black text-[10px]">YOU</span>}
+              <div
+                className={`w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl flex items-center justify-center shadow-glow-sm border border-white/10 shrink-0 ${m.role === "assistant" ? "bg-gradient-brand text-white" : "bg-white/5 text-white/40"}`}
+              >
+                {m.role === "assistant" ? (
+                  <Brain className="w-5 h-5 md:w-6 md:h-6" />
+                ) : (
+                  <span className="font-black text-[10px]">YOU</span>
+                )}
               </div>
               <div className={`max-w-[85%] md:max-w-[80%] space-y-2`}>
-                <div className={`rounded-2xl md:rounded-3xl px-4 md:px-6 py-3 md:py-4 text-sm leading-relaxed shadow-glow-sm border ${m.role === "assistant" ? "bg-white/[0.03] border-white/10 text-white/70 font-medium" : "bg-primary/10 border-primary/20 text-white/90 font-bold"}`}>
-                  <div dangerouslySetInnerHTML={{ __html: m.content.replace(/\*\*(.+?)\*\*/g, "<b class='text-primary font-bold'>$1</b>") }} />
+                <div
+                  className={`rounded-2xl md:rounded-3xl px-4 md:px-6 py-3 md:py-4 text-sm leading-relaxed shadow-glow-sm border ${m.role === "assistant" ? "bg-white/[0.03] border-white/10 text-white/70 font-medium" : "bg-primary/10 border-primary/20 text-white/90 font-bold"}`}
+                >
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: m.content.replace(
+                        /\*\*(.+?)\*\*/g,
+                        "<b class='text-primary font-bold'>$1</b>"
+                      ),
+                    }}
+                  />
                 </div>
                 {m.role === "assistant" && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 border border-primary/10 text-[9px] text-primary font-black w-fit uppercase tracking-widest">
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 border border-primary/10 text-[9px] text-primary font-black w-fit uppercase tracking-widest"
+                  >
                     <Database className="w-3 h-3" /> Powered by RAG · Nemotron
                   </motion.div>
                 )}
@@ -134,15 +174,25 @@ const AIChat = () => {
           ))}
 
           {loading && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-3 md:gap-5">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="flex gap-3 md:gap-5"
+            >
               <div className="w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl bg-gradient-brand flex items-center justify-center border border-white/10 shrink-0">
                 <Cpu className="w-5 h-5 md:w-6 md:h-6 animate-pulse" />
               </div>
               <div className="bg-white/[0.03] border border-white/10 rounded-2xl md:rounded-3xl px-5 py-4 flex flex-col gap-2 shadow-glow-sm">
-                <div className="text-[9px] font-black text-primary uppercase tracking-widest animate-pulse">Searching meetings...</div>
+                <div className="text-[9px] font-black text-primary uppercase tracking-widest animate-pulse">
+                  Searching meetings...
+                </div>
                 <div className="flex gap-1.5">
                   {[0, 1, 2].map((i) => (
-                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-bounce" style={{ animationDelay: `${i * 0.2}s` }} />
+                    <div
+                      key={i}
+                      className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-bounce"
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    />
                   ))}
                 </div>
               </div>
@@ -161,14 +211,23 @@ const AIChat = () => {
           {messages.length === 0 && (
             <div className="flex overflow-x-auto pb-4 gap-2 scrollbar-hide -mx-2 px-2">
               {suggestions.map((s) => (
-                <button key={s} onClick={() => send(s)}
-                  className="whitespace-nowrap text-[10px] font-bold px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/40 hover:text-white hover:border-primary/40 transition-all flex items-center gap-2 uppercase tracking-widest">
+                <button
+                  key={s}
+                  onClick={() => send(s)}
+                  className="whitespace-nowrap text-[10px] font-bold px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-white/40 hover:text-white hover:border-primary/40 transition-all flex items-center gap-2 uppercase tracking-widest"
+                >
                   <Sparkles className="w-3 h-3" /> {s}
                 </button>
               ))}
             </div>
           )}
-          <form onSubmit={(e) => { e.preventDefault(); send(input); }} className="relative flex gap-2">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              send(input);
+            }}
+            className="relative flex gap-2"
+          >
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -176,9 +235,17 @@ const AIChat = () => {
               placeholder="Ask about your meetings..."
               className="flex-1 h-12 md:h-14 pl-5 pr-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm font-medium text-white/80 placeholder:text-white/20 disabled:opacity-50"
             />
-            <Button type="submit" size="icon" disabled={loading}
-              className="h-12 w-12 md:h-14 md:w-14 rounded-xl md:rounded-2xl bg-gradient-brand border-0 shadow-emerald shrink-0 disabled:opacity-50">
-              {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
+            <Button
+              type="submit"
+              size="icon"
+              disabled={loading}
+              className="h-12 w-12 md:h-14 md:w-14 rounded-xl md:rounded-2xl bg-gradient-brand border-0 shadow-emerald shrink-0 disabled:opacity-50"
+            >
+              {loading ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : (
+                <Send className="w-5 h-5" />
+              )}
             </Button>
           </form>
         </div>

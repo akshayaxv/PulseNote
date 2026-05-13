@@ -127,7 +127,9 @@ const Blog = () => {
               <h2 className="text-2xl md:text-4xl font-bold font-display mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
                 {featured.title}
               </h2>
-              <p className="text-white/40 text-base leading-relaxed mb-8 max-w-2xl">{featured.excerpt}</p>
+              <p className="text-white/40 text-base leading-relaxed mb-8 max-w-2xl">
+                {featured.excerpt}
+              </p>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4 text-[10px] text-white/30 font-bold uppercase tracking-widest">
                   <span className="flex items-center gap-1.5">
@@ -188,7 +190,9 @@ const Blog = () => {
         <div className="container max-w-2xl text-center">
           <motion.div {...fade}>
             <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5">
-              <p className="text-white/20 text-xs font-bold uppercase tracking-[0.3em] mb-3">Status</p>
+              <p className="text-white/20 text-xs font-bold uppercase tracking-[0.3em] mb-3">
+                Status
+              </p>
               <p className="text-white/40 text-sm leading-relaxed">
                 Full blog posts are coming soon. These are planned articles — if you'd like to be
                 notified when they're published, reach out via the{" "}

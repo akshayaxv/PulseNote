@@ -1,8 +1,16 @@
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import {
-  Search, Filter, FileText, Clock, Users, Calendar,
-  ArrowUpRight, Sparkles, Loader2, AlertCircle,
+  Search,
+  Filter,
+  FileText,
+  Clock,
+  Users,
+  Calendar,
+  ArrowUpRight,
+  Sparkles,
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -120,14 +128,21 @@ const Meetings = () => {
               transition={{ delay: i * 0.07 }}
             >
               <Link to={`/dashboard/meetings/${m.id}`}>
-                <Card className={`group h-full rounded-[2rem] md:rounded-[2.5rem] bg-[#020617]/40 backdrop-blur-md border-white/5 p-6 hover-lift relative overflow-hidden transition-all duration-500 flex flex-col justify-between shadow-glow-sm`}>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${CARD_COLORS[i % CARD_COLORS.length]} opacity-0 group-hover:opacity-10 pointer-events-none transition-opacity duration-500`} />
+                <Card
+                  className={`group h-full rounded-[2rem] md:rounded-[2.5rem] bg-[#020617]/40 backdrop-blur-md border-white/5 p-6 hover-lift relative overflow-hidden transition-all duration-500 flex flex-col justify-between shadow-glow-sm`}
+                >
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br ${CARD_COLORS[i % CARD_COLORS.length]} opacity-0 group-hover:opacity-10 pointer-events-none transition-opacity duration-500`}
+                  />
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex flex-wrap gap-1.5">
                         {(m.tags.length > 0 ? m.tags : ["General"]).map((t) => (
-                          <span key={t} className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-white/40">
+                          <span
+                            key={t}
+                            className="text-[9px] font-black uppercase tracking-[0.2em] px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-white/40"
+                          >
                             {t}
                           </span>
                         ))}
@@ -150,7 +165,8 @@ const Meetings = () => {
                         <Calendar className="w-3 h-3 text-primary/60" /> {formatDate(m.created_at)}
                       </div>
                       <div className="flex items-center gap-2 text-[10px] font-bold text-white/30 uppercase tracking-widest truncate">
-                        <Users className="w-3 h-3 text-cyan/60" /> {m.participants.length > 0 ? `${m.participants.length} people` : "—"}
+                        <Users className="w-3 h-3 text-cyan/60" />{" "}
+                        {m.participants.length > 0 ? `${m.participants.length} people` : "—"}
                       </div>
                     </div>
                   </div>
@@ -159,8 +175,12 @@ const Meetings = () => {
                     <div className="flex items-center gap-2 text-[10px] font-bold text-white/30 uppercase tracking-widest">
                       <FileText className="w-3 h-3" /> Transcript
                     </div>
-                    <span className={`text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/5 bg-white/5 ${STATUS_COLORS[m.status]}`}>
-                      <div className={`w-1 h-1 rounded-full ${m.status === "completed" ? "bg-emerald animate-pulse" : m.status === "processing" ? "bg-yellow-400 animate-pulse" : "bg-white/20"}`} />
+                    <span
+                      className={`text-[9px] font-black uppercase tracking-[0.2em] flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/5 bg-white/5 ${STATUS_COLORS[m.status]}`}
+                    >
+                      <div
+                        className={`w-1 h-1 rounded-full ${m.status === "completed" ? "bg-emerald animate-pulse" : m.status === "processing" ? "bg-yellow-400 animate-pulse" : "bg-white/20"}`}
+                      />
                       {m.status}
                     </span>
                   </div>

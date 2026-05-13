@@ -15,35 +15,41 @@ export function useAuth() {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const login = useCallback(async (email: string, password: string) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await api.post<AuthResponse>("/auth/login", { email, password });
-      saveAuth(res.access_token, res.user);
-      setUser(res.user);
-      navigate("/dashboard");
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Login failed");
-    } finally {
-      setLoading(false);
-    }
-  }, [navigate]);
+  const login = useCallback(
+    async (email: string, password: string) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await api.post<AuthResponse>("/auth/login", { email, password });
+        saveAuth(res.access_token, res.user);
+        setUser(res.user);
+        navigate("/dashboard");
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : "Login failed");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [navigate]
+  );
 
-  const signup = useCallback(async (name: string, email: string, password: string) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await api.post<AuthResponse>("/auth/register", { name, email, password });
-      saveAuth(res.access_token, res.user);
-      setUser(res.user);
-      navigate("/dashboard");
-    } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Signup failed");
-    } finally {
-      setLoading(false);
-    }
-  }, [navigate]);
+  const signup = useCallback(
+    async (name: string, email: string, password: string) => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await api.post<AuthResponse>("/auth/register", { name, email, password });
+        saveAuth(res.access_token, res.user);
+        setUser(res.user);
+        navigate("/dashboard");
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : "Signup failed");
+      } finally {
+        setLoading(false);
+      }
+    },
+    [navigate]
+  );
 
   const logout = useCallback(() => {
     clearAuth();
@@ -64,18 +70,18 @@ export function useAuth() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ name, email })
+        body: JSON.stringify({ name, email }),
       });
-      
+
       if (!res.ok) {
         const errorData = await res.json().catch(() => ({ detail: "Unknown error" }));
         throw new Error(errorData.detail || `HTTP ${res.status}`);
       }
-      
+
       const updatedUser = await res.json();
-      
+
       // Update local storage and state
       if (token) {
         saveAuth(token, updatedUser);

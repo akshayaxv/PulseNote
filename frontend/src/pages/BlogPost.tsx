@@ -183,7 +183,7 @@ const BlogPost = () => {
                 <Clock className="w-3 h-3" /> {post.readTime}
               </span>
             </div>
-            
+
             <h1 className="text-4xl md:text-6xl font-black font-display mb-8 tracking-tighter leading-[1.1]">
               {post.title}
             </h1>
@@ -195,10 +195,12 @@ const BlogPost = () => {
                 </div>
                 <div>
                   <p className="text-white/80 text-xs font-bold">{post.author}</p>
-                  <p className="text-white/30 text-[10px] uppercase tracking-widest">Lead Developer</p>
+                  <p className="text-white/30 text-[10px] uppercase tracking-widest">
+                    Lead Developer
+                  </p>
                 </div>
               </div>
-              
+
               <div className="h-8 w-px bg-white/5 hidden sm:block" />
 
               <div className="flex items-center gap-4">
@@ -232,18 +234,21 @@ const BlogPost = () => {
           />
 
           {/* Student Portfolio Footer */}
-          <motion.div 
-            {...fade} 
+          <motion.div
+            {...fade}
             transition={{ delay: 0.3, ...fade.transition }}
             className="mt-24 p-8 rounded-3xl glass-dark border border-white/10 text-center"
           >
-            <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Project Note</p>
-            <p className="text-white/40 text-sm leading-relaxed max-w-xl mx-auto mb-8">
-              This article was written to document the technical decisions made during the development of 
-              <strong> MeetMind AI</strong>. This is a student project intended to showcase system design 
-              and full-stack engineering skills.
+            <p className="text-white/20 text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+              Project Note
             </p>
-            <Link 
+            <p className="text-white/40 text-sm leading-relaxed max-w-xl mx-auto mb-8">
+              This article was written to document the technical decisions made during the
+              development of
+              <strong> MeetMind AI</strong>. This is a student project intended to showcase system
+              design and full-stack engineering skills.
+            </p>
+            <Link
               to="/about"
               className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-primary hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 text-[10px] font-black uppercase tracking-[0.2em]"
             >

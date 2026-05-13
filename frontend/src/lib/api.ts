@@ -4,10 +4,7 @@ function getToken(): string | null {
   return localStorage.getItem("meetmind_token");
 }
 
-async function request<T>(
-  endpoint: string,
-  options: RequestInit = {}
-): Promise<T> {
+async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const token = getToken();
   const headers: HeadersInit = {
     "Content-Type": "application/json",
@@ -33,6 +30,5 @@ export const api = {
   get: <T>(endpoint: string) => request<T>(endpoint),
   post: <T>(endpoint: string, body: unknown) =>
     request<T>(endpoint, { method: "POST", body: JSON.stringify(body) }),
-  delete: <T>(endpoint: string) =>
-    request<T>(endpoint, { method: "DELETE" }),
+  delete: <T>(endpoint: string) => request<T>(endpoint, { method: "DELETE" }),
 };

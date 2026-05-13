@@ -1,7 +1,16 @@
 import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { Upload as UploadIcon, FileText, CheckCircle2, Loader2, Sparkles, Plus, X, MousePointer2 } from "lucide-react";
+import {
+  Upload as UploadIcon,
+  FileText,
+  CheckCircle2,
+  Loader2,
+  Sparkles,
+  Plus,
+  X,
+  MousePointer2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useUploadMeeting } from "@/hooks/useMeetings";
@@ -15,7 +24,7 @@ const Upload = () => {
   const [participants, setParticipants] = useState<string[]>([]);
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
-  
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const { toast } = useToast();
@@ -40,45 +49,56 @@ const Upload = () => {
 
   const handleFile = (file: File) => {
     const isText = file.type === "text/plain" || file.name.toLowerCase().endsWith(".txt");
-    
+
     if (isText) {
       const reader = new FileReader();
       reader.onload = (ev) => {
         const content = ev.target?.result as string;
         if (content.length < 10) {
-          toast({ 
-            title: "File Too Short", 
-            description: "Transcript must be at least 10 characters long.", 
-            variant: "destructive" 
+          toast({
+            title: "File Too Short",
+            description: "Transcript must be at least 10 characters long.",
+            variant: "destructive",
           });
           return;
         }
         setTranscript(content);
-        if (!title || title.toLowerCase().includes("sync") || title.toLowerCase().includes("meeting")) {
+        if (
+          !title ||
+          title.toLowerCase().includes("sync") ||
+          title.toLowerCase().includes("meeting")
+        ) {
           setTitle(file.name.replace(/\.[^/.]+$/, ""));
         }
         toast({ title: "File Ready", description: `${file.name} loaded successfully.` });
       };
       reader.readAsText(file);
     } else {
-      toast({ 
-        title: "Unsupported File", 
-        description: "Please upload a .txt transcript file.", 
-        variant: "destructive" 
+      toast({
+        title: "Unsupported File",
+        description: "Please upload a .txt transcript file.",
+        variant: "destructive",
       });
     }
   };
 
   const handleSubmit = () => {
     if (!title.trim() || !transcript.trim()) {
-      toast({ title: "Missing Fields", description: "Title and transcript are required.", variant: "destructive" });
+      toast({
+        title: "Missing Fields",
+        description: "Title and transcript are required.",
+        variant: "destructive",
+      });
       return;
     }
     uploadMeeting(
       { title: title.trim(), transcript: transcript.trim(), participants, tags },
       {
         onSuccess: (data) => {
-          toast({ title: "Meeting Uploaded!", description: "AI is now processing your transcript." });
+          toast({
+            title: "Meeting Uploaded!",
+            description: "AI is now processing your transcript.",
+          });
           navigate(`/dashboard/meetings/${data.id}`);
         },
         onError: (err: Error) => {
@@ -104,7 +124,10 @@ const Upload = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDrag(true);
+        }}
         onDragLeave={() => setDrag(false)}
         onDrop={(e) => {
           e.preventDefault();
@@ -114,25 +137,28 @@ const Upload = () => {
         }}
         onClick={() => fileInputRef.current?.click()}
         className={`rounded-[2rem] border-2 border-dashed transition-all duration-500 cursor-pointer group relative overflow-hidden ${
-          drag 
-            ? "border-emerald bg-emerald/5 scale-[1.01]" 
+          drag
+            ? "border-emerald bg-emerald/5 scale-[1.01]"
             : "border-white/10 bg-[#020617]/40 backdrop-blur-xl hover:border-primary/40 hover:bg-primary/5"
         } p-8 md:p-12 text-center`}
       >
         <div className="absolute inset-0 bg-gradient-brand opacity-5 pointer-events-none" />
-        
-        <motion.div 
+
+        <motion.div
           animate={{ y: drag ? -10 : 0, scale: drag ? 1.05 : 1 }}
           className="w-20 h-20 rounded-3xl bg-gradient-brand mx-auto flex items-center justify-center mb-6 shadow-float group-hover:shadow-glow-primary transition-shadow"
         >
           <UploadIcon className="w-10 h-10 text-white" />
         </motion.div>
 
-        <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-white/90">Import Meeting Transcript</h2>
-        
+        <h2 className="text-2xl md:text-3xl font-display font-bold mb-3 text-white/90">
+          Import Meeting Transcript
+        </h2>
+
         <div className="flex flex-col items-center gap-2 mb-4">
           <p className="text-white/40 text-sm max-w-sm mx-auto font-medium leading-relaxed">
-            Drag & drop a <span className="text-primary/60">.txt</span> transcript file, or click to browse.
+            Drag & drop a <span className="text-primary/60">.txt</span> transcript file, or click to
+            browse.
           </p>
           <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-white/30 group-hover:text-primary/60 transition-colors">
             <MousePointer2 className="w-3 h-3" /> Click anywhere to select
@@ -158,7 +184,9 @@ const Upload = () => {
 
         {/* Title */}
         <div>
-          <label className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2 block">Title *</label>
+          <label className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2 block">
+            Title *
+          </label>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -169,7 +197,9 @@ const Upload = () => {
 
         {/* Transcript */}
         <div>
-          <label className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2 block">Transcript *</label>
+          <label className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2 block">
+            Transcript *
+          </label>
           <textarea
             value={transcript}
             onChange={(e) => setTranscript(e.target.value)}
@@ -181,7 +211,9 @@ const Upload = () => {
 
         {/* Participants */}
         <div>
-          <label className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2 block">Participants</label>
+          <label className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2 block">
+            Participants
+          </label>
           <div className="flex gap-2 mb-2">
             <input
               value={participantInput}
@@ -190,14 +222,25 @@ const Upload = () => {
               placeholder="Add participant name..."
               className="flex-1 h-10 px-4 rounded-xl bg-white/5 border border-white/10 text-white/80 placeholder:text-white/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
             />
-            <Button onClick={addParticipant} variant="outline" size="icon" className="h-10 w-10 rounded-xl border-white/10 bg-white/5">
+            <Button
+              onClick={addParticipant}
+              variant="outline"
+              size="icon"
+              className="h-10 w-10 rounded-xl border-white/10 bg-white/5"
+            >
               <Plus className="w-4 h-4" />
             </Button>
           </div>
           <div className="flex flex-wrap gap-2">
             {participants.map((p) => (
-              <span key={p} className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-primary uppercase">
-                {p} <button onClick={() => setParticipants((arr) => arr.filter((x) => x !== p))}><X className="w-3 h-3" /></button>
+              <span
+                key={p}
+                className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-primary uppercase"
+              >
+                {p}{" "}
+                <button onClick={() => setParticipants((arr) => arr.filter((x) => x !== p))}>
+                  <X className="w-3 h-3" />
+                </button>
               </span>
             ))}
           </div>
@@ -205,7 +248,9 @@ const Upload = () => {
 
         {/* Tags */}
         <div>
-          <label className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2 block">Tags</label>
+          <label className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-2 block">
+            Tags
+          </label>
           <div className="flex gap-2 mb-2">
             <input
               value={tagInput}
@@ -214,14 +259,25 @@ const Upload = () => {
               placeholder="Add tag (e.g. strategy, engineering)..."
               className="flex-1 h-10 px-4 rounded-xl bg-white/5 border border-white/10 text-white/80 placeholder:text-white/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
             />
-            <Button onClick={addTag} variant="outline" size="icon" className="h-10 w-10 rounded-xl border-white/10 bg-white/5">
+            <Button
+              onClick={addTag}
+              variant="outline"
+              size="icon"
+              className="h-10 w-10 rounded-xl border-white/10 bg-white/5"
+            >
               <Plus className="w-4 h-4" />
             </Button>
           </div>
           <div className="flex flex-wrap gap-2">
             {tags.map((t) => (
-              <span key={t} className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/40 uppercase">
-                {t} <button onClick={() => setTags((arr) => arr.filter((x) => x !== t))}><X className="w-3 h-3" /></button>
+              <span
+                key={t}
+                className="flex items-center gap-1.5 text-[10px] font-bold px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/40 uppercase"
+              >
+                {t}{" "}
+                <button onClick={() => setTags((arr) => arr.filter((x) => x !== t))}>
+                  <X className="w-3 h-3" />
+                </button>
               </span>
             ))}
           </div>
@@ -233,11 +289,17 @@ const Upload = () => {
           className="w-full h-12 rounded-xl bg-gradient-brand border-0 shadow-float hover:scale-[1.02] transition-all font-bold uppercase tracking-widest text-sm"
         >
           {isPending ? (
-            <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Uploading & Processing...</>
+            <>
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Uploading & Processing...
+            </>
           ) : isSuccess ? (
-            <><CheckCircle2 className="w-4 h-4 mr-2" /> Uploaded!</>
+            <>
+              <CheckCircle2 className="w-4 h-4 mr-2" /> Uploaded!
+            </>
           ) : (
-            <><Sparkles className="w-4 h-4 mr-2" /> Upload & Analyse with AI</>
+            <>
+              <Sparkles className="w-4 h-4 mr-2" /> Upload & Analyse with AI
+            </>
           )}
         </Button>
       </Card>

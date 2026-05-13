@@ -93,10 +93,13 @@ const Privacy = () => {
             <div className="flex gap-4 p-5 rounded-2xl bg-yellow-500/5 border border-yellow-500/20">
               <AlertCircle className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
               <div>
-                <p className="text-yellow-400 text-xs font-black uppercase tracking-widest mb-1">Student Project Notice</p>
+                <p className="text-yellow-400 text-xs font-black uppercase tracking-widest mb-1">
+                  Student Project Notice
+                </p>
                 <p className="text-white/40 text-sm leading-relaxed">
-                  MeetMind AI is a student portfolio project built for learning and demonstration purposes.
-                  It is not a commercial product. Use of this application is entirely at your own discretion.
+                  MeetMind AI is a student portfolio project built for learning and demonstration
+                  purposes. It is not a commercial product. Use of this application is entirely at
+                  your own discretion.
                 </p>
               </div>
             </div>
@@ -116,7 +119,9 @@ const Privacy = () => {
                 className="p-8 rounded-2xl bg-white/[0.03] border border-white/10"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${s.bg}`}>
+                  <div
+                    className={`w-10 h-10 rounded-xl border flex items-center justify-center ${s.bg}`}
+                  >
                     <s.icon className={`w-5 h-5 ${s.color}`} />
                   </div>
                   <h2 className="text-xl font-bold font-display">{s.title}</h2>
@@ -127,7 +132,10 @@ const Privacy = () => {
                       <div className={`w-1 h-1 rounded-full mt-2 shrink-0 ${s.color} bg-current`} />
                       <span
                         dangerouslySetInnerHTML={{
-                          __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white/80">$1</strong>'),
+                          __html: item.replace(
+                            /\*\*(.*?)\*\*/g,
+                            '<strong class="text-white/80">$1</strong>'
+                          ),
                         }}
                       />
                     </li>
@@ -145,7 +153,8 @@ const Privacy = () => {
           <motion.div {...fade}>
             <p className="text-white/20 text-xs uppercase tracking-[0.3em] mb-4">Questions?</p>
             <p className="text-white/40 text-sm leading-relaxed mb-6">
-              If you have any questions about this privacy policy or how your data is handled, reach out directly.
+              If you have any questions about this privacy policy or how your data is handled, reach
+              out directly.
             </p>
             <a
               href="mailto:hello@example.com"

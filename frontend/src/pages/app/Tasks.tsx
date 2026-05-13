@@ -33,7 +33,13 @@ function useAllActionItems() {
 }
 
 // Component to load & display action items for a single meeting
-const MeetingActionItems = ({ meetingId, meetingTitle }: { meetingId: string; meetingTitle: string }) => {
+const MeetingActionItems = ({
+  meetingId,
+  meetingTitle,
+}: {
+  meetingId: string;
+  meetingTitle: string;
+}) => {
   const { data: meeting } = useMeeting(meetingId);
   if (!meeting?.action_items?.length) return null;
 
@@ -57,7 +63,10 @@ const MeetingActionItems = ({ meetingId, meetingTitle }: { meetingId: string; me
               <Flag className="w-3.5 h-3.5 shrink-0 text-amber-500" />
             </div>
             <div className="flex items-center justify-between">
-              <Link to={`/dashboard/meetings/${meetingId}`} className="text-[10px] font-bold text-primary/60 hover:text-primary transition-colors uppercase tracking-widest flex items-center gap-1.5 truncate max-w-[70%]">
+              <Link
+                to={`/dashboard/meetings/${meetingId}`}
+                className="text-[10px] font-bold text-primary/60 hover:text-primary transition-colors uppercase tracking-widest flex items-center gap-1.5 truncate max-w-[70%]"
+              >
                 <Sparkles className="w-3 h-3 shrink-0" />
                 <span className="truncate">{meetingTitle}</span>
               </Link>
@@ -102,7 +111,9 @@ const Tasks = () => {
       ) : completedMeetings.length === 0 ? (
         <Card className="rounded-[2rem] border-white/5 bg-[#020617]/40 backdrop-blur-xl p-12 text-center shadow-glow-sm">
           <Sparkles className="w-10 h-10 text-primary/30 mx-auto mb-4" />
-          <h3 className="font-display font-bold text-white/60 uppercase mb-2">No Action Items Yet</h3>
+          <h3 className="font-display font-bold text-white/60 uppercase mb-2">
+            No Action Items Yet
+          </h3>
           <p className="text-sm text-white/30 max-w-sm mx-auto mb-6 font-medium leading-relaxed">
             Upload a meeting transcript and AI will automatically extract action items for you.
           </p>
