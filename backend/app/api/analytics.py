@@ -6,17 +6,16 @@ from datetime import datetime, timedelta
 from bson import ObjectId
 
 from app.api.deps import get_current_user
-from app.models.user import UserInDB
 from app.services.mongodb import db
 
 router = APIRouter()
 
 @router.get("/")
-async def get_analytics(current_user: UserInDB = Depends(get_current_user)) -> Dict[str, Any]:
+async def get_analytics(current_user: dict = Depends(get_current_user)) -> Dict[str, Any]:
     """
     Get aggregated analytics data for the current user.
     """
-    user_id = current_user.id
+    user_id = str(current_user["_id"])
 
     # Fetch all meetings for the user
     cursor = db.db["meetings"].find({"user_id": ObjectId(user_id)})

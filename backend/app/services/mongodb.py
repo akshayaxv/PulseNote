@@ -9,7 +9,10 @@ class MongoDB:
 db = MongoDB()
 
 async def connect_to_mongo():
-    db.client = AsyncIOMotorClient(settings.MONGODB_URL)
+    db.client = AsyncIOMotorClient(
+        settings.MONGODB_URL,
+        tlsAllowInvalidCertificates=True
+    )
     db.db = db.client[settings.DATABASE_NAME]
     print("Connected to MongoDB!")
 
