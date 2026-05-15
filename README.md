@@ -155,5 +155,5 @@ User asks a question → Backend searches MongoDB for relevant snippets → LLM 
 
 ---
 
-### **Engineering Excellence by D. V. Prasad**
+### **Served & Cooked by D. V. Prasad**
 *Passionate about building AI systems that solve real-world problems.*
