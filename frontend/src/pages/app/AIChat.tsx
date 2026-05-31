@@ -10,11 +10,12 @@ import {
   History,
   Database,
   Cpu,
-  MessageSquare,
   Loader2,
   AlertCircle,
+  Trash2,
+  MessageSquareText
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useChat } from "@/hooks/useChat";
 
 const suggestions = [
@@ -27,7 +28,10 @@ const suggestions = [
 const AIChat = () => {
   const [input, setInput] = useState("");
   const ref = useRef<HTMLDivElement>(null);
-  const { messages, loading, error, sendMessage, clearMessages } = useChat();
+  const { 
+    messages, loading, error, sendMessage, clearMessages,
+    sessions, currentSessionId, loadSession, deleteSession, deleteMessage
+  } = useChat();
 
   useEffect(() => {
     ref.current?.scrollTo({ top: ref.current.scrollHeight, behavior: "smooth" });
@@ -51,29 +55,39 @@ const AIChat = () => {
         </Button>
 
         <div className="flex items-center gap-2 text-[10px] font-black text-primary uppercase tracking-[0.2em] mb-6 px-2">
-          <History className="w-3.5 h-3.5" /> RECENT QUERIES
+          <History className="w-3.5 h-3.5" /> SAVED SESSIONS
         </div>
 
         <div className="flex-1 space-y-2 overflow-y-auto pr-1 scrollbar-hide">
-          {messages
-            .filter((m) => m.role === "user")
-            .slice(-5)
-            .map((m, i) => (
+          {sessions.map((s) => (
+            <div key={s.id} className="relative group">
               <button
-                key={i}
-                onClick={() => sendMessage(m.content)}
-                className="w-full text-left p-3.5 rounded-2xl transition-all group border bg-white/[0.02] border-white/5 hover:bg-white/5"
+                onClick={() => loadSession(s.id)}
+                className={`w-full text-left p-3.5 rounded-2xl transition-all border ${
+                  currentSessionId === s.id 
+                  ? "bg-white/10 border-primary/40" 
+                  : "bg-white/[0.02] border-white/5 hover:bg-white/5"
+                }`}
               >
-                <div className="text-xs font-bold truncate text-white/60">{m.content}</div>
-                <div className="text-[10px] text-white/20 mt-1.5 flex items-center justify-between font-mono font-bold">
-                  <span>This session</span>
-                  <MessageSquare className="w-3 h-3 opacity-0 group-hover:opacity-40" />
+                <div className="text-xs font-bold truncate text-white/80 pr-6">{s.title}</div>
+                <div className="text-[10px] text-white/40 mt-1.5 flex items-center gap-1.5 font-mono font-medium">
+                  <MessageSquareText className="w-3 h-3" />
+                  {new Date(s.updated_at).toLocaleDateString()}
                 </div>
               </button>
-            ))}
-          {messages.filter((m) => m.role === "user").length === 0 && (
+              <button 
+                onClick={(e) => { e.stopPropagation(); deleteSession(s.id); }}
+                className="absolute right-3 top-4 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity bg-red-500/20 text-red-400 hover:bg-red-500/40 hover:text-red-300"
+                title="Delete Session"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          ))}
+          
+          {sessions.length === 0 && (
             <p className="text-[10px] text-white/20 px-2 font-medium">
-              No queries yet this session.
+              No saved sessions yet.
             </p>
           )}
         </div>
@@ -136,7 +150,7 @@ const AIChat = () => {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`flex gap-3 md:gap-5 ${m.role === "user" ? "flex-row-reverse" : ""}`}
+              className={`flex gap-3 md:gap-5 group ${m.role === "user" ? "flex-row-reverse" : ""}`}
             >
               <div
                 className={`w-9 h-9 md:w-11 md:h-11 rounded-xl md:rounded-2xl flex items-center justify-center shadow-glow-sm border border-white/10 shrink-0 ${m.role === "assistant" ? "bg-gradient-brand text-white" : "bg-white/5 text-white/40"}`}
@@ -147,7 +161,17 @@ const AIChat = () => {
                   <span className="font-black text-[10px]">YOU</span>
                 )}
               </div>
-              <div className={`max-w-[85%] md:max-w-[80%] space-y-2`}>
+              <div className={`max-w-[85%] md:max-w-[80%] space-y-2 relative`}>
+                {m.id && (
+                  <button
+                    onClick={() => deleteMessage(m.id!)}
+                    className={`absolute ${m.role === "user" ? "-left-10" : "-right-10"} top-3 p-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity bg-red-500/10 text-red-400 hover:bg-red-500/20`}
+                    title="Delete Message"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                )}
+                
                 <div
                   className={`rounded-2xl md:rounded-3xl px-4 md:px-6 py-3 md:py-4 text-sm leading-relaxed shadow-glow-sm border ${m.role === "assistant" ? "bg-white/[0.03] border-white/10 text-white/70 font-medium" : "bg-primary/10 border-primary/20 text-white/90 font-bold"}`}
                 >
