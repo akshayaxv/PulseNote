@@ -196,8 +196,7 @@ const BlogPost = () => {
 
               <div className="h-8 w-px bg-white/5 hidden sm:block" />
 
-              <div className="flex items-center gap-4">
-              </div>
+              <div className="flex items-center gap-4"></div>
 
               <div className="ml-auto flex items-center gap-2">
                 <button className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/20 transition-all duration-300">

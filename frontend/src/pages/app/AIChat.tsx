@@ -13,7 +13,7 @@ import {
   Loader2,
   AlertCircle,
   Trash2,
-  MessageSquareText
+  MessageSquareText,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useChat } from "@/hooks/useChat";
@@ -28,9 +28,17 @@ const suggestions = [
 const AIChat = () => {
   const [input, setInput] = useState("");
   const ref = useRef<HTMLDivElement>(null);
-  const { 
-    messages, loading, error, sendMessage, clearMessages,
-    sessions, currentSessionId, loadSession, deleteSession, deleteMessage
+  const {
+    messages,
+    loading,
+    error,
+    sendMessage,
+    clearMessages,
+    sessions,
+    currentSessionId,
+    loadSession,
+    deleteSession,
+    deleteMessage,
   } = useChat();
 
   useEffect(() => {
@@ -64,9 +72,9 @@ const AIChat = () => {
               <button
                 onClick={() => loadSession(s.id)}
                 className={`w-full text-left p-3.5 rounded-2xl transition-all border ${
-                  currentSessionId === s.id 
-                  ? "bg-white/10 border-primary/40" 
-                  : "bg-white/[0.02] border-white/5 hover:bg-white/5"
+                  currentSessionId === s.id
+                    ? "bg-white/10 border-primary/40"
+                    : "bg-white/[0.02] border-white/5 hover:bg-white/5"
                 }`}
               >
                 <div className="text-xs font-bold truncate text-white/80 pr-6">{s.title}</div>
@@ -75,8 +83,11 @@ const AIChat = () => {
                   {new Date(s.updated_at).toLocaleDateString()}
                 </div>
               </button>
-              <button 
-                onClick={(e) => { e.stopPropagation(); deleteSession(s.id); }}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  deleteSession(s.id);
+                }}
                 className="absolute right-3 top-4 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity bg-red-500/20 text-red-400 hover:bg-red-500/40 hover:text-red-300"
                 title="Delete Session"
               >
@@ -84,11 +95,9 @@ const AIChat = () => {
               </button>
             </div>
           ))}
-          
+
           {sessions.length === 0 && (
-            <p className="text-[10px] text-white/20 px-2 font-medium">
-              No saved sessions yet.
-            </p>
+            <p className="text-[10px] text-white/20 px-2 font-medium">No saved sessions yet.</p>
           )}
         </div>
       </Card>
@@ -171,7 +180,7 @@ const AIChat = () => {
                     <Trash2 className="w-4 h-4" />
                   </button>
                 )}
-                
+
                 <div
                   className={`rounded-2xl md:rounded-3xl px-4 md:px-6 py-3 md:py-4 text-sm leading-relaxed shadow-glow-sm border ${m.role === "assistant" ? "bg-white/[0.03] border-white/10 text-white/70 font-medium" : "bg-primary/10 border-primary/20 text-white/90 font-bold"}`}
                 >
