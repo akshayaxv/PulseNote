@@ -103,7 +103,7 @@ export const Hero = () => {
           className="max-w-4xl mx-auto mb-12 md:mb-16"
         >
           <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display leading-[1.1] md:leading-[0.95] mb-6 md:mb-8 tracking-tighter text-white">
-            MeetMind AI: <br />
+            PulseNote: <br />
             <span className="text-gradient">Turn Talks into Action.</span>
           </h1>
           <p className="text-base md:text-xl text-white/50 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-medium px-2">
@@ -159,7 +159,7 @@ export const Hero = () => {
                   <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-emerald" />
                 </div>
                 <span className="text-xs md:text-sm font-display font-bold text-white/90 truncate">
-                  MeetMind AI
+                  PulseNote
                 </span>
               </div>
               <div className="flex items-center gap-3 md:gap-5">

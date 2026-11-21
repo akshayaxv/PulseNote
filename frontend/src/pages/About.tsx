@@ -66,7 +66,7 @@ const skills = [
 const timeline = [
   {
     year: "DAY-1",
-    title: "Started MeetMind AI",
+    title: "Started PulseNote",
     desc: "Identified the problem of information loss in meetings. Started building a solution as a personal project during university.",
     icon: Coffee,
   },
@@ -110,7 +110,7 @@ const About = () => {
               <br className="hidden md:block" /> Powered by curiosity.
             </h1>
             <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
-              MeetMind AI is a full-stack capstone project exploring the intersection of AI,
+              PulseNote is a full-stack capstone project exploring the intersection of AI,
               real-time speech processing, and modern web engineering — built from scratch as a
               learning exercise and shipped as a real product.
             </p>
@@ -143,7 +143,7 @@ const About = () => {
               </h2>
               <p className="text-white/50 text-base leading-relaxed mb-6">
                 A computer science student passionate about building things that solve real
-                problems. MeetMind AI started as a question:{" "}
+                problems. PulseNote started as a question:{" "}
                 <em className="text-white/70">
                   "Why do we always forget what was decided in that meeting?"
                 </em>{" "}

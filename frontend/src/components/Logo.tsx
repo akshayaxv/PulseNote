@@ -37,7 +37,7 @@ export const Logo = () => (
     </motion.div>
     <div className="flex flex-col">
       <span className="font-display font-black text-2xl tracking-tighter text-white leading-none">
-        MeetMind <span className="text-gradient">AI</span>
+        PulseNote <span className="text-gradient">AI</span>
       </span>
     </div>
   </Link>

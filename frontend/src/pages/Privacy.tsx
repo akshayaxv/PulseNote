@@ -97,7 +97,7 @@ const Privacy = () => {
                   Student Project Notice
                 </p>
                 <p className="text-white/40 text-sm leading-relaxed">
-                  MeetMind AI is a student portfolio project built for learning and demonstration
+                  PulseNote is a student portfolio project built for learning and demonstration
                   purposes. It is not a commercial product. Use of this application is entirely at
                   your own discretion.
                 </p>

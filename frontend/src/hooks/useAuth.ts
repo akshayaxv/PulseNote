@@ -65,7 +65,7 @@ export function useAuth() {
     setLoading(true);
     setError(null);
     try {
-      const token = localStorage.getItem("meetmind_token");
+      const token = localStorage.getItem("pulsenote_token");
       const res = await fetch("http://localhost:8000/api/v1/auth/me", {
         method: "PUT",
         headers: {

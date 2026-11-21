@@ -1,5 +1,5 @@
-const TOKEN_KEY = "meetmind_token";
-const USER_KEY = "meetmind_user";
+const TOKEN_KEY = "pulsenote_token";
+const USER_KEY = "pulsenote_user";
 
 export interface AuthUser {
   id: string;

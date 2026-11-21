@@ -69,7 +69,7 @@ const posts = [
     tagColor: "text-violet-400 bg-violet-500/10 border-violet-500/20",
     title: "What Building a Full-Stack AI App Taught Me About Software Engineering",
     excerpt:
-      "The honest lessons from shipping MeetMind AI — mistakes made, patterns discovered, and why shipping imperfect code is better than not shipping.",
+      "The honest lessons from shipping PulseNote — mistakes made, patterns discovered, and why shipping imperfect code is better than not shipping.",
     readTime: "2 min read",
     featured: false,
   },
@@ -96,7 +96,7 @@ const Blog = () => {
             </h1>
             <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
               Writing about AI, full-stack engineering, design systems, and the real lessons from
-              shipping MeetMind AI as a student project.
+              shipping PulseNote as a student project.
             </p>
           </motion.div>
         </div>

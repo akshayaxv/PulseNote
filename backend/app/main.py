@@ -21,8 +21,8 @@ async def lifespan(app: FastAPI):
     await close_mongo_connection()
 
 app = FastAPI(
-    title="MeetMindAI API",
-    description="Backend API for MeetMindAI - AI Meeting Assistant powered by RAG",
+    title="PulseNoteAI API",
+    description="Backend API for PulseNoteAI - AI Meeting Assistant powered by RAG",
     version="1.0.0",
     lifespan=lifespan
 )

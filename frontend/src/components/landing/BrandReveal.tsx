@@ -42,7 +42,7 @@ export const BrandReveal = () => {
         className="relative z-10 text-center flex flex-col items-center gap-8"
       >
         <h2 className="text-3xl sm:text-5xl md:text-8xl lg:text-[10rem] font-display font-black leading-none tracking-tighter">
-          MeetMind <span className="text-gradient block md:inline">AI</span>
+          PulseNote <span className="text-gradient block md:inline">AI</span>
         </h2>
 
         {/* Back to Top / Dynamic Scroll Element */}

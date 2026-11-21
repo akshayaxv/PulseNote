@@ -51,7 +51,7 @@ const fade = {
 const faqs = [
   {
     q: "How does the AI handle privacy?",
-    a: "MeetMind AI processes all data with enterprise-grade encryption. No meeting data is ever stored permanently or shared with third parties.",
+    a: "PulseNote processes all data with enterprise-grade encryption. No meeting data is ever stored permanently or shared with third parties.",
   },
   {
     q: "How does the Smart Search work?",
@@ -500,7 +500,7 @@ export const Architecture = () => (
             How the <span className="text-gradient">intelligence</span> flows
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg mb-8 leading-relaxed">
-            MeetMind AI uses a sophisticated multi-stage system to transform raw audio into
+            PulseNote uses a sophisticated multi-stage system to transform raw audio into
             actionable intelligence. From local file processing to intelligent transcription.
           </p>
           <div className="space-y-4">
@@ -702,7 +702,7 @@ export const Footer = () => {
             <Logo />
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
               Next-generation meeting intelligence. Transcribe, analyze, and automate your workflow
-              with MeetMind AI.
+              with PulseNote.
             </p>
             <div className="flex gap-4">
               {footerLinks.social.map((item) => (

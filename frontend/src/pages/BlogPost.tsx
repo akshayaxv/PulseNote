@@ -26,7 +26,7 @@ const blogContent: Record<string, BlogPostContent> = {
     readTime: "8 min read",
     author: "Student Developer",
     content: `
-      <p>Building a reliable transcription engine is one of the most challenging parts of creating a meeting assistant. For MeetMind AI, I chose OpenAI's <strong>Whisper</strong> model due to its incredible accuracy across different accents and technical terminologies.</p>
+      <p>Building a reliable transcription engine is one of the most challenging parts of creating a meeting assistant. For PulseNote, I chose OpenAI's <strong>Whisper</strong> model due to its incredible accuracy across different accents and technical terminologies.</p>
 
       <h2>The Architecture</h2>
       <p>The system is split into three main components: the React frontend, a FastAPI gateway, and a dedicated worker service for audio processing. When a user uploads a recording, the following flow occurs:</p>
@@ -73,7 +73,7 @@ const blogContent: Record<string, BlogPostContent> = {
     readTime: "2 min read",
     author: "Student Developer",
     content: `
-      <p>Animations can make or break a modern web app. In MeetMind AI, I used Framer Motion to create a premium, "living" interface. Here are the three patterns that had the biggest impact.</p>
+      <p>Animations can make or break a modern web app. In PulseNote, I used Framer Motion to create a premium, "living" interface. Here are the three patterns that had the biggest impact.</p>
 
       <h2>1. The Staggered Reveal</h2>
       <p>Instead of showing everything at once, use <code>staggerChildren</code>. This creates a natural flow that guides the eye from top to bottom. It's used in the pricing section and the meeting list.</p>
@@ -91,7 +91,7 @@ const blogContent: Record<string, BlogPostContent> = {
     readTime: "2 min read",
     author: "Student Developer",
     content: `
-      <p>Many student projects start as a single <code>main.py</code> file. This article explains how I structured the MeetMind AI backend to remain maintainable as it grew to 20+ endpoints.</p>
+      <p>Many student projects start as a single <code>main.py</code> file. This article explains how I structured the PulseNote backend to remain maintainable as it grew to 20+ endpoints.</p>
 
       <h2>Separation of Concerns</h2>
       <p>I followed a simplified version of the Repository Pattern:</p>
@@ -119,7 +119,7 @@ const blogContent: Record<string, BlogPostContent> = {
       <p>Pure black (#000000) often looks "dead" on modern OLED screens. I used a deep navy-tinted black (<code>#020617</code>) as the base. For the accents, I chose a vibrant primary blue and a cyan-to-emerald gradient to give the UI a "digital neon" feel without being overwhelming.</p>
 
       <h2>Glassmorphism & Depth</h2>
-      <p>In a dark UI, depth is created through subtle borders and translucency rather than heavy shadows. Each card in MeetMind AI uses a 3% white background with a 10% white border and a <code>backdrop-blur-xl</code> filter. This makes the UI feel like layers of glass floating over the background.</p>
+      <p>In a dark UI, depth is created through subtle borders and translucency rather than heavy shadows. Each card in PulseNote uses a 3% white background with a 10% white border and a <code>backdrop-blur-xl</code> filter. This makes the UI feel like layers of glass floating over the background.</p>
 
       <h2>Consistency is Key</h2>
       <p>I defined a set of semantic CSS variables for background, foreground, border, and primary colors. This ensured that every component—from the navbar to the settings dashboard—felt like part of the same cohesive world.</p>
@@ -131,7 +131,7 @@ const blogContent: Record<string, BlogPostContent> = {
     readTime: "2 min read",
     author: "Student Developer",
     content: `
-      <p>MeetMind AI started as a simple transcription script. Converting it into a full-stack SaaS-style application was a journey that taught me more than any classroom project ever could.</p>
+      <p>PulseNote started as a simple transcription script. Converting it into a full-stack SaaS-style application was a journey that taught me more than any classroom project ever could.</p>
 
       <h2>Perfect is the Enemy of Shipped</h2>
       <p>I spent two weeks trying to make the transcription "perfect" before I even had a login page. I eventually realized that a working app with 90% accuracy is more valuable for feedback than a broken script with 99% accuracy. Shipping early allowed me to identify the <em>real</em> bottlenecks.</p>
@@ -234,7 +234,7 @@ const BlogPost = () => {
             <p className="text-white/40 text-sm leading-relaxed max-w-xl mx-auto mb-8">
               This article was written to document the technical decisions made during the
               development of
-              <strong> MeetMind AI</strong>. This is a student project intended to showcase system
+              <strong> PulseNote</strong>. This is a student project intended to showcase system
               design and full-stack engineering skills.
             </p>
             <Link

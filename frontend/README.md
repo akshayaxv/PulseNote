@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎙️ MeetMind AI
+# 🎙️ PulseNote
 ### Conversations turned into Intelligence.
 
 [![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -11,11 +11,11 @@
 
 <br />
 
-![MeetMind AI Hero Mockup](./public/images/hero-mockup.png)
+![PulseNote Hero Mockup](./public/images/hero-mockup.png)
 
-**MeetMind AI** is a high-fidelity, obsidian-themed meeting intelligence hub. Designed for speed and precision, it transforms raw audio into actionable insights using state-of-the-art AI reasoning.
+**PulseNote** is a high-fidelity, obsidian-themed meeting intelligence hub. Designed for speed and precision, it transforms raw audio into actionable insights using state-of-the-art AI reasoning.
 
-[Explore Dashboard](https://github.com/akshayaxv/MeetMind-AI) • [View Architecture](#-system-architecture) • [Request Access](#)
+[Explore Dashboard](https://github.com/akshayaxv/PulseNote) • [View Architecture](#-system-architecture) • [Request Access](#)
 
 </div>
 
@@ -23,7 +23,7 @@
 
 ## ✨ Key Features
 
-MeetMind AI isn't just a transcription tool; it's a second brain for your meetings.
+PulseNote isn't just a transcription tool; it's a second brain for your meetings.
 
 | Feature | Description |
 | :--- | :--- |
@@ -81,7 +81,7 @@ graph TD
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/akshayaxv/MeetMind-AI.git
+   git clone https://github.com/akshayaxv/PulseNote.git
    ```
 
 2. **Install dependencies**

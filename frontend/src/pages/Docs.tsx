@@ -28,7 +28,7 @@ const Docs = () => {
             </h1>
             <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
               Deep dive into the neural pipelines, semantic architectures, and advanced RAG systems
-              powering MeetMind AI.
+              powering PulseNote.
             </p>
           </motion.div>
         </div>

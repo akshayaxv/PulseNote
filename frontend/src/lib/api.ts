@@ -1,7 +1,7 @@
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api/v1";
 
 function getToken(): string | null {
-  return localStorage.getItem("meetmind_token");
+  return localStorage.getItem("pulsenote_token");
 }
 
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {

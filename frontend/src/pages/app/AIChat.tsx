@@ -126,7 +126,7 @@ const AIChat = () => {
             </div>
             <div className="min-w-0">
               <div className="text-[10px] md:text-xs font-black font-display tracking-tight uppercase text-white/90 truncate">
-                MeetMind AI Assistant
+                PulseNote Assistant
               </div>
               <div className="text-[8px] md:text-[9px] text-emerald font-black tracking-[0.2em] uppercase flex items-center gap-2 mt-0.5">
                 <span className="w-1 h-1 rounded-full bg-emerald animate-pulse shadow-glow" />

@@ -70,7 +70,7 @@ const AuthCard = ({ mode }: { mode: "login" | "signup" }) => {
         </h1>
         <p className="text-sm text-muted-foreground">
           {isLogin
-            ? "Sign in to your MeetMind workspace"
+            ? "Sign in to your PulseNote workspace"
             : "Start turning meetings into action — free forever"}
         </p>
       </div>
@@ -200,7 +200,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => (
             Every meeting, <span className="text-gradient">distilled into action</span>.
           </h2>
           <p className="text-muted-foreground mb-8">
-            Join thousands of teams shipping faster with MeetMind AI.
+            Join thousands of teams shipping faster with PulseNote.
           </p>
           <div className="rounded-3xl glass-dark p-6 shadow-glow border-white/10">
             <div className="flex items-center justify-between text-xs text-white/40 mb-3">

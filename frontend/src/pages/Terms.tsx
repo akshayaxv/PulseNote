@@ -12,7 +12,7 @@ const fade = {
 };
 
 const allowed = [
-  "Use MeetMind AI for personal, educational, or portfolio demonstration purposes.",
+  "Use PulseNote for personal, educational, or portfolio demonstration purposes.",
   "Upload meeting recordings or transcripts that you own or have permission to share.",
   "Share screenshots or recordings of the product for portfolio or showcase purposes.",
   "Provide feedback, suggestions, or bug reports to help improve the project.",
@@ -29,12 +29,12 @@ const clauses = [
   {
     title: "No Warranty",
     content:
-      "MeetMind AI is provided 'as is' without warranty of any kind. As a student project, it may contain bugs, have downtime, or be discontinued at any time without notice. Use at your own risk.",
+      "PulseNote is provided 'as is' without warranty of any kind. As a student project, it may contain bugs, have downtime, or be discontinued at any time without notice. Use at your own risk.",
   },
   {
     title: "Intellectual Property",
     content:
-      "The codebase, design, and architecture of MeetMind AI are the intellectual property of the developer. AI-generated outputs (summaries, transcriptions) from your uploaded content belong to you.",
+      "The codebase, design, and architecture of PulseNote are the intellectual property of the developer. AI-generated outputs (summaries, transcriptions) from your uploaded content belong to you.",
   },
   {
     title: "Limitation of Liability",
@@ -44,7 +44,7 @@ const clauses = [
   {
     title: "Third-Party Services",
     content:
-      "This application uses third-party services including OpenAI and Supabase. Use of MeetMind AI implies acceptance of those services' own terms and privacy policies.",
+      "This application uses third-party services including OpenAI and Supabase. Use of PulseNote implies acceptance of those services' own terms and privacy policies.",
   },
   {
     title: "Modifications to Terms",
@@ -183,7 +183,7 @@ const Terms = () => {
         <div className="container max-w-3xl text-center">
           <motion.div {...fade}>
             <p className="text-white/20 text-xs leading-relaxed max-w-lg mx-auto">
-              By using MeetMind AI you agree to these terms. Questions? Reach out at{" "}
+              By using PulseNote you agree to these terms. Questions? Reach out at{" "}
               <a href="mailto:hello@example.com" className="text-primary hover:underline">
                 hello@example.com
               </a>

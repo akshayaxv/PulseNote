@@ -1,4 +1,4 @@
-# MeetMindAI — Enterprise Meeting Intelligence & RAG Platform
+# PulseNoteAI — Enterprise Meeting Intelligence & RAG Platform
 
 > **Transforming Corporate Chaos into Actionable Intelligence**
 > 
@@ -12,7 +12,7 @@
 In the modern corporate landscape, **"Meeting Fatigue"** is a real productivity killer. Information discussed in meetings is often lost due to poor note-taking, leading to fragmented communication, missed deadlines, and redundant discussions.
 
 ### The Vision
-**MeetMindAI** was built to serve as an "External Brain" for organizations. It doesn't just store transcripts; it **understands** them. By converting raw audio/text into structured data, it ensures that every decision made is recorded, assigned, and searchable.
+**PulseNoteAI** was built to serve as an "External Brain" for organizations. It doesn't just store transcripts; it **understands** them. By converting raw audio/text into structured data, it ensures that every decision made is recorded, assigned, and searchable.
 
 ### Real-World Impact
 - **MNCs & Startups:** Centralizes institutional knowledge.
@@ -73,7 +73,7 @@ This project was executed using a **Professional Agile Methodology**, ensuring r
 *   **Action Items:** Automatically detects names and assignments using Named Entity Recognition (NER) patterns in LLMs.
 *   **Decision Log:** Chronological logging of all key approvals.
 
-### 3. **MeetMind Chat (RAG)**
+### 3. **PulseNote Chat (RAG)**
 *   **The Power:** Ask questions like *"Did we agree on the budget increase?"* and get answers backed by transcript citations.
 *   **Implementation:** LangChain-style retrieval logic embedded directly into the FastAPI service.
 
