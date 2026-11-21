@@ -15,7 +15,7 @@
 
 **MeetMind AI** is a high-fidelity, obsidian-themed meeting intelligence hub. Designed for speed and precision, it transforms raw audio into actionable insights using state-of-the-art AI reasoning.
 
-[Explore Dashboard](https://github.com/VARA4u-tech/meeting-ai-studio) • [View Architecture](#-system-architecture) • [Request Access](#)
+[Explore Dashboard](https://github.com/akshayaxv/MeetMind-AI) • [View Architecture](#-system-architecture) • [Request Access](#)
 
 </div>
 
@@ -81,7 +81,7 @@ graph TD
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/VARA4u-tech/meeting-ai-studio.git
+   git clone https://github.com/akshayaxv/MeetMind-AI.git
    ```
 
 2. **Install dependencies**
@@ -98,6 +98,6 @@ graph TD
 
 <div align="center">
 
-Built with ❤️ by [VARA4u-tech](https://github.com/VARA4u-tech)
+Built with ❤️ by [akshayaxv](https://github.com/akshayaxv)
 
 </div>
